@@ -8,9 +8,6 @@ module.exports = {
     ],
   },
   theme: {
-    fontFamily: {
-      sans: ["Work Sans", "regular"],
-    },
     extend: {
       boxShadow: {
         "sm-flat-r": "2px 2px 0 rgb(0 0 0 / 1)",
