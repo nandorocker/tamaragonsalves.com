@@ -4,12 +4,33 @@
   "description": "Tamara Gonsalves Website",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "run-s start:local",
+    "start:local": "npm-run-all clean --parallel dev:*",
+    "start:tunnel": "npm-run-all --parallel start:local tunnel",
+    "build": "run-s clean build:*",
+    "dev:11ty-watch": "eleventy --watch",
+    "dev:11ty-server": "eleventy-dev-server --dir=public",
+    "dev:css": "tailwindcss --input ./src/assets/css/tailwind.css --output ./public/tailwind.css --watch --postcss",
+    "build:11ty": "eleventy",
+    "build:css": "tailwindcss --input ./src/assets/css/tailwind.css --output ./public/tailwind.css --postcss",
+    "clean": "rimraf public",
+    "tunnel": "wait-on http://localhost:8080 && cloudflared tunnel --url http://localhost:8080"
   },
   "keywords": [],
   "author": "Nando Rossi",
   "license": "ISC",
   "dependencies": {
-    "@11ty/eleventy": "^3.0.0"
+    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-dev-server": "^2.0.4",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^6.0.1",
+    "taos": "^1.0.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.15",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
+    "wait-on": "^8.0.1"
   }
 }
