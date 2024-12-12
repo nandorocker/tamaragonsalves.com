@@ -22,12 +22,12 @@
 
   h1,
   .text-size-h1 {
-    @apply mb-6 text-5xl font-black;
+    @apply mb-6 text-5xl font-bold max-sm:leading-none;
   }
 
   h2,
   .text-size-h2 {
-    @apply mb-5 text-3xl font-bold;
+    @apply mb-5 text-3xl font-semibold;
   }
 
   h3,
@@ -66,6 +66,10 @@
   li {
     @apply first:mb-2 my-2 last:mb-0;
   }
+
+  a {
+    @apply underline text-blue-800 hover:text-gray-500 hover:no-underline visited:text-gray-700;
+  }
 }
 
 @layer components {
@@ -76,28 +80,69 @@
 
   /* Button */
   .button {
-    @apply inline-block bg-gray-600 text-white uppercase font-semibold;
+    @apply bg-gray-600 text-white hover:text-gray-100 hover:bg-gray-800 visited:text-gray-100 visited:hover:text-gray-100 no-underline uppercase font-semibold;
   }
 
   .button-xs {
-    @apply my-4 mx-1 px-2 py-1 text-xs rounded-sm;
+    @apply inline-block my-4 mx-1 px-2 py-1 text-xs rounded-sm;
   }
 
   .button-lg {
-    @apply my-4 mx-2 px-6 py-2 text-base rounded-lg;
+    @apply my-4 px-6 py-2 text-base rounded-lg;
   }
 
   .button-xl {
-    @apply my-4 mx-2 px-12 py-4 text-base rounded-xl;
+    @apply my-4 px-12 py-4 text-base rounded-xl;
   }
 
-  /* Bullet List */
-  ul.bullet {
-    @apply pl-6;
+  /* Top Navigation */
+  .top-nav a,
+  a:visited {
+    @apply no-underline text-gray-700 hover:text-gray-500;
   }
 
-  ul.bullet li {
-    @apply list-disc;
+  /* Accordion */
+  .accordion {
+    @apply w-full; /* Ensure it takes the full width of its container */
+  }
+
+  .accordion ul {
+    @apply mb-0;
+  }
+
+  .accordion li {
+    @apply first:mt-2 last:mb-0;
+  }
+
+  .accordion-item {
+    @apply my-8;
+  }
+
+  .accordion input[type="checkbox"] {
+    @apply hidden; /* Hide checkboxes */
+  }
+
+  .accordion label {
+    @apply relative cursor-pointer z-0; /* Make the label clickable */
+    display: inline-block; /* Inline-block to position pseudo-element */
+  }
+
+  .accordion-item:has(.accordion-content) label::after {
+    content: "More details...";
+    @apply underline cursor-pointer italic;
+  }
+
+  .accordion input[type="checkbox"]:checked + .accordion-label::after {
+    content: ""; /* Hide "Read details..." when expanded */
+  }
+
+  .accordion-content {
+    @apply mb-2 max-h-0 overflow-hidden; /* Collapse content by default */
+    transition: max-height 0.3s ease-out; /* Smooth expand/collapse */
+  }
+
+  .accordion input[type="checkbox"]:checked ~ .accordion-content {
+    @apply max-h-[100rem]; /* Set to a value large enough for any content */
   }
 }
 
@@ -119,5 +164,23 @@
     @apply py-36
     sm:py-16
       lg:py-36;
+  }
+
+  /* Bullet List */
+  ul.bullet {
+    @apply pl-6;
+  }
+
+  ul.bullet li {
+    @apply list-disc;
+  }
+
+  /* Compact Sections */
+  .smaller h3 {
+    @apply mb-1 text-lg;
+  }
+
+  .smaller h4 {
+    @apply mb-0 text-base;
   }
 }
