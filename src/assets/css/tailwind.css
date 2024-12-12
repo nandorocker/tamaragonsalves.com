@@ -1,3 +1,123 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  /* * {
+    @apply border border-gray-400;
+  } */
+
+  p {
+    @apply mb-4 text-base leading-normal;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply leading-tight;
+  }
+
+  h1,
+  .text-size-h1 {
+    @apply mb-6 text-5xl font-black;
+  }
+
+  h2,
+  .text-size-h2 {
+    @apply mb-5 text-3xl font-bold;
+  }
+
+  h3,
+  .text-size-h3 {
+    @apply mb-4 text-2xl font-semibold;
+  }
+
+  h4,
+  .text-size-h4 {
+    @apply mb-3 text-xl font-semibold;
+  }
+
+  h5,
+  .text-size-h5 {
+    @apply mb-3 text-lg font-semibold;
+  }
+
+  h6,
+  .text-size-h6 {
+    @apply mb-3 text-base font-semibold;
+  }
+
+  .text-caption {
+    font-size: 0.71em;
+  }
+
+  small,
+  .text-small {
+    font-size: 0.5em;
+  }
+
+  ul {
+    @apply mb-10 leading-normal;
+  }
+
+  li {
+    @apply first:mb-2 my-2 last:mb-0;
+  }
+}
+
+@layer components {
+  /* Landing */
+  /* .page-section {
+    @apply;
+  } */
+
+  /* Button */
+  .button {
+    @apply inline-block bg-gray-600 text-white uppercase font-semibold;
+  }
+
+  .button-xs {
+    @apply my-4 mx-1 px-2 py-1 text-xs rounded-sm;
+  }
+
+  .button-lg {
+    @apply my-4 mx-2 px-6 py-2 text-base rounded-lg;
+  }
+
+  .button-xl {
+    @apply my-4 mx-2 px-12 py-4 text-base rounded-xl;
+  }
+
+  /* Bullet List */
+  ul.bullet {
+    @apply pl-6;
+  }
+
+  ul.bullet li {
+    @apply list-disc;
+  }
+}
+
+@layer utilities {
+  /* Sets default margins for site sections/footers/etc */
+  .contain-wide {
+    @apply xl:max-w-screen-2xl px-5 md:px-14 mx-auto;
+  }
+
+  .contain-medium {
+    @apply lg:max-w-screen-xl px-5 md:px-12 mx-auto;
+  }
+
+  .contain-narrow {
+    @apply lg:max-w-screen-lg px-5 md:px-20 mx-auto;
+  }
+
+  .contain-margins-y {
+    @apply py-36
+    sm:py-16
+      lg:py-36;
+  }
+}

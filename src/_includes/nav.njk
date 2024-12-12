@@ -1,0 +1,40 @@
+{# Nav Container #}
+<header class="nav fixed w-full top-0 bg-slate-100 uppercase">
+    <div class="w-full h-14 ease-in-out">
+        {# Extra div to get the underline #}
+        <div class="h-full px-5 md:flex md:justify-between md:items-center">
+            <div class="flex items-center justify-between lowercase" aria-label="Global">
+                {# Group 1 (left) #}
+                <div class="flex md:flex-1">
+                    {# Logo #}
+                    <a href="/" class="py-2 flex-1 text-md font-semibold">
+                        Tamara Amoroso Gonsalves
+                    </a>
+                    {# End Logo #}
+                </div>
+
+                {# Group 2 (mobile nav toggle) #}
+                <div class="flex md:hidden">
+                    <button id="menu-toggle" type="button"
+                        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            {# Group 3 (menu items) #}
+            <nav id="menu"
+                class="box-content font-bold text-center md:text-left text-md w-full md:w-auto pb-6 md:pb-2 hidden md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:flex-1 md:justify-end md:gap-x-4">
+                <a href="/#about-me" class="{{ " current" if section=="about-me" }}">About Me</a>
+                <a href="/#degrees" class="{{ " current" if section=="degrees" }}">Degrees</a>
+                <a href="/#projects" class="{{ " current" if section=="projects" }}">Projects</a>
+                <a href="/#contact-me" class="">Contact</a>
+            </nav>
+        </div>
+    </div>
+</header>
