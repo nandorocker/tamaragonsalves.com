@@ -14,6 +14,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/images/**/*");
   eleventyConfig.addPassthroughCopy("src/assets/fonts/*");
   eleventyConfig.addPassthroughCopy("src/favicon.png");
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/taos/dist/taos.js": "taos.js",
+  });
 
   // Optional advanced chokidar setup
   eleventyConfig.setServerOptions({
