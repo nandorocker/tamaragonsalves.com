@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require("tailwindcss/plugin");
+
 module.exports = {
   content: {
     relative: true,
@@ -8,6 +10,9 @@ module.exports = {
     ],
   },
   theme: {
+    fontFamily: {
+      sans: ["Alegreya Sans"],
+    },
     fontSize: {
       xs: "0.64rem",
       sm: "0.8rem",
@@ -94,7 +99,14 @@ module.exports = {
       },
     },
   },
-  plugins: [require("taos/plugin")],
+  plugins: [
+    require("taos/plugin"),
+    plugin(function ({ addBase }) {
+      addBase({
+        html: { fontSize: "18px" },
+      });
+    }),
+  ],
   safelist: [
     "!duration-[0ms]",
     "!delay-[0ms]",
