@@ -159,7 +159,7 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/typography"), require("taos/plugin")],
+  plugins: [require("taos/plugin")],
   safelist: [
     "!duration-[0ms]",
     "!delay-[0ms]",
