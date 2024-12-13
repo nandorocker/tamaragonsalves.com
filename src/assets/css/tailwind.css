@@ -68,7 +68,7 @@
   }
 
   a {
-    @apply underline text-blue-800 hover:text-gray-500 hover:no-underline visited:text-gray-700;
+    @apply italic underline text-blue-800 hover:text-gray-500 hover:no-underline visited:text-gray-700;
   }
 }
 
@@ -80,19 +80,19 @@
 
   /* Button */
   .button {
-    @apply bg-gray-600 text-white hover:text-gray-100 hover:bg-gray-800 visited:text-gray-100 visited:hover:text-gray-100 no-underline uppercase font-semibold;
+    @apply bg-gray-600 text-white hover:text-gray-100 hover:bg-gray-800 visited:text-gray-100 visited:hover:text-gray-100 text-center not-italic no-underline uppercase font-semibold;
   }
 
   .button-xs {
-    @apply inline-block my-4 mx-1 px-2 py-1 text-xs rounded-sm;
+    @apply inline-block mb-4 mx-1 px-2 py-1 text-xs rounded-sm;
   }
 
   .button-lg {
-    @apply my-4 px-6 py-2 text-base rounded-lg;
+    @apply mb-4 px-6 py-2 text-base rounded-lg;
   }
 
   .button-xl {
-    @apply my-4 px-12 py-4 text-base rounded-xl;
+    @apply mb-4 px-12 py-4 text-base rounded-xl;
   }
 
   /* Top Navigation */
@@ -122,18 +122,19 @@
     @apply hidden; /* Hide checkboxes */
   }
 
-  .accordion label {
+  .accordion-item:has(.accordion-content) label {
     @apply relative cursor-pointer z-0; /* Make the label clickable */
     display: inline-block; /* Inline-block to position pseudo-element */
   }
 
   .accordion-item:has(.accordion-content) label::after {
     content: "More details...";
-    @apply underline cursor-pointer italic;
+    @apply transition-opacity underline cursor-pointer italic;
   }
 
   .accordion input[type="checkbox"]:checked + .accordion-label::after {
-    content: ""; /* Hide "Read details..." when expanded */
+    content: "";
+    @apply transition-opacity opacity-0; /* Hide "Read details..." when expanded */
   }
 
   .accordion-content {
@@ -143,6 +144,34 @@
 
   .accordion input[type="checkbox"]:checked ~ .accordion-content {
     @apply max-h-[100rem]; /* Set to a value large enough for any content */
+  }
+
+  /* Books List */
+  /* Define reusable classes */
+
+  /* Container for the book grid */
+  .book-grid {
+    @apply w-full grid sm:grid-cols-2 lg:grid-cols-3 gap-x-24 mb-16;
+  }
+
+  /* Article container for each book */
+  .book-article {
+    @apply max-sm:mb-16 flex flex-col;
+  }
+
+  /* Image styles for books */
+  .book-image {
+    @apply max-sm:mx-auto w-full max-w-40 lg:w-auto lg:max-w-56 lg:h-72 mb-6 overflow-hidden shadow-lg rounded-md;
+  }
+
+  /* Title and author container */
+  .book-info {
+    @apply flex flex-col space-y-4;
+  }
+
+  /* Button styles */
+  .buy-button {
+    @apply block sm:inline-block button button-lg;
   }
 }
 

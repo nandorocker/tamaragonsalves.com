@@ -13,7 +13,7 @@ layout: "base.njk"
 <section id="about-me" class="bg-yellow-50 w-full contain-margins-y ">
 
     <div
-        class="contain-narrow xl:contain-medium grid sm:grid-cols-2 xl:grid-cols-[2fr_1fr] gap-8 lg:gap-12 items-center">
+        class="contain-narrow md:contain-medium grid sm:grid-cols-2 xl:grid-cols-[2fr_1fr] gap-8 lg:gap-12 items-center">
         <div>
             <h2 class="mb-8">About Me</h2>
             <p>I am a motivated and passionate professional, deeply
@@ -35,7 +35,7 @@ layout: "base.njk"
 </section>
 
 <section id="background" class="bg-red-100 contain-margins-y">
-    <div class="contain-narrow xl:contain-medium smaller">
+    <div class="contain-narrow smaller">
         <h1>Academic & Professional<wbr> Background</h1>
         <p class="mb-16"><a href="/assets/files/Tamara_Amoroso_Gonsalves_CV_11.12.2024_pub_last.pdf"
                 class="button button-lg">Download
@@ -171,56 +171,70 @@ layout: "base.njk"
     </div>
 </section>
 
-<section id="articles" class="contain-margins-y">
-    <div class="contain-narrow xl:contain-medium md:grid md:grid-cols-[1fr_2fr]">
-        <div>
-            <h2 class="text-size-h3 mb-8">Books, articles, videos and publications</h2>
+<section id="articles" class="contain-margins-y bg-slate-200">
+    <div class="contain-narrow lg:contain-medium">
+        <h1 class="mb-8">Books and publications</h1>
+        <h2>Books</h2>
+
+        <div class="book-grid">
+
+            {# Book 1 #}
+            <article class="book-article">
+                <img src="{{ images }}/livro_direitos_humanos_mulheres.jpg" class="book-image" alt="" srcset="">
+                <div class="book-info">
+                    <h5 class="mb-0">Direitos humanos das mulheres e a comissão Interamericana de direitos humanos</h5>
+                    <p><em>Tamara Amoroso Gonçalves</em></p>
+                </div>
+                <div>
+                    <p>Direitos Humanos das Mulheres e a Comissão Interamericana de Direitos Humanos apresenta
+                        um estudo aprofundado dos casos admitidos por esta instância internacional jurídico política no
+                        período de 1970 a 2008.</p>
+
+                    <p><a href="" class="buy-button">Buy Now</a></p>
+                </div>
+            </article>
+
+            {# Book 2 #}
+            <article class="book-article">
+                <img src="{{images}}/livro_pub_alim_criancas.jpg" class="book-image" alt="" srcset="">
+                <div>
+                    <h5 class="mb-0">Publicidade de Alimentos e Crianças</h5>
+                    <p><em>Tamara Amoroso Gonsalves</em></p>
+                </div>
+                <div>
+                    <p>Esta obra versa sobre a regulação da publicidade de alimentos a crianças no Brasil e
+                        no mundo. A obra identifica referenciais comparativos, junto a diversos países, quanto a medidas
+                        de regulação da publicidade dirigida a crianças, de forma a subsidiar a tomada de decisões,
+                        notadamente no Brasil, em relação a políticas públicas afeitas a esta matéria.</p>
+
+                    <p><a href="" class="buy-button">Buy Now</a></p>
+                </div>
+            </article>
+
+            {# Book 3 #}
+            <article class="book-article">
+                <img src="{{ images }}/livro_aborto_e_religiao.png" class="book-image" alt="" srcset="">
+                <div class="book-info">
+                    <h5 class="mb-0">Aborto e Religião nos Tribunais Brasileiros</h5>
+                    <p><em>Tamara Amoroso Gonçalves (coord.), Thais de Souza Lapa</em></p>
+                </div>
+                <div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum dignissimos
+                        cupiditate perferendis, qui soluta natus ipsum enim dicta provident aliquam rerum possimus
+                        incidunt eum,
+                        sit obcaecati doloribus asperiores alias sunt.</p>
+
+                    <p><a href="" class="buy-button">Buy Now</a></p>
+                </div>
+            </article>
+
         </div>
-        <ul>
-            <li>
-                <h5>Academia collection
-                    <a href="hhttps://independent.academia.edu/TamaraAmorosoGon%C3%A7alves" target="_blank"
-                        class="inline align-middle button button-xs" title="Read the Academia Collection">Read</a>
-                </h5>
-                <p> A <a href="https://independent.academia.edu/TamaraAmorosoGon%C3%A7alves" target="_blank">collection
-                        of
-                        14 papers and 1 book</a>. Advertising
-                    to Children and Gender Stereotypes in Brazil
-                    Reflecting a Broader "Macho" Culture, Narratives
-                    of Memory, Migration, and Xenophobia in the
-                    European Union and Canada and more.</p>
-            </li>
-            <li>
-                <h5>Google Scholar Collection</h5>
-                <p> A collection of articles, fully accessible for reading. <a
-                        href="https://scholar.google.com/citations?user=r8IJNL0AAAAJ&hl=en" target="_blank"
-                        class="inline align-middle button button-xs" title="Read the Google Scholar Collection">Read</a>
-                </p>
-            </li>
-            <li>
-                <h5>A publicidade que dialoga com a
-                    criança é abusiva
-                </h5>
-                <p> Video where Dr. Tamara Amoroso Gonsalves speaks about advertising and childhood. <a
-                        href="https://www12.senado.leg.br/tv/plenario-e-comissoes/comissao-de-direitos-humanos-e-legislacao-participativa/2013/08/a-publicidade-que-dialoga-com-a-crianca-e-abusiva-diz-tamara-amoroso-goncalves-min.-justica"
-                        target="_blank" class="inline align-middle button button-xs" title="Watch Video">Watch</a></p>
-            </li>
-            <li>
-                <h5>Gênero e Direitos Humanos</h5>
-                <p> USP <br>
-                    <em>October 2012</em>
-                </p>
-                <p>
-                    The third module of the Human Rights and Development debate cycle has the theme of Gender and Human
-                    Rights. It will discuss issues linked to the concept of gender, the Maria da Penha Law, the
-                    representation of women in the media and reproductive rights. <a
-                        href="https://iptv.usp.br/portal/video.action?idItem=12539" target="_blank"
-                        class="inline align-middle button button-xs" title="Watch Gênero e Direitos Humanos">Watch</a>
-                </p>
-                <p>Presenters: Heloisa Buarque de Almeida (FFLCH-USP) and Tamara Amoroso Gonçalves (Cladem/Brasil)
-                    Mediation by: Eva Blay (FFLCH-USP)</p>
-            </li>
-        </ul>
+
+        <h2>Publications</h2>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis commodi maxime deleniti modi itaque sequi?
+            Possimus pariatur autem quos corporis excepturi illum sunt blanditiis. Eos omnis quos necessitatibus
+            distinctio molestias</p>
+        <p>See the <a href="/publications">full list of publications</a>.</p>
     </div>
 </section>
 
