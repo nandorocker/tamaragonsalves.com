@@ -180,16 +180,49 @@
 
   /* Container for each video */
   .video-card {
-    @apply flex flex-col items-start;
+    @apply relative flex flex-col items-start;
   }
 
-  /* Thumbnail image */
-  .video-thumbnail {
-    @apply w-full rounded-md shadow-lg overflow-hidden mb-4 cursor-pointer;
+  /* Thumbnail container with overlay effect */
+  .video-thumbnail-container {
+    @apply relative mb-4 w-full rounded-md overflow-hidden cursor-pointer shadow-lg;
+    transition: transform 0.3s ease, filter 0.3s ease; /* Smooth movement and darkening */
   }
 
-  a:has(> .video-thumbnail) {
+  a:has(> .video-thumbnail-container) {
     @apply w-full;
+  }
+
+  /* Darken the image */
+  .video-thumbnail-container::after {
+    content: "";
+    @apply absolute inset-0 flex items-center justify-center pointer-events-none;
+
+    /* Dark overlay */
+    background-color: rgba(0, 0, 0, 0.3);
+
+    /* Play Icon */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' viewBox='0 0 100 125' style='enable-background:new 0 0 100 100;' xml:space='preserve' fill='%23fff'%3E%3Cpath d='M50,0.9C22.9,0.9,0.9,22.9,0.9,50c0,27.1,22,49.1,49.1,49.1c27.1,0,49.1-22,49.1-49.1 C99.1,22.9,77.1,0.9,50,0.9z M50,90.8C27.5,90.8,9.2,72.5,9.2,50C9.2,27.5,27.5,9.2,50,9.2c22.5,0,40.8,18.3,40.8,40.8 C90.8,72.5,72.5,90.8,50,90.8z'/%3E%3Cpath d='M41.5,66.9c0.6,0.3,1.2,0.4,1.8,0.4c0.7,0,1.5-0.2,2.1-0.7l20.2-13.8c1-0.7,1.6-1.9,1.6-3.1 c0-1.2-0.6-2.4-1.7-3.1L45.3,33.2c-1.2-0.8-2.6-0.8-3.9-0.2c-1.2,0.7-2,1.9-2,3.3v27.2C39.5,65,40.2,66.3,41.5,66.9z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25%; /* Adjust the size of the play icon */
+  }
+
+  /* Hover state for the container */
+  .video-thumbnail-container:hover {
+    transform: translate(2px, 2px); /* Move down and to the right */
+    filter: brightness(0.85); /* Darken the image further */
+  }
+
+  .video-thumbnail-container:hover::after {
+    background-color: rgba(0, 0, 0, 0.4); /* Darker overlay */
+  }
+
+  /* Play icon styling */
+  .video-play-icon {
+    @apply absolute inset-0 flex items-center justify-center text-white;
+    font-size: 2rem; /* Adjust icon size */
+    pointer-events: none;
   }
 
   /* Video title */
