@@ -147,11 +147,9 @@
   }
 
   /* Books List */
-  /* Define reusable classes */
-
   /* Container for the book grid */
   .book-grid {
-    @apply w-full grid sm:grid-cols-2 lg:grid-cols-3 gap-x-24 mb-16;
+    @apply w-full sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-x-24 gap-y-8 mb-16;
   }
 
   /* Article container for each book */
@@ -172,6 +170,41 @@
   /* Button styles */
   .buy-button {
     @apply block sm:inline-block button button-lg;
+  }
+
+  /* Videos */
+  /* Container for the video grid */
+  .video-grid {
+    @apply w-full grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-16;
+  }
+
+  /* Container for each video */
+  .video-card {
+    @apply flex flex-col items-start;
+  }
+
+  /* Thumbnail image */
+  .video-thumbnail {
+    @apply w-full rounded-md shadow-lg overflow-hidden mb-4 cursor-pointer;
+  }
+
+  a:has(> .video-thumbnail) {
+    @apply w-full;
+  }
+
+  /* Video title */
+  .video-title {
+    @apply text-lg font-semibold mb-2;
+  }
+
+  /* Video description */
+  .video-description {
+    @apply text-base text-gray-600 mb-4;
+  }
+
+  /* Link to site */
+  .video-link {
+    @apply text-blue-500 hover:underline;
   }
 }
 
