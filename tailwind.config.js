@@ -27,6 +27,60 @@ module.exports = {
       "7xl": "5.96rem",
     },
     extend: {
+      colors: {
+        soap: {
+          DEFAULT: "#B4D6CD",
+          50: "#F4FAF7",
+          100: "#E9F4EF",
+          200: "#D5E7DF",
+          300: "#BFDACF",
+          400: "#9DC8B5",
+          500: "#B4D6CD", // Original color
+          600: "#8AA7A3",
+          700: "#627B78",
+          800: "#3A504E",
+          900: "#202F2C",
+        },
+        mustard: {
+          DEFAULT: "#FFDA76",
+          50: "#FFF9E5",
+          100: "#FFF3CC",
+          200: "#FFE699",
+          300: "#FFDA76", // Original color
+          400: "#FFCE4D",
+          500: "#FFB923",
+          600: "#E6A41D",
+          700: "#B37E15",
+          800: "#80580E",
+          900: "#4D3308",
+        },
+        bubblegum: {
+          DEFAULT: "#FF8C9E",
+          50: "#FFF3F5",
+          100: "#FFE6EB",
+          200: "#FFCBD4",
+          300: "#FFACBA",
+          400: "#FF8C9E", // Original color
+          500: "#FF6583",
+          600: "#E65074",
+          700: "#B33D57",
+          800: "#802B3D",
+          900: "#4D1922",
+        },
+        flamingo: {
+          DEFAULT: "#FF4E88",
+          50: "#FFEFF2",
+          100: "#FFDCE5",
+          200: "#FFB8CC",
+          300: "#FF8BAF",
+          400: "#FF4E88", // Original color
+          500: "#FF226E",
+          600: "#E61762",
+          700: "#B3114C",
+          800: "#800C36",
+          900: "#4D061F",
+        },
+      },
       borderWidth: {
         6: "6px",
       },

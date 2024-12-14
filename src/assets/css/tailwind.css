@@ -82,7 +82,7 @@
 
   /* Button */
   .button {
-    @apply inline-block bg-gray-600 transition-all duration-150 ease-linear text-white text-center not-italic no-underline uppercase font-semibold;
+    @apply inline-block bg-flamingo transition-all duration-150 ease-linear text-white text-center not-italic no-underline uppercase font-semibold;
     @apply hover:text-gray-100 hover:bg-gray-800 hover:translate-x-px hover:translate-y-px;
     @apply visited:text-gray-100 visited:hover:text-gray-100;
   }
@@ -101,8 +101,8 @@
 
   /* Top Navigation */
   .top-nav a,
-  a:visited {
-    @apply no-underline text-gray-700 hover:text-gray-500;
+  .top-nav a:visited {
+    @apply no-underline text-white hover:text-gray-500;
   }
 
   /* Accordion */
@@ -184,10 +184,6 @@
 
   .video-card .video-date {
     @apply mb-2 px-2 py-[0.1rem] text-sky-500 text-xs rounded-md font-semibold border border-sky-200 bg-sky-50 no-underline not-italic;
-  }
-
-  .video-card a h5 {
-    @apply no-underline not-italic;
   }
 
   /* Thumbnail container with overlay effect */
