@@ -70,21 +70,24 @@
   a {
     @apply italic underline text-blue-800 hover:text-gray-500 hover:no-underline visited:text-gray-700;
   }
+
+  hr {
+    @apply mb-8 border border-gray-300;
+  }
 }
 
 @layer components {
   /* Landing */
-  /* .page-section {
-    @apply;
-  } */
 
   /* Button */
   .button {
-    @apply bg-gray-600 text-white hover:text-gray-100 hover:bg-gray-800 visited:text-gray-100 visited:hover:text-gray-100 text-center not-italic no-underline uppercase font-semibold;
+    @apply inline-block bg-gray-600 transition-all duration-150 ease-linear text-white text-center not-italic no-underline uppercase font-semibold;
+    @apply hover:text-gray-100 hover:bg-gray-800 hover:translate-x-px hover:translate-y-px;
+    @apply visited:text-gray-100 visited:hover:text-gray-100;
   }
 
   .button-xs {
-    @apply inline-block mb-4 mx-1 px-2 py-1 text-xs rounded-sm;
+    @apply mb-4 mx-1 px-2 py-1 text-xs rounded-sm;
   }
 
   .button-lg {
@@ -149,27 +152,22 @@
   /* Books List */
   /* Container for the book grid */
   .book-grid {
-    @apply w-full sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-x-24 gap-y-8 mb-16;
+    @apply w-full md:grid lg:grid-cols-2 gap-x-12 gap-y-16 mb-16;
   }
 
-  /* Article container for each book */
-  .book-article {
-    @apply max-sm:mb-16 flex flex-col;
+  /* Container for a book item */
+  .book-item {
+    @apply max-sm:mb-16 flex flex-col sm:grid sm:grid-cols-[1fr_2fr] sm:gap-8;
   }
 
-  /* Image styles for books */
+  /* Book Cover */
   .book-image {
-    @apply max-sm:mx-auto w-full max-w-40 lg:w-auto lg:max-w-56 lg:h-72 mb-6 overflow-hidden shadow-lg rounded-md;
+    @apply max-sm:mx-auto max-sm:max-w-40 md:w-full mb-6 shadow-lg rounded-md;
   }
 
   /* Title and author container */
   .book-info {
-    @apply flex flex-col space-y-4;
-  }
-
-  /* Button styles */
-  .buy-button {
-    @apply block sm:inline-block button button-lg;
+    @apply flex flex-col gap-y-1;
   }
 
   /* Videos */
@@ -202,7 +200,7 @@
     background-color: rgba(0, 0, 0, 0.3);
 
     /* Play Icon */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' viewBox='0 0 100 125' style='enable-background:new 0 0 100 100;' xml:space='preserve' fill='%23fff'%3E%3Cpath d='M50,0.9C22.9,0.9,0.9,22.9,0.9,50c0,27.1,22,49.1,49.1,49.1c27.1,0,49.1-22,49.1-49.1 C99.1,22.9,77.1,0.9,50,0.9z M50,90.8C27.5,90.8,9.2,72.5,9.2,50C9.2,27.5,27.5,9.2,50,9.2c22.5,0,40.8,18.3,40.8,40.8 C90.8,72.5,72.5,90.8,50,90.8z'/%3E%3Cpath d='M41.5,66.9c0.6,0.3,1.2,0.4,1.8,0.4c0.7,0,1.5-0.2,2.1-0.7l20.2-13.8c1-0.7,1.6-1.9,1.6-3.1 c0-1.2-0.6-2.4-1.7-3.1L45.3,33.2c-1.2-0.8-2.6-0.8-3.9-0.2c-1.2,0.7-2,1.9-2,3.3v27.2C39.5,65,40.2,66.3,41.5,66.9z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' viewBox='0 0 100 100' style='enable-background:new 0 0 100 100;' xml:space='preserve' fill='%23fff'%3E%3Cpath d='M50,0.9C22.9,0.9,0.9,22.9,0.9,50c0,27.1,22,49.1,49.1,49.1c27.1,0,49.1-22,49.1-49.1 C99.1,22.9,77.1,0.9,50,0.9z M50,90.8C27.5,90.8,9.2,72.5,9.2,50C9.2,27.5,27.5,9.2,50,9.2c22.5,0,40.8,18.3,40.8,40.8 C90.8,72.5,72.5,90.8,50,90.8z'/%3E%3Cpath d='M41.5,66.9c0.6,0.3,1.2,0.4,1.8,0.4c0.7,0,1.5-0.2,2.1-0.7l20.2-13.8c1-0.7,1.6-1.9,1.6-3.1 c0-1.2-0.6-2.4-1.7-3.1L45.3,33.2c-1.2-0.8-2.6-0.8-3.9-0.2c-1.2,0.7-2,1.9-2,3.3v27.2C39.5,65,40.2,66.3,41.5,66.9z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 25%; /* Adjust the size of the play icon */
@@ -221,7 +219,6 @@
   /* Play icon styling */
   .video-play-icon {
     @apply absolute inset-0 flex items-center justify-center text-white;
-    font-size: 2rem; /* Adjust icon size */
     pointer-events: none;
   }
 
@@ -277,5 +274,21 @@
 
   .smaller h4 {
     @apply mb-0 text-base;
+  }
+
+  /* Universal hover-shift effect */
+  .hover-shift-sm {
+    @apply transition-all duration-200 ease-in-out;
+    @apply hover:translate-x-px hover:translate-y-px;
+  }
+
+  .hover-shift-md {
+    @apply transition-all duration-200 ease-in-out;
+    @apply hover:translate-x-1 hover:translate-y-1;
+  }
+
+  .hover-shift-lg {
+    @apply transition-all duration-200 ease-in-out;
+    @apply hover:translate-x-2 hover:translate-y-2;
   }
 }
