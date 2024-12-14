@@ -22,7 +22,8 @@
 
   h1,
   .text-size-h1 {
-    @apply mb-6 text-5xl font-bold max-sm:leading-none;
+    @apply mb-6 text-4xl font-bold max-sm:leading-none;
+    @apply max-md:text-[clamp(3rem,5vw,4rem)];
   }
 
   h2,
@@ -87,7 +88,7 @@
   }
 
   .button-xs {
-    @apply mb-4 mx-1 px-2 py-1 text-xs rounded-sm;
+    @apply mb-4 mx-1 px-2 py-1 text-base rounded-sm;
   }
 
   .button-lg {
@@ -181,6 +182,14 @@
     @apply relative flex flex-col items-start;
   }
 
+  .video-card .video-date {
+    @apply mb-2 px-2 py-[0.1rem] text-sky-500 text-xs rounded-md font-semibold border border-sky-200 bg-sky-50 no-underline not-italic;
+  }
+
+  .video-card a h5 {
+    @apply no-underline not-italic;
+  }
+
   /* Thumbnail container with overlay effect */
   .video-thumbnail-container {
     @apply relative mb-4 w-full rounded-md overflow-hidden cursor-pointer shadow-lg;
@@ -241,15 +250,27 @@
 @layer utilities {
   /* Sets default margins for site sections/footers/etc */
   .contain-wide {
-    @apply xl:max-w-screen-2xl px-5 md:px-14 mx-auto;
+    @apply xl:max-w-screen-2xl mx-auto;
   }
 
   .contain-medium {
-    @apply lg:max-w-screen-xl px-5 md:px-12 mx-auto;
+    @apply lg:max-w-screen-xl mx-auto;
   }
 
   .contain-narrow {
-    @apply lg:max-w-screen-lg px-5 md:px-20 mx-auto;
+    @apply lg:max-w-screen-lg mx-auto;
+  }
+
+  .section-margins-wide {
+    @apply px-5 md:px-14;
+  }
+
+  .section-margins-medium {
+    @apply px-5 md:px-12;
+  }
+
+  .section-margins-narrow {
+    @apply px-5 md:px-20;
   }
 
   .contain-margins-y {
