@@ -12,6 +12,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ["Alegreya Sans"],
+      display: ["Sansita"],
     },
     fontSize: {
       xs: "0.64rem",
