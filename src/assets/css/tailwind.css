@@ -87,6 +87,11 @@
     @apply italic underline text-pink-700 hover:text-pink-500 hover:no-underline visited:text-pink-900;
   }
 
+  a::before,
+  a::after {
+    @apply not-italic;
+  }
+
   hr {
     @apply mb-8 border border-gray-300;
   }

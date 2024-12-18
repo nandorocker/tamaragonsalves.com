@@ -156,6 +156,7 @@ module.exports = {
   },
   plugins: [
     require("taos/plugin"),
+    require("tailwind-fontawesome")({ pro: true }),
     plugin(function ({ addBase }) {
       addBase({
         html: { fontSize: "18px" },
