@@ -16,7 +16,8 @@
     @apply mb-4;
   }
 
-  p.bigger {
+  p.bigger,
+  .bigger p {
     @apply text-base md:text-base;
   }
 
@@ -94,7 +95,7 @@
 @layer components {
   /* Landing */
   .hero h1 {
-    @apply -mt-2 font-display text-[clamp(3.05rem,_6vw+1.5rem,_7rem)] md:text-[clamp(3.05rem,_6vw+2rem,_6.5rem)] xl:text-[clamp(3.05rem,_9vw+1rem,_8rem)] leading-[.9] mb-8;
+    @apply -mt-2 font-display text-[clamp(3.5rem,_6vw+1.8rem,_7rem)] md:text-[clamp(3.05rem,_6vw+2rem,_6.5rem)] xl:text-[clamp(3.05rem,_9vw+1rem,_8rem)] leading-[.9] mb-8;
   }
 
   .hero h2,
@@ -128,11 +129,15 @@
   /* Top Navigation */
   .top-nav a,
   .top-nav a:visited {
-    @apply no-underline not-italic text-pink-700 hover:text-pink-900;
+    @apply text-lg lg:text-xl font-semibold no-underline not-italic text-pink-700 hover:text-pink-900;
   }
 
   .top-nav .current {
     @apply text-pink-600;
+  }
+
+  .top-nav a:not(:last-child) {
+    @apply max-md:border-b max-md:border-amber-200;
   }
 
   /* Accordion */

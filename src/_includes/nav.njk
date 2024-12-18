@@ -1,12 +1,12 @@
 {# Nav Container #}
-<header class="top-nav absolute w-full top-0 z-10">
-    <div class="w-full h-20 ease-in-out">
+<header class="top-nav w-full top-0 z-10">
+    <div class="w-full pt-5 md:h-20 ease-in-out">
         {# Extra div to get the underline #}
-        <div class="h-full px-5 flex md:justify-between items-center">
+        <div class="h-full px-5 md:px-10 flex md:justify-between items-start">
 
             {# Group 1 (menu items) #}
             <nav id="menu"
-                class="box-content font-bold text-center md:text-left text-lg w-full md:w-auto hidden md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:flex-1 md:justify-center md:gap-x-8 lg:gap-x-12">
+                class="w-full hidden md:flex flex-col md:flex-row md:flex-1 md:justify-between max-md:space-y-3">
                 <a href="/#about-me" class="{{ " current" if section=="about-me" }}">About</a>
                 <a href="/#background" class="{{ " current" if section=="degrees" }}">Background</a>
                 <a href="/#speaking" class="{{ " current" if section=="speaking" }}">Public Speaking</a>
