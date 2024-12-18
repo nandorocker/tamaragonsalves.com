@@ -8,7 +8,16 @@
   } */
 
   p {
-    @apply mb-4 text-base leading-normal;
+    @apply mb-4 md:mb-6 lg:mb-8 text-[.85rem] md:text-base leading-normal;
+  }
+
+  p:has(+ ul) {
+    /* less gap when there's a ul right after a p (very low prio) */
+    @apply mb-4;
+  }
+
+  p.bigger {
+    @apply text-base md:text-base;
   }
 
   h1,
@@ -21,8 +30,14 @@
   }
 
   h1,
+  h2,
+  h3 {
+    @apply capitalize;
+  }
+
+  h1,
   .text-size-h1 {
-    @apply mb-6 font-display text-6xl font-bold leading-none;
+    @apply mb-5 sm:mb-8 font-display text-4xl lg:text-6xl font-bold leading-none;
   }
 
   h2,
@@ -56,11 +71,11 @@
 
   small,
   .text-small {
-    font-size: 0.5em;
+    @apply text-sm italic;
   }
 
   ul {
-    @apply mb-10 leading-normal;
+    @apply mb-8 leading-normal;
   }
 
   li {
@@ -83,17 +98,17 @@
   }
 
   .hero h2,
-  h3 {
+  .hero h3 {
     @apply mb-2;
   }
 
   .hero p {
-    @apply sm:text-lg;
+    @apply sm:text-lg max-md:text-center;
   }
 
   /* Button */
   .button {
-    @apply inline-block bg-flamingo transition-all duration-150 ease-linear text-white text-center not-italic no-underline uppercase font-semibold;
+    @apply inline-block bg-pink-700 transition-all duration-150 ease-linear text-white text-center no-underline font-semibold;
     @apply hover:text-gray-100 hover:bg-gray-800 hover:translate-x-px hover:translate-y-px;
     @apply visited:text-gray-100 visited:hover:text-gray-100;
   }
@@ -183,18 +198,23 @@
 
   /* Title and author container */
   .book-info {
-    @apply flex flex-col gap-y-1 hyphens;
+    @apply flex flex-col space-y-0;
   }
 
   /* Videos */
+
   /* Container for the video grid */
+  .video-grid-container {
+    @apply w-full overflow-x-auto flex items-center;
+  }
+
   .video-grid {
-    @apply w-full grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4 mb-16;
+    @apply px-5 sm:px-12 lg:px-24 mb-16 flex space-x-8 md:space-x-10;
   }
 
   /* Container for each video */
   .video-card {
-    @apply relative flex flex-col items-start;
+    @apply w-60 flex flex-col items-start;
   }
 
   .video-card .video-date {
@@ -205,6 +225,10 @@
   .video-thumbnail-container {
     @apply relative mb-4 w-full rounded-md overflow-hidden cursor-pointer shadow-lg;
     transition: transform 0.3s ease, filter 0.3s ease; /* Smooth movement and darkening */
+  }
+
+  .video-thumbnail-container a {
+    @apply w-full;
   }
 
   a:has(> .video-thumbnail-container) {
@@ -243,19 +267,27 @@
   }
 
   /* Video title */
-  .video-title {
-    @apply text-lg font-semibold mb-2;
+  .video-title,
+  .book-title {
+    @apply max-sm:hyphens-auto text-lg font-semibold mb-2;
+  }
+
+  .video-title a,
+  .book-title a {
+    @apply no-underline not-italic;
   }
 
   /* Video description */
-  .video-description {
-    @apply text-base text-gray-600 mb-4;
+  .video-description,
+  .book-description {
+    @apply mb-4;
   }
 
   /* Link to site */
-  .video-link {
+  /* Todo: Add icon here instead of colors & styles */
+  /* .video-link {
     @apply text-blue-500 hover:underline;
-  }
+  } */
 }
 
 @layer utilities {
@@ -285,8 +317,7 @@
   }
 
   .contain-margins-y {
-    @apply py-36
-    sm:py-16
+    @apply py-16
       lg:py-36;
   }
 
@@ -297,15 +328,6 @@
 
   ul.bullet li {
     @apply list-disc;
-  }
-
-  /* Compact Sections */
-  .smaller h3 {
-    @apply mb-1 text-lg;
-  }
-
-  .smaller h4 {
-    @apply mb-0 text-base;
   }
 
   /* Universal hover-shift effect */

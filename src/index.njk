@@ -6,10 +6,13 @@ layout: "base.njk"
     <div class="w-full contain-wide section-margins-medium text-center">
         <h3 class="text-pink-700">Human Rights Expert</h3>
         <h1 class="text-pink-700">Tamara Amoroso<br> Gonsalves</h1>
-        <p class="w-4/6 mx-auto">For twenty years, I've dedicated my career to human rights law and advocacy,
+        <p class=" bigger max-sm:hyphens-auto md:w-4/6 mx-auto">For twenty years, I've dedicated my
+            career
+            to human rights law and advocacy,
             specializing in
             women's rights
-            and gender justice. My work bridges academic research with practical impact, demonstrated through extensive
+            and gender justice. <br class="sm:hidden">My work bridges academic research with practical impact,
+            demonstrated through extensive
             publications and leadership roles across governmental and non-governmental sectors.</p>
     </div>
 </section>
@@ -18,15 +21,14 @@ layout: "base.njk"
 
     <div
         class="contain-narrow md:contain-medium section-margins-narrow md:section-margins-medium grid sm:grid-cols-2 xl:grid-cols-[2fr_1fr] gap-8 lg:gap-12 items-start">
-        <div class="w-full mx-auto -mt-40 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="w-full mx-auto sm:-mt-40 max-sm:row-start-2 grid md:grid-cols-2 gap-4">
             <img src="{{ images }}/foto_01.jpg" alt="" class="rounded-md drop-shadow-md col-span-2">
             <img src="{{ images }}/foto_02.jpg" alt="" class="rounded-md drop-shadow-md col-span-2">
             <img src="{{ images }}/foto_03.jpg" alt="" class="rounded-md drop-shadow-md row-span-2">
             <img src="{{ images }}/foto_04.jpg" alt="" class="rounded-md drop-shadow-md">
             <img src="{{ images }}/foto_05.jpg" alt="" class="rounded-md drop-shadow-md">
-            <img src="{{ images }}/foto_06.jpg" alt="" class="rounded-md drop-shadow-md">
         </div>
-        <div class="ml-auto w-5/6">
+        <div class="ml-auto sm:w-5/6 max-sm:row-start-1">
             <h2>About Me</h2>
             <p>My educational background in law, with a focus on human rights, and my experience in non-governmental,
                 governmental, and academic roles have enabled me to excel in advocacy and stakeholder negotiation. As a
@@ -40,7 +42,7 @@ layout: "base.njk"
 </section>
 
 <section id="background" class="bg-white contain-margins-y">
-    <div class="contain-medium section-margins-medium smaller lg:grid md:grid-cols-2 lg:gap-x-8">
+    <div class="contain-medium section-margins-medium md:grid md:grid-cols-2 md:gap-x-8">
         <div>
             <h1>Academic & Professional<wbr> Background</h1>
             <p class="mb-16"><a href="/assets/files/Tamara_Amoroso_Gonsalves_CV_11.12.2024_pub_last.pdf"
@@ -84,7 +86,7 @@ layout: "base.njk"
                 reproductive rights—and consumer rights, with a specific focus on product recalls, advertising
                 regulations, and the regulation of ultra-processed foods.</p>
 
-            <ul class="bullet">
+            <ul class="sm:bullet">
                 <li><a href="">Download CV (PDF) for full list of publications</a></li>
                 <li><a href="https://orcid.org/0000-0002-2500-8477" target="_blank">My ORCID registry</a></li>
             </ul>
@@ -97,12 +99,16 @@ layout: "base.njk"
 
                     <div class="book-info">
                         <div>
-                            <h5 class="mb-0">Direitos humanos das mulheres e a comissão Interamericana de direitos
-                                humanos
+                            <h5 class="mb-0 book-title"><a href="">
+                                    Direitos humanos das mulheres e a comissão Interamericana de
+                                    direitos
+                                    humanos
+                                </a>
                             </h5>
                             <p><em>Tamara Amoroso Gonçalves</em></p>
                         </div>
-                        <p>My book Direitos Humanos das Mulheres e a Comissão Interamericana de Direitos Humanos,
+                        <p class="book-description">My book Direitos Humanos das Mulheres e a Comissão Interamericana de
+                            Direitos Humanos,
                             (Saraiva,
                             2013) analyzes quantitative and qualitative data related to cases of women’s human rights
                             violations presented to the Inter-American Commission of Human Rights, identifying the
@@ -120,10 +126,14 @@ layout: "base.njk"
                             srcset="" class="book-image"></a>
                     <div class="book-info">
                         <div>
-                            <h5 class="mb-0">Aborto e Religião nos Tribunais Brasileiros</h5>
+                            <h5 class="mb-0 book-title"><a
+                                    href="/assets/files/Aborto_religiao_nos_tribunais_brasileiros.pdf">Aborto e Religião
+                                    nos Tribunais
+                                    Brasileiros</a></h5>
                             <p><em>Tamara Amoroso Gonçalves (coord.), Thais de Souza Lapa</em></p>
                         </div>
-                        <p>In this MacArthur-Foundation-funded book, Aborto e Religião nos Tribunais Brasileiros (2008),
+                        <p class="book-description">In this MacArthur-Foundation-funded book, Aborto e Religião nos
+                            Tribunais Brasileiros (2008),
                             I
                             discuss the influence of religious arguments in abortion cases decided by Brazilian
                             courts—in a
@@ -149,10 +159,11 @@ layout: "base.njk"
                         class="book-image"></a>
                 <div class="book-info">
                     <div>
-                        <h5 class="mb-0">Gender 305 Podcast</h5>
+                        <h5 class="mb-0 book-title">Gender 305 Podcast</h5>
                         <p><em>Podcast series on Gender and Human Rights. </em></p>
                     </div>
-                    <p>At UVIC's Gender Studies Department, I taught Gender and International Human Rights in fall 2022
+                    <p class="book-description">At UVIC's Gender Studies Department, I taught Gender and International
+                        Human Rights in fall 2022
                         and 2023, where students created podcast episodes as their final assignments with CFUV's
                         technical support. These episodes, now being published and aired through CFUV, explore diverse
                         topics including abortion rights, LGBTQ2+ and non-binary rights, gender-based discrimination in
@@ -169,210 +180,260 @@ layout: "base.njk"
 <section id="speaking" class="contain-margins-y">
     <div class="contain-medium section-margins-medium">
         <h1>Public Speaking</h1>
-        <div class="lg:max-w-screen-md mx-auto">
-            <p class="mb-12">My educational background in law, with a focus on human rights, and my experience in
+        <div class="lg:max-w-screen-md mx-auto mb-12">
+            <p>My educational background in law, with a focus on human rights, and my experience in
                 non-governmental, governmental, and academic roles have enabled me to excel in advocacy and stakeholder
                 negotiation. As a spokesperson for various organizations, I have effectively engaged with diverse
                 audiences, ranging from experts in international human rights bodies to grassroots communities,
                 academics, and public servants. I have delivered talks and represented institutions on more than 90
                 occasions, both locally, regionally, and internationally, on topics spanning children's rights, women's
                 rights (particularly gender-based violence and sexual and reproductive rights), and consumer rights.</p>
+            <p><a href="#contact-me" class="button button-lg">Contact me for public speaking requests</a></p>
         </div>
+    </div>
 
-        <div class="video-grid">
-
-            <!-- Video 1 -->
-            <div class="video-card">
-                <a href="https://webtv.un.org/en/asset/k1a/k1adxsy879" target="_blank"
-                    aria-label="Watch video: Video Title 1">
-                    <div class="video-thumbnail-container">
-                        <img src="{{ images }}/videos/2024_cedaw_1.jpg" alt="Video thumbnail for Video Title 1"
-                            class="w-full">
-                    </div>
-                </a>
-                <time datetime="2024-05-20" class="video-date">May 20, 2024</time>
-                <h5 class="video-title">CLADEM/Brazil representation at Brazil's review before the CEDAW Committee</h5>
-                <p class="video-description">Speech delivered at the Opening Session with Brazilian Non-profit
-                    associations, addressing various forms of institutional violence such as obstetric violence,
-                    parental alienation in family court, inaccessible abortion services for sexual violence victims,
-                    child marriage, and forced pregnancies among adolescents.</p>
-                <a href="https://webtv.un.org/en/asset/k1a/k1adxsy879" target="_blank" class="video-link">Watch on
-                    site</a>
+    <div class="w-full">
+        <div class="video-grid-container">
+            <div class="video-grid">
+                <!-- Video 1 -->
+                <div class="video-card">
+                    <a href="https://webtv.un.org/en/asset/k1a/k1adxsy879" target="_blank"
+                        aria-label="Watch video: Video Title 1">
+                        <div class="video-thumbnail-container">
+                            <img src="{{ images }}/videos/2024_cedaw_1.jpg" alt="Video thumbnail for Video Title 1">
+                        </div>
+                    </a>
+                    <time datetime="2024-05-20" class="video-date">May 20, 2024</time>
+                    <h5 class="video-title">CLADEM/Brazil representation at Brazil's review before the CEDAW Committee
+                    </h5>
+                    <p class="video-description">Speech delivered at the Opening Session with Brazilian Non-profit
+                        associations, addressing various forms of institutional violence such as obstetric violence,
+                        parental alienation in family court, inaccessible abortion services for sexual violence victims,
+                        child marriage, and forced pregnancies among adolescents.</p>
+                    <a href="https://webtv.un.org/en/asset/k1a/k1adxsy879" target="_blank" class="video-link">Watch on
+                        site</a>
+                </div>
+                <!-- Video 2 -->
+                <div class="video-card">
+                    <a href="https://ibdh.org.br/implementacao-das-recomendacoes-da-cedaw-ao-brasil-discutida-em-genebra/"
+                        target="_blank" aria-label="Watch video: Video Title 1">
+                        <div class="video-thumbnail-container">
+                            <img src="{{ images }}/videos/2024_geneva_cedaw.jpg"
+                                alt="Video thumbnail for Video Title 1">
+                        </div>
+                    </a>
+                    <time datetime="2024-05-21" class="video-date">May 21, 2024</time>
+                    <h5 class="video-title">How to Use CEDAW's Recommendations in National Strategic Litigation</h5>
+                    <p class="video-description">Panel discussing the strategic use of CEDAW's recommendations for
+                        domestic
+                        litigation in Brazil, emphasizing practical applications to advance women's rights.</p>
+                    <a href="https://ibdh.org.br/implementacao-das-recomendacoes-da-cedaw-ao-brasil-discutida-em-genebra/"
+                        target="_blank" class="video-link">Watch on site</a>
+                </div>
+                <!-- Video 3 -->
+                <div class="video-card">
+                    <a href="https://hdl.handle.net/1828/16534" target="_blank" aria-label="Watch video: Video Title 1">
+                        <div class="video-thumbnail-container">
+                            <img src="{{ images }}/videos/2024_beginning_of_life.jpg"
+                                alt="Video thumbnail for Video Title 1">
+                        </div>
+                    </a>
+                    <time datetime="2024-03-20" class="video-date">March 20, 2024</time>
+                    <h5 class="video-title">Debates on the Beginning of Life and Legal Regulations to Personhood</h5>
+                    <p class="video-description">Exploration of feminist perspectives on the legal and ethical debates
+                        concerning the beginning of life and personhood, focusing on its implications for law and social
+                        policies.</p>
+                    <a href="https://hdl.handle.net/1828/16534" target="_blank" class="video-link">Watch on site</a>
+                </div>
+                <!-- Video 4 -->
+                <div class="video-card">
+                    <a href="https://hdl.handle.net/1828/16532" target="_blank" aria-label="Watch video: Video Title 1">
+                        <div class="video-thumbnail-container">
+                            <img src="{{ images }}/videos/2024_interdisciplinary.jpg"
+                                alt="Video thumbnail for Video Title 1">
+                        </div>
+                    </a>
+                    <time datetime="2024-02-26" class="video-date">February 26, 2024</time>
+                    <h5 class="video-title">Interdisciplinary Community Engaged Academic Research</h5>
+                    <p class="video-description">Presentation on applying interdisciplinary feminist research
+                        methodologies
+                        to engage communities and address systemic issues, highlighting academic and practical
+                        applications.
+                    </p>
+                    <a href="https://hdl.handle.net/1828/16532" target="_blank" class="video-link">Watch on site</a>
+                </div>
+                <!-- Video 5 -->
+                <div class="video-card">
+                    <a href="https://www.youtube.com/watch?v=YVh0jiG1iyQ" target="_blank"
+                        aria-label="Watch video: Video Title 1">
+                        <div class="video-thumbnail-container">
+                            <img src="{{ images }}/videos/2021_alienacao_parental.jpg"
+                                alt="Video thumbnail for Video Title 1">
+                        </div>
+                    </a>
+                    <time datetime="2021-11-29" class="video-date">November 29–30, 2021</time>
+                    <h5 class="video-title">Parental Alienation: A Form of Violence Against Women</h5>
+                    <p class="video-description">Webinar addressing how the concept of parental alienation is used as a
+                        form
+                        of institutional violence against women, involving multi-stakeholder support and discussions in
+                        Portuguese and Spanish.</p>
+                    <a href="https://www.youtube.com/watch?v=YVh0jiG1iyQ" target="_blank" class="video-link">Watch on
+                        site</a>
+                </div>
+                <!-- Video 6 -->
+                <div class="video-card">
+                    <a href="" target="_blank" aria-label="Watch video: Video Title 1">
+                        <div class="video-thumbnail-container">
+                            <img src="https://picsum.photos/800/600" alt="Video thumbnail for Video Title 1">
+                        </div>
+                    </a>
+                    <time datetime="2021-12-06" class="video-date">December 6, 2021</time>
+                    <h5 class="video-title">Research Launch on Violence Against Girls and Adolescents</h5>
+                    <p class="video-description">Research launch examining the link between sexual violence and the
+                        death of
+                        girls and adolescents in Latin America and the Caribbean between 2010-2019, alongside best
+                        practices
+                        for addressing violence in this demographic.</p>
+                    <a href="" target="_blank" class="video-link">Watch on site</a>
+                </div>
+                <!-- Video 7 -->
+                <div class="video-card">
+                    <a href="https://iptv.usp.br/portal/video.action?idItem=12539" target="_blank"
+                        aria-label="Watch video: Video Title 1">
+                        <div class="video-thumbnail-container">
+                            <img src="{{ images }}/videos/2014_gender_human.jpg"
+                                alt="Video thumbnail for Video Title 1">
+                        </div>
+                    </a>
+                    <time datetime="2012-10-02" class="video-date">October 2, 2012</time>
+                    <h5 class="video-title">Gender and Human Rights</h5>
+                    <p class="video-description">Seminar on gender equality and its intersection with human rights,
+                        discussing how gender analysis can inform policies and societal development frameworks.</p>
+                    <a href="https://iptv.usp.br/portal/video.action?idItem=12539" target="_blank"
+                        class="video-link">Watch
+                        on site</a>
+                </div>
+                <!-- Video 8 -->
+                <div class="video-card">
+                    <a href="http://www.iea.usp.br/midiateca/video/videos-2012/genero-e-direitos-humanos"
+                        target="_blank" aria-label="Watch video: Video Title 1">
+                        <div class="video-thumbnail-container">
+                            <img src="{{ images }}/videos/2014_gender_human.jpg"
+                                alt="Video thumbnail for Video Title 1">
+                        </div>
+                    </a>
+                    <time datetime="2012-02-10" class="video-date">February 10, 2012</time>
+                    <h5 class="video-title">Gender Discussions Impact in Human Rights Concept</h5>
+                    <p class="video-description">Presentation analyzing how gender discussions have influenced the
+                        conceptualization of human rights, with a focus on historical and contemporary developments in
+                        the
+                        field.</p>
+                    <a href="http://www.iea.usp.br/midiateca/video/videos-2012/genero-e-direitos-humanos"
+                        target="_blank" class="video-link">Watch on site</a>
+                </div>
+                <!-- Video 9 -->
+                <div class="video-card">
+                    <a href="https://www12.senado.leg.br/tv/plenario-e-comissoes/comissao-de-direitos-humanos-e-legislacao-participativa/2013/08/a-publicidade-que-dialoga-com-a-crianca-e-abusiva-diz-tamara-amoroso-goncalves-min.-justica"
+                        target="_blank" aria-label="Watch video: Video Title 1">
+                        <div class="video-thumbnail-container">
+                            <img src="{{ images }}/videos/2014_publicidade_crianca.jpg"
+                                alt="Video thumbnail for Video Title 1">
+                        </div>
+                    </a>
+                    <time datetime="2013-08-29" class="video-date">August 29, 2013</time>
+                    <h5 class="video-title">Public Hearing on Advertising to Children</h5>
+                    <p class="video-description">Public hearing at the Brazilian National Congress addressing the impact
+                        of
+                        child-targeted advertising, highlighting its manipulative and abusive practices, and advocating
+                        for
+                        regulatory measures.</p>
+                    <a href="https://www12.senado.leg.br/tv/plenario-e-comissoes/comissao-de-direitos-humanos-e-legislacao-participativa/2013/08/a-publicidade-que-dialoga-com-a-crianca-e-abusiva-diz-tamara-amoroso-goncalves-min.-justica"
+                        target="_blank" class="video-link">Watch on site</a>
+                </div>
             </div>
-
-            <!-- Video 2 -->
-            <div class="video-card">
-                <a href="https://ibdh.org.br/implementacao-das-recomendacoes-da-cedaw-ao-brasil-discutida-em-genebra/"
-                    target="_blank" aria-label="Watch video: Video Title 1">
-                    <div class="video-thumbnail-container">
-                        <img src="{{ images }}/videos/2024_geneva_cedaw.jpg" alt="Video thumbnail for Video Title 1"
-                            class="w-full">
-                    </div>
-                </a>
-                <time datetime="2024-05-21" class="video-date">May 21, 2024</time>
-                <h5 class="video-title">How to Use CEDAW's Recommendations in National Strategic Litigation</h5>
-                <p class="video-description">Panel discussing the strategic use of CEDAW's recommendations for domestic
-                    litigation in Brazil, emphasizing practical applications to advance women's rights.</p>
-                <a href="https://ibdh.org.br/implementacao-das-recomendacoes-da-cedaw-ao-brasil-discutida-em-genebra/"
-                    target="_blank" class="video-link">Watch on site</a>
-            </div>
-
-            <!-- Video 3 -->
-            <div class="video-card">
-                <a href="https://hdl.handle.net/1828/16534" target="_blank" aria-label="Watch video: Video Title 1">
-                    <div class="video-thumbnail-container">
-                        <img src="{{ images }}/videos/2024_beginning_of_life.jpg"
-                            alt="Video thumbnail for Video Title 1" class="w-full">
-                    </div>
-                </a>
-                <time datetime="2024-03-20" class="video-date">March 20, 2024</time>
-                <h5 class="video-title">Debates on the Beginning of Life and Legal Regulations to Personhood</h5>
-                <p class="video-description">Exploration of feminist perspectives on the legal and ethical debates
-                    concerning the beginning of life and personhood, focusing on its implications for law and social
-                    policies.</p>
-                <a href="https://hdl.handle.net/1828/16534" target="_blank" class="video-link">Watch on site</a>
-            </div>
-
-            <!-- Video 4 -->
-            <div class="video-card">
-                <a href="https://hdl.handle.net/1828/16532" target="_blank" aria-label="Watch video: Video Title 1">
-                    <div class="video-thumbnail-container">
-                        <img src="{{ images }}/videos/2024_interdisciplinary.jpg"
-                            alt="Video thumbnail for Video Title 1" class="w-full">
-                    </div>
-                </a>
-                <time datetime="2024-02-26" class="video-date">February 26, 2024</time>
-                <h5 class="video-title">Interdisciplinary Community Engaged Academic Research</h5>
-                <p class="video-description">Presentation on applying interdisciplinary feminist research methodologies
-                    to engage communities and address systemic issues, highlighting academic and practical applications.
-                </p>
-                <a href="https://hdl.handle.net/1828/16532" target="_blank" class="video-link">Watch on site</a>
-            </div>
-
-            <!-- Video 5 -->
-            <div class="video-card">
-                <a href="https://www.youtube.com/watch?v=YVh0jiG1iyQ" target="_blank"
-                    aria-label="Watch video: Video Title 1">
-                    <div class="video-thumbnail-container">
-                        <img src="{{ images }}/videos/2021_alienacao_parental.jpg"
-                            alt="Video thumbnail for Video Title 1" class="w-full">
-                    </div>
-                </a>
-                <time datetime="2021-11-29" class="video-date">November 29–30, 2021</time>
-                <h5 class="video-title">Parental Alienation: A Form of Violence Against Women</h5>
-                <p class="video-description">Webinar addressing how the concept of parental alienation is used as a form
-                    of institutional violence against women, involving multi-stakeholder support and discussions in
-                    Portuguese and Spanish.</p>
-                <a href="https://www.youtube.com/watch?v=YVh0jiG1iyQ" target="_blank" class="video-link">Watch on
-                    site</a>
-            </div>
-
-            <!-- Video 6 -->
-            <div class="video-card">
-                <a href="" target="_blank" aria-label="Watch video: Video Title 1">
-                    <div class="video-thumbnail-container">
-                        <img src="https://picsum.photos/300/200" alt="Video thumbnail for Video Title 1" class="w-full">
-                    </div>
-                </a>
-                <time datetime="2021-12-06" class="video-date">December 6, 2021</time>
-                <h5 class="video-title">Research Launch on Violence Against Girls and Adolescents</h5>
-                <p class="video-description">Research launch examining the link between sexual violence and the death of
-                    girls and adolescents in Latin America and the Caribbean between 2010-2019, alongside best practices
-                    for addressing violence in this demographic.</p>
-                <a href="" target="_blank" class="video-link">Watch on site</a>
-            </div>
-
-            <!-- Video 7 -->
-            <div class="video-card">
-                <a href="https://iptv.usp.br/portal/video.action?idItem=12539" target="_blank"
-                    aria-label="Watch video: Video Title 1">
-                    <div class="video-thumbnail-container">
-                        <img src="{{ images }}/videos/2014_gender_human.jpg" alt="Video thumbnail for Video Title 1"
-                            class="w-full">
-                    </div>
-                </a>
-                <time datetime="2012-10-02" class="video-date">October 2, 2012</time>
-                <h5 class="video-title">Gender and Human Rights</h5>
-                <p class="video-description">Seminar on gender equality and its intersection with human rights,
-                    discussing how gender analysis can inform policies and societal development frameworks.</p>
-                <a href="https://iptv.usp.br/portal/video.action?idItem=12539" target="_blank" class="video-link">Watch
-                    on site</a>
-            </div>
-
-            <!-- Video 8 -->
-            <div class="video-card">
-                <a href="http://www.iea.usp.br/midiateca/video/videos-2012/genero-e-direitos-humanos" target="_blank"
-                    aria-label="Watch video: Video Title 1">
-                    <div class="video-thumbnail-container">
-                        <img src="{{ images }}/videos/2014_gender_human.jpg" alt="Video thumbnail for Video Title 1"
-                            class="w-full">
-                    </div>
-                </a>
-                <time datetime="2012-02-10" class="video-date">February 10, 2012</time>
-                <h5 class="video-title">Gender Discussions Impact in Human Rights Concept</h5>
-                <p class="video-description">Presentation analyzing how gender discussions have influenced the
-                    conceptualization of human rights, with a focus on historical and contemporary developments in the
-                    field.</p>
-                <a href="http://www.iea.usp.br/midiateca/video/videos-2012/genero-e-direitos-humanos" target="_blank"
-                    class="video-link">Watch on site</a>
-            </div>
-
-            <!-- Video 9 -->
-            <div class="video-card">
-                <a href="https://www12.senado.leg.br/tv/plenario-e-comissoes/comissao-de-direitos-humanos-e-legislacao-participativa/2013/08/a-publicidade-que-dialoga-com-a-crianca-e-abusiva-diz-tamara-amoroso-goncalves-min.-justica"
-                    target="_blank" aria-label="Watch video: Video Title 1">
-                    <div class="video-thumbnail-container">
-                        <img src="{{ images }}/videos/2014_publicidade_crianca.jpg"
-                            alt="Video thumbnail for Video Title 1" class="w-full">
-                    </div>
-                </a>
-                <time datetime="2013-08-29" class="video-date">August 29, 2013</time>
-                <h5 class="video-title">Public Hearing on Advertising to Children</h5>
-                <p class="video-description">Public hearing at the Brazilian National Congress addressing the impact of
-                    child-targeted advertising, highlighting its manipulative and abusive practices, and advocating for
-                    regulatory measures.</p>
-                <a href="https://www12.senado.leg.br/tv/plenario-e-comissoes/comissao-de-direitos-humanos-e-legislacao-participativa/2013/08/a-publicidade-que-dialoga-com-a-crianca-e-abusiva-diz-tamara-amoroso-goncalves-min.-justica"
-                    target="_blank" class="video-link">Watch on site</a>
-            </div>
-
         </div>
     </div>
 </section>
 
-<section id="services" class="contain-margins-y bg-slate-200">
-    <div class="contain-narrow section-margins-narrow">
-        <h2>What I offer</h2>
-        <ul class="list-none ">
-            <li>
-                <h3>Courses</h3>
-                <ul>
-                    <li>Human Rights Systems: Global and regional systems, their functioning, advocacy
-                        opportunities</li>
-                    <li>
-                        Gender and International Human Rights: An Overview of the Most Relevant
-                        Human Rights Instruments that protect women and gender diverse individuals's
-                        rights
-                    </li>
-                    <li>Gender-based violence: concepts, legal standards, public policies</li>
-                    <li>Feminism activism and international advocacy</li>
-                </ul>
-                <p>
-                    ** Courses can vary in length and depth, depending on your needs. They can also
-                    be tailored to specific audiences such as academics, government, and the general
-                    public..
-                </p>
-            </li>
-            <li>
-                <h3>Mentorship</h3>
-                <p>I can support you in applying for graduate studies and preparing academic
-                    proposals.</p>
-            </li>
-            <li>
-                <h3>Advocacy Work</h3>
-                <p>Elaboration of shadow reports to UN treaty-bodies, and in-person advocacy, to
-                    ensure successful results</p>
-            </li>
-        </ul>
+<section id="services" class="services contain-margins-y bg-slate-200">
+    <div class="contain-medium section-margins-medium">
+        <h1>What I can offer</h1>
+        <div class="sm:grid sm:grid-cols-2 gap-x-10 lg:max-w-screen-lg mx-auto mb-12 list-none">
+            <div>
+                <div class="services-item pb-4">
+                    <h3>Courses</h3>
+                    <ul class="bullet">
+                        <li><strong>Human Rights Systems:</strong> covers international human rights systems (global and
+                            regional ones),
+                            their functioning, key documents, and advocacy opportunities.</li>
+                        <li><strong>Gender and International Human Rights:</strong> offers an overview of the most
+                            relevant
+                            Human Rights
+                            Instruments that protect women and gender-diverse individual's rights.</li>
+                        <li><strong>Gender-based violence:</strong> discusses how the concept of gender-based violence
+                            has
+                            evolved, covering
+                            key concepts, legal standards, and public policies.</li>
+                        <li><strong>Transnational feminism and international advocacy:</strong> explores feminist
+                            transnational activism and
+                            its advancements and challenges.</li>
+                        <li><strong>Feminist Legal Theories:</strong> presents and discusses the main feminist threads
+                            and
+                            their socio-legal
+                            implications for advancing gender justice.</li>
+                    </ul>
+                    <p class="text-small">
+                        Courses can vary in length and depth, depending on your needs. They can also
+                        be tailored to specific audiences such as academics, government, and the general
+                        public..
+                    </p>
+                </div>
+                <div class="services-item pb-4">
+                    <h3>Consultancy</h3>
+                    <p>My consultancy work focuses on policy analysis, advocacy, research, and capacity-building in
+                        human
+                        rights, with a particular emphasis on gender-based violence, sexual and reproductive rights,
+                        health
+                        law, and children's rights. Leveraging my academic foundation—a bachelor's in Law, a master's in
+                        Human Rights, a PhD in Law and Society, and a graduate certificate in teaching—I provide
+                        insightful,
+                        evidence-based solutions tailored to diverse contexts. Grounded on a deep commitment to
+                        advancing
+                        equity and justice, I can:</p>
+                    <ul class="bullet">
+                        <li>Develop strategies for advocacy;</li>
+                        <li>Conduct training workshops;</li>
+                        <li>Craft comprehensive legal and policy analyses.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <div class="services-item pb-4">
+                    <h3>Mentorship</h3>
+                    <p>I can support you with the following:</p>
+                    <ul class="bullet">
+                        <li>Applying for graduate studies;</li>
+                        <li>Preparing academic proposals;</li>
+                        <li>Developing academic work. </li>
+                    </ul>
+                </div>
+                <div class="services-item pb-4">
+                    <h3>Advocacy Work</h3>
+                    <ul class="bullet">
+                        <li>Elaboration of shadow reports to United Nations treaty bodies, and MESECVI (follow-up
+                            Mechanism
+                            of the Belém do Pará Convention - Organization of American Estates); </li>
+                        <li>In-person advocacy - for more successful results;</li>
+                        <li>Institutional representation in public hearings;</li>
+                        <li>Articulation, preparation, and submission of Amicus Curiae both at the national and
+                            international levels;</li>
+                        <li>Workshops for non-profit organizations and corporations;</li>
+                        <li>Moderation of academic and institutional events.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
