@@ -44,7 +44,7 @@ module.exports = {
         },
         mustard: {
           DEFAULT: "#FFDA76",
-          50: "#FFF9E5",
+          50: "#FFFCF4",
           100: "#FFF3CC",
           200: "#FFE699",
           300: "#FFDA76", // Original color

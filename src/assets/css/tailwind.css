@@ -355,10 +355,20 @@
   .bg-gradient-yellow {
     background: rgb(255, 244, 220);
     background: radial-gradient(
-      circle,
+      circle at center 40%,
       rgba(255, 244, 220, 1) 0%,
-      rgba(255, 244, 220, 1) 35%,
-      rgba(255, 252, 244, 0) 100%
+      rgba(255, 244, 220, 1) 25%,
+      rgba(255, 252, 244, 0) 60%
+    );
+  }
+
+  .about-me {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 1) 80%,
+      rgba(255, 252, 244, 1) 100%
     );
   }
 }
