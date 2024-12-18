@@ -38,12 +38,12 @@
 
   h1,
   .text-size-h1 {
-    @apply mb-5 sm:mb-8 font-display text-4xl lg:text-6xl font-bold leading-none;
+    @apply mb-8 sm:mb-10 md:mb-16 font-display text-4xl lg:text-6xl font-bold leading-none;
   }
 
   h2,
   .text-size-h2 {
-    @apply mb-5 text-3xl font-semibold;
+    @apply mb-6 text-3xl font-semibold;
   }
 
   h3,
@@ -115,7 +115,7 @@
   /* Button */
   .button {
     @apply inline-block bg-pink-700 border-2 border-pink-900 transition-all duration-150 ease-linear text-white text-center no-underline font-semibold;
-    @apply hover:text-gray-100 hover:bg-gray-800 hover:translate-x-px hover:translate-y-px;
+    @apply hover:text-gray-100 hover:bg-pink-900 hover:translate-x-[2px] hover:translate-y-[2px];
     @apply visited:text-gray-100 visited:hover:text-gray-100;
   }
 
@@ -219,7 +219,7 @@
   }
 
   .video-grid {
-    @apply px-5 sm:px-12 lg:px-24 mb-16 flex space-x-8 md:space-x-10;
+    @apply px-5 md:px-12 mb-16 flex space-x-8 md:space-x-10;
   }
 
   /* Container for each video */
@@ -292,12 +292,6 @@
   .book-description {
     @apply mb-4;
   }
-
-  /* Link to site */
-  /* Todo: Add icon here instead of colors & styles */
-  /* .video-link {
-    @apply text-blue-500 hover:underline;
-  } */
 }
 
 @layer utilities {
@@ -315,11 +309,11 @@
   }
 
   .section-margins-wide {
-    @apply px-5 md:px-14;
+    @apply px-5 md:px-12;
   }
 
   .section-margins-medium {
-    @apply px-5 md:px-12;
+    @apply px-5 md:px-14;
   }
 
   .section-margins-narrow {
@@ -343,7 +337,7 @@
   /* Universal hover-shift effect */
   .hover-shift-sm {
     @apply transition-all duration-200 ease-in-out;
-    @apply hover:translate-x-px hover:translate-y-px;
+    @apply hover:translate-x-[2px] hover:translate-y-[2px];
   }
 
   .hover-shift-md {

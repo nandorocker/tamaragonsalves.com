@@ -22,11 +22,16 @@ layout: "base.njk"
     <div
         class="contain-narrow md:contain-medium section-margins-narrow md:section-margins-medium grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-[2fr_1fr] gap-8 lg:gap-12 items-start">
         <div class="w-full mx-auto sm:-mt-40 max-sm:row-start-2 grid md:grid-cols-2 gap-4">
-            <img src="{{ images }}/foto_01.jpg" alt="" class="rounded-md drop-shadow-md col-span-2">
-            <img src="{{ images }}/foto_02.jpg" alt="" class="rounded-md drop-shadow-md col-span-2">
-            <img src="{{ images }}/foto_03.jpg" alt="" class="rounded-md drop-shadow-md row-span-2">
-            <img src="{{ images }}/foto_04.jpg" alt="" class="rounded-md drop-shadow-md">
-            <img src="{{ images }}/foto_05.jpg" alt="" class="rounded-md drop-shadow-md">
+            <a data-fslightbox="about-pics" href="{{ images }}/foto_01.jpg" class="col-span-2"><img
+                    src="{{ images }}/foto_01.jpg" alt="" class="rounded-md drop-shadow-md hover-shift-sm"></a>
+            <a data-fslightbox="about-pics" href="{{ images }}/foto_02.jpg" class="col-span-2"><img
+                    src="{{ images }}/foto_02.jpg" alt="" class="rounded-md drop-shadow-md hover-shift-sm"></a>
+            <a data-fslightbox="about-pics" href="{{ images }}/foto_03.jpg" class="row-span-2"><img
+                    src="{{ images }}/foto_03.jpg" alt="" class="rounded-md drop-shadow-md hover-shift-sm"></a>
+            <a data-fslightbox="about-pics" href="{{ images }}/foto_04.jpg"><img src="{{ images }}/foto_04.jpg" alt=""
+                    class="rounded-md drop-shadow-md hover-shift-sm"></a>
+            <a data-fslightbox="about-pics" href="{{ images }}/foto_05.jpg"><img src="{{ images }}/foto_05.jpg" alt=""
+                    class="rounded-md drop-shadow-md hover-shift-sm"></a>
         </div>
         <div class="ml-auto lg:w-5/6 max-sm:row-start-1">
             <h2>About Me</h2>
@@ -44,7 +49,7 @@ layout: "base.njk"
 <section id="background" class="bg-white contain-margins-y">
     <div class="contain-medium section-margins-medium sm:grid lg:grid-cols-2 sm:gap-x-8">
         <div>
-            <h1 class="max-lg:text-size-h2">Academic & Professional<wbr> Background</h1>
+            <h1 class="max-lg:text-size-h2 max-lg:mb-10">Academic & Professional<wbr> Background</h1>
         </div>
 
         <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto">
@@ -75,7 +80,7 @@ layout: "base.njk"
 
 <section id="articles" class="contain-margins-y bg-soap-50 ">
     <div class="contain-wide section-margins-medium">
-        <h1 class="mb-16">Books and publications</h1>
+        <h1>Books and publications</h1>
         <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto">
             <h2>Publications</h2>
 
@@ -98,7 +103,8 @@ layout: "base.njk"
             <h2>Books</h2>
             <div class="book-grid">
                 <article class="book-item">
-                    <a href="" class="hover-shift-sm"><img src="{{ images }}/livro_direitos_humanos_mulheres.jpg" alt=""
+                    <a data-fslightbox="books" href="{{ images }}/livro_direitos_humanos_mulheres.jpg"
+                        class="hover-shift-sm"><img src="{{ images }}/livro_direitos_humanos_mulheres.jpg" alt=""
                             srcset="" class="book-image"></a>
 
                     <div class="book-info">
@@ -130,8 +136,9 @@ layout: "base.njk"
                     </div>
                 </article>
                 <article class="book-item">
-                    <a href="" class="hover-shift-sm"><img src="{{ images }}/livro_aborto_e_religiao.png" alt=""
-                            srcset="" class="book-image"></a>
+                    <a data-fslightbox="books" href="{{ images }}/livro_aborto_e_religiao.png"
+                        class="hover-shift-sm"><img src="{{ images }}/livro_aborto_e_religiao.png" alt="" srcset=""
+                            class="book-image"></a>
                     <div class="book-info">
                         <div>
                             <h5 class="mb-0 book-title"><a
@@ -163,8 +170,8 @@ layout: "base.njk"
             <h2>Other Projects</h2>
 
             <article class="book-item">
-                <a href="" class="hover-shift-sm"><img src="{{ images }}/podcast_gender_305.jpg" alt="" srcset=""
-                        class="book-image"></a>
+                <a data-fslightbox="books" href="{{ images }}/podcast_gender_305.jpg" class="hover-shift-sm"><img
+                        src="{{ images }}/podcast_gender_305.jpg" alt="" srcset="" class="book-image"></a>
                 <div class="book-info">
                     <div>
                         <h5 class="mb-0 book-title">Gender 305 Podcast</h5>
@@ -372,7 +379,7 @@ layout: "base.njk"
 <section id="services" class="services contain-margins-y bg-violet-50">
     <div class="contain-medium section-margins-medium">
         <h1>What I <br class="sm:hidden"> can offer</h1>
-        <div class="sm:grid sm:grid-cols-2 gap-x-10 lg:max-w-screen-lg mx-auto mb-12 list-none">
+        <div class="sm:grid sm:grid-cols-2 gap-x-10 lg:gap-x-16 lg:max-w-screen-lg mx-auto mb-12 list-none">
             <div>
                 <div class="services-item pb-4">
                     <h3>Courses</h3>
@@ -467,11 +474,12 @@ layout: "base.njk"
             <h4 class="max-sm:text-center">Reach Me on Social Media</h4>
             <ul class="flex flex-row max-sm:justify-center items-start gap-8 max-sm:mt-8">
                 <li><a href="https://www.instagram.com/tamaramoroso" target="_blank" rel="noopener noreferrer"
-                        title="Threads"><img src="{{ images }}social-instagram.svg" class="w-12" alt="Instagram"></a>
+                        title="Threads"><img src="{{ images }}/social-instagram.svg" class="w-12 hover-shift-sm"
+                            alt="Instagram"></a>
                 </li>
                 <li><a href="https://www.linkedin.com/in/tamara-amoroso-gonsalves-941527229/" target="_blank"
-                        rel="noopener noreferrer" title="LinkedIn"><img src="{{ images }}social-linkedin.svg"
-                            class="w-12" alt="LinkedIn"></a>
+                        rel="noopener noreferrer" title="LinkedIn"><img src="{{ images }}/social-linkedin.svg"
+                            class="w-12 hover-shift-sm" alt="LinkedIn"></a>
                 </li>
             </ul>
         </div>
