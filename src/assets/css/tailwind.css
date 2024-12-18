@@ -17,13 +17,12 @@
   h4,
   h5,
   h6 {
-    @apply leading-tight;
+    @apply leading-tight text-pink-700;
   }
 
   h1,
   .text-size-h1 {
-    @apply mb-6 text-4xl font-bold max-sm:leading-none;
-    @apply max-md:text-[clamp(3rem,5vw,4rem)];
+    @apply mb-6 font-display text-6xl font-bold leading-none;
   }
 
   h2,
@@ -69,7 +68,7 @@
   }
 
   a {
-    @apply italic underline text-blue-800 hover:text-gray-500 hover:no-underline visited:text-gray-700;
+    @apply italic underline text-pink-700 hover:text-pink-500 hover:no-underline visited:text-pink-900;
   }
 
   hr {
@@ -79,6 +78,18 @@
 
 @layer components {
   /* Landing */
+  .hero h1 {
+    @apply -mt-2 font-display text-[clamp(3.05rem,_6vw+1.5rem,_7rem)] md:text-[clamp(3.05rem,_6vw+2rem,_6.5rem)] xl:text-[clamp(3.05rem,_9vw+1rem,_8rem)] leading-[.9] mb-8;
+  }
+
+  .hero h2,
+  h3 {
+    @apply mb-2;
+  }
+
+  .hero p {
+    @apply sm:text-lg;
+  }
 
   /* Button */
   .button {
@@ -102,7 +113,11 @@
   /* Top Navigation */
   .top-nav a,
   .top-nav a:visited {
-    @apply no-underline text-white hover:text-gray-500;
+    @apply no-underline not-italic text-pink-700 hover:text-pink-900;
+  }
+
+  .top-nav .current {
+    @apply text-pink-600;
   }
 
   /* Accordion */
@@ -153,12 +168,12 @@
   /* Books List */
   /* Container for the book grid */
   .book-grid {
-    @apply w-full md:grid lg:grid-cols-2 gap-x-12 gap-y-16 mb-16;
+    @apply w-full mb-16;
   }
 
   /* Container for a book item */
   .book-item {
-    @apply max-sm:mb-16 flex flex-col sm:grid sm:grid-cols-[1fr_2fr] sm:gap-8;
+    @apply mb-16 flex flex-col sm:grid sm:grid-cols-[1fr_2fr] sm:gap-8;
   }
 
   /* Book Cover */
@@ -168,13 +183,13 @@
 
   /* Title and author container */
   .book-info {
-    @apply flex flex-col gap-y-1;
+    @apply flex flex-col gap-y-1 hyphens;
   }
 
   /* Videos */
   /* Container for the video grid */
   .video-grid {
-    @apply w-full grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-16;
+    @apply w-full grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4 mb-16;
   }
 
   /* Container for each video */
