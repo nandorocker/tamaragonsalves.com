@@ -145,10 +145,6 @@
     @apply max-md:border-b max-md:border-indigo-950;
   }
 
-  .top-nav-bg {
-    @apply bg-indigo-900;
-  }
-
   .top-nav .menu-open-svg {
     stroke: white; /* Sets stroke color to white */
   }

@@ -6,7 +6,7 @@ module.exports = {
     relative: true,
     transform: (content) => content.replace(/taos:/g, ""),
     files: [
-      "./src/**/*.{html,md,11ty.js,liquid,njk,hbs,mustache,ejs,haml,pug}",
+      "./src/**/*.{html,md,11ty.js,liquid,njk,hbs,mustache,ejs,haml,pug,js}",
     ],
   },
   theme: {

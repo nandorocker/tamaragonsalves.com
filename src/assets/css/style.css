@@ -1,0 +1,10 @@
+@media (max-width: 767px) {
+  .top-nav-bg {
+    background-color: #fffcf4;
+    opacity: 0.95;
+  }
+
+  .top-nav-bg-active {
+    background-color: #312e81;
+  }
+}

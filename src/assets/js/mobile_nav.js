@@ -4,14 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     constructor() {
       this.elements = {
-        menuToggle: document.getElementById("menu-toggle"),
+        menuToggle: document.getElementById("menu_toggle"),
         menu: document.getElementById("menu"),
-        topNav: document.getElementById("top-nav"),
-        menuIcon: document.getElementById("menu-icon"),
+        topNav: document.getElementById("top_nav"),
+        menuIcon: document.getElementById("menu_icon"),
       };
-
-      this.elements.firstDivInTopNav =
-        this.elements.topNav?.querySelector("div:first-of-type");
 
       this.isMobileView = window.innerWidth < MobileNav.MOBILE_BREAKPOINT;
       this.resizeObserver = new ResizeObserver(this.handleResize.bind(this));
@@ -37,18 +34,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     resetToDesktop() {
-      const { menu, topNav, firstDivInTopNav, menuIcon, menuToggle } =
-        this.elements;
+      const { menu, topNav, menuIcon, menuToggle } = this.elements;
 
       // Reset menu state
       menu.classList.remove("flex");
       menu.classList.add("hidden");
 
       // Reset navigation background
+      topNav?.classList.remove("top-nav-bg-active");
       topNav?.classList.add("top-nav-bg");
-
-      // Reset first div classes
-      firstDivInTopNav?.classList.remove("bg-mustard-50", "bg-opacity-95");
 
       // Reset menu icon
       menuIcon?.classList.remove("menu-open-svg");
@@ -61,19 +55,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     init() {
-      this.removeInitialTopNavBg();
       this.setupEventListeners();
     }
 
-    removeInitialTopNavBg() {
-      if (this.elements.topNav?.classList.contains("top-nav-bg")) {
-        this.elements.topNav.classList.remove("top-nav-bg");
-      }
-    }
-
     toggleMenu() {
-      const { menuToggle, menu, topNav, firstDivInTopNav, menuIcon } =
-        this.elements;
+      const { menuToggle, menu, topNav, menuIcon } = this.elements;
 
       // Toggle aria-expanded
       const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
@@ -83,12 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
       menu.classList.toggle("hidden");
       menu.classList.toggle("flex");
 
-      // Toggle navigation background
+      // Toggle between background classes
       topNav?.classList.toggle("top-nav-bg");
-
-      // Toggle first div classes
-      firstDivInTopNav?.classList.toggle("bg-mustard-50");
-      firstDivInTopNav?.classList.toggle("bg-opacity-95");
+      topNav?.classList.toggle("top-nav-bg-active");
 
       // Toggle menu icon
       menuIcon?.classList.toggle("menu-open-svg");

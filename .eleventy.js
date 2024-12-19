@@ -10,7 +10,7 @@ module.exports = function (eleventyConfig) {
       "!tailwind.css", // don't copy this file
     ],
   });
-  eleventyConfig.addPassthroughCopy("src/assets/js/*");
+  eleventyConfig.addPassthroughCopy("src/assets/js/**/*");
   eleventyConfig.addPassthroughCopy("src/assets/images/**/*");
   eleventyConfig.addPassthroughCopy("src/assets/fonts/**/*");
   eleventyConfig.addPassthroughCopy("src/assets/files/**/*");
