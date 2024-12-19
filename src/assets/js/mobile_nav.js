@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", function () {
   var menuToggle = document.getElementById("menu-toggle");
   var menu = document.getElementById("menu");
   var topNav = document.getElementById("top-nav");
+  var firstDivInTopNav = topNav
+    ? topNav.querySelector("div:first-of-type")
+    : null;
 
   // Remove top-nav-bg class if present on first load
   if (topNav && topNav.classList.contains("top-nav-bg")) {
@@ -23,6 +26,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (topNav) {
       topNav.classList.toggle("top-nav-bg");
+    }
+
+    // Remove top nav background & opacity classes
+    if (firstDivInTopNav) {
+      firstDivInTopNav.classList.toggle("bg-mustard-50");
+      firstDivInTopNav.classList.toggle("bg-opacity-95");
     }
 
     // Change SVG color when menu is toggled
