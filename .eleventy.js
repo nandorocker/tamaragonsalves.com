@@ -15,7 +15,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/fonts/**/*");
   eleventyConfig.addPassthroughCopy("src/assets/files/**/*");
   eleventyConfig.addPassthroughCopy("src/assets/vendor/**/*");
-  eleventyConfig.addPassthroughCopy("src/favicon.png");
+  eleventyConfig.addPassthroughCopy({
+    "src/assets/favicon.ico": "favicon.ico",
+  });
+  eleventyConfig.addPassthroughCopy({
+    "src/assets/apple-touch-icon.png": "apple-touch-icon.png",
+  });
   eleventyConfig.addPassthroughCopy({
     "node_modules/taos/dist/taos.js": "taos.js",
     "node_modules/taos/dist/taos.js.map": "taos.js.map",
