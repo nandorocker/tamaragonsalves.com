@@ -134,7 +134,7 @@
   /* Top Navigation */
   .top-nav a,
   .top-nav a:visited {
-    @apply text-lg lg:text-xl font-semibold no-underline not-italic text-pink-700 hover:text-pink-900;
+    @apply text-lg lg:text-xl font-semibold no-underline not-italic max-md:text-white text-pink-700 hover:text-pink-900;
   }
 
   .top-nav .current {
@@ -142,7 +142,15 @@
   }
 
   .top-nav a:not(:last-child) {
-    @apply max-md:border-b max-md:border-amber-200;
+    @apply max-md:border-b max-md:border-indigo-950;
+  }
+
+  .top-nav-bg {
+    @apply bg-indigo-900;
+  }
+
+  .top-nav .menu-open-svg {
+    stroke: white; /* Sets stroke color to white */
   }
 
   /* Accordion */
