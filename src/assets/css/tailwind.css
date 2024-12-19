@@ -132,6 +132,14 @@
   }
 
   /* Top Navigation */
+  .top-nav {
+    @apply transition-transform duration-300 transform;
+  }
+
+  .top-nav.nav-hidden {
+    @apply -translate-y-full;
+  }
+
   .top-nav a,
   .top-nav a:visited {
     @apply text-lg lg:text-xl font-semibold no-underline not-italic max-md:text-white text-pink-700 hover:text-pink-900;
@@ -154,7 +162,7 @@
   }
 
   .top-nav-bg-active {
-    @apply bg-indigo-900;
+    @apply max-md:bg-indigo-900;
   }
 
   /* Accordion */
