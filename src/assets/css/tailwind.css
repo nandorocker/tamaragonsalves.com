@@ -149,6 +149,14 @@
     stroke: white; /* Sets stroke color to white */
   }
 
+  .top-nav-bg {
+    @apply max-md:bg-mustard-50 max-md:bg-opacity-95;
+  }
+
+  .top-nav-bg-active {
+    @apply bg-indigo-900;
+  }
+
   /* Accordion */
   .accordion {
     @apply w-full; /* Ensure it takes the full width of its container */
