@@ -40,9 +40,8 @@ document.addEventListener("DOMContentLoaded", () => {
       menu.classList.remove("flex");
       menu.classList.add("hidden");
 
-      // Reset navigation background
-      topNav?.classList.remove("top-nav-bg-active");
-      topNav?.classList.add("top-nav-bg");
+      // Remove mobile menu background
+      topNav?.classList.remove("nav-menu-open");
 
       // Reset menu icon
       menuIcon?.classList.remove("menu-open-svg");
@@ -69,9 +68,8 @@ document.addEventListener("DOMContentLoaded", () => {
       menu.classList.toggle("hidden");
       menu.classList.toggle("flex");
 
-      // Toggle between background classes
-      topNav?.classList.toggle("top-nav-bg");
-      topNav?.classList.toggle("top-nav-bg-active");
+      // Toggle mobile menu open state
+      topNav?.classList.toggle("nav-menu-open");
 
       // Toggle menu icon
       menuIcon?.classList.toggle("menu-open-svg");

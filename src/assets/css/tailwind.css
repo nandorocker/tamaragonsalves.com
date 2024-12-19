@@ -133,16 +133,33 @@
 
   /* Top Navigation */
   .top-nav {
-    @apply transition-transform duration-300 transform;
+    @apply transition-all duration-300;
   }
 
   .top-nav.nav-hidden {
     @apply -translate-y-full;
   }
 
+  .top-nav.nav-scrolled {
+    @apply bg-mustard-50 bg-opacity-95 drop-shadow-lg;
+  }
+
+  /* Mobile menu open state (independent of scroll) */
+  .top-nav.nav-menu-open {
+    @apply bg-indigo-900 drop-shadow-lg;
+  }
+
   .top-nav a,
   .top-nav a:visited {
-    @apply text-lg lg:text-xl font-semibold no-underline not-italic max-md:text-white text-pink-700 hover:text-pink-900;
+    @apply text-lg lg:text-xl font-semibold no-underline not-italic text-pink-700 hover:text-pink-900;
+  }
+
+  /* On mobile, text should be white when menu is open */
+  @media (max-width: 767px) {
+    .top-nav.nav-menu-open a,
+    .top-nav.nav-menu-open a:visited {
+      @apply text-white;
+    }
   }
 
   .top-nav .current {
@@ -155,14 +172,6 @@
 
   .top-nav .menu-open-svg {
     stroke: white; /* Sets stroke color to white */
-  }
-
-  .top-nav-bg {
-    @apply max-md:bg-mustard-50 max-md:bg-opacity-95;
-  }
-
-  .top-nav-bg-active {
-    @apply max-md:bg-indigo-900;
   }
 
   /* Accordion */

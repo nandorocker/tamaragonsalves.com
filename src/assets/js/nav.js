@@ -1,24 +1,54 @@
-let lastScroll = 0;
-const nav = document.getElementById("top_nav");
-const scrollThreshold = 100; // Amount of pixels to scroll before hiding nav
+class NavigationHandler {
+  constructor() {
+    this.nav = document.getElementById("top_nav");
+    this.lastScroll = 0;
+    this.scrollThreshold = 100;
 
-window.addEventListener("scroll", () => {
-  const currentScroll = window.pageYOffset;
+    // Bind methods
+    this.handleScroll = this.handleScroll.bind(this);
 
-  // Always show nav when at the top
-  if (currentScroll <= 0) {
-    nav.classList.remove("nav-hidden");
-    return;
+    // Initialize
+    this.init();
   }
 
-  // If we're below threshold and scrolling down, hide nav
-  if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
-    nav.classList.add("nav-hidden");
-  }
-  // When scrolling up, show nav
-  else if (currentScroll < lastScroll) {
-    nav.classList.remove("nav-hidden");
+  init() {
+    // Add scroll event listener
+    window.addEventListener("scroll", this.handleScroll);
+
+    // Initial check for page load with scroll
+    this.handleScroll();
   }
 
-  lastScroll = currentScroll;
+  handleScroll() {
+    const currentScroll = window.pageYOffset;
+
+    // Handle scroll-based background
+    if (currentScroll > this.scrollThreshold) {
+      this.nav.classList.add("nav-scrolled");
+    } else {
+      this.nav.classList.remove("nav-scrolled");
+    }
+
+    // Handle nav visibility
+    if (currentScroll <= 0) {
+      // At the top
+      this.nav.classList.remove("nav-hidden");
+    } else if (
+      currentScroll > this.lastScroll &&
+      currentScroll > this.scrollThreshold
+    ) {
+      // Scrolling down
+      this.nav.classList.add("nav-hidden");
+    } else if (currentScroll < this.lastScroll) {
+      // Scrolling up
+      this.nav.classList.remove("nav-hidden");
+    }
+
+    this.lastScroll = currentScroll;
+  }
+}
+
+// Initialize when DOM is ready
+document.addEventListener("DOMContentLoaded", () => {
+  new NavigationHandler();
 });
