@@ -1,55 +1,67 @@
-document.addEventListener("DOMContentLoaded", function () {
-  var menuToggle = document.getElementById("menu-toggle");
-  var menu = document.getElementById("menu");
-  var topNav = document.getElementById("top-nav");
-  var firstDivInTopNav = topNav
-    ? topNav.querySelector("div:first-of-type")
-    : null;
+document.addEventListener("DOMContentLoaded", () => {
+  class MobileNav {
+    constructor() {
+      this.elements = {
+        menuToggle: document.getElementById("menu-toggle"),
+        menu: document.getElementById("menu"),
+        topNav: document.getElementById("top-nav"),
+        menuIcon: document.getElementById("menu-icon"),
+      };
 
-  // Remove top-nav-bg class if present on first load
-  if (topNav && topNav.classList.contains("top-nav-bg")) {
-    topNav.classList.remove("top-nav-bg");
-  }
+      this.elements.firstDivInTopNav =
+        this.elements.topNav?.querySelector("div:first-of-type");
 
-  // Function to toggle menu visibility and top-nav background color
-  function toggleMenu() {
-    var isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
-    menuToggle.setAttribute("aria-expanded", !isExpanded);
-
-    if (menu.classList.contains("hidden")) {
-      menu.classList.remove("hidden");
-      menu.classList.add("flex");
-    } else {
-      menu.classList.remove("flex");
-      menu.classList.add("hidden");
+      this.init();
     }
 
-    if (topNav) {
-      topNav.classList.toggle("top-nav-bg");
+    init() {
+      this.removeInitialTopNavBg();
+      this.setupEventListeners();
     }
 
-    // Remove top nav background & opacity classes
-    if (firstDivInTopNav) {
-      firstDivInTopNav.classList.toggle("bg-mustard-50");
-      firstDivInTopNav.classList.toggle("bg-opacity-95");
-    }
-
-    // Change SVG color when menu is toggled
-    var menuIcon = document.getElementById("menu-icon");
-    if (menuIcon) {
-      menuIcon.classList.toggle("menu-open-svg");
-    }
-  }
-
-  menuToggle.addEventListener("click", toggleMenu);
-
-  // Close menu when any menu item is clicked
-  if (menu) {
-    menu.addEventListener("click", function (event) {
-      if (event.target.tagName === "A" && event.target.closest("#menu")) {
-        // Check if the clicked element is a link inside the menu
-        toggleMenu();
+    removeInitialTopNavBg() {
+      if (this.elements.topNav?.classList.contains("top-nav-bg")) {
+        this.elements.topNav.classList.remove("top-nav-bg");
       }
-    });
+    }
+
+    toggleMenu() {
+      const { menuToggle, menu, topNav, firstDivInTopNav, menuIcon } =
+        this.elements;
+
+      // Toggle aria-expanded
+      const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", !isExpanded);
+
+      // Toggle menu visibility
+      menu.classList.toggle("hidden");
+      menu.classList.toggle("flex");
+
+      // Toggle navigation background
+      topNav?.classList.toggle("top-nav-bg");
+
+      // Toggle first div classes
+      firstDivInTopNav?.classList.toggle("bg-mustard-50");
+      firstDivInTopNav?.classList.toggle("bg-opacity-95");
+
+      // Toggle menu icon
+      menuIcon?.classList.toggle("menu-open-svg");
+    }
+
+    setupEventListeners() {
+      // Menu toggle click handler
+      this.elements.menuToggle.addEventListener("click", () =>
+        this.toggleMenu()
+      );
+
+      // Menu item click handler
+      this.elements.menu?.addEventListener("click", (event) => {
+        if (event.target.tagName === "A" && event.target.closest("#menu")) {
+          this.toggleMenu();
+        }
+      });
+    }
   }
+
+  new MobileNav();
 });
