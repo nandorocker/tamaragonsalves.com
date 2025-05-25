@@ -1,0 +1,2 @@
+Don't start the dev server after every build. Assume it's already running.
+Use pnpm, never npm.

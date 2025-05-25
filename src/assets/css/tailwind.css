@@ -8,7 +8,7 @@
   } */
 
   p {
-    @apply mb-4 md:mb-6 lg:mb-8 text-[.85rem] md:text-base leading-normal;
+    @apply mb-4 md:mb-6 lg:mb-8 text-[.85rem] md:text-base leading-normal dark:text-gray-300;
   }
 
   p:has(+ ul) {
@@ -27,7 +27,7 @@
   h4,
   h5,
   h6 {
-    @apply leading-tight text-pink-700;
+    @apply leading-tight text-pink-700 dark:text-pink-300;
   }
 
   h1,
@@ -84,7 +84,7 @@
   }
 
   a {
-    @apply italic underline text-pink-700 hover:text-pink-500 hover:no-underline visited:text-pink-900;
+    @apply italic underline text-pink-700 hover:text-pink-500 hover:no-underline visited:text-pink-900 dark:text-pink-300 dark:hover:text-pink-100 dark:visited:text-pink-400;
   }
 
   a::before,
@@ -93,7 +93,7 @@
   }
 
   hr {
-    @apply mb-8 border border-gray-300;
+    @apply mb-8 border border-gray-300 dark:border-gray-600;
   }
 }
 
@@ -117,6 +117,7 @@
     @apply inline-block bg-pink-700 border-2 border-pink-900 transition-all duration-150 ease-linear text-white text-center no-underline font-semibold;
     @apply hover:text-gray-100 hover:bg-pink-900 hover:translate-x-[2px] hover:translate-y-[2px];
     @apply visited:text-gray-100 visited:hover:text-gray-100;
+    @apply dark:bg-pink-600 dark:border-pink-700 dark:hover:bg-pink-700;
   }
 
   .button-xs {
@@ -141,17 +142,17 @@
   }
 
   .top-nav.nav-scrolled {
-    @apply bg-mustard-50 bg-opacity-95 drop-shadow-lg;
+    @apply bg-mustard-50 bg-opacity-95 drop-shadow-lg dark:bg-gray-800 dark:bg-opacity-95;
   }
 
   /* Mobile menu open state (independent of scroll) */
   .top-nav.nav-menu-open {
-    @apply bg-indigo-900 drop-shadow-lg;
+    @apply bg-indigo-900 drop-shadow-lg dark:bg-gray-900;
   }
 
   .top-nav a,
   .top-nav a:visited {
-    @apply text-lg lg:text-xl font-semibold no-underline not-italic text-pink-700 hover:text-pink-900;
+    @apply text-lg lg:text-xl font-semibold no-underline not-italic text-pink-700 hover:text-pink-900 dark:text-pink-300 dark:hover:text-pink-100;
   }
 
   /* On mobile, text should be white when menu is open */
@@ -163,11 +164,11 @@
   }
 
   .top-nav .current {
-    @apply text-pink-600;
+    @apply text-pink-600 dark:text-pink-400;
   }
 
   .top-nav a:not(:last-child) {
-    @apply max-md:border-b max-md:border-indigo-950;
+    @apply max-md:border-b max-md:border-indigo-950 dark:max-md:border-gray-600;
   }
 
   .top-nav .menu-open-svg {
@@ -397,6 +398,16 @@
       rgba(255, 255, 255, 1) 0%,
       rgba(255, 255, 255, 1) 80%,
       rgba(255, 252, 244, 1) 100%
+    );
+  }
+
+  .dark .about-me {
+    background: rgb(31, 41, 55);
+    background: linear-gradient(
+      0deg,
+      rgba(31, 41, 55, 1) 0%,
+      rgba(31, 41, 55, 1) 80%,
+      rgba(55, 65, 81, 1) 100%
     );
   }
 }
