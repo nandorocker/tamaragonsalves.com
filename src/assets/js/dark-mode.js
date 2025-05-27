@@ -5,20 +5,14 @@ document.addEventListener("DOMContentLoaded", () => {
       this.toggleButton = document.getElementById("theme-toggle");
       this.sunIcon = document.getElementById("sun-icon");
       this.moonIcon = document.getElementById("moon-icon");
+      this.mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
       this.init();
     }
 
     init() {
-      // Get initial theme from localStorage or system preference
-      const savedTheme = localStorage.getItem(this.storageKey);
-      const systemPrefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-
       // Set initial theme
-      const initialTheme = savedTheme || (systemPrefersDark ? "dark" : "light");
-      this.setTheme(initialTheme);
+      this.applyTheme();
 
       // Set up event listeners
       if (this.toggleButton) {
@@ -26,22 +20,55 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // Listen for system theme changes
-      window
-        .matchMedia("(prefers-color-scheme: dark)")
-        .addEventListener("change", (e) => {
-          if (!localStorage.getItem(this.storageKey)) {
-            this.setTheme(e.matches ? "dark" : "light");
-          }
-        });
+      this.mediaQuery.addEventListener("change", () => {
+        this.applyTheme();
+      });
+    }
+
+    getEffectiveTheme() {
+      const savedTheme = localStorage.getItem(this.storageKey);
+
+      // If no saved preference, use system preference
+      if (!savedTheme) {
+        return this.mediaQuery.matches ? "dark" : "light";
+      }
+
+      // If saved preference is "system", use system preference
+      if (savedTheme === "system") {
+        return this.mediaQuery.matches ? "dark" : "light";
+      }
+
+      // Otherwise use saved preference
+      return savedTheme;
+    }
+
+    applyTheme() {
+      const theme = this.getEffectiveTheme();
+      this.setTheme(theme);
     }
 
     toggleTheme() {
-      const currentTheme = document.documentElement.classList.contains("dark")
-        ? "dark"
-        : "light";
-      const newTheme = currentTheme === "dark" ? "light" : "dark";
-      this.setTheme(newTheme);
-      localStorage.setItem(this.storageKey, newTheme);
+      const currentEffectiveTheme = this.getEffectiveTheme();
+      const savedTheme = localStorage.getItem(this.storageKey);
+
+      // Cycle through: system -> light -> dark -> system
+      let newTheme;
+      if (!savedTheme || savedTheme === "system") {
+        // Currently following system, switch to opposite of current system preference
+        newTheme = currentEffectiveTheme === "dark" ? "light" : "dark";
+      } else if (savedTheme === "light") {
+        newTheme = "dark";
+      } else if (savedTheme === "dark") {
+        newTheme = "system";
+      }
+
+      if (newTheme === "system") {
+        localStorage.removeItem(this.storageKey);
+      } else {
+        localStorage.setItem(this.storageKey, newTheme);
+      }
+
+      this.applyTheme();
     }
 
     setTheme(theme) {

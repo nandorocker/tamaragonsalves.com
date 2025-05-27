@@ -1,0 +1,118 @@
+---
+title: Dark Mode Debug Page
+layout: "base.njk"
+---
+
+<section class="w-full contain-wide section-margins-medium text-center">
+    <div class="contain-medium">
+        <h1 class="text-4xl font-bold mb-8 text-gray-900 dark:text-white">Dark Mode Debug</h1>
+
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Theme Information</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                <div class="space-y-4">
+                    <div>
+                        <strong class="text-gray-700 dark:text-gray-300">System Preference:</strong>
+                        <span id="system-preference" class="text-blue-600 dark:text-blue-400">Loading...</span>
+                    </div>
+
+                    <div>
+                        <strong class="text-gray-700 dark:text-gray-300">Saved Preference:</strong>
+                        <span id="saved-preference" class="text-green-600 dark:text-green-400">Loading...</span>
+                    </div>
+
+                    <div>
+                        <strong class="text-gray-700 dark:text-gray-300">Current Theme:</strong>
+                        <span id="current-theme" class="text-purple-600 dark:text-purple-400">Loading...</span>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <strong class="text-gray-700 dark:text-gray-300">HTML Class:</strong>
+                        <span id="html-class" class="text-orange-600 dark:text-orange-400">Loading...</span>
+                    </div>
+
+                    <div>
+                        <strong class="text-gray-700 dark:text-gray-300">Media Query:</strong>
+                        <span id="media-query" class="text-red-600 dark:text-red-400">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg mb-8">
+            <h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Test Actions</h3>
+            <div class="space-x-4">
+                <button id="test-system" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+                    Force System Mode
+                </button>
+                <button id="test-light" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded">
+                    Force Light Mode
+                </button>
+                <button id="test-dark" class="bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded">
+                    Force Dark Mode
+                </button>
+                <button id="refresh-info" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
+                    Refresh Info
+                </button>
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-r from-pink-100 to-blue-100 dark:from-pink-900 dark:to-blue-900 p-6 rounded-lg">
+            <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">Visual Test</h3>
+            <p class="text-gray-600 dark:text-gray-400">
+                This background should change color based on the theme. In light mode, it's pink-to-blue gradient with
+                light colors.
+                In dark mode, it's the same gradient but with dark colors.
+            </p>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        function updateThemeInfo() {
+            const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'Dark' : 'Light';
+            const savedPreference = localStorage.getItem('theme-preference') || 'None (following system)';
+            const currentTheme = document.documentElement.classList.contains('dark') ? 'Dark' : 'Light';
+            const htmlClass = document.documentElement.className;
+            const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            document.getElementById('system-preference').textContent = systemPreference;
+            document.getElementById('saved-preference').textContent = savedPreference;
+            document.getElementById('current-theme').textContent = currentTheme;
+            document.getElementById('html-class').textContent = htmlClass || 'No classes';
+            document.getElementById('media-query').textContent = mediaQuery ? 'Matches dark' : 'Matches light';
+        }
+
+        // Initial update
+        updateThemeInfo();
+
+        // Test buttons
+        document.getElementById('test-system').addEventListener('click', () => {
+            localStorage.removeItem('theme-preference');
+            location.reload();
+        });
+
+        document.getElementById('test-light').addEventListener('click', () => {
+            localStorage.setItem('theme-preference', 'light');
+            location.reload();
+        });
+
+        document.getElementById('test-dark').addEventListener('click', () => {
+            localStorage.setItem('theme-preference', 'dark');
+            location.reload();
+        });
+
+        document.getElementById('refresh-info').addEventListener('click', updateThemeInfo);
+
+        // Listen for system preference changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateThemeInfo);
+
+        // Listen for theme changes
+        const observer = new MutationObserver(updateThemeInfo);
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    });
+</script>

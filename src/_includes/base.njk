@@ -23,6 +23,24 @@
         rel="stylesheet">
     <link rel="stylesheet" href="/assets/vendor/fontawesome/css/regular.min.css">
     <script>document.documentElement.classList.add('js')</script>
+    <script>
+            // Prevent FOUC by setting theme before page loads
+            (function () {
+                const savedTheme = localStorage.getItem('theme-preference');
+                const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+                let effectiveTheme;
+                if (!savedTheme || savedTheme === 'system') {
+                    effectiveTheme = systemPrefersDark ? 'dark' : 'light';
+                } else {
+                    effectiveTheme = savedTheme;
+                }
+
+                if (effectiveTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                }
+            })();
+    </script>
 </head>
 
 <body class="bg-mustard-50 dark:bg-gray-900 transition-colors duration-300">
