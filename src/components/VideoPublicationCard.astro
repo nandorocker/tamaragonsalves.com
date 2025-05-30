@@ -1,0 +1,40 @@
+---
+import { images } from '../data/global';
+
+export interface Props {
+  title: string;
+  description: string;
+  videoUrl: string;
+  thumbnailUrl: string;
+  date: string;
+  linkText?: string;
+}
+
+const { 
+  title,
+  description,
+  videoUrl,
+  thumbnailUrl,
+  date,
+  linkText = "Watch on site"
+} = Astro.props;
+---
+
+<div class="video-card">
+  <a href={videoUrl} target="_blank" aria-label={`Watch video: ${title}`}>
+    <div class="video-thumbnail-container">
+      <img src={`${images}/${thumbnailUrl}`} alt={`Video thumbnail for ${title}`}>
+    </div>
+  </a>
+  <time datetime={date} class="video-date">{new Date(date).toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  })}</time>
+  <h5 class="video-title">{title}</h5>
+  <p class="video-description">{description}</p>
+  <a href={videoUrl} target="_blank" 
+     class="video-link icon-after icon-external-link icon-space-sm">
+    {linkText}
+  </a>
+</div>
