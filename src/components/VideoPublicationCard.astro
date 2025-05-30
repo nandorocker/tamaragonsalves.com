@@ -1,5 +1,6 @@
 ---
 import { images } from '../data/global';
+import { siteContent } from '../data/site-content';
 
 export interface Props {
   title: string;
@@ -16,7 +17,7 @@ const {
   videoUrl,
   thumbnailUrl,
   date,
-  linkText = "Watch on site"
+  linkText = siteContent.components.videoPublicationCard.linkText
 } = Astro.props;
 
 // Format date once at build time for better performance

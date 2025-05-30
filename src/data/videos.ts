@@ -19,7 +19,7 @@ export const videos: Video[] = [
   },
   {
     title: "Alienação Parental: uma nova forma de violência de gênero contra mulheres e crianças na AL e Caribe",
-    description: "Seminar held at the Brazilian Federal Court (Tribunal Regional Federal da 3ª Região), in partnership with AJUFESP (Associação dos Juízes Federais de SP e MS), to launch the book \"Alienação Parental: Uma nova forma de violência de gênero contra mulheres e crianças na América Latina e Caribe\" (Parental Alienation as a New Form of Gender-Based Violence Against Women and Children in Latin America and the Caribbean). I discussed how the concept of parental alienation has been misused in the region to dismiss abuse allegations and perpetuate institutional violence against women and children; as well as the need for a gender-insensitive application of the Hague Convention by the Brazilian state.",
+    description: "Seminar at the Brazilian Federal Court to launch the book 'Alienação Parental: Uma nova forma de violência de gênero contra mulheres e crianças na América Latina e Caribe' . I discussed how parental alienation and the Hague Convention have been misused to silence abuse allegations and reinforce institutional violence against women and children.",
     videoUrl: "https://www.youtube.com/watch?v=s6JCUo6_viI&t=2478s",
     thumbnailUrl: "videos/2025_alienacao_1.png",
     date: "2025-04-14"

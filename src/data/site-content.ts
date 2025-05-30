@@ -94,5 +94,17 @@ export const siteContent = {
     description: "Let's talk! For inquiries or collaboration opportunities, reach out via email at [email] or connect with me on LinkedIn. I aim to respond within 48 hours.",
     emailButtonText: "Send me an email",
     socialMediaHeading: "Reach Me on Social Media"
+  },
+
+  // Component text content
+  components: {
+    bookCard: {
+      downloadText: "Download the book:",
+      interviewText: "Listen to my interviews:",
+      fallbackDownloadText: "Download Full Text (PDF)"
+    },
+    videoPublicationCard: {
+      linkText: "Watch on site"
+    }
   }
 };

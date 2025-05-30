@@ -3,11 +3,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import BookCard from '../components/BookCard.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import VideoPublicationCard from '../components/VideoPublicationCard.astro';
+import AboutGalleryImage from '../components/AboutGalleryImage.astro';
 import { images, js } from '../data/global';
 import { siteContent } from '../data/site-content';
 import { books } from '../data/books';
 import { projects } from '../data/projects';
 import { videos } from '../data/videos';
+import { aboutGalleryImages } from '../data/about-gallery-images';
 ---
 
 <BaseLayout title="Tamara Amoroso Gonsalves, Human Rights Expert">
@@ -24,24 +26,23 @@ import { videos } from '../data/videos';
 	    <div
 	        class="contain-narrow md:contain-medium section-margins-narrow md:section-margins-medium grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-[2fr_1fr] gap-8 lg:gap-12 items-start">
 	        <div class="w-full mx-auto sm:-mt-40 max-sm:row-start-2 grid md:grid-cols-2 gap-4">
-	            <a data-fslightbox="about-pics" href={`${images}/foto_01.jpg`} class="col-span-2"><img
-	                    src={`${images}/foto_01.jpg`}
-	                    alt="Three women speaking (Tamara in the middle) and taking notes at a conference panel, with a camera recording in the foreground."
-	                    class="rounded-md drop-shadow-md hover-shift-sm"></a>
-	            <a data-fslightbox="about-pics" href={`${images}/foto_02.jpg`} class="col-span-2"><img
-	                    src={`${images}/foto_02.jpg`}
-	                    alt="Tamara Gonsalves standing and smiling in a large assembly hall (UN) with nameplates and a decorative ceiling."
-	                    class="rounded-md drop-shadow-md hover-shift-sm"></a>
-	            <a data-fslightbox="about-pics" href={`${images}/foto_03.jpg`} class="row-span-2"><img
-	                    src={`${images}/foto_03.jpg`}
-	                    alt="Tamara speaking in a studio setup with cameras and a world map on the wall behind her."
-	                    class="rounded-md drop-shadow-md hover-shift-sm"></a>
-	            <a data-fslightbox="about-pics" href={`${images}/foto_04.jpg`}><img src={`${images}/foto_04.jpg`}
-	                    alt="A group of women posing together in a well-lit room with plants."
-	                    class="rounded-md drop-shadow-md hover-shift-sm"></a>
-	            <a data-fslightbox="about-pics" href={`${images}/foto_05.jpg`}><img src={`${images}/foto_05.jpg`}
-	                    alt="Tamara Gonsalves smiling while signing a book at a table with flowers and books."
-	                    class="rounded-md drop-shadow-md hover-shift-sm"></a>
+	            {aboutGalleryImages.map((image, index) => {
+	                // Apply specific grid classes based on image position
+	                let gridClass = "";
+	                if (index === 0) gridClass = "col-span-2";
+	                else if (index === 1) gridClass = "col-span-2";
+	                else if (index === 2) gridClass = "row-span-2";
+	                
+	                return (
+	                    <div class={gridClass}>
+	                        <AboutGalleryImage 
+	                            src={image.src}
+	                            alt={image.alt}
+	                            fslightboxGroup={image.fslightboxGroup}
+	                        />
+	                    </div>
+	                );
+	            })}
 	        </div>
 	        <div class="ml-auto lg:w-5/6 max-sm:row-start-1">
 	            <h2>{siteContent.aboutMe.heading}</h2>
