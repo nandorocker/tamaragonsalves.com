@@ -21,6 +21,7 @@
   "license": "ISC",
   "dependencies": {
     "@astrojs/tailwind": "^6.0.2",
+    "@astrojs/vercel": "^8.1.4",
     "astro": "^5.8.1",
     "tailwind-fontawesome": "^0.7.1"
   },
