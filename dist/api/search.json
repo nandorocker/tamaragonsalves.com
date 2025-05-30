@@ -1,0 +1,105 @@
+{
+  "query": null,
+  "category": null,
+  "total": 3,
+  "totalPosts": 3,
+  "results": [
+    {
+      "slug": "cedaw-brazil-review-2024",
+      "title": "CEDAW Committee Review: Advocating for Brazilian Women's Rights",
+      "description": "Speech delivered at the UN CEDAW Committee review of Brazil, highlighting critical issues facing Brazilian women and calling for stronger protections.",
+      "category": "speaking",
+      "tags": [
+        "CEDAW",
+        "Brazil",
+        "UN",
+        "women's rights",
+        "advocacy",
+        "international law"
+      ],
+      "pubDate": "2024-05-20T00:00:00.000Z",
+      "featured": true,
+      "externalUrl": "https://webtv.un.org/en/asset/k1a/k1adxsy879"
+    },
+    {
+      "slug": "parental-alienation-latin-america",
+      "title": "Parental Alienation: A New Form of Gender-Based Violence Against Women and Children in Latin America and the Caribbean",
+      "description": "A comprehensive analysis of how parental alienation is used as a tool of gender-based violence in custody disputes across Latin America and the Caribbean.",
+      "category": "publication",
+      "tags": [
+        "parental alienation",
+        "gender-based violence",
+        "Latin America",
+        "children's rights",
+        "women's rights"
+      ],
+      "pubDate": "2024-03-01T00:00:00.000Z",
+      "featured": true,
+      "externalUrl": "https://cladem.org/biblioteca/alienacao-parental--uma-nova-forma-de-violencia-de--genero-contra-mulheres-e-criancas--na-america-latina-e-caribe"
+    },
+    {
+      "slug": "womens-rights-inter-american-commission",
+      "title": "Women's Human Rights and the Inter-American Commission on Human Rights",
+      "description": "An exploration of how the Inter-American human rights system addresses women's rights violations and the role of civil society in advocacy.",
+      "category": "publication",
+      "tags": [
+        "human rights",
+        "women's rights",
+        "Inter-American Commission",
+        "advocacy",
+        "international law"
+      ],
+      "pubDate": "2023-11-15T00:00:00.000Z",
+      "featured": true,
+      "externalUrl": "https://www.travessa.com.br/direitos-humanos-das-mulheres-e-a-comissao-interamericana-de-direitos-humanos/artigo/30dee484-bdf8-42b2-a94d-32474fa288c3"
+    }
+  ],
+  "popularTags": [
+    {
+      "tag": "women's rights",
+      "count": 3
+    },
+    {
+      "tag": "advocacy",
+      "count": 2
+    },
+    {
+      "tag": "international law",
+      "count": 2
+    },
+    {
+      "tag": "parental alienation",
+      "count": 1
+    },
+    {
+      "tag": "gender-based violence",
+      "count": 1
+    },
+    {
+      "tag": "Latin America",
+      "count": 1
+    },
+    {
+      "tag": "children's rights",
+      "count": 1
+    },
+    {
+      "tag": "human rights",
+      "count": 1
+    },
+    {
+      "tag": "Inter-American Commission",
+      "count": 1
+    },
+    {
+      "tag": "CEDAW",
+      "count": 1
+    }
+  ],
+  "categories": [
+    "publication",
+    "research",
+    "speaking",
+    "advocacy"
+  ]
+}

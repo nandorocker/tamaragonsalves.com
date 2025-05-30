@@ -1,36 +1,30 @@
 {
   "name": "tamaragonsalves.com",
+  "type": "module",
   "version": "1.0.0",
-  "description": "Tamara Gonsalves Website",
-  "main": "index.js",
+  "description": "Tamara Gonsalves Website - Astro Site",
   "scripts": {
-    "start": "run-s start:local",
-    "start:local": "npm-run-all clean --parallel dev:*",
-    "start:tunnel": "npm-run-all --parallel start:local tunnel",
-    "build": "run-s clean build:*",
-    "dev:11ty-watch": "eleventy --watch",
-    "dev:11ty-server": "eleventy-dev-server --dir=public",
-    "dev:css": "tailwindcss --input ./src/assets/css/tailwind.css --output ./public/tailwind.css --watch --postcss",
-    "build:11ty": "eleventy",
-    "build:css": "tailwindcss --input ./src/assets/css/tailwind.css --output ./public/tailwind.css --postcss",
-    "clean": "rimraf public",
-    "tunnel": "wait-on http://localhost:8080 && cloudflared tunnel --url http://localhost:8080"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "start": "astro dev",
+    "clean": "rm -rf dist"
   },
-  "keywords": [],
+  "keywords": ["astro", "website", "academic", "portfolio"],
   "author": "Nando Rossi",
   "license": "ISC",
   "dependencies": {
-    "@11ty/eleventy": "^3.1.0",
-    "@11ty/eleventy-dev-server": "^2.0.8",
-    "npm-run-all": "^4.1.5",
-    "rimraf": "^6.0.1",
-    "tailwind-fontawesome": "^0.7.1",
-    "taos": "^1.0.5"
+    "@astrojs/rss": "^4.0.11",
+    "astro": "^5.8.1",
+    "flexsearch": "^0.8.204",
+    "fuse.js": "^7.1.0",
+    "lunr": "^2.3.9",
+    "tailwind-fontawesome": "^0.7.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.3",
-    "tailwindcss": "^3.4.17",
-    "wait-on": "^8.0.3"
+    "tailwindcss": "^3.4.17"
   }
 }
