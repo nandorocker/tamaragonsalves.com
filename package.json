@@ -11,11 +11,17 @@
     "start": "astro dev",
     "clean": "rm -rf dist"
   },
-  "keywords": ["astro", "website", "academic", "portfolio"],
+  "keywords": [
+    "astro",
+    "website",
+    "academic",
+    "portfolio"
+  ],
   "author": "Nando Rossi",
   "license": "ISC",
   "dependencies": {
     "@astrojs/rss": "^4.0.11",
+    "@astrojs/tailwind": "^6.0.2",
     "astro": "^5.8.1",
     "flexsearch": "^0.8.204",
     "fuse.js": "^7.1.0",
@@ -25,6 +31,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.3",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "taos": "^1.0.5"
   }
 }

@@ -3,13 +3,9 @@ const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   darkMode: "class",
-  content: {
-    relative: true,
-    transform: (content) => content.replace(/taos:/g, ""),
-    files: [
-      "./src/**/*.{html,md,11ty.js,liquid,njk,hbs,mustache,ejs,haml,pug,js}",
-    ],
-  },
+  content: [
+    "./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}",
+  ],
   theme: {
     fontFamily: {
       sans: ["Alegreya Sans"],
