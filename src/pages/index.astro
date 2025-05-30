@@ -1,22 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { images, js } from '../data/global';
+import { siteContent } from '../data/site-content';
 ---
 
 <BaseLayout title="Tamara Amoroso Gonsalves, Human Rights Expert">
 	<section id="home"
 	    class="hero bg-gradient-yellow dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 flex items-center w-full h-80vh min-h-[50rem] bg-mustard-50]">
 	    <div class="w-full contain-wide section-margins-medium text-center">
-	        <h3 class="text-indigo-900 dark:text-indigo-300">Human Rights Expert</h3>
-	        <h1 class="text-indigo-900 dark:text-indigo-300">Tamara Amoroso<br> Gonsalves</h1>
-	        <p class=" bigger max-sm:hyphens-auto md:w-4/6 mx-auto">For twenty years, I've dedicated my
-	            career
-	            to human rights law and advocacy,
-	            specializing in
-	            women's rights
-	            and gender justice. <br class="sm:hidden">My work bridges academic research with practical impact,
-	            demonstrated through extensive
-	            publications and leadership roles across governmental and non-governmental sectors.</p>
+	        <h3 class="text-indigo-900 dark:text-indigo-300">{siteContent.hero.subtitle}</h3>
+	        <h1 class="text-indigo-900 dark:text-indigo-300" set:html={siteContent.hero.name.replace(' ', '<br> ')}></h1>
+	        <p class=" bigger max-sm:hyphens-auto md:w-4/6 mx-auto">{siteContent.hero.description}</p>
 	    </div>
 	</section>
 
@@ -44,14 +38,8 @@ import { images, js } from '../data/global';
 	                    class="rounded-md drop-shadow-md hover-shift-sm"></a>
 	        </div>
 	        <div class="ml-auto lg:w-5/6 max-sm:row-start-1">
-	            <h2>About Me</h2>
-	            <p>My educational background in law, with a focus on human rights, and my experience in non-governmental,
-	                governmental, and academic roles have enabled me to excel in advocacy and stakeholder negotiation. As a
-	                spokesperson for various organizations, I have effectively engaged with diverse audiences, ranging from
-	                experts in international human rights bodies to grassroots communities, academics, and public servants.
-	                I have delivered talks and represented institutions on more than 90 occasions, both locally, regionally,
-	                and internationally, on topics spanning children's rights, women's rights (particularly gender-based
-	                violence and sexual and reproductive rights), and consumer rights.</p>
+	            <h2>{siteContent.aboutMe.heading}</h2>
+	            <p>{siteContent.aboutMe.description}</p>
 	        </div>
 	    </div>
 	</section>
@@ -59,58 +47,33 @@ import { images, js } from '../data/global';
 	<section id="background" class="bg-white dark:bg-gray-800 contain-margins-y">
 	    <div class="contain-medium section-margins-medium sm:grid lg:grid-cols-2 sm:gap-x-8">
 	        <div>
-	            <h1 class="max-lg:text-size-h2 max-lg:mb-10">Academic & Professional<wbr> Background</h1>
+	            <h1 class="max-lg:text-size-h2 max-lg:mb-10" set:html={siteContent.background.heading.replace(' ', '<wbr> ')}></h1>
 	        </div>
 
 	        <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto">
-	            <p>I hold a bachelor's degree in Law, a master's in Human Rights, a PhD in Law and Society, and a Graduate
-	                Certificate in Teaching and Learning in Higher Education. I bring extensive experience in human rights
-	                at
-	                national, regional, and international levels, with skills in policy analysis, advocacy on human rights
-	                issues, and delivering lectures on complex topics to diverse audiences, from policymakers and academics
-	                to
-	                grassroots organizations, ensuring complex issues are communicated effectively to drive impactful
-	                outcomes.
-	                Having lived and worked in various countries and being fluent in 4 languages (Portuguese, English,
-	                Spanish, and French), I am highly attuned to and respectful of
-	                socio-cultural diversities.
-	            </p>
-	            <p>My career spans academia, non-profits, and government, including serving in Brazil's Ministry of Justice.
-	                Over the past 20 years, I have worked in Brazilian, Latin American, and Canadian contexts as a lawyer,
-	                gender and human rights expert, lecturer, public servant, and policy analyst. My expertise covers
-	                gender-based violence, sexual and reproductive rights, health law, ultra-processed food advertising
-	                regulation, consumer law, children's rights, and international human rights law. For further details on
-	                my
-	                academic and professional background, please refer to my CV.</p>
-	            <a href="/files/Tamara_Amoroso_Gonsalves_CV.pdf" id="cv"
-	                class="icon-before icon-file-pdf icon-space-sm">Download Complete CV (PDF)</a>
+	            <p>{siteContent.background.paragraph1}</p>
+	            <p>{siteContent.background.paragraph2}</p>
+	            <a href={siteContent.background.cvUrl} id="cv"
+	                class="icon-before icon-file-pdf icon-space-sm">{siteContent.background.cvLinkText}</a>
 	        </div>
 	    </div>
 	</section>
 
 	<section id="publications" class="contain-margins-y bg-soap-50 dark:bg-gray-700 ">
 	    <div class="contain-wide section-margins-medium">
-	        <h1>Books and publications</h1>
+	        <h1>{siteContent.publications.heading}</h1>
 	        <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto">
-	            <h2>Publications</h2>
+	            <h2>{siteContent.publications.publicationsSubheading}</h2>
 
-	            <p>I am dedicated to producing high-quality, community-engaged research and scholarship that addresses
-	                pressing social issues. Over the past 20 years, I have developed interdisciplinary, transsystemic, and
-	                socio-legal research, resulting in 2 published books, 40 book chapters, 11 journal articles, 10 research
-	                and advocacy reports, and 36 opinion pieces. My publications span a broad range of topics, including
-	                children's fundamental rights, women's human rights—particularly gender-based violence and sexual and
-	                reproductive rights—and consumer rights, with a specific focus on product recalls, advertising
-	                regulations, and the regulation of ultra-processed foods.</p>
+	            <p>{siteContent.publications.description}</p>
 
 	            <ul class="bullet">
-	                <li><a href="#background">For full
-	                        list of
-	                        publications, download my CV</a></li>
-	                <li><a href="https://orcid.org/0000-0002-2500-8477" target="_blank"
-	                        class="icon-after icon-external-link icon-space-sm">My ORCID registry</a></li>
+	                <li><a href="#background">{siteContent.publications.cvLinkText}</a></li>
+	                <li><a href={siteContent.publications.orcidUrl} target="_blank"
+	                        class="icon-after icon-external-link icon-space-sm">{siteContent.publications.orcidLinkText}</a></li>
 	            </ul>
 
-	            <h2>Books</h2>
+	            <h2>{siteContent.publications.booksSubheading}</h2>
 	            <div class="book-grid">
 	                <article class="book-item">
 	                    <a data-fslightbox="books" href={`${images}/livro_alienacao_parental.png`}
@@ -245,7 +208,7 @@ import { images, js } from '../data/global';
 	        </div>
 
 	        <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto">
-	            <h2>Other Projects</h2>
+	            <h2>{siteContent.publications.otherProjectsSubheading}</h2>
 
 	            <article class="book-item">
 	                <a data-fslightbox="books" href={`${images}/podcast_gender_305.jpg`} class="hover-shift-sm"><img
@@ -273,17 +236,10 @@ import { images, js } from '../data/global';
 
 	<section id="speaking" class="contain-margins-y bg-white dark:bg-gray-800">
 		<div class="contain-medium section-margins-medium">
-			<h1>Public Speaking</h1>
+			<h1>{siteContent.speaking.heading}</h1>
 			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto mb-12">
-				<p>My educational background in law, with a focus on human rights, and my experience in
-					non-governmental, governmental, and academic roles have enabled me to excel in advocacy and stakeholder
-					negotiation. As a spokesperson for various organizations, I have effectively engaged with diverse
-					audiences, ranging from experts in international human rights bodies to grassroots communities,
-					academics, and public servants. I have delivered talks and represented institutions on more than 90
-					occasions, both locally, regionally, and internationally, on topics spanning children's rights, women's
-					rights (particularly gender-based violence and sexual and reproductive rights), and consumer rights.</p>
-				<p><a href="#contact-me" class="button button-lg icon-before icon-comment-smile icon-space-sm">Contact me
-						for public speaking requests</a></p>
+				<p>{siteContent.speaking.description}</p>
+				<p><a href="#contact-me" class="button button-lg icon-before icon-comment-smile icon-space-sm">{siteContent.speaking.contactButtonText}</a></p>
 			</div>
 		</div>
 
@@ -504,91 +460,53 @@ import { images, js } from '../data/global';
 
 	<section id="services" class="services contain-margins-y bg-violet-50 dark:bg-gray-700">
 		<div class="contain-medium section-margins-medium">
-			<h1 class="dark:text-pink-300">What I <br class="sm:hidden"> can offer</h1>
+			<h1 class="dark:text-pink-300" set:html={siteContent.services.heading.replace(' ', ' <br class="sm:hidden"> ')}></h1>
 			<div class="sm:grid sm:grid-cols-2 gap-x-10 lg:gap-x-16 lg:max-w-screen-lg mx-auto mb-12 list-none">
 				<div>
 					<div class="services-item pb-4">
-						<h3 class="dark:text-pink-300">Courses</h3>
+						<h3 class="dark:text-pink-300">{siteContent.services.courses.title}</h3>
 						<ul class="bullet dark:text-gray-300">
-							<li><strong>Human Rights Systems:</strong> covers international human rights systems (global and
-								regional ones),
-								their functioning, key documents, and advocacy opportunities.</li>
-							<li><strong>Gender and International Human Rights:</strong> offers an overview of the most
-								relevant
-								Human Rights
-								Instruments that protect women and gender-diverse individual's rights.</li>
-							<li><strong>Gender-based violence:</strong> discusses how the concept of gender-based violence
-								has
-								evolved, covering
-								key concepts, legal standards, and public policies.</li>
-							<li><strong>Transnational feminism and international advocacy:</strong> explores feminist
-								transnational activism and
-								its advancements and challenges.</li>
-							<li><strong>Feminist Legal Theories:</strong> presents and discusses the main feminist threads
-								and
-								their socio-legal
-								implications for advancing gender justice.</li>
+							{siteContent.services.courses.items.map(item => (
+								<li><strong>{item.split(':')[0]}:</strong>{item.split(':')[1]}</li>
+							))}
 						</ul>
-						<p class="text-small dark:text-gray-300">
-							Courses can vary in length and depth, depending on your needs. They can also
-							be tailored to specific audiences such as academics, government, and the general
-							public..
-						</p>
+						<p class="text-small dark:text-gray-300">{siteContent.services.courses.note}</p>
 					</div>
 					<div class="services-item pb-4">
-						<h3 class="dark:text-pink-300">Consultancy</h3>
-						<p class="dark:text-gray-300">My consultancy work focuses on policy analysis, advocacy, research,
-							and capacity-building in
-							human
-							rights, with a particular emphasis on gender-based violence, sexual and reproductive rights,
-							health
-							law, and children's rights. Leveraging my academic foundation—a bachelor's in Law, a master's in
-							Human Rights, a PhD in Law and Society, and a graduate certificate in teaching—I provide
-							insightful,
-							evidence-based solutions tailored to diverse contexts. Grounded on a deep commitment to
-							advancing
-							equity and justice, I can:</p>
+						<h3 class="dark:text-pink-300">{siteContent.services.consultancy.title}</h3>
+						<p class="dark:text-gray-300">{siteContent.services.consultancy.description}</p>
 						<ul class="bullet dark:text-gray-300">
-							<li>Develop strategies for advocacy;</li>
-							<li>Conduct training workshops;</li>
-							<li>Craft comprehensive legal and policy analyses.</li>
+							{siteContent.services.consultancy.items.map(item => (
+								<li>{item}</li>
+							))}
 						</ul>
 					</div>
 				</div>
 
 				<div>
 					<div class="services-item pb-4">
-						<h3 class="dark:text-pink-300">Lawyering</h3>
+						<h3 class="dark:text-pink-300">{siteContent.services.lawyering.title}</h3>
 						<ul class="bullet dark:text-gray-300">
-							<li>Legal opinions on gender based violence, coercive control, domestic abuse, intimate partner
-								violence, children's rights, human rights; </li>
-							<li>Expert witness on gender based violence, coercive control, domestic abuse, intimate partner
-								violence, children's rights, abusive litigation, parental alienation;</li>
-							<li>Legal services on Hague Convention cases involving Brazilian citizens;</li>
-							<li>Family law and divorce in contexts of domestic abuse;</li>
+							{siteContent.services.lawyering.items.map(item => (
+								<li>{item}</li>
+							))}
 						</ul>
 					</div>
 					<div class="services-item pb-4">
-						<h3 class="dark:text-pink-300">Mentorship</h3>
-						<p class="dark:text-gray-300">I can support you with the following:</p>
+						<h3 class="dark:text-pink-300">{siteContent.services.mentorship.title}</h3>
+						<p class="dark:text-gray-300">{siteContent.services.mentorship.description}</p>
 						<ul class="bullet dark:text-gray-300">
-							<li>Applying for graduate studies;</li>
-							<li>Preparing academic proposals;</li>
-							<li>Developing academic work. </li>
+							{siteContent.services.mentorship.items.map(item => (
+								<li>{item}</li>
+							))}
 						</ul>
 					</div>
 					<div class="services-item pb-4">
-						<h3 class="dark:text-pink-300">Advocacy Work</h3>
+						<h3 class="dark:text-pink-300">{siteContent.services.advocacy.title}</h3>
 						<ul class="bullet dark:text-gray-300">
-							<li>Elaboration of shadow reports to United Nations treaty bodies, and MESECVI (follow-up
-								Mechanism
-								of the Belém do Pará Convention - Organization of American Estates); </li>
-							<li>In-person advocacy - for more successful results;</li>
-							<li>Institutional representation in public hearings;</li>
-							<li>Articulation, preparation, and submission of Amicus Curiae both at the national and
-								international levels;</li>
-							<li>Workshops for non-profit organizations and corporations;</li>
-							<li>Moderation of academic and institutional events.</li>
+							{siteContent.services.advocacy.items.map(item => (
+								<li>{item}</li>
+							))}
 						</ul>
 					</div>
 				</div>
@@ -598,19 +516,15 @@ import { images, js } from '../data/global';
 
 	<section id="contact-me" class="contain-margins-y bg-white dark:bg-gray-800">
 		<div class="contain-medium section-margins-medium">
-			<h1 class="dark:text-pink-300">Contact me</h1>
+			<h1 class="dark:text-pink-300">{siteContent.contact.heading}</h1>
 			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto mb-12">
-				<p class="dark:text-gray-300">Let's talk! For inquiries or collaboration opportunities, reach out via email
-					at [email] or connect with
-					me
-					on LinkedIn. I aim to respond within 48 hours.</p>
+				<p class="dark:text-gray-300">{siteContent.contact.description}</p>
 
 				<p><a id="email-link" href="#"
-						class="max-sm:block button button-lg md:button-xl mb-8 icon-before icon-comment-smile icon-space-sm">Send
-						me an email</a>
+						class="max-sm:block button button-lg md:button-xl mb-8 icon-before icon-comment-smile icon-space-sm">{siteContent.contact.emailButtonText}</a>
 				</p>
 
-				<h4 class="max-sm:text-center dark:text-pink-300">Reach Me on Social Media</h4>
+				<h4 class="max-sm:text-center dark:text-pink-300">{siteContent.contact.socialMediaHeading}</h4>
 				<ul class="flex flex-row max-sm:justify-center items-start gap-8 max-sm:mt-8">
 					<li><a href="https://www.instagram.com/tamaramoroso" target="_blank" rel="noopener noreferrer"
 							title="Threads"><img src={`${images}/social-instagram.svg`} class="w-12 hover-shift-sm"
