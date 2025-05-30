@@ -18,23 +18,30 @@ const {
   date,
   linkText = "Watch on site"
 } = Astro.props;
+
+// Format date once at build time for better performance
+const formattedDate = new Date(date).toLocaleDateString('en-US', { 
+  year: 'numeric', 
+  month: 'long', 
+  day: 'numeric' 
+});
+
+// Construct image path once
+const imagePath = `${images}/${thumbnailUrl}`;
 ---
 
 <div class="video-card">
-  <a href={videoUrl} target="_blank" aria-label={`Watch video: ${title}`}>
+  <a href={videoUrl} target="_blank" aria-label={`Watch video: ${title}`} rel="noopener noreferrer">
     <div class="video-thumbnail-container">
-      <img src={`${images}/${thumbnailUrl}`} alt={`Video thumbnail for ${title}`}>
+      <img src={imagePath} alt={`Video thumbnail for ${title}`} loading="lazy">
     </div>
   </a>
-  <time datetime={date} class="video-date">{new Date(date).toLocaleDateString('en-US', { 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
-  })}</time>
+  <time datetime={date} class="video-date">{formattedDate}</time>
   <h5 class="video-title">{title}</h5>
   <p class="video-description">{description}</p>
   <a href={videoUrl} target="_blank" 
-     class="video-link icon-after icon-external-link icon-space-sm">
+     class="video-link icon-after icon-external-link icon-space-sm"
+     rel="noopener noreferrer">
     {linkText}
   </a>
 </div>
