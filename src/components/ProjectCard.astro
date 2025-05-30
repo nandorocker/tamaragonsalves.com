@@ -1,0 +1,47 @@
+---
+import { images } from '../data/global';
+
+export interface Props {
+  title: string;
+  subtitle?: string;
+  description: string;
+  imageUrl: string;
+  imageAlt: string;
+  linkUrl?: string;
+  linkText?: string;
+  linkIcon?: string;
+}
+
+const { 
+  title, 
+  subtitle,
+  description, 
+  imageUrl, 
+  imageAlt, 
+  linkUrl,
+  linkText = "Visit Project",
+  linkIcon = "icon-external-link"
+} = Astro.props;
+---
+
+<article class="book-item">
+  <a data-fslightbox="books" href={`${images}/${imageUrl}`} class="hover-shift-sm">
+    <img src={`${images}/${imageUrl}`} alt={imageAlt} srcset="" class="book-image">
+  </a>
+
+  <div class="book-info">
+    <div>
+      <h5 class="mb-0 book-title">{title}</h5>
+      {subtitle && <p class="mb-0"><em>{subtitle}</em></p>}
+    </div>
+    <p class="book-description">{description}</p>
+    
+    {linkUrl && (
+      <a href={linkUrl} target="_blank" 
+         class={`icon-after ${linkIcon} icon-space-sm`}
+         rel="noopener noreferrer">
+        {linkText}
+      </a>
+    )}
+  </div>
+</article>

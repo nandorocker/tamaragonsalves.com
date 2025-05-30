@@ -1,9 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BookCard from '../components/BookCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 import { images, js } from '../data/global';
 import { siteContent } from '../data/site-content';
-import { books, otherProjects } from '../data/books';
+import { books } from '../data/books';
+import { projects } from '../data/projects';
 ---
 
 <BaseLayout title="Tamara Amoroso Gonsalves, Human Rights Expert">
@@ -97,18 +99,16 @@ import { books, otherProjects } from '../data/books';
 	        <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto">
 	            <h2>{siteContent.publications.otherProjectsSubheading}</h2>
 
-	            {otherProjects.map(project => (
-	                <BookCard 
+	            {projects.map(project => (
+	                <ProjectCard 
 	                    title={project.title}
-	                    author={project.author}
+	                    subtitle={project.subtitle}
 	                    description={project.description}
 	                    imageUrl={project.imageUrl}
 	                    imageAlt={project.imageAlt}
-	                    titleUrl={project.titleUrl}
-	                    downloadLinks={project.downloadLinks}
-	                    interviewLinks={project.interviewLinks}
-	                    purchaseLinks={project.purchaseLinks}
-	                    purchaseText={project.purchaseText}
+	                    linkUrl={project.linkUrl}
+	                    linkText={project.linkText}
+	                    linkIcon={project.linkIcon}
 	                />
 	            ))}
 	        </div>
