@@ -13,6 +13,27 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+// Get related posts
+const allBlogEntries = await getCollection('blog');
+const currentPost = {
+  slug: entry.slug,
+  tags: entry.data.tags,
+  category: entry.data.category
+};
+
+const relatedPosts = allBlogEntries
+  .filter(item => item.slug !== entry.slug)
+  .map(item => {
+    const commonTags = item.data.tags.filter(tag => entry.data.tags.includes(tag));
+    return {
+      ...item,
+      relevanceScore: commonTags.length + (item.data.category === entry.data.category ? 1 : 0)
+    };
+  })
+  .filter(item => item.relevanceScore > 0)
+  .sort((a, b) => b.relevanceScore - a.relevanceScore)
+  .slice(0, 3);
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.description}>
@@ -64,8 +85,40 @@ const { Content } = await entry.render();
         <Content />
       </div>
       
+      <!-- Related Posts Section -->
+      {relatedPosts.length > 0 && (
+        <section style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #eee;">
+          <h3 style="color: #333; margin-bottom: 1.5rem;">Related Posts</h3>
+          <div style="display: grid; gap: 1.5rem;">
+            {relatedPosts.map(post => (
+              <article style="border: 1px solid #e5e7eb; border-radius: 0.5rem; padding: 1rem; background: #fafafa;">
+                <h4 style="margin: 0 0 0.5rem 0;">
+                  <a href={`/blog/${post.slug}`} style="color: #333; text-decoration: none;">
+                    {post.data.title}
+                  </a>
+                </h4>
+                <div style="display: flex; gap: 0.5rem; align-items: center; color: #666; font-size: 0.8rem; margin-bottom: 0.5rem;">
+                  <span style="background: #f0f9ff; color: #0369a1; padding: 0.125rem 0.375rem; border-radius: 0.25rem; text-transform: capitalize;">
+                    {post.data.category}
+                  </span>
+                  <span style="color: #16a34a; font-size: 0.7rem;">
+                    {post.relevanceScore} match{post.relevanceScore !== 1 ? 'es' : ''}
+                  </span>
+                </div>
+                <p style="color: #4b5563; font-size: 0.9rem; line-height: 1.4; margin: 0;">
+                  {post.data.description.length > 120 ? post.data.description.substring(0, 120) + '...' : post.data.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+      
       <footer style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #eee;">
-        <a href="/blog" style="color: #2563eb; text-decoration: none;">← Back to Blog</a>
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <a href="/blog" style="color: #2563eb; text-decoration: none;">← Back to Blog</a>
+          <a href="/search" style="color: #2563eb; text-decoration: none;">🔍 Search More Posts</a>
+        </div>
       </footer>
     </article>
   </div>
