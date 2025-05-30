@@ -1,0 +1,111 @@
+---
+import { images } from '../data/global';
+
+export interface Props {
+  title: string;
+  author: string;
+  description: string;
+  imageUrl: string;
+  imageAlt: string;
+  titleUrl?: string;
+  downloadLinks?: Array<{
+    text: string;
+    url: string;
+    icon?: string;
+  }>;
+  interviewLinks?: Array<{
+    text: string;
+    url: string;
+    icon?: string;
+  }>;
+  purchaseLinks?: Array<{
+    text: string;
+    url: string;
+  }>;
+  purchaseText?: string;
+}
+
+const { 
+  title, 
+  author, 
+  description, 
+  imageUrl, 
+  imageAlt, 
+  titleUrl,
+  downloadLinks = [],
+  interviewLinks = [],
+  purchaseLinks = [],
+  purchaseText
+} = Astro.props;
+---
+
+<article class="book-item">
+  <a data-fslightbox="books" href={`${images}/${imageUrl}`} class="hover-shift-sm">
+    <img src={`${images}/${imageUrl}`} alt={imageAlt} srcset="" class="book-image">
+  </a>
+
+  <div class="book-info">
+    <div>
+      <h5 class="mb-0 book-title">
+        {titleUrl ? (
+          <a href={titleUrl} target="_blank">{title}</a>
+        ) : (
+          title
+        )}
+      </h5>
+      <p class="mb-0"><em>{author}</em></p>
+    </div>
+    <p class="book-description">{description}</p>
+    
+    {downloadLinks.length > 0 && (
+      <div>
+        Download the book:
+        <ul>
+          {downloadLinks.map(link => (
+            <li>
+              <a href={link.url} target="_blank" 
+                 class={`icon-before ${link.icon || 'icon-file-pdf'} icon-space-sm`}
+                 rel="noopener noreferrer">
+                {link.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {interviewLinks.length > 0 && (
+      <div>
+        Listen to my interviews:
+        <ul>
+          {interviewLinks.map(link => (
+            <li>
+              <a href={link.url} target="_blank" 
+                 class={`icon-before ${link.icon || 'icon-video'} icon-space-sm`}>
+                {link.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {purchaseLinks.length > 0 && (
+      <div>
+        {purchaseText && <>{purchaseText}<br></>}
+        {purchaseLinks.map((link, index) => (
+          <>
+            <a href={link.url} target="_blank" rel="noopener noreferrer">{link.text}</a>
+            {index < purchaseLinks.length - 1 ? ' / ' : ''}
+          </>
+        ))}
+      </div>
+    )}
+
+    {downloadLinks.length === 0 && interviewLinks.length === 0 && purchaseLinks.length === 0 && titleUrl && (
+      <a href={titleUrl} class="icon-before icon-file-pdf icon-space-sm">
+        Download Full Text (PDF)
+      </a>
+    )}
+  </div>
+</article>

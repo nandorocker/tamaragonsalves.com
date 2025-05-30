@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import BookCard from '../components/BookCard.astro';
 import { images, js } from '../data/global';
 import { siteContent } from '../data/site-content';
+import { books, otherProjects } from '../data/books';
 ---
 
 <BaseLayout title="Tamara Amoroso Gonsalves, Human Rights Expert">
@@ -75,162 +77,40 @@ import { siteContent } from '../data/site-content';
 
 	            <h2>{siteContent.publications.booksSubheading}</h2>
 	            <div class="book-grid">
-	                <article class="book-item">
-	                    <a data-fslightbox="books" href={`${images}/livro_alienacao_parental.png`}
-	                        class="hover-shift-sm"><img src={`${images}/livro_alienacao_parental.png`}
-	                            alt="Cover of the book." srcset="" class="book-image"></a>
-
-	                    <div class="book-info">
-	                        <div>
-	                            <h5 class="mb-0 book-title"><a
-	                                    href="https://www.amazon.com/Direitos-Humanos-Mulheres-Tamara-Amoroso/dp/8502187805/ref=sr_1_1?crid=36W7YBK85BINN&dib=eyJ2IjoiMSJ9.KwVNe-F1ZUfmrHYW8LSCw-w_CZPuVGIqMQkmkEH6Nbc51LhbYGokNNxgGei35xefXgO_d0dgL-H7LwuOxd0SsA.zTgcc4F9TJUAS7BOAemKVvgbn-2blSP2TE97WhxRrr0&dib_tag=se&keywords=Tamara+Amoroso+Gon%C3%A7alves&qid=1734551323&sprefix=tamara+amoroso+gon%C3%A7alves%2Caps%2C68&sr=8-1">
-	                                    Alienação Parental: Uma nova forma de violência de gênero contra mulheres e crianças
-	                                    na América Latina e Caribe
-	                                </a>
-	                            </h5>
-	                            <p class="mb-0"><em>Tamara Amoroso Gonçalves</em></p>
-	                        </div>
-	                        <p class="book-description">This book examines how the false
-	                            concept of "parental alienation" is used to undermine women's reports of abuse and remove
-	                            custody from protective mothers in Latin America and the Caribbean. Though presented as
-	                            psychological, it functions as institutional violence that hides domestic abuse and
-	                            reinforces gender stereotypes. Based on a regional seminar led by CLADEM, Equality Now, and
-	                            the Global Campaign for Equality in Family Law, this interdisciplinary volume analyzes legal
-	                            trends and case studies from five countries, exposing coordinated efforts by anti-rights
-	                            groups to roll back feminist advances in family law. Discussions held in Portuguese,
-	                            automated translation available. </p>
-	                        <div>
-	                            Download the book:
-	                            <ul>
-	                                <li>
-	                                    <a href="https://cladem.org/biblioteca/alienacao-parental--uma-nova-forma-de-violencia-de--genero-contra-mulheres-e-criancas--na-america-latina-e-caribe"
-	                                        target="_blank" class="icon-before icon-file-pdf icon-space-sm">Read at
-	                                        Biblioteca
-	                                        CLADEM</a>
-	                                </li>
-	                                <li>
-	                                    <a href="https://www.direitorp.usp.br/wp-content/uploads/2025/03/Cladem-Digital-20022025.pdf?gathStatIcon=true"
-	                                        target="_blank" class="icon-before icon-file-pdf icon-space-sm"
-	                                        rel="noopener noreferrer">Direct Download (USP Direito)</a>
-	                                </li>
-	                            </ul>
-	                            Listen to my interviews:
-	                            <ul>
-	                                <li>
-	                                    <a href="https://jornal.usp.br/campus-ribeirao-preto/obra-discute-como-a-alienacao-parental-se-tornou-arma-contra-maes-e-criancas-na-america-latina/"
-	                                        target="_blank" class="icon-before icon-video icon-space-sm">
-	                                        Listen To My Interview (Rádio USP)
-	                                    </a>
-	                                </li>
-	                                <li>
-	                                    <a href="https://www.youtube.com/watch?v=ypz-RGhrXX8" target="_blank"
-	                                        class="icon-before icon-video icon-space-sm">
-	                                        Listen to Podcast "Papo Jus" #26, from AJUFESP, on Protecting Brazilian mothers
-	                                        living abroad.
-	                                    </a>
-	                                </li>
-	                                <li>
-	                                    <a href="https://www.youtube.com/watch?v=zCPBM4gra9g" target="_blank"
-	                                        class="icon-before icon-video icon-space-sm">
-	                                        I spoke to TRF3justica, the official channel for the Federal Court in Brazil on
-	                                        Parental Alienation and the Hague Convention.
-	                                    </a>
-	                                </li>
-	                            </div>
-	                    </div>
-	                </article>
-
-	                <article class="book-item">
-	                    <a data-fslightbox="books" href={`${images}/livro_direitos_humanos_mulheres.jpg`}
-	                        class="hover-shift-sm"><img src={`${images}/livro_direitos_humanos_mulheres.jpg`}
-	                            alt="Cover of the book titled 'Direitos Humanos das Mulheres e a Comissão Interamericana de Direitos Humanos'"
-	                            srcset="" class="book-image"></a>
-
-	                    <div class="book-info">
-	                        <div>
-	                            <h5 class="mb-0 book-title"><a
-	                                    href="https://www.amazon.com/Direitos-Humanos-Mulheres-Tamara-Amoroso/dp/8502187805/ref=sr_1_1?crid=36W7YBK85BINN&dib=eyJ2IjoiMSJ9.KwVNe-F1ZUfmrHYW8LSCw-w_CZPuVGIqMQkmkEH6Nbc51LhbYGokNNxgGei35xefXgO_d0dgL-H7LwuOxd0SsA.zTgcc4F9TJUAS7BOAemKVvgbn-2blSP2TE97WhxRrr0&dib_tag=se&keywords=Tamara+Amoroso+Gon%C3%A7alves&qid=1734551323&sprefix=tamara+amoroso+gon%C3%A7alves%2Caps%2C68&sr=8-1">
-	                                    Direitos humanos das mulheres e a comissão Interamericana de
-	                                    direitos
-	                                    humanos
-	                                </a>
-	                            </h5>
-	                            <p class="mb-0"><em>Tamara Amoroso Gonçalves</em></p>
-	                        </div>
-	                        <p class="book-description">My book Direitos Humanos das Mulheres e a Comissão Interamericana de
-	                            Direitos Humanos,
-	                            (Saraiva,
-	                            2013) analyzes quantitative and qualitative data related to cases of women's human rights
-	                            violations presented to the Inter-American Commission of Human Rights, identifying the
-	                            regional
-	                            agenda that feminist organizations have pushed through gender-sensitive strategic
-	                            litigation.
-	                            This work combined statistical analysis and case analysis, in pioneering jurimetrics work
-	                            done
-	                            in Brazil.</p>
-	                        <div>Buy This Book<br> <a
-	                                    href="https://www.amazon.com/Direitos-Humanos-Mulheres-Tamara-Amoroso/dp/8502187805/ref=sr_1_1?crid=36W7YBK85BINN&dib=eyJ2IjoiMSJ9.KwVNe-F1ZUfmrHYW8LSCw-w_CZPuVGIqMQkmkEH6Nbc51LhbYGokNNxgGei35xefXgO_d0dgL-H7LwuOxd0SsA.zTgcc4F9TJUAS7BOAemKVvgbn-2blSP2TE97WhxRrr0&dib_tag=se&keywords=Tamara+Amoroso+Gon%C3%A7alves&qid=1734551323&sprefix=tamara+amoroso+gon%C3%A7alves%2Caps%2C68&sr=8-1"
-	                                    target="_blank">Amazon (USA)</a> / <a
-	                                    href="https://www.travessa.com.br/direitos-humanos-das-mulheres-e-a-comissao-interamericana-de-direitos-humanos/artigo/30dee484-bdf8-42b2-a94d-32474fa288c3?srsltid=AfmBOordklfKb68qtIrO5jAXgujXynywUFEDtQ8M38iLFgvj-L7h95YM"
-	                                    target="_blank" rel="noopener noreferrer">Travessa (Brazil)</a></div>
-	                    </div>
-	                </article>
-	                <article class="book-item">
-	                    <a data-fslightbox="books" href={`${images}/livro_aborto_e_religiao.png`}
-	                        class="hover-shift-sm"><img src={`${images}/livro_aborto_e_religiao.png`}
-	                            alt="Cover of the book titled 'Aborto e Religião nos Tribunais Brasileiros'" srcset=""
-	                            class="book-image"></a>
-	                    <div class="book-info">
-	                        <div>
-	                            <h5 class="mb-0 book-title"><a
-	                                    href="/files/Aborto_religiao_nos_tribunais_brasileiros.pdf">Aborto e Religião
-	                                    nos Tribunais
-	                                    Brasileiros</a></h5>
-	                            <p class="mb-0"><em>Tamara Amoroso Gonçalves (coord.), Thais de Souza Lapa</em></p>
-	                        </div>
-	                        <p class="book-description">In this MacArthur-Foundation-funded book, Aborto e Religião nos
-	                            Tribunais Brasileiros (2008),
-	                            I
-	                            discuss the influence of religious arguments in abortion cases decided by Brazilian
-	                            courts—in a
-	                            country where abortion is illegal and is the 5th cause of maternal death. This research was
-	                            grounded on feminist scholarship, sociological analysis of Catholic religion, and
-	                            statistical
-	                            data on court decisions. This was a pioneering work combining socio-legal feminist research
-	                            and
-	                            jurimetrics, when the latter was rarely used in Brazil. Available in Portuguese only. </p>
-	                        <a href="/files/Aborto_religiao_nos_tribunais_brasileiros.pdf"
-	                            class="icon-before icon-file-pdf icon-space-sm">Download Full Text
-	                            (PDF)</a>
-	                    </div>
-	                </article>
+	                {books.map(book => (
+	                    <BookCard 
+	                        title={book.title}
+	                        author={book.author}
+	                        description={book.description}
+	                        imageUrl={book.imageUrl}
+	                        imageAlt={book.imageAlt}
+	                        titleUrl={book.titleUrl}
+	                        downloadLinks={book.downloadLinks}
+	                        interviewLinks={book.interviewLinks}
+	                        purchaseLinks={book.purchaseLinks}
+	                        purchaseText={book.purchaseText}
+	                    />
+	                ))}
 	            </div>
 	        </div>
 
 	        <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto">
 	            <h2>{siteContent.publications.otherProjectsSubheading}</h2>
 
-	            <article class="book-item">
-	                <a data-fslightbox="books" href={`${images}/podcast_gender_305.jpg`} class="hover-shift-sm"><img
-	                        src={`${images}/podcast_gender_305.jpg`} alt="Logo of the Gender 305 Podcast" srcset=""
-	                        class="book-image"></a>
-	                <div class="book-info">
-	                    <div>
-	                        <h5 class="mb-0 book-title">Gender 305 Podcast</h5>
-	                        <p><em>Podcast series on Gender and Human Rights. </em></p>
-	                    </div>
-	                    <p class="book-description">At UVIC's Gender Studies Department, I taught Gender and International
-	                        Human Rights in fall 2022
-	                        and 2023, where students created podcast episodes as their final assignments with CFUV's
-	                        technical support. These episodes, now being published and aired through CFUV, explore diverse
-	                        topics including abortion rights, LGBTQ2+ and non-binary rights, gender-based discrimination in
-	                        AI, and violence against Indigenous women in Canada. We invite you to listen and engage in these
-	                        important conversations.</p>
-	                    <a href="https://open.spotify.com/show/0wXLKKJbgFwjnHdevQYnYW?si=400a91e1597a4f40" target="_blank"
-	                        class="icon-after icon-external-link icon-space-sm">Listen and Subscribe
-	                        (Spotify)</a>
-	                </div>
-	            </article>
+	            {otherProjects.map(project => (
+	                <BookCard 
+	                    title={project.title}
+	                    author={project.author}
+	                    description={project.description}
+	                    imageUrl={project.imageUrl}
+	                    imageAlt={project.imageAlt}
+	                    titleUrl={project.titleUrl}
+	                    downloadLinks={project.downloadLinks}
+	                    interviewLinks={project.interviewLinks}
+	                    purchaseLinks={project.purchaseLinks}
+	                    purchaseText={project.purchaseText}
+	                />
+	            ))}
 	        </div>
 	</section>
 
