@@ -1,0 +1,93 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const blogEntries = await getCollection('blog');
+// Sort by publication date, newest first
+const sortedEntries = blogEntries.sort((a, b) => 
+  new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+);
+---
+
+<BaseLayout title="Blog - Tamara Amoroso Gonsalves" description="Publications, research, and insights on human rights, gender justice, and advocacy work.">
+  <div style="max-width: 900px; margin: 0 auto; padding: 2rem; margin-top: 6rem;">
+    <header style="margin-bottom: 3rem; text-align: center;">
+      <h1 style="color: #333; margin-bottom: 1rem;">Blog & Publications</h1>
+      <p style="color: #666; font-size: 1.1rem;">Publications, research, and insights on human rights, gender justice, and advocacy work</p>
+      <div style="margin-top: 2rem;">
+        <a href="/" style="color: #2563eb; text-decoration: none;">← Back to Home</a>
+      </div>
+    </header>
+
+    <div style="display: grid; gap: 2rem;">
+      {sortedEntries.map(entry => (
+        <article style="border: 1px solid #e5e7eb; border-radius: 0.5rem; padding: 1.5rem; background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+          <header style="margin-bottom: 1rem;">
+            <h2 style="margin: 0 0 0.5rem 0;">
+              <a href={`/blog/${entry.slug}`} style="color: #333; text-decoration: none; hover: color: #2563eb;">
+                {entry.data.title}
+              </a>
+            </h2>
+            <div style="display: flex; gap: 1rem; align-items: center; color: #666; font-size: 0.9rem; margin-bottom: 1rem;">
+              <time datetime={entry.data.pubDate.toISOString()}>
+                {entry.data.pubDate.toLocaleDateString('en-US', { 
+                  year: 'numeric', 
+                  month: 'long', 
+                  day: 'numeric' 
+                })}
+              </time>
+              <span>•</span>
+              <span style="background: #f0f9ff; color: #0369a1; padding: 0.25rem 0.5rem; border-radius: 0.25rem; text-transform: capitalize;">
+                {entry.data.category}
+              </span>
+              {entry.data.featured && (
+                <>
+                  <span>•</span>
+                  <span style="background: #fef3c7; color: #92400e; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-weight: 500; font-size: 0.8rem;">
+                    ⭐ Featured
+                  </span>
+                </>
+              )}
+            </div>
+          </header>
+          
+          <p style="color: #374151; line-height: 1.6; margin-bottom: 1rem;">
+            {entry.data.description}
+          </p>
+          
+          {entry.data.tags && (
+            <div style="margin-bottom: 1rem;">
+              {entry.data.tags.slice(0, 4).map(tag => (
+                <span style="background: #f3f4f6; color: #374151; padding: 0.25rem 0.5rem; border-radius: 0.25rem; margin-right: 0.5rem; font-size: 0.8rem;">
+                  {tag}
+                </span>
+              ))}
+              {entry.data.tags.length > 4 && (
+                <span style="color: #666; font-size: 0.8rem;">+{entry.data.tags.length - 4} more</span>
+              )}
+            </div>
+          )}
+          
+          <div style="display: flex; gap: 1rem; align-items: center;">
+            <a href={`/blog/${entry.slug}`} 
+               style="color: #2563eb; text-decoration: none; font-weight: 500;">
+              Read More →
+            </a>
+            {entry.data.externalUrl && (
+              <a href={entry.data.externalUrl} target="_blank" rel="noopener noreferrer" 
+                 style="color: #059669; text-decoration: none; font-weight: 500;">
+                📎 External Link
+              </a>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+    
+    {sortedEntries.length === 0 && (
+      <div style="text-align: center; padding: 3rem; color: #666;">
+        <p>No blog entries found.</p>
+      </div>
+    )}
+  </div>
+</BaseLayout>

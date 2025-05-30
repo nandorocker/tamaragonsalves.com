@@ -1,0 +1,52 @@
+---
+// Header component for site navigation
+// Converted from 11ty nav.njk include
+---
+
+<header id="top_nav" class="top-nav fixed w-full top-0 z-10">
+    <div class="flex flex-col space-y-3 md:justify-between items-start w-full pt-2.5 md:h-20">
+        <div class="flex items-center justify-between lowercase" aria-label="Global">
+            <!-- Mobile nav toggle -->
+            <div class="flex md:hidden">
+                <button id="menu_toggle" type="button"
+                    class="inline-flex items-center justify-center ml-5 mb-2.5 py-2.5 rounded-md">
+                    <span class="sr-only">Open main menu</span>
+                    <svg id="menu_icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation menu -->
+        <nav id="menu"
+            class="hidden md:flex flex-col md:flex-row md:flex-1 md:justify-between max-md:space-y-3 w-full px-5 md:px-10 max-md:pb-5">
+            <a href="/#about-me">About</a>
+            <a href="/#publications">Publications</a>
+            <a href="/#speaking">Speaking</a>
+            <a href="/#services">What I Offer</a>
+            <a href="/#contact-me">Contact</a>
+            <a href="/blog">Blog</a>
+
+            <!-- Dark mode toggle button -->
+            <div class="flex items-start pt-2">
+                <button id="theme-toggle" type="button"
+                    class="inline-flex items-center justify-center rounded-md text-pink-700 hover:text-pink-900 dark:text-pink-300 dark:hover:text-pink-100 transition-colors duration-200"
+                    aria-label="Toggle dark mode">
+                    <!-- Sun icon - visible in dark mode -->
+                    <svg id="sun-icon" class="h-5 w-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <!-- Moon icon - visible in light mode -->
+                    <svg id="moon-icon" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+    </div>
+</header>
