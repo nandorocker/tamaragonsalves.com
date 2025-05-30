@@ -2,38 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.tamaragonsalves.com</loc>
-    <lastmod>2025-05-30T22:02:40.029Z</lastmod>
+    <lastmod>2025-05-30T22:38:31.740Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://www.tamaragonsalves.com/blog</loc>
-    <lastmod>2025-05-30T22:02:40.029Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.tamaragonsalves.com/search</loc>
-    <lastmod>2025-05-30T22:02:40.029Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.tamaragonsalves.com/blog/parental-alienation-latin-america</loc>
-    <lastmod>2025-05-30T22:02:40.029Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.tamaragonsalves.com/blog/womens-rights-inter-american-commission</loc>
-    <lastmod>2025-05-30T22:02:40.029Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.tamaragonsalves.com/blog/cedaw-brazil-review-2024</loc>
-    <lastmod>2025-05-30T22:02:40.029Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
   </url>
 </urlset>

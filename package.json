@@ -20,12 +20,8 @@
   "author": "Nando Rossi",
   "license": "ISC",
   "dependencies": {
-    "@astrojs/rss": "^4.0.11",
     "@astrojs/tailwind": "^6.0.2",
     "astro": "^5.8.1",
-    "flexsearch": "^0.8.204",
-    "fuse.js": "^7.1.0",
-    "lunr": "^2.3.9",
     "tailwind-fontawesome": "^0.7.1"
   },
   "devDependencies": {
