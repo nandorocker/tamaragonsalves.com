@@ -1,7 +1,7 @@
 // Global data and utility functions for the site
-export const images = '/assets/images';
-export const js = '/assets/js';
-export const vendor = '/assets/vendor';
+export const images = '/images';
+export const js = '/js';
+export const vendor = '/vendor';
 
 // Equivalent to the {% year %} shortcode in 11ty
 export function getCurrentYear(): number {
