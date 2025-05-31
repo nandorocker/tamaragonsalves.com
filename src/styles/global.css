@@ -380,6 +380,15 @@
     @apply hover:translate-x-2 hover:translate-y-2;
   }
 
+  /* Mobile menu state for language switcher */
+  .mobile-menu-open #language-switcher-trigger {
+    @apply text-white border-white;
+  }
+
+  .mobile-menu-open #language-switcher-trigger:hover {
+    @apply text-purple-100 border-purple-100;
+  }
+
   /* Gradients */
   .bg-gradient-yellow {
     background: rgb(255, 244, 220);
@@ -409,5 +418,14 @@
       rgba(31, 41, 55, 1) 80%,
       rgba(55, 65, 81, 1) 100%
     );
+  }
+
+  /* Mobile menu state for language switcher */
+  .mobile-menu-open #language-switcher-trigger {
+    @apply text-white border-white;
+  }
+
+  .mobile-menu-open #language-switcher-trigger:hover {
+    @apply text-purple-100 border-purple-100;
   }
 }
