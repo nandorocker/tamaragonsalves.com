@@ -40,22 +40,7 @@ const langPrefix = lang === 'en' ? '' : `/${lang}`;
             <a href={`${langPrefix}/#services`}>{t('navServices')}</a>
             <a href={`${langPrefix}/#contact-me`}>{t('navContact')}</a>
 
-            <!-- Language switcher and Dark mode toggle -->
-            <div class="flex items-start gap-4 pt-2">
-                <!-- Language switcher -->
-                <div class="flex items-center gap-2">
-                    {lang === 'en' ? (
-                        <a href="/pt/" class="text-sm text-pink-700 hover:text-pink-900 dark:text-pink-300 dark:hover:text-pink-100 transition-colors duration-200">
-                            PT
-                        </a>
-                    ) : (
-                        <a href="/en/" class="text-sm text-pink-700 hover:text-pink-900 dark:text-pink-300 dark:hover:text-pink-100 transition-colors duration-200">
-                            EN
-                        </a>
-                    )}
-                </div>
-                
-                <!-- Dark mode toggle button -->
+            <!-- Dark mode toggle -->
             <div class="flex items-start pt-2">
                 <button id="theme-toggle" type="button"
                     class="inline-flex items-center justify-center rounded-md text-pink-700 hover:text-pink-900 dark:text-pink-300 dark:hover:text-pink-100 transition-colors duration-200"
