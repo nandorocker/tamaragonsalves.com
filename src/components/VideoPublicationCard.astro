@@ -1,6 +1,6 @@
 ---
 import { images } from '../data/global';
-import { siteContent } from '../data/site-content';
+import { useTranslations } from '../i18n/index';
 
 export interface Props {
   title: string;
@@ -17,8 +17,11 @@ const {
   videoUrl,
   thumbnailUrl,
   date,
-  linkText = siteContent.components.videoPublicationCard.linkText
+  linkText
 } = Astro.props;
+
+const t = useTranslations((Astro.currentLocale as 'en') || 'en');
+const defaultLinkText = linkText || t('videoPublicationCardLinkText');
 
 // Format date once at build time for better performance
 const formattedDate = new Date(date).toLocaleDateString('en-US', { 
@@ -43,6 +46,6 @@ const imagePath = `${images}/${thumbnailUrl}`;
   <a href={videoUrl} target="_blank" 
      class="video-link icon-after icon-external-link icon-space-sm"
      rel="noopener noreferrer">
-    {linkText}
+    {defaultLinkText}
   </a>
 </div>

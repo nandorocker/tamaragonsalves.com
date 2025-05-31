@@ -5,20 +5,22 @@ import ProjectCard from '../components/ProjectCard.astro';
 import VideoPublicationCard from '../components/VideoPublicationCard.astro';
 import AboutGalleryImage from '../components/AboutGalleryImage.astro';
 import { images, js } from '../data/global';
-import { siteContent } from '../data/site-content';
+import { useTranslations } from '../i18n/index';
 import { books } from '../data/books';
 import { projects } from '../data/projects';
 import { videos } from '../data/videos';
 import { aboutGalleryImages } from '../data/about-gallery-images';
+
+const t = useTranslations((Astro.currentLocale as 'en') || 'en');
 ---
 
 <BaseLayout title="Tamara Amoroso Gonsalves, Human Rights Expert">
 	<section id="home"
 	    class="hero bg-gradient-yellow dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 flex items-center w-full h-80vh min-h-[50rem] bg-mustard-50]">
 	    <div class="w-full contain-wide section-margins-medium text-center">
-	        <h3 class="text-indigo-900 dark:text-indigo-300">{siteContent.hero.subtitle}</h3>
-	        <h1 class="text-indigo-900 dark:text-indigo-300" set:html={siteContent.hero.name.replace(' ', '<br> ')}></h1>
-	        <p class=" bigger max-sm:hyphens-auto md:w-4/6 mx-auto">{siteContent.hero.description}</p>
+	        <h3 class="text-indigo-900 dark:text-indigo-300">{t('heroSubtitle')}</h3>
+	        <h1 class="text-indigo-900 dark:text-indigo-300" set:html={t('heroName').replace(' ', '<br> ')}></h1>
+	        <p class=" bigger max-sm:hyphens-auto md:w-4/6 mx-auto">{t('heroDescription')}</p>
 	    </div>
 	</section>
 
@@ -36,8 +38,8 @@ import { aboutGalleryImages } from '../data/about-gallery-images';
                 ))}
             </div>
 	        <div class="ml-auto lg:w-5/6 max-sm:row-start-1">
-	            <h2>{siteContent.aboutMe.heading}</h2>
-	            <p>{siteContent.aboutMe.description}</p>
+	            <h2>{t('aboutMeHeading')}</h2>
+	            <p>{t('aboutMeDescription')}</p>
 	        </div>
 	    </div>
 	</section>
@@ -45,33 +47,33 @@ import { aboutGalleryImages } from '../data/about-gallery-images';
 	<section id="background" class="bg-white dark:bg-gray-800 contain-margins-y">
 	    <div class="contain-medium section-margins-medium sm:grid lg:grid-cols-2 sm:gap-x-8">
 	        <div>
-	            <h1 class="max-lg:text-size-h2 max-lg:mb-10" set:html={siteContent.background.heading.replace(' ', '<wbr> ')}></h1>
+	            <h1 class="max-lg:text-size-h2 max-lg:mb-10" set:html={t('backgroundHeading').replace(' ', '<wbr> ')}></h1>
 	        </div>
 
 	        <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto">
-	            <p>{siteContent.background.paragraph1}</p>
-	            <p>{siteContent.background.paragraph2}</p>
-	            <a href={siteContent.background.cvUrl} id="cv"
-	                class="icon-before icon-file-pdf icon-space-sm">{siteContent.background.cvLinkText}</a>
+	            <p>{t('backgroundParagraph1')}</p>
+	            <p>{t('backgroundParagraph2')}</p>
+	            <a href={t('cvUrl')} id="cv"
+	                class="icon-before icon-file-pdf icon-space-sm">{t('cvLinkText')}</a>
 	        </div>
 	    </div>
 	</section>
 
 	<section id="publications" class="contain-margins-y bg-soap-50 dark:bg-gray-700 ">
 	    <div class="contain-wide section-margins-medium">
-	        <h1>{siteContent.publications.heading}</h1>
+	        <h1>{t('publicationsHeading')}</h1>
 	        <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto">
-	            <h2>{siteContent.publications.publicationsSubheading}</h2>
+	            <h2>{t('publicationsSubheading')}</h2>
 
-	            <p>{siteContent.publications.description}</p>
+	            <p>{t('publicationsDescription')}</p>
 
 	            <ul class="bullet">
-	                <li><a href="#background">{siteContent.publications.cvLinkText}</a></li>
-	                <li><a href={siteContent.publications.orcidUrl} target="_blank"
-	                        class="icon-after icon-external-link icon-space-sm">{siteContent.publications.orcidLinkText}</a></li>
+	                <li><a href="#background">{t('publicationsCvLinkText')}</a></li>
+	                <li><a href={t('publicationsOrcidUrl')} target="_blank"
+	                        class="icon-after icon-external-link icon-space-sm">{t('publicationsOrcidLinkText')}</a></li>
 	            </ul>
 
-	            <h2>{siteContent.publications.booksSubheading}</h2>
+	            <h2>{t('publicationsBooksSubheading')}</h2>
 	            <div class="book-grid">
 	                {books.map(book => (
 	                    <BookCard 
@@ -91,7 +93,7 @@ import { aboutGalleryImages } from '../data/about-gallery-images';
 	        </div>
 
 	        <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto">
-	            <h2>{siteContent.publications.otherProjectsSubheading}</h2>
+	            <h2>{t('publicationsOtherProjectsSubheading')}</h2>
 
 	            {projects.map(project => (
 	                <ProjectCard 
@@ -110,10 +112,10 @@ import { aboutGalleryImages } from '../data/about-gallery-images';
 
 	<section id="speaking" class="contain-margins-y bg-white dark:bg-gray-800">
 		<div class="contain-medium section-margins-medium">
-			<h1>{siteContent.speaking.heading}</h1>
+			<h1>{t('speakingHeading')}</h1>
 			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto mb-12">
-				<p>{siteContent.speaking.description}</p>
-				<p><a href="#contact-me" class="button button-lg icon-before icon-comment-smile icon-space-sm">{siteContent.speaking.contactButtonText}</a></p>
+				<p>{t('speakingDescription')}</p>
+				<p><a href="#contact-me" class="button button-lg icon-before icon-comment-smile icon-space-sm">{t('speakingContactButtonText')}</a></p>
 			</div>
 		</div>
 
@@ -137,53 +139,59 @@ import { aboutGalleryImages } from '../data/about-gallery-images';
 
 	<section id="services" class="services contain-margins-y bg-violet-50 dark:bg-gray-700">
 		<div class="contain-medium section-margins-medium">
-			<h1 class="dark:text-pink-300" set:html={siteContent.services.heading.replace(' ', ' <br class="sm:hidden"> ')}></h1>
+			<h1 class="dark:text-pink-300" set:html={t('servicesHeading').replace(' ', ' <br class="sm:hidden"> ')}></h1>
 			<div class="sm:grid sm:grid-cols-2 gap-x-10 lg:gap-x-16 lg:max-w-screen-lg mx-auto mb-12 list-none">
 				<div>
 					<div class="services-item pb-4">
-						<h3 class="dark:text-pink-300">{siteContent.services.courses.title}</h3>
+						<h3 class="dark:text-pink-300">{t('coursesTitle')}</h3>
 						<ul class="bullet dark:text-gray-300">
-							{siteContent.services.courses.items.map(item => (
-								<li><strong>{item.split(':')[0]}:</strong>{item.split(':')[1]}</li>
-							))}
+							<li><strong>{t('coursesItem1').split(':')[0]}:</strong>{t('coursesItem1').split(':')[1]}</li>
+							<li><strong>{t('coursesItem2').split(':')[0]}:</strong>{t('coursesItem2').split(':')[1]}</li>
+							<li><strong>{t('coursesItem3').split(':')[0]}:</strong>{t('coursesItem3').split(':')[1]}</li>
+							<li><strong>{t('coursesItem4').split(':')[0]}:</strong>{t('coursesItem4').split(':')[1]}</li>
+							<li><strong>{t('coursesItem5').split(':')[0]}:</strong>{t('coursesItem5').split(':')[1]}</li>
 						</ul>
-						<p class="text-small dark:text-gray-300">{siteContent.services.courses.note}</p>
+						<p class="text-small dark:text-gray-300">{t('coursesNote')}</p>
 					</div>
 					<div class="services-item pb-4">
-						<h3 class="dark:text-pink-300">{siteContent.services.consultancy.title}</h3>
-						<p class="dark:text-gray-300">{siteContent.services.consultancy.description}</p>
+						<h3 class="dark:text-pink-300">{t('consultancyTitle')}</h3>
+						<p class="dark:text-gray-300">{t('consultancyDescription')}</p>
 						<ul class="bullet dark:text-gray-300">
-							{siteContent.services.consultancy.items.map(item => (
-								<li>{item}</li>
-							))}
+							<li>{t('consultancyItem1')}</li>
+							<li>{t('consultancyItem2')}</li>
+							<li>{t('consultancyItem3')}</li>
 						</ul>
 					</div>
 				</div>
 
 				<div>
 					<div class="services-item pb-4">
-						<h3 class="dark:text-pink-300">{siteContent.services.lawyering.title}</h3>
+						<h3 class="dark:text-pink-300">{t('lawyeringTitle')}</h3>
 						<ul class="bullet dark:text-gray-300">
-							{siteContent.services.lawyering.items.map(item => (
-								<li>{item}</li>
-							))}
+							<li>{t('lawyeringItem1')}</li>
+							<li>{t('lawyeringItem2')}</li>
+							<li>{t('lawyeringItem3')}</li>
+							<li>{t('lawyeringItem4')}</li>
 						</ul>
 					</div>
 					<div class="services-item pb-4">
-						<h3 class="dark:text-pink-300">{siteContent.services.mentorship.title}</h3>
-						<p class="dark:text-gray-300">{siteContent.services.mentorship.description}</p>
+						<h3 class="dark:text-pink-300">{t('mentorshipTitle')}</h3>
+						<p class="dark:text-gray-300">{t('mentorshipDescription')}</p>
 						<ul class="bullet dark:text-gray-300">
-							{siteContent.services.mentorship.items.map(item => (
-								<li>{item}</li>
-							))}
+							<li>{t('mentorshipItem1')}</li>
+							<li>{t('mentorshipItem2')}</li>
+							<li>{t('mentorshipItem3')}</li>
 						</ul>
 					</div>
 					<div class="services-item pb-4">
-						<h3 class="dark:text-pink-300">{siteContent.services.advocacy.title}</h3>
+						<h3 class="dark:text-pink-300">{t('advocacyTitle')}</h3>
 						<ul class="bullet dark:text-gray-300">
-							{siteContent.services.advocacy.items.map(item => (
-								<li>{item}</li>
-							))}
+							<li>{t('advocacyItem1')}</li>
+							<li>{t('advocacyItem2')}</li>
+							<li>{t('advocacyItem3')}</li>
+							<li>{t('advocacyItem4')}</li>
+							<li>{t('advocacyItem5')}</li>
+							<li>{t('advocacyItem6')}</li>
 						</ul>
 					</div>
 				</div>
@@ -193,15 +201,15 @@ import { aboutGalleryImages } from '../data/about-gallery-images';
 
 	<section id="contact-me" class="contain-margins-y bg-white dark:bg-gray-800">
 		<div class="contain-medium section-margins-medium">
-			<h1 class="dark:text-pink-300">{siteContent.contact.heading}</h1>
+			<h1 class="dark:text-pink-300">{t('contactHeading')}</h1>
 			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto mb-12">
-				<p class="dark:text-gray-300">{siteContent.contact.description}</p>
+				<p class="dark:text-gray-300">{t('contactDescription')}</p>
 
 				<p><a id="email-link" href="#"
-						class="max-sm:block button button-lg md:button-xl mb-8 icon-before icon-comment-smile icon-space-sm">{siteContent.contact.emailButtonText}</a>
+						class="max-sm:block button button-lg md:button-xl mb-8 icon-before icon-comment-smile icon-space-sm">{t('contactEmailButtonText')}</a>
 				</p>
 
-				<h4 class="max-sm:text-center dark:text-pink-300">{siteContent.contact.socialMediaHeading}</h4>
+				<h4 class="max-sm:text-center dark:text-pink-300">{t('contactSocialMediaHeading')}</h4>
 				<ul class="flex flex-row max-sm:justify-center items-start gap-8 max-sm:mt-8">
 					<li><a href="https://www.instagram.com/tamaramoroso" target="_blank" rel="noopener noreferrer"
 							title="Threads"><img src={`${images}/social-instagram.svg`} class="w-12 hover-shift-sm"

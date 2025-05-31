@@ -1,5 +1,6 @@
 ---
 import { images } from '../data/global';
+import { useTranslations } from '../i18n/index';
 
 export interface Props {
   title: string;
@@ -19,9 +20,12 @@ const {
   imageUrl, 
   imageAlt, 
   linkUrl,
-  linkText = "Visit Project",
+  linkText,
   linkIcon = "icon-external-link"
 } = Astro.props;
+
+const t = useTranslations((Astro.currentLocale as 'en') || 'en');
+const defaultLinkText = linkText || t('projectCardLinkText');
 
 // Construct image path once for performance
 const imagePath = `${images}/${imageUrl}`;
@@ -43,7 +47,7 @@ const imagePath = `${images}/${imageUrl}`;
       <a href={linkUrl} target="_blank" 
          class={`icon-after ${linkIcon} icon-space-sm`}
          rel="noopener noreferrer">
-        {linkText}
+        {defaultLinkText}
       </a>
     )}
   </div>
