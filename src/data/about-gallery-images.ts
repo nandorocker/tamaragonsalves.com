@@ -4,23 +4,27 @@ export interface AboutGalleryImage {
   src: string;
   alt: string;
   fslightboxGroup: string;
+  gridClass?: string; // Optional class for grid layout
 }
 
 export const aboutGalleryImages: AboutGalleryImage[] = [
   {
     src: `${images}/foto_01.jpg`,
     alt: "Three women speaking (Tamara in the middle) and taking notes at a conference panel, with a camera recording in the foreground.",
-    fslightboxGroup: "about-pics"
+    fslightboxGroup: "about-pics",
+    gridClass: "col-span-2"
   },
   {
     src: `${images}/foto_02.jpg`,
     alt: "Tamara Gonsalves standing and smiling in a large assembly hall (UN) with nameplates and a decorative ceiling.",
-    fslightboxGroup: "about-pics"
+    fslightboxGroup: "about-pics",
+    gridClass: "col-span-2"
   },
   {
     src: `${images}/foto_03.jpg`,
     alt: "Tamara speaking in a studio setup with cameras and a world map on the wall behind her.",
-    fslightboxGroup: "about-pics"
+    fslightboxGroup: "about-pics",
+    gridClass: "row-span-2"
   },
   {
     src: `${images}/foto_04.jpg`,

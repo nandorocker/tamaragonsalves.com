@@ -25,25 +25,16 @@ import { aboutGalleryImages } from '../data/about-gallery-images';
 	<section id="about-me" class="about-me w-full contain-margins-y bg-white dark:bg-gray-800">
 	    <div
 	        class="contain-narrow md:contain-medium section-margins-narrow md:section-margins-medium grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-[2fr_1fr] gap-8 lg:gap-12 items-start">
-	        <div class="w-full mx-auto sm:-mt-40 max-sm:row-start-2 grid md:grid-cols-2 gap-4">
-	            {aboutGalleryImages.map((image, index) => {
-	                // Apply specific grid classes based on image position
-	                let gridClass = "";
-	                if (index === 0) gridClass = "col-span-2";
-	                else if (index === 1) gridClass = "col-span-2";
-	                else if (index === 2) gridClass = "row-span-2";
-	                
-	                return (
-	                    <div class={gridClass}>
-	                        <AboutGalleryImage 
-	                            src={image.src}
-	                            alt={image.alt}
-	                            fslightboxGroup={image.fslightboxGroup}
-	                        />
-	                    </div>
-	                );
-	            })}
-	        </div>
+            <div class="w-full mx-auto sm:-mt-40 max-sm:row-start-2 grid md:grid-cols-2 gap-4">
+                {aboutGalleryImages.map((image) => (
+                    <AboutGalleryImage 
+                        src={image.src}
+                        alt={image.alt}
+                        fslightboxGroup={image.fslightboxGroup}
+                        gridClass={image.gridClass}
+                    />
+                ))}
+            </div>
 	        <div class="ml-auto lg:w-5/6 max-sm:row-start-1">
 	            <h2>{siteContent.aboutMe.heading}</h2>
 	            <p>{siteContent.aboutMe.description}</p>
