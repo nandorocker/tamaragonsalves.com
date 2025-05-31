@@ -1,45 +1,52 @@
 ---
 import { images } from '../data/global';
-import { useTranslations } from '../i18n/index';
+import { useTranslations, getLangFromUrl } from '../i18n/index';
 
 export interface Props {
-  title: string;
+  titleKey: string;
   author: string;
-  description: string;
+  descriptionKey: string;
   imageUrl: string;
-  imageAlt: string;
+  imageAltKey: string;
   titleUrl?: string;
   downloadLinks?: Array<{
-    text: string;
+    textKey: string;
     url: string;
     icon?: string;
   }>;
   interviewLinks?: Array<{
-    text: string;
+    textKey: string;
     url: string;
     icon?: string;
   }>;
   purchaseLinks?: Array<{
-    text: string;
+    textKey: string;
     url: string;
   }>;
-  purchaseText?: string;
+  purchaseTextKey?: string;
 }
 
 const { 
-  title, 
+  titleKey, 
   author, 
-  description, 
+  descriptionKey, 
   imageUrl, 
-  imageAlt, 
+  imageAltKey, 
   titleUrl,
   downloadLinks = [],
   interviewLinks = [],
   purchaseLinks = [],
-  purchaseText
+  purchaseTextKey
 } = Astro.props;
 
-const t = useTranslations((Astro.currentLocale as 'en') || 'en');
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Resolve translation keys
+const title = t(titleKey);
+const description = t(descriptionKey);
+const imageAlt = t(imageAltKey);
+const purchaseText = purchaseTextKey ? t(purchaseTextKey) : undefined;
 ---
 ---
 
@@ -70,7 +77,7 @@ const t = useTranslations((Astro.currentLocale as 'en') || 'en');
               <a href={link.url} target="_blank" 
                  class={`icon-before ${link.icon || 'icon-file-pdf'} icon-space-sm`}
                  rel="noopener noreferrer">
-                {link.text}
+                {t(link.textKey)}
               </a>
             </li>
           ))}
@@ -86,7 +93,7 @@ const t = useTranslations((Astro.currentLocale as 'en') || 'en');
             <li>
               <a href={link.url} target="_blank" 
                  class={`icon-before ${link.icon || 'icon-video'} icon-space-sm`}>
-                {link.text}
+                {t(link.textKey)}
               </a>
             </li>
           ))}
@@ -99,7 +106,7 @@ const t = useTranslations((Astro.currentLocale as 'en') || 'en');
         {purchaseText && <>{purchaseText}<br></>}
         {purchaseLinks.map((link, index) => (
           <>
-            <a href={link.url} target="_blank" rel="noopener noreferrer">{link.text}</a>
+            <a href={link.url} target="_blank" rel="noopener noreferrer">{t(link.textKey)}</a>
             {index < purchaseLinks.length - 1 ? ' / ' : ''}
           </>
         ))}

@@ -1,27 +1,32 @@
 ---
 import { images } from '../data/global';
-import { useTranslations } from '../i18n/index';
+import { useTranslations, getLangFromUrl } from '../i18n/index';
 
 export interface Props {
-  title: string;
-  description: string;
+  titleKey: string;
+  descriptionKey: string;
   videoUrl: string;
   thumbnailUrl: string;
   date: string;
-  linkText?: string;
+  linkTextKey?: string;
 }
 
 const { 
-  title,
-  description,
+  titleKey,
+  descriptionKey,
   videoUrl,
   thumbnailUrl,
   date,
-  linkText
+  linkTextKey
 } = Astro.props;
 
-const t = useTranslations((Astro.currentLocale as 'en') || 'en');
-const defaultLinkText = linkText || t('videoPublicationCardLinkText');
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Resolve translation keys
+const title = t(titleKey);
+const description = t(descriptionKey);
+const linkText = linkTextKey ? t(linkTextKey) : t('videoPublicationCardLinkText');
 
 // Format date once at build time for better performance
 const formattedDate = new Date(date).toLocaleDateString('en-US', { 
@@ -46,6 +51,6 @@ const imagePath = `${images}/${thumbnailUrl}`;
   <a href={videoUrl} target="_blank" 
      class="video-link icon-after icon-external-link icon-space-sm"
      rel="noopener noreferrer">
-    {defaultLinkText}
+    {linkText}
   </a>
 </div>

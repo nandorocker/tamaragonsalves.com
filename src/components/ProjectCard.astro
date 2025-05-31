@@ -1,31 +1,38 @@
 ---
 import { images } from '../data/global';
-import { useTranslations } from '../i18n/index';
+import { useTranslations, getLangFromUrl } from '../i18n/index';
 
 export interface Props {
-  title: string;
-  subtitle?: string;
-  description: string;
+  titleKey: string;
+  subtitleKey?: string;
+  descriptionKey: string;
   imageUrl: string;
-  imageAlt: string;
+  imageAltKey: string;
   linkUrl?: string;
-  linkText?: string;
+  linkTextKey?: string;
   linkIcon?: string;
 }
 
 const { 
-  title, 
-  subtitle,
-  description, 
+  titleKey, 
+  subtitleKey,
+  descriptionKey, 
   imageUrl, 
-  imageAlt, 
+  imageAltKey, 
   linkUrl,
-  linkText,
+  linkTextKey,
   linkIcon = "icon-external-link"
 } = Astro.props;
 
-const t = useTranslations((Astro.currentLocale as 'en') || 'en');
-const defaultLinkText = linkText || t('projectCardLinkText');
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Resolve translation keys
+const title = t(titleKey);
+const subtitle = subtitleKey ? t(subtitleKey) : undefined;
+const description = t(descriptionKey);
+const imageAlt = t(imageAltKey);
+const linkText = linkTextKey ? t(linkTextKey) : t('projectCardLinkText');
 
 // Construct image path once for performance
 const imagePath = `${images}/${imageUrl}`;
@@ -47,7 +54,7 @@ const imagePath = `${images}/${imageUrl}`;
       <a href={linkUrl} target="_blank" 
          class={`icon-after ${linkIcon} icon-space-sm`}
          rel="noopener noreferrer">
-        {defaultLinkText}
+        {linkText}
       </a>
     )}
   </div>

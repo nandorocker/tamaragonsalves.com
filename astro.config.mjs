@@ -10,10 +10,9 @@ export default defineConfig({
   adapter: vercel(),
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'pt'],
     routing: {
-      prefixDefaultLocale: false,
-      strategy: 'prefix-other-locales'
+      prefixDefaultLocale: false
     }
   }
 });

@@ -2,7 +2,7 @@ import { images } from './global';
 
 export interface AboutGalleryImage {
   src: string;
-  alt: string;
+  altKey: string; // Translation key for alt text
   fslightboxGroup: string;
   gridClass?: string; // Optional class for grid layout
 }
@@ -10,30 +10,30 @@ export interface AboutGalleryImage {
 export const aboutGalleryImages: AboutGalleryImage[] = [
   {
     src: `${images}/foto_01.jpg`,
-    alt: "Three women speaking (Tamara in the middle) and taking notes at a conference panel, with a camera recording in the foreground.",
+    altKey: "aboutGallery.image1.alt",
     fslightboxGroup: "about-pics",
     gridClass: "col-span-2"
   },
   {
     src: `${images}/foto_02.jpg`,
-    alt: "Tamara Gonsalves standing and smiling in a large assembly hall (UN) with nameplates and a decorative ceiling.",
+    altKey: "aboutGallery.image2.alt",
     fslightboxGroup: "about-pics",
     gridClass: "col-span-2"
   },
   {
     src: `${images}/foto_03.jpg`,
-    alt: "Tamara speaking in a studio setup with cameras and a world map on the wall behind her.",
+    altKey: "aboutGallery.image3.alt",
     fslightboxGroup: "about-pics",
     gridClass: "row-span-2"
   },
   {
     src: `${images}/foto_04.jpg`,
-    alt: "A group of women posing together in a well-lit room with plants.",
+    altKey: "aboutGallery.image4.alt",
     fslightboxGroup: "about-pics"
   },
   {
     src: `${images}/foto_05.jpg`,
-    alt: "Tamara Gonsalves smiling while signing a book at a table with flowers and books.",
+    altKey: "aboutGallery.image5.alt",
     fslightboxGroup: "about-pics"
   }
 ];

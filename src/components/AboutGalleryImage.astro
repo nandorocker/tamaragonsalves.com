@@ -1,12 +1,21 @@
 ---
+import { useTranslations, getLangFromUrl } from '../i18n/index';
+
 export interface Props {
   src: string;
-  alt: string;
+  altKey: string; // Translation key for alt text
   fslightboxGroup: string;
   gridClass?: string;
 }
 
-const { src, alt, fslightboxGroup, gridClass } = Astro.props;
+const { src, altKey, fslightboxGroup, gridClass } = Astro.props;
+
+// Get the current language from the URL
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Resolve the translation key to get the alt text
+const alt = t(altKey as any);
 ---
 
 <a
