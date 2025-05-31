@@ -47,12 +47,14 @@ const title = t(titleKey);
 const description = t(descriptionKey);
 const imageAlt = t(imageAltKey);
 const purchaseText = purchaseTextKey ? t(purchaseTextKey) : undefined;
----
+
+// Construct image path once for performance
+const imagePath = `${images}/${imageUrl}`;
 ---
 
 <article class="book-item">
-  <a data-fslightbox="books" href={`${images}/${imageUrl}`} class="hover-shift-sm">
-    <img src={`${images}/${imageUrl}`} alt={imageAlt} srcset="" class="book-image">
+  <a data-fslightbox="books" href={imagePath} class="hover-shift-sm">
+    <img src={imagePath} alt={imageAlt} srcset="" class="book-image">
   </a>
 
   <div class="book-info">

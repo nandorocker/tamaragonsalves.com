@@ -4,6 +4,13 @@ export const ui = {
     // Page metadata
     pageTitle: "Tamara Amoroso Gonsalves, Human Rights Expert",
     
+    // Navigation
+    navAbout: "About",
+    navPublications: "Publications", 
+    navSpeaking: "Speaking",
+    navServices: "What I Offer",
+    navContact: "Contact",
+
     // Hero section
     heroSubtitle: "Human Rights Expert",
     heroName: "Tamara Amoroso Gonsalves",
@@ -205,6 +212,13 @@ export const ui = {
     // Page metadata
     pageTitle: "Tamara Amoroso Gonsalves, Especialista em Direitos Humanos",
     
+    // Navigation
+    navAbout: "Sobre",
+    navPublications: "Publicações", 
+    navSpeaking: "Palestras",
+    navServices: "O Que Ofereço",
+    navContact: "Contato",
+
     // Hero section
     heroSubtitle: "Especialista em Direitos Humanos",
     heroName: "Tamara Amoroso Gonsalves",

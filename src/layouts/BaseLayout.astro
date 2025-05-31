@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import { getCurrentYear, site, images, js, vendor } from '../data/global';
+import { getLangFromUrl } from '../i18n/index';
 import '../styles/global.css';
 
 export interface Props {
@@ -9,10 +10,11 @@ export interface Props {
 }
 
 const { title, description = site.description } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang={lang} class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,7 +60,7 @@ const { title, description = site.description } = Astro.props;
 
 <body class="bg-mustard-50 dark:bg-gray-900 transition-colors duration-300">
     <!-- Navigation Header Component -->
-    <Header />
+    <Header lang={lang} />
 
     <!-- Main content area -->
     <main class="mx-auto">
