@@ -1,0 +1,22 @@
+---
+export interface Props {
+  src: string;
+  alt: string;
+  fslightboxGroup: string;
+  gridClass?: string;
+}
+
+const { src, alt, fslightboxGroup, gridClass } = Astro.props;
+---
+
+<a
+  data-fslightbox={fslightboxGroup}
+  href={src}
+  {...(gridClass ? { class: gridClass } : {})}
+>
+  <img 
+    src={src} 
+    alt={alt} 
+    class="rounded-md drop-shadow-md hover-shift-sm"
+  >
+</a>
