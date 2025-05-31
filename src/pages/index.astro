@@ -14,7 +14,7 @@ import { aboutGalleryImages } from '../data/about-gallery-images';
 const t = useTranslations((Astro.currentLocale as 'en') || 'en');
 ---
 
-<BaseLayout title="Tamara Amoroso Gonsalves, Human Rights Expert">
+<BaseLayout title={t('pageTitle')}>
 	<section id="home"
 	    class="hero bg-gradient-yellow dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 flex items-center w-full h-80vh min-h-[50rem] bg-mustard-50]">
 	    <div class="w-full contain-wide section-margins-medium text-center">

@@ -1,6 +1,9 @@
 // Translation dictionary for UI text content
 export const ui = {
   en: {
+    // Page metadata
+    pageTitle: "Tamara Amoroso Gonsalves, Human Rights Expert",
+    
     // Hero section
     heroSubtitle: "Human Rights Expert",
     heroName: "Tamara Amoroso Gonsalves",
