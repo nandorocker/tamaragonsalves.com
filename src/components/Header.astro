@@ -11,8 +11,8 @@ export interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
-// Generate language-aware URLs
-const langPrefix = lang === 'en' ? '' : `/${lang}`;
+// Generate language-aware URLs - all languages need prefixes
+const langPrefix = `/${lang}`;
 ---
 
 <header id="top_nav" class="top-nav fixed w-full top-0 z-10">

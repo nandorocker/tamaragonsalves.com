@@ -10,11 +10,17 @@ const currentLang = lang || 'en';
 
 // Generate URLs for language switching
 const currentPath = Astro.url.pathname;
-const pathWithoutLang = currentPath.replace(/^\/(en|pt)/, '') || '/';
+let pathWithoutLang = currentPath.replace(/^\/(en|pt)/, '');
+
+// Ensure we have a proper path
+if (!pathWithoutLang || pathWithoutLang === '') {
+  pathWithoutLang = '/';
+} else if (!pathWithoutLang.startsWith('/')) {
+  pathWithoutLang = '/' + pathWithoutLang;
+}
 
 const languageLinks = Object.entries(languages).map(([langCode, langName]) => {
-  const isDefault = langCode === 'en';
-  const href = isDefault ? pathWithoutLang : `/${langCode}${pathWithoutLang}`;
+  const href = `/${langCode}${pathWithoutLang}`;
   return {
     code: langCode,
     name: langName,
