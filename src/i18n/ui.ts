@@ -1,4 +1,7 @@
 // Translation dictionary for UI text content
+import { books } from './books';
+import { videos } from './videos';
+
 export const ui = {
   en: {
     // Page metadata
@@ -121,7 +124,11 @@ export const ui = {
         imageAlt: "Logo of the Gender 305 Podcast",
         linkText: "Listen and Subscribe (Spotify)"
       }
-    }
+    },
+
+    // Include book and video translations
+    ...books.en,
+    ...videos.en
   },
   pt: {
     // Page metadata
@@ -244,6 +251,10 @@ export const ui = {
         imageAlt: "Logo do Gender 305 Podcast",
         linkText: "Ouvir e Inscrever-se (Spotify)"
       }
-    }
+    },
+
+    // Include book and video translations
+    ...books.pt,
+    ...videos.pt
   }
 } as const;
