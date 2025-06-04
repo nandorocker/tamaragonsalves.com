@@ -12,7 +12,9 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 
 // Generate language-aware URLs
-const langPrefix = lang === 'en' ? '' : `/${lang}`;
+// For English, use /en/ prefix since that's where the content actually lives
+// For other languages, use the language prefix
+const langPrefix = lang === 'en' ? '/en' : `/${lang}`;
 ---
 
 <header id="top_nav" class="top-nav fixed w-full top-0 z-10">

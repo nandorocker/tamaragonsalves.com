@@ -13,8 +13,8 @@ const currentPath = Astro.url.pathname;
 const pathWithoutLang = currentPath.replace(/^\/(en|pt)/, '') || '/';
 
 const languageLinks = Object.entries(languages).map(([langCode, langName]) => {
-  const isDefault = langCode === 'en';
-  const href = isDefault ? pathWithoutLang : `/${langCode}${pathWithoutLang}`;
+  // Always use the language prefix since that's where the content actually lives
+  const href = `/${langCode}${pathWithoutLang}`;
   return {
     code: langCode,
     name: langName,

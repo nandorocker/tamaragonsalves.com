@@ -91,10 +91,6 @@ export const ui = {
     contactSocialMediaHeading: "Reach Me on Social Media",
 
     // Component text
-    bookCardDownloadText: "Download the book:",
-    bookCardInterviewText: "Listen to my interviews:",
-    bookCardFallbackDownloadText: "Download Full Text (PDF)",
-    videoPublicationCardLinkText: "Watch on site",
     projectCardLinkText: "Visit Project",
 
     // About Gallery Images
@@ -115,39 +111,6 @@ export const ui = {
         alt: "Tamara Gonsalves smiling while signing a book at a table with flowers and books."
       }
     },
-
-    // Books
-    books: {
-      alienacaoParental: {
-        title: "Alienação Parental: Uma nova forma de violência de gênero contra mulheres e crianças na América Latina e Caribe",
-        description: "This book examines how the false concept of \"parental alienation\" is used to undermine women's reports of abuse and remove custody from protective mothers in Latin America and the Caribbean. Though presented as psychological, it functions as institutional violence that hides domestic abuse and reinforces gender stereotypes. Based on a regional seminar led by CLADEM, Equality Now, and the Global Campaign for Equality in Family Law, this interdisciplinary volume analyzes legal trends and case studies from five countries, exposing coordinated efforts by anti-rights groups to roll back feminist advances in family law. Discussions held in Portuguese, automated translation available.",
-        imageAlt: "Cover of the book.",
-        downloadLinks: {
-          cladem: "Read at Biblioteca CLADEM",
-          usp: "Direct Download (USP Direito)"
-        },
-        interviewLinks: {
-          radioUsp: "Listen To My Interview (Rádio USP)",
-          papoJus: "Listen to Podcast \"Papo Jus\" #26, from AJUFESP, on Protecting Brazilian mothers living abroad.",
-          trf3: "I spoke to TRF3justica, the official channel for the Federal Court in Brazil on Parental Alienation and the Hague Convention."
-        }
-      },
-      direitosHumanos: {
-        title: "Direitos humanos das mulheres e a comissão Interamericana de direitos humanos",
-        description: "My book Direitos Humanos das Mulheres e a Comissão Interamericana de Direitos Humanos, (Saraiva, 2013) analyzes quantitative and qualitative data related to cases of women's human rights violations presented to the Inter-American Commission of Human Rights, identifying the regional agenda that feminist organizations have pushed through gender-sensitive strategic litigation. This work combined statistical analysis and case analysis, in pioneering jurimetrics work done in Brazil.",
-        imageAlt: "Cover of the book titled 'Direitos Humanos das Mulheres e a Comissão Interamericana de Direitos Humanos'",
-        purchaseText: "Buy This Book",
-        purchaseLinks: {
-          amazon: "Amazon (USA)",
-          travessa: "Travessa (Brazil)"
-        }
-      },
-      abortoReligiao: {
-        title: "Aborto e Religião nos Tribunais Brasileiros",
-        description: "In this MacArthur-Foundation-funded book, Aborto e Religião nos Tribunais Brasileiros (2008), I discuss the influence of religious arguments in abortion cases decided by Brazilian courts—in a country where abortion is illegal and is the 5th cause of maternal death. This research was grounded on feminist scholarship, sociological analysis of Catholic religion, and statistical data on court decisions. This was a pioneering work combining socio-legal feminist research and jurimetrics, when the latter was rarely used in Brazil. Available in Portuguese only.",
-        imageAlt: "Cover of the book titled 'Aborto e Religião nos Tribunais Brasileiros'"
-      }
-    },
     
     // Projects data
     projects: {
@@ -157,54 +120,6 @@ export const ui = {
         description: "At UVIC's Gender Studies Department, I taught Gender and International Human Rights in fall 2022 and 2023, where students created podcast episodes as their final assignments with CFUV's technical support. These episodes, now being published and aired through CFUV, explore diverse topics including abortion rights, LGBTQ2+ and non-binary rights, gender-based discrimination in AI, and violence against Indigenous women in Canada. We invite you to listen and engage in these important conversations.",
         imageAlt: "Logo of the Gender 305 Podcast",
         linkText: "Listen and Subscribe (Spotify)"
-      }
-    },
-    
-    // Videos data
-    videos: {
-      broadeningWomensRights: {
-        title: "Broadening women's rights through international advocacy",
-        description: "Talk presented at CFGS as part of a series on gender and global governance, analyzing the use of parental alienation in custody disputes as a tool of gender-based violence. The discussion connects feminist legal research and transnational activism aimed at challenging its legitimacy before international human rights bodies."
-      },
-      alienacaoParental2025: {
-        title: "Alienação Parental: uma nova forma de violência de gênero contra mulheres e crianças na AL e Caribe",
-        description: "Seminário no Tribunal Federal Brasileiro para lançar o livro 'Alienação Parental: Uma nova forma de violência de gênero contra mulheres e crianças na América Latina e Caribe'. Discuti como a alienação parental e a Convenção de Haia têm sido mal utilizadas para silenciar alegações de abuso e reforçar violência institucional contra mulheres e crianças."
-      },
-      cedawRecommendations: {
-        title: "Como Usar as Recomendações da CEDAW em Litígio Estratégico Nacional",
-        description: "Painel discutindo o uso estratégico das recomendações da CEDAW para litígio doméstico no Brasil, enfatizando aplicações práticas para avançar direitos das mulheres."
-      },
-      cedawCommittee: {
-        title: "Representação CLADEM/Brasil na revisão do Brasil perante o Comitê CEDAW",
-        description: "Discurso proferido na Sessão de Abertura com associações brasileiras sem fins lucrativos, abordando várias formas de violência institucional como violência obstétrica, alienação parental em tribunal de família, serviços de aborto inacessíveis para vítimas de violência sexual, casamento infantil e gravidezes forçadas entre adolescentes."
-      },
-      beginningOfLife: {
-        title: "Debates sobre o Início da Vida e Regulamentações Legais para Personalidade",
-        description: "Exploração de perspectivas feministas sobre os debates legais e éticos concernentes ao início da vida e personalidade, focando em suas implicações para leis e políticas sociais."
-      },
-      interdisciplinaryResearch: {
-        title: "Pesquisa Acadêmica Interdisciplinar Engajada com a Comunidade",
-        description: "Apresentação sobre a aplicação de metodologias de pesquisa feminista interdisciplinar para engajar comunidades e abordar questões sistêmicas, destacando aplicações acadêmicas e práticas."
-      },
-      violenceResearch: {
-        title: "Lançamento de Pesquisa sobre Violência Contra Meninas e Adolescentes",
-        description: "Lançamento de pesquisa examinando a ligação entre violência sexual e morte de meninas e adolescentes na América Latina e Caribe entre 2010-2019, junto com melhores práticas para abordar violência nesta demografia."
-      },
-      parentalAlienation2021: {
-        title: "Alienação Parental: Uma Forma de Violência Contra as Mulheres",
-        description: "Webinar abordando como o conceito de alienação parental é usado como forma de violência institucional contra mulheres, envolvendo apoio multi-stakeholder e discussões em português e espanhol."
-      },
-      advertisingChildren: {
-        title: "Audiência Pública sobre Publicidade para Crianças",
-        description: "Audiência pública no Congresso Nacional Brasileiro abordando o impacto da publicidade direcionada a crianças, destacando suas práticas manipuladoras e abusivas, e defendendo medidas regulatórias."
-      },
-      genderHumanRights2012: {
-        title: "Gênero e Direitos Humanos",
-        description: "Seminário sobre igualdade de gênero e sua interseção com direitos humanos, discutindo como análise de gênero pode informar políticas e estruturas de desenvolvimento social."
-      },
-      genderDiscussions: {
-        title: "Impacto das Discussões de Gênero no Conceito de Direitos Humanos",
-        description: "Apresentação analisando como discussões de gênero influenciaram a conceituação de direitos humanos, com foco em desenvolvimentos históricos e contemporâneos no campo."
       }
     }
   },
@@ -299,10 +214,6 @@ export const ui = {
     contactSocialMediaHeading: "Encontre-me nas Redes Sociais",
 
     // Component text
-    bookCardDownloadText: "Baixar o livro:",
-    bookCardInterviewText: "Ouça minhas entrevistas:",
-    bookCardFallbackDownloadText: "Baixar Texto Completo (PDF)",
-    videoPublicationCardLinkText: "Assistir no site",
     projectCardLinkText: "Visitar Projeto",
 
     // About Gallery Images
@@ -323,39 +234,6 @@ export const ui = {
         alt: "Tamara Gonsalves sorrindo enquanto assina um livro em uma mesa com flores e livros."
       }
     },
-
-    // Books
-    books: {
-      alienacaoParental: {
-        title: "Alienação Parental: Uma nova forma de violência de gênero contra mulheres e crianças na América Latina e Caribe",
-        description: "Este livro examina como o conceito falso de \"alienação parental\" é usado para minar relatos de abuso de mulheres e remover a custódia de mães protetoras na América Latina e Caribe. Embora apresentado como psicológico, funciona como violência institucional que esconde abuso doméstico e reforça estereótipos de gênero. Baseado em um seminário regional liderado por CLADEM, Equality Now e a Campanha Global para Igualdade no Direito de Família, este volume interdisciplinar analisa tendências legais e estudos de caso de cinco países, expondo esforços coordenados de grupos anti-direitos para reverter avanços feministas no direito de família. Discussões realizadas em português, tradução automática disponível.",
-        imageAlt: "Capa do livro.",
-        downloadLinks: {
-          cladem: "Leia na Biblioteca CLADEM",
-          usp: "Download Direto (USP Direito)"
-        },
-        interviewLinks: {
-          radioUsp: "Ouça Minha Entrevista (Rádio USP)",
-          papoJus: "Ouça o Podcast \"Papo Jus\" #26, da AJUFESP, sobre Proteção de mães brasileiras vivendo no exterior.",
-          trf3: "Falei para TRF3justica, o canal oficial do Tribunal Federal no Brasil sobre Alienação Parental e Convenção de Haia."
-        }
-      },
-      direitosHumanos: {
-        title: "Direitos humanos das mulheres e a comissão Interamericana de direitos humanos",
-        description: "Meu livro Direitos Humanos das Mulheres e a Comissão Interamericana de Direitos Humanos, (Saraiva, 2013) analisa dados quantitativos e qualitativos relacionados a casos de violações de direitos humanos das mulheres apresentados à Comissão Interamericana de Direitos Humanos, identificando a agenda regional que organizações feministas promoveram através de litígio estratégico sensível ao gênero. Este trabalho combinou análise estatística e análise de casos, em trabalho pioneiro de jurimetria feito no Brasil.",
-        imageAlt: "Capa do livro intitulado 'Direitos Humanos das Mulheres e a Comissão Interamericana de Direitos Humanos'",
-        purchaseText: "Comprar Este Livro",
-        purchaseLinks: {
-          amazon: "Amazon (EUA)",
-          travessa: "Travessa (Brasil)"
-        }
-      },
-      abortoReligiao: {
-        title: "Aborto e Religião nos Tribunais Brasileiros",
-        description: "Neste livro financiado pela Fundação MacArthur, Aborto e Religião nos Tribunais Brasileiros (2008), discuto a influência de argumentos religiosos em casos de aborto decididos por tribunais brasileiros—em um país onde o aborto é ilegal e é a 5ª causa de morte materna. Esta pesquisa foi baseada em estudos feministas, análise sociológica da religião católica e dados estatísticos sobre decisões judiciais. Este foi um trabalho pioneiro combinando pesquisa feminista socio-jurídica e jurimetria, quando esta última era raramente usada no Brasil. Disponível apenas em português.",
-        imageAlt: "Capa do livro intitulado 'Aborto e Religião nos Tribunais Brasileiros'"
-      }
-    },
     
     // Projects data
     projects: {
@@ -365,54 +243,6 @@ export const ui = {
         description: "No Departamento de Estudos de Gênero da UVIC, ensinei Gênero e Direitos Humanos Internacionais no outono de 2022 e 2023, onde estudantes criaram episódios de podcast como suas tarefas finais com suporte técnico da CFUV. Esses episódios, agora sendo publicados e transmitidos pela CFUV, exploram tópicos diversos incluindo direitos ao aborto, direitos LGBTQ2+ e não-binários, discriminação baseada em gênero na IA, e violência contra mulheres indígenas no Canadá. Convidamos você a ouvir e participar dessas conversas importantes.",
         imageAlt: "Logo do Gender 305 Podcast",
         linkText: "Ouvir e Inscrever-se (Spotify)"
-      }
-    },
-    
-    // Videos data
-    videos: {
-      broadeningWomensRights: {
-        title: "Ampliando direitos das mulheres através da advocacia internacional",
-        description: "Palestra apresentada no CFGS como parte de uma série sobre gênero e governança global, analisando o uso da alienação parental em disputas de custódia como ferramenta de violência baseada em gênero. A discussão conecta pesquisa legal feminista e ativismo transnacional visando desafiar sua legitimidade perante órgãos internacionais de direitos humanos."
-      },
-      alienacaoParental2025: {
-        title: "Alienação Parental: uma nova forma de violência de gênero contra mulheres e crianças na AL e Caribe",
-        description: "Seminário no Tribunal Federal Brasileiro para lançar o livro 'Alienação Parental: Uma nova forma de violência de gênero contra mulheres e crianças na América Latina e Caribe'. Discuti como a alienação parental e a Convenção de Haia têm sido mal utilizadas para silenciar alegações de abuso e reforçar violência institucional contra mulheres e crianças."
-      },
-      cedawRecommendations: {
-        title: "Como Usar as Recomendações da CEDAW em Litígio Estratégico Nacional",
-        description: "Painel discutindo o uso estratégico das recomendações da CEDAW para litígio doméstico no Brasil, enfatizando aplicações práticas para avançar direitos das mulheres."
-      },
-      cedawCommittee: {
-        title: "Representação CLADEM/Brasil na revisão do Brasil perante o Comitê CEDAW",
-        description: "Discurso proferido na Sessão de Abertura com associações brasileiras sem fins lucrativos, abordando várias formas de violência institucional como violência obstétrica, alienação parental em tribunal de família, serviços de aborto inacessíveis para vítimas de violência sexual, casamento infantil e gravidezes forçadas entre adolescentes."
-      },
-      beginningOfLife: {
-        title: "Debates sobre o Início da Vida e Regulamentações Legais para Personalidade",
-        description: "Exploração de perspectivas feministas sobre os debates legais e éticos concernentes ao início da vida e personalidade, focando em suas implicações para leis e políticas sociais."
-      },
-      interdisciplinaryResearch: {
-        title: "Pesquisa Acadêmica Interdisciplinar Engajada com a Comunidade",
-        description: "Apresentação sobre a aplicação de metodologias de pesquisa feminista interdisciplinar para engajar comunidades e abordar questões sistêmicas, destacando aplicações acadêmicas e práticas."
-      },
-      violenceResearch: {
-        title: "Lançamento de Pesquisa sobre Violência Contra Meninas e Adolescentes",
-        description: "Lançamento de pesquisa examinando a ligação entre violência sexual e morte de meninas e adolescentes na América Latina e Caribe entre 2010-2019, junto com melhores práticas para abordar violência nesta demografia."
-      },
-      parentalAlienation2021: {
-        title: "Alienação Parental: Uma Forma de Violência Contra as Mulheres",
-        description: "Webinar abordando como o conceito de alienação parental é usado como forma de violência institucional contra mulheres, envolvendo apoio multi-stakeholder e discussões em português e espanhol."
-      },
-      advertisingChildren: {
-        title: "Audiência Pública sobre Publicidade para Crianças",
-        description: "Audiência pública no Congresso Nacional Brasileiro abordando o impacto da publicidade direcionada a crianças, destacando suas práticas manipuladoras e abusivas, e defendendo medidas regulatórias."
-      },
-      genderHumanRights2012: {
-        title: "Gênero e Direitos Humanos",
-        description: "Seminário sobre igualdade de gênero e sua interseção com direitos humanos, discutindo como análise de gênero pode informar políticas e estruturas de desenvolvimento social."
-      },
-      genderDiscussions: {
-        title: "Impacto das Discussões de Gênero no Conceito de Direitos Humanos",
-        description: "Apresentação analisando como discussões de gênero influenciaram a conceituação de direitos humanos, com foco em desenvolvimentos históricos e contemporâneos no campo."
       }
     }
   }
