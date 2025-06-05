@@ -10,7 +10,7 @@ import type { Language } from '../utils/i18n';
 import booksData from '../content/data/books.json';
 import projectsData from '../content/data/projects.json';
 import videosData from '../content/data/videos.json';
-import { aboutGalleryImages } from '../data/about-gallery-images';
+import galleryData from '../content/data/gallery.json';
 
 export { getStaticPaths };
 
@@ -38,7 +38,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 	    <div
 	        class="contain-narrow md:contain-medium section-margins-narrow md:section-margins-medium grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-[2fr_1fr] gap-8 lg:gap-12 items-start">
             <div class="w-full mx-auto sm:-mt-40 max-sm:row-start-2 grid md:grid-cols-2 gap-4">
-                {aboutGalleryImages.map((image) => (
+                {galleryData.map((image) => (
                     <AboutGalleryImage 
                         src={image.src}
                         altKey={image.altKey}
