@@ -3,29 +3,51 @@
     "id": "alienacaoParental",
     "author": "Tamara Amoroso Gonçalves",
     "imageUrl": "livro_alienacao_parental.png",
-    "titleUrl": "https://cladem.org/biblioteca/alienacao-parental--uma-nova-forma-de-violencia-de--genero-contra-mulheres-e-criancas--na-america-latina-e-caribe",
-    "downloadLinks": [
+    "linkGroups": [
       {
-        "url": "https://cladem.org/biblioteca/alienacao-parental--uma-nova-forma-de-violencia-de--genero-contra-mulheres-e-criancas--na-america-latina-e-caribe",
-        "icon": "icon-file-pdf"
+        "type": "download",
+        "links": [
+          {
+            "labels": {
+              "en": "Read at Biblioteca CLADEM",
+              "pt": "Ler na Biblioteca CLADEM"
+            },
+            "url": "https://cladem.org/biblioteca/alienacao-parental--uma-nova-forma-de-violencia-de--genero-contra-mulheres-e-criancas--na-america-latina-e-caribe"
+          },
+          {
+            "labels": {
+              "en": "Direct Download (USP Direito)",
+              "pt": "Download Direto (USP Direito)"
+            },
+            "url": "https://www.direitorp.usp.br/wp-content/uploads/2025/03/Cladem-Digital-20022025.pdf?gathStatIcon=true"
+          }
+        ]
       },
       {
-        "url": "https://www.direitorp.usp.br/wp-content/uploads/2025/03/Cladem-Digital-20022025.pdf?gathStatIcon=true",
-        "icon": "icon-file-pdf"
-      }
-    ],
-    "interviewLinks": [
-      {
-        "url": "https://jornal.usp.br/campus-ribeirao-preto/obra-discute-como-a-alienacao-parental-se-tornou-arma-contra-maes-e-criancas-na-america-latina/",
-        "icon": "icon-video"
-      },
-      {
-        "url": "https://www.youtube.com/watch?v=ypz-RGhrXX8",
-        "icon": "icon-video"
-      },
-      {
-        "url": "https://www.youtube.com/watch?v=zCPBM4gra9g",
-        "icon": "icon-video"
+        "type": "interview",
+        "links": [
+          {
+            "labels": {
+              "en": "Listen To My Interview (Rádio USP)",
+              "pt": "Ouvir Minha Entrevista (Rádio USP)"
+            },
+            "url": "https://jornal.usp.br/campus-ribeirao-preto/obra-discute-como-a-alienacao-parental-se-tornou-arma-contra-maes-e-criancas-na-america-latina/"
+          },
+          {
+            "labels": {
+              "en": "Listen to Podcast \"Papo Jus\" #26, from AJUFESP",
+              "pt": "Ouvir Podcast \"Papo Jus\" #26, da AJUFESP, sobre Proteção de mães brasileiras no exterior."
+            },
+            "url": "https://www.youtube.com/watch?v=ypz-RGhrXX8"
+          },
+          {
+            "labels": {
+              "en": "Watch TRF3justica interview on Parental Alienation",
+              "pt": "Falei com TRF3justica, o canal oficial do Tribunal Federal no Brasil sobre Alienação Parental e Convenção de Haia."
+            },
+            "url": "https://www.youtube.com/watch?v=zCPBM4gra9g"
+          }
+        ]
       }
     ]
   },
@@ -33,13 +55,25 @@
     "id": "direitosHumanos",
     "author": "Tamara Amoroso Gonçalves",
     "imageUrl": "livro_direitos_humanos_mulheres.jpg",
-    "titleUrl": "https://www.amazon.com/Direitos-Humanos-Mulheres-Tamara-Amoroso/dp/8502187805/ref=sr_1_1?crid=36W7YBK85BINN&dib=eyJ2IjoiMSJ9.KwVNe-F1ZUfmrHYW8LSCw-w_CZPuVGIqMQkmkEH6Nbc51LhbYGokNNxgGei35xefXgO_d0dgL-H7LwuOxd0SsA.zTgcc4F9TJUAS7BOAemKVvgbn-2blSP2TE97WhxRrr0&dib_tag=se&keywords=Tamara+Amoroso+Gon%C3%A7alves&qid=1734551323&sprefix=tamara+amoroso+gon%C3%A7alves%2Caps%2C68&sr=8-1",
-    "purchaseLinks": [
+    "linkGroups": [
       {
-        "url": "https://www.amazon.com/Direitos-Humanos-Mulheres-Tamara-Amoroso/dp/8502187805/ref=sr_1_1?crid=36W7YBK85BINN&dib=eyJ2IjoiMSJ9.KwVNe-F1ZUfmrHYW8LSCw-w_CZPuVGIqMQkmkEH6Nbc51LhbYGokNNxgGei35xefXgO_d0dgL-H7LwuOxd0SsA.zTgcc4F9TJUAS7BOAemKVvgbn-2blSP2TE97WhxRrr0&dib_tag=se&keywords=Tamara+Amoroso+Gon%C3%A7alves&qid=1734551323&sprefix=tamara+amoroso+gon%C3%A7alves%2Caps%2C68&sr=8-1"
-      },
-      {
-        "url": "https://www.travessa.com.br/direitos-humanos-das-mulheres-e-a-comissao-interamericana-de-direitos-humanos/artigo/30dee484-bdf8-42b2-a94d-32474fa288c3?srsltid=AfmBOordklfKb68qtIrO5jAXgujXynywUFEDtQ8M38iLFgvj-L7h95YM"
+        "type": "purchase",
+        "links": [
+          {
+            "labels": {
+              "en": "Amazon (USA)",
+              "pt": "Amazon (EUA)"
+            },
+            "url": "https://www.amazon.com/Direitos-Humanos-Mulheres-Tamara-Amoroso/dp/8502187805/ref=sr_1_1?crid=36W7YBK85BINN&dib=eyJ2IjoiMSJ9.KwVNe-F1ZUfmrHYW8LSCw-w_CZPuVGIqMQkmkEH6Nbc51LhbYGokNNxgGei35xefXgO_d0dgL-H7LwuOxd0SsA.zTgcc4F9TJUAS7BOAemKVvgbn-2blSP2TE97WhxRrr0&dib_tag=se&keywords=Tamara+Amoroso+Gon%C3%A7alves&qid=1734551323&sprefix=tamara+amoroso+gon%C3%A7alves%2Caps%2C68&sr=8-1"
+          },
+          {
+            "labels": {
+              "en": "Travessa (Brazil)",
+              "pt": "Travessa (Brasil)"
+            },
+            "url": "https://www.travessa.com.br/direitos-humanos-das-mulheres-e-a-comissao-interamericana-de-direitos-humanos/artigo/30dee484-bdf8-42b2-a94d-32474fa288c3?srsltid=AfmBOordklfKb68qtIrO5jAXgujXynywUFEDtQ8M38iLFgvj-L7h95YM"
+          }
+        ]
       }
     ]
   },
@@ -47,6 +81,19 @@
     "id": "abortoReligiao",
     "author": "Tamara Amoroso Gonçalves (coord.), Thais de Souza Lapa",
     "imageUrl": "livro_aborto_e_religiao.png",
-    "titleUrl": "/files/Aborto_religiao_nos_tribunais_brasileiros.pdf"
+    "linkGroups": [
+      {
+        "type": "download",
+        "links": [
+          {
+            "labels": {
+              "en": "Download Full Text (PDF)",
+              "pt": "Baixar o Texto Completo (PDF)"
+            },
+            "url": "/files/Aborto_religiao_nos_tribunais_brasileiros.pdf"
+          }
+        ]
+      }
+    ]
   }
 ]

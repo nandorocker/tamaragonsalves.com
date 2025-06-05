@@ -20,6 +20,10 @@ const currentLang = lang as Language;
 // Load all translations (global + home page) for dynamic content
 const allTranslations = await loadAllTranslations(currentLang, 'home');
 
+// Load book translations specifically
+const allContentTranslations = await loadAllTranslations(currentLang, 'books');
+const bookTranslations = allContentTranslations.books || {};
+
 // Helper function to get translation with fallback
 const t = (key: string) => getTranslationSync(allTranslations, key);
 ---
@@ -83,14 +87,9 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 	            <h2>{t('publicationsBooksSubheading')}</h2>            <div class="book-grid">
                 {booksData.map(book => (
                     <BookCard 
-                        id={book.id}
-                        author={book.author}
-                        imageUrl={book.imageUrl}
-                        titleUrl={book.titleUrl}
-                        downloadLinks={book.downloadLinks}
-                        interviewLinks={book.interviewLinks}
-                        purchaseLinks={book.purchaseLinks}
-                        lang={lang as 'en' | 'pt'}
+                        book={book}
+                        bookTranslations={bookTranslations}
+                        lang={currentLang}
                     />
                 ))}
             </div>

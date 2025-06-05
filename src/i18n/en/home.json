@@ -4,86 +4,63 @@
     "name": "Tamara Amoroso Gonsalves",
     "description": "For twenty years, I've dedicated my career to human rights law and advocacy, specializing in women's rights and gender justice. My work bridges academic research with practical impact, demonstrated through extensive publications and leadership roles across governmental and non-governmental sectors."
   },
-  "videos": {
-    "broadeningWomensRights": {
-      "title": "Broadening women's rights through international advocacy",
-      "description": "Talk presented at CFGS as part of a series on gender and global governance, analyzing the use of parental alienation in custody disputes as a tool of gender-based violence. The discussion connects feminist legal research and transnational activism aimed at challenging its legitimacy before international human rights bodies."
-    },
-    "alienacaoParental2025": {
-      "title": "Alienação Parental: uma nova forma de violência de gênero contra mulheres e crianças na AL e Caribe",
-      "description": "Seminário no Tribunal Federal Brasileiro para lançar o livro 'Alienação Parental: Uma nova forma de violência de gênero contra mulheres e crianças na América Latina e Caribe'. Discuti como a alienação parental e a Convenção de Haia têm sido mal utilizadas para silenciar alegações de abuso e reforçar violência institucional contra mulheres e crianças."
-    },
-    "cedawRecommendations": {
-      "title": "Como Usar as Recomendações da CEDAW em Litígio Estratégico Nacional",
-      "description": "Painel discutindo o uso estratégico das recomendações da CEDAW para litígio doméstico no Brasil, enfatizando aplicações práticas para avançar direitos das mulheres."
-    },
-    "cedawCommittee": {
-      "title": "Representação CLADEM/Brasil na revisão do Brasil perante o Comitê CEDAW",
-      "description": "Discurso proferido na Sessão de Abertura com associações brasileiras sem fins lucrativos, abordando várias formas de violência institucional como violência obstétrica, alienação parental em tribunal de família, serviços de aborto inacessíveis para vítimas de violência sexual, casamento infantil e gravidezes forçadas entre adolescentes."
-    },
-    "beginningOfLife": {
-      "title": "Debates sobre o Início da Vida e Regulamentações Legais para Personalidade",
-      "description": "Exploração de perspectivas feministas sobre os debates legais e éticos concernentes ao início da vida e personalidade, focando em suas implicações para leis e políticas sociais."
-    },
-    "interdisciplinaryResearch": {
-      "title": "Pesquisa Acadêmica Interdisciplinar Engajada com a Comunidade",
-      "description": "Apresentação sobre a aplicação de metodologias de pesquisa feminista interdisciplinar para engajar comunidades e abordar questões sistêmicas, destacando aplicações acadêmicas e práticas."
-    },
-    "parentalAlienation2021": {
-      "title": "Alienação Parental: Uma Forma de Violência Contra as Mulheres",
-      "description": "Webinar abordando como o conceito de alienação parental é usado como forma de violência institucional contra mulheres, envolvendo apoio multi-stakeholder e discussões em português e espanhol."
-    },
-    "advertisingChildren": {
-      "title": "Audiência Pública sobre Publicidade para Crianças",
-      "description": "Audiência pública no Congresso Nacional Brasileiro abordando o impacto da publicidade direcionada a crianças, destacando suas práticas manipuladoras e abusivas, e defendendo medidas regulatórias."
-    },
-    "genderHumanRights2012": {
-      "title": "Gênero e Direitos Humanos",
-      "description": "Seminário sobre igualdade de gênero e sua interseção com direitos humanos, discutindo como análise de gênero pode informar políticas e estruturas de desenvolvimento social."
-    },
-    "genderDiscussions": {
-      "title": "Impacto das Discussões de Gênero no Conceito de Direitos Humanos",
-      "description": "Apresentação analisando como discussões de gênero influenciaram a conceituação de direitos humanos, com foco em desenvolvimentos históricos e contemporâneos no campo."
-    }
-  },
-  "books": {
-    "alienacaoParental": {
-      "title": "Alienação Parental: Uma nova forma de violência de gênero contra mulheres e crianças na América Latina e Caribe",
-      "description": "This book examines how the false concept of \"parental alienation\" is used to undermine women's reports of abuse and remove custody from protective mothers in Latin America and the Caribbean. Though presented as psychological, it functions as institutional violence that hides domestic abuse and reinforces gender stereotypes. Based on a regional seminar led by CLADEM, Equality Now, and the Global Campaign for Equality in Family Law, this interdisciplinary volume analyzes legal trends and case studies from five countries, exposing coordinated efforts by anti-rights groups to roll back feminist advances in family law. Discussions held in Portuguese, automated translation available.",
-      "imageAlt": "Cover of the book.",
-      "downloadLinks": {
-        "cladem": "Read at Biblioteca CLADEM",
-        "usp": "Direct Download (USP Direito)"
-      },
-      "interviewLinks": {
-        "radioUsp": "Listen To My Interview (Rádio USP)",
-        "papoJus": "Listen to Podcast \"Papo Jus\" #26, from AJUFESP, on Protecting Brazilian mothers living abroad.",
-        "trf3": "I spoke to TRF3justica, the official channel for the Federal Court in Brazil on Parental Alienation and the Hague Convention."
-      }
-    },
-    "direitosHumanos": {
-      "title": "Direitos humanos das mulheres e a comissão Interamericana de direitos humanos",
-      "description": "My book Direitos Humanos das Mulheres e a Comissão Interamericana de Direitos Humanos, (Saraiva, 2013) analyzes quantitative and qualitative data related to cases of women's human rights violations presented to the Inter-American Commission of Human Rights, identifying the regional agenda that feminist organizations have pushed through gender-sensitive strategic litigation. This work combined statistical analysis and case analysis, in pioneering jurimetrics work done in Brazil.",
-      "imageAlt": "Cover of the book titled 'Direitos Humanos das Mulheres e a Comissão Interamericana de Direitos Humanos'",
-      "purchaseText": "Buy This Book",
-      "purchaseLinks": {
-        "amazon": "Amazon (USA)",
-        "travessa": "Travessa (Brazil)"
-      }
-    },
-    "abortoReligiao": {
-      "title": "Aborto e Religião nos Tribunais Brasileiros",
-      "description": "In this MacArthur-Foundation-funded book, Aborto e Religião nos Tribunais Brasileiros (2008), I discuss the influence of religious arguments in abortion cases decided by Brazilian courts—in a country where abortion is illegal and is the 5th cause of maternal death. This research was grounded on feminist scholarship, sociological analysis of Catholic religion, and statistical data on court decisions. This was a pioneering work combining socio-legal feminist research and jurimetrics, when the latter was rarely used in Brazil. Available in Portuguese only.",
-      "imageAlt": "Cover of the book titled 'Aborto e Religião nos Tribunais Brasileiros'"
-    }
-  },
-  "projects": {
-    "gender305Podcast": {
-      "title": "Gender 305 Podcast",
-      "subtitle": "Podcast series on Gender and Human Rights.",
-      "description": "At UVIC's Gender Studies Department, I taught Gender and International Human Rights in fall 2022 and 2023, where students created podcast episodes as their final assignments with CFUV's technical support. These episodes, now being published and aired through CFUV, explore diverse topics including abortion rights, LGBTQ2+ and non-binary rights, gender-based discrimination in AI, and violence against Indigenous women in Canada. We invite you to listen and engage in these important conversations.",
-      "imageAlt": "Logo of the Gender 305 Podcast",
-      "linkText": "Listen and Subscribe (Spotify)"
-    }
-  }
+  
+  "publicationsHeading": "Books and publications",
+  "publicationsSubheading": "Publications",
+  "publicationsDescription": "I am dedicated to producing high-quality, community-engaged research and scholarship that addresses pressing social issues. Over the past 20 years, I have developed interdisciplinary, transsystemic, and socio-legal research, resulting in 2 published books, 40 book chapters, 11 journal articles, 10 research and advocacy reports, and 36 opinion pieces. My publications span a broad range of topics, including children's fundamental rights, women's human rights—particularly gender-based violence and sexual and reproductive rights—and consumer rights, with a specific focus on product recalls, advertising regulations, and the regulation of ultra-processed foods.",
+  "publicationsCvLinkText": "For full list of publications, download my CV",
+  "publicationsOrcidLinkText": "My ORCID registry",
+  "publicationsOrcidUrl": "https://orcid.org/0000-0002-2500-8477",
+  "publicationsBooksSubheading": "Books",
+  "publicationsOtherProjectsSubheading": "Other Projects",
+
+  "speakingHeading": "Public Speaking",
+  "speakingDescription": "My educational background in law, with a focus on human rights, and my experience in non-governmental, governmental, and academic roles have enabled me to excel in advocacy and stakeholder negotiation. As a spokesperson for various organizations, I have effectively engaged with diverse audiences, ranging from experts in international human rights bodies to grassroots communities, academics, and public servants. I have delivered talks and represented institutions on more than 90 occasions, both locally, regionally, and internationally, on topics spanning children's rights, women's rights (particularly gender-based violence and sexual and reproductive rights), and consumer rights.",
+  "speakingContactButtonText": "Contact me for public speaking requests",
+
+  "servicesHeading": "What I can offer",
+  
+  "coursesTitle": "Courses",
+  "coursesItems": [
+    "Human Rights Systems: covers international human rights systems (global and regional ones), their functioning, key documents, and advocacy opportunities.",
+    "Gender and International Human Rights: offers an overview of the most relevant Human Rights Instruments that protect women and gender-diverse individual's rights.",
+    "Gender-based violence: discusses how the concept of gender-based violence has evolved, covering key concepts, legal standards, and public policies.",
+    "Transnational feminism and international advocacy: explores feminist transnational activism and its advancements and challenges.",
+    "Feminist Legal Theories: presents and discusses the main feminist threads and their socio-legal implications for advancing gender justice."
+  ],
+  "coursesNote": "Courses can vary in length and depth, depending on your needs. They can also be tailored to specific audiences such as academics, government, and the general public.",
+
+  "consultancyTitle": "Consultancy",
+  "consultancyDescription": "My consultancy work focuses on policy analysis, advocacy, research, and capacity-building in human rights, with a particular emphasis on gender-based violence, sexual and reproductive rights, health law, and children's rights. Leveraging my academic foundation—a bachelor's in Law, a master's in Human Rights, a PhD in Law and Society, and a graduate certificate in teaching—I provide insightful, evidence-based solutions tailored to diverse contexts. Grounded on a deep commitment to advancing equity and justice, I can:",
+  "consultancyItems": [
+    "Develop strategies for advocacy;",
+    "Conduct training workshops;",
+    "Craft comprehensive legal and policy analyses."
+  ],
+
+  "lawyeringTitle": "Lawyering",
+  "lawyeringItems": [
+    "Legal opinions on gender based violence, coercive control, domestic abuse, intimate partner violence, children's rights, human rights;",
+    "Expert witness on gender based violence, coercive control, domestic abuse, intimate partner violence, children's rights, abusive litigation, parental alienation;",
+    "Legal services on Hague Convention cases involving Brazilian citizens;",
+    "Family law and divorce in contexts of domestic abuse;"
+  ],
+
+  "mentorshipTitle": "Mentorship",
+  "mentorshipDescription": "I can support you with the following:",
+  "mentorshipItems": [
+    "Applying for graduate studies;",
+    "Preparing academic proposals;",
+    "Developing academic work."
+  ],
+
+  "advocacyTitle": "Advocacy Work",
+  "advocacyItems": [
+    "Elaboration of shadow reports to United Nations treaty bodies, and MESECVI (follow-up Mechanism of the Belém do Pará Convention - Organization of American Estates);",
+    "In-person advocacy - for more successful results;",
+    "Institutional representation in public hearings;",
+    "Articulation, preparation, and submission of Amicus Curiae both at the national and international levels;",
+    "Workshops for non-profit organizations and corporations;",
+    "Moderation of academic and institutional events."
+  ]
 }

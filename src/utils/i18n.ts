@@ -5,6 +5,12 @@ import enGlobal from '../i18n/en/global.json';
 import ptGlobal from '../i18n/pt/global.json';
 import enHome from '../i18n/en/home.json';
 import ptHome from '../i18n/pt/home.json';
+import enBooks from '../i18n/en/books.json';
+import ptBooks from '../i18n/pt/books.json';
+import enVideos from '../i18n/en/videos.json';
+import ptVideos from '../i18n/pt/videos.json';
+import enProjects from '../i18n/en/projects.json';
+import ptProjects from '../i18n/pt/projects.json';
 
 export type Language = 'en' | 'pt';
 
@@ -22,6 +28,20 @@ const pageTranslations: Record<Language, Record<string, any>> = {
   pt: { home: ptHome }
 };
 
+// Content-specific translations (books, videos, projects)
+const contentTranslations = {
+  en: {
+    books: enBooks,
+    videos: enVideos,
+    projects: enProjects
+  },
+  pt: {
+    books: ptBooks,
+    videos: ptVideos,
+    projects: ptProjects
+  }
+};
+
 /**
  * Load global translations for a specific language
  */
@@ -37,17 +57,25 @@ export async function loadPageTranslations(lang: Language, page: string): Promis
 }
 
 /**
- * Load all translations (global + page-specific) for a language and page
+ * Load all translations (global + page-specific + content-specific) for a language and page
  * Page-specific translations override global ones if there are conflicts
+ * Content translations are merged at the root level
  */
 export async function loadAllTranslations(lang: Language, page: string = 'home'): Promise<Translations> {
-  const [globalTranslations, pageTranslations] = await Promise.all([
+  const [globalTrans, pageTrans] = await Promise.all([
     loadTranslations(lang),
     loadPageTranslations(lang, page)
   ]);
 
-  // Merge translations with page-specific overriding global
-  return { ...globalTranslations, ...pageTranslations };
+  // Get content translations for this language
+  const contentTrans = contentTranslations[lang] || {};
+
+  // Merge translations with page-specific overriding global, and content translations added at root level
+  return { 
+    ...globalTrans, 
+    ...pageTrans,
+    ...contentTrans
+  };
 }
 
 /**

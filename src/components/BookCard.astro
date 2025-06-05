@@ -1,169 +1,110 @@
 ---
 import { images } from '../data/global';
-import { loadAllTranslations, getTranslationSync } from '../utils/i18n';
 import type { Language } from '../utils/i18n';
 
-export interface Props {
+interface LinkGroup {
+  type: string;
+  links: Array<{
+    labels: Record<string, string>;
+    url: string;
+  }>;
+}
+
+interface Book {
   id: string;
   author: string;
   imageUrl: string;
-  titleUrl?: string;
-  downloadLinks?: Array<{
-    url: string;
-    icon?: string;
-  }>;
-  interviewLinks?: Array<{
-    url: string;
-    icon?: string;
-  }>;
-  purchaseLinks?: Array<{
-    url: string;
-  }>;
+  linkGroups: LinkGroup[];
+}
+
+export interface Props {
+  book: Book;
+  bookTranslations: any;
   lang: Language;
 }
 
-const { 
-  id,
-  author, 
-  imageUrl, 
-  titleUrl,
-  downloadLinks = [],
-  interviewLinks = [],
-  purchaseLinks = [],
-  lang
-} = Astro.props;
+const { book, bookTranslations, lang } = Astro.props;
 
-// Load all translations (global + home page) for the current language
-const translations = await loadAllTranslations(lang, 'home');
+// Get book information from translations
+const bookData = bookTranslations[book.id] || {};
+const linkGroupTitles = bookTranslations.linkGroupTitles || {};
 
-// Get book information from translations using the book ID
-const title = getTranslationSync(translations, `books.${id}.title`) || `[books.${id}.title]`;
-const description = getTranslationSync(translations, `books.${id}.description`) || `[books.${id}.description]`;
+// Automatic icon mapping based on link type
+const getIconForType = (type: string): string => {
+  const iconMap: Record<string, string> = {
+    'download': 'icon-file-pdf',
+    'interview': 'icon-video',
+    'purchase': 'icon-shopping-cart',
+    'external': 'icon-external-link',
+    'video': 'icon-play',
+    'audio': 'icon-headphones',
+    'article': 'icon-document'
+  };
+  return iconMap[type] || 'icon-external-link';
+};
 
-function getImageAlt(id: string): string {
-  switch (id) {
-    case 'alienacaoParental':
-      return 'Cover of Parental Alienation book';
-    case 'direitosHumanos':
-      return 'Cover of Human Rights of Women book';
-    case 'abortoReligiao':
-      return 'Cover of Abortion and Religion book';
-    default:
-      return 'Book cover';
+// Find the first download or purchase link to use as title URL
+const getTitleUrl = (): string | null => {
+  // Look for download links first, then purchase links
+  const priorityTypes = ['download', 'purchase'];
+  
+  for (const type of priorityTypes) {
+    const group = book.linkGroups.find(g => g.type === type);
+    if (group && group.links.length > 0) {
+      return group.links[0].url;
+    }
   }
-}
+  
+  return null;
+};
 
-const imageAlt = getImageAlt(id);
-
-// Get book-specific translation data
-const bookData = getTranslationSync(translations, `books.${id}`) || {};
-const downloadLinksText = bookData.downloadLinks || {};
-const interviewLinksText = bookData.interviewLinks || {};
-const purchaseLinksText = bookData.purchaseLinks || {};
-
-// Get generic text fallbacks
-const downloadText = getTranslationSync(translations, 'download') || 'Download';
-const interviewsText = getTranslationSync(translations, 'interviews') || 'Interviews';
-const purchaseText = getTranslationSync(translations, 'purchase') || 'Purchase';
+const titleUrl = getTitleUrl();
 
 // Construct image path once for performance
-const imagePath = `${images}/${imageUrl}`;
+const imagePath = `${images}/${book.imageUrl}`;
 ---
 
 <article class="book-item">
   <a data-fslightbox="books" href={imagePath} class="hover-shift-sm">
-    <img src={imagePath} alt={imageAlt} srcset="" class="book-image">
+    <img src={imagePath} alt={bookData.imageAlt || 'Book cover'} srcset="" class="book-image">
   </a>
 
   <div class="book-info">
     <div>
       <h5 class="mb-0 book-title">
         {titleUrl ? (
-          <a href={titleUrl} target="_blank">{title}</a>
+          <a href={titleUrl} target="_blank">{bookData.title}</a>
         ) : (
-          title
+          bookData.title
         )}
       </h5>
-      <p class="mb-0 dark:text-gray-300"><em>{author}</em></p>
+      <p class="mb-0 dark:text-gray-300"><em>{book.author}</em></p>
     </div>
-    <p class="book-description">{description}</p>
+    <p class="book-description">{bookData.description}</p>
     
-    {downloadLinks.length > 0 && (
+    {book.linkGroups.map((group) => (
       <div>
-        <span class="dark:text-gray-300">{downloadText}:</span>
+        <span class="dark:text-gray-300">{linkGroupTitles[group.type] || group.type}:</span>
         <ul>
-          {downloadLinks.map((link, index) => {
-            // Map link URLs to translation keys
-            let linkText = downloadText;
-            if (id === 'alienacaoParental') {
-              if (index === 0) linkText = downloadLinksText.cladem || downloadText;
-              if (index === 1) linkText = downloadLinksText.usp || downloadText;
-            }
-            
-            return (
-              <li>
-                <a href={link.url} target="_blank" 
-                   class={`icon-before ${link.icon || 'icon-file-pdf'} icon-space-sm`}
-                   rel="noopener noreferrer">
-                  {linkText}
-                </a>
-              </li>
-            );
-          })}
+          {group.links.map((link) => (
+            <li>
+              <a 
+                href={link.url} 
+                target="_blank" 
+                class={`icon-before ${getIconForType(group.type)} icon-space-sm`}
+                rel="noopener noreferrer"
+              >
+                {link.labels[lang] || link.labels['en'] || link.url}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
-    )}
+    ))}
 
-    {interviewLinks.length > 0 && (
-      <div>
-        <span class="dark:text-gray-300">{interviewsText}:</span>
-        <ul>
-          {interviewLinks.map((link, index) => {
-            // Map link URLs to translation keys
-            let linkText = interviewsText;
-            if (id === 'alienacaoParental') {
-              if (index === 0) linkText = interviewLinksText.radioUsp || interviewsText;
-              if (index === 1) linkText = interviewLinksText.papoJus || interviewsText;
-              if (index === 2) linkText = interviewLinksText.trf3 || interviewsText;
-            }
-            
-            return (
-              <li>
-                <a href={link.url} target="_blank" 
-                   class={`icon-before ${link.icon || 'icon-video'} icon-space-sm`}>
-                  {linkText}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    )}
-
-    {purchaseLinks.length > 0 && (
-      <div>
-        <span class="dark:text-gray-300">{purchaseText}:</span>
-        {purchaseLinks.map((link, index) => {
-          // Map link URLs to translation keys
-          let linkText = purchaseText;
-          if (id === 'direitosHumanos') {
-            if (index === 0) linkText = purchaseLinksText.amazon || purchaseText;
-            if (index === 1) linkText = purchaseLinksText.travessa || purchaseText;
-          }
-          
-          return (
-            <>
-              <a href={link.url} target="_blank" rel="noopener noreferrer">{linkText}</a>
-              {index < purchaseLinks.length - 1 ? ' / ' : ''}
-            </>
-          );
-        })}
-      </div>
-    )}
-
-    {downloadLinks.length === 0 && interviewLinks.length === 0 && purchaseLinks.length === 0 && titleUrl && (
+    {book.linkGroups.length === 0 && titleUrl && (
       <a href={titleUrl} class="icon-before icon-file-pdf icon-space-sm">
-        {downloadText}
+        {linkGroupTitles.download || 'Download'}
       </a>
     )}
   </div>
