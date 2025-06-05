@@ -1,53 +1,65 @@
 ---
 import { images } from '../data/global';
-import { useTranslations, useBookTranslations, getLangFromUrl } from '../i18n/index';
+import { loadAllTranslations, getTranslationSync } from '../utils/i18n';
+import type { Language } from '../utils/i18n';
 
 export interface Props {
-  titleKey: string;
+  id: string;
   author: string;
-  descriptionKey: string;
   imageUrl: string;
-  imageAltKey: string;
   titleUrl?: string;
   downloadLinks?: Array<{
-    textKey: string;
     url: string;
     icon?: string;
   }>;
   interviewLinks?: Array<{
-    textKey: string;
     url: string;
     icon?: string;
   }>;
   purchaseLinks?: Array<{
-    textKey: string;
     url: string;
   }>;
-  purchaseTextKey?: string;
+  lang: Language;
 }
 
 const { 
-  titleKey, 
+  id,
   author, 
-  descriptionKey, 
   imageUrl, 
-  imageAltKey, 
   titleUrl,
   downloadLinks = [],
   interviewLinks = [],
   purchaseLinks = [],
-  purchaseTextKey
+  lang
 } = Astro.props;
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
-const tb = useBookTranslations(lang);
+// Load all translations (global + home page) for the current language
+const translations = await loadAllTranslations(lang, 'home');
 
-// Resolve translation keys
-const title = tb(titleKey);
-const description = tb(descriptionKey);
-const imageAlt = tb(imageAltKey);
-const purchaseText = purchaseTextKey ? tb(purchaseTextKey) : undefined;
+// Get book information from translations using the book ID
+const title = getTranslationSync(translations, `books.${id}.title`) || `[books.${id}.title]`;
+const description = getTranslationSync(translations, `books.${id}.description`) || `[books.${id}.description]`;
+
+function getImageAlt(id: string): string {
+  switch (id) {
+    case 'alienacaoParental':
+      return 'Cover of Parental Alienation book';
+    case 'direitosHumanos':
+      return 'Cover of Human Rights of Women book';
+    case 'abortoReligiao':
+      return 'Cover of Abortion and Religion book';
+    default:
+      return 'Book cover';
+  }
+}
+
+const imageAlt = getImageAlt(id);
+
+// Get localized text for download links
+const downloadText = getTranslationSync(translations, 'downloadPdf');
+const interviewsText = getTranslationSync(translations, 'interviews');
+const purchaseText = getTranslationSync(translations, 'purchase');
+const downloadBtnText = getTranslationSync(translations, 'download');
 
 // Construct image path once for performance
 const imagePath = `${images}/${imageUrl}`;
@@ -73,14 +85,14 @@ const imagePath = `${images}/${imageUrl}`;
     
     {downloadLinks.length > 0 && (
       <div>
-        <span class="dark:text-gray-300">{tb('bookCardDownloadText')}</span>
+        <span class="dark:text-gray-300">{downloadBtnText}:</span>
         <ul>
           {downloadLinks.map(link => (
             <li>
               <a href={link.url} target="_blank" 
                  class={`icon-before ${link.icon || 'icon-file-pdf'} icon-space-sm`}
                  rel="noopener noreferrer">
-                {tb(link.textKey)}
+                {downloadText}
               </a>
             </li>
           ))}
@@ -90,13 +102,13 @@ const imagePath = `${images}/${imageUrl}`;
 
     {interviewLinks.length > 0 && (
       <div>
-        <span class="dark:text-gray-300">{tb('bookCardInterviewText')}</span>
+        <span class="dark:text-gray-300">{interviewsText}:</span>
         <ul>
           {interviewLinks.map(link => (
             <li>
               <a href={link.url} target="_blank" 
                  class={`icon-before ${link.icon || 'icon-video'} icon-space-sm`}>
-                {tb(link.textKey)}
+                {interviewsText}
               </a>
             </li>
           ))}
@@ -106,10 +118,10 @@ const imagePath = `${images}/${imageUrl}`;
 
     {purchaseLinks.length > 0 && (
       <div>
-        {purchaseText && <span class="dark:text-gray-300">{purchaseText}<br></span>}
+        <span class="dark:text-gray-300">{purchaseText}:</span>
         {purchaseLinks.map((link, index) => (
           <>
-            <a href={link.url} target="_blank" rel="noopener noreferrer">{tb(link.textKey)}</a>
+            <a href={link.url} target="_blank" rel="noopener noreferrer">{purchaseText}</a>
             {index < purchaseLinks.length - 1 ? ' / ' : ''}
           </>
         ))}
@@ -118,7 +130,7 @@ const imagePath = `${images}/${imageUrl}`;
 
     {downloadLinks.length === 0 && interviewLinks.length === 0 && purchaseLinks.length === 0 && titleUrl && (
       <a href={titleUrl} class="icon-before icon-file-pdf icon-space-sm">
-        {tb('bookCardFallbackDownloadText')}
+        {downloadText}
       </a>
     )}
   </div>

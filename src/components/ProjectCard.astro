@@ -1,38 +1,47 @@
 ---
 import { images } from '../data/global';
-import { useTranslations, getLangFromUrl } from '../i18n/index';
+import { loadAllTranslations, getTranslationSync } from '../utils/i18n';
+import type { Language } from '../utils/i18n';
 
 export interface Props {
-  titleKey: string;
-  subtitleKey?: string;
-  descriptionKey: string;
+  id: string;
   imageUrl: string;
-  imageAltKey: string;
   linkUrl?: string;
-  linkTextKey?: string;
   linkIcon?: string;
+  lang: Language;
 }
 
 const { 
-  titleKey, 
-  subtitleKey,
-  descriptionKey, 
+  id,
   imageUrl, 
-  imageAltKey, 
   linkUrl,
-  linkTextKey,
-  linkIcon = "icon-external-link"
+  linkIcon = "icon-external-link",
+  lang
 } = Astro.props;
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+// Load all translations (global + home page) for the current language
+const translations = await loadAllTranslations(lang, 'home');
 
-// Resolve translation keys
-const title = t(titleKey);
-const subtitle = subtitleKey ? t(subtitleKey) : undefined;
-const description = t(descriptionKey);
-const imageAlt = t(imageAltKey);
-const linkText = linkTextKey ? t(linkTextKey) : t('projectCardLinkText');
+// Get project information from translations using the project ID
+const title = getTranslationSync(translations, `projects.${id}.title`) || `[projects.${id}.title]`;
+const subtitle = getTranslationSync(translations, `projects.${id}.subtitle`) || undefined;
+const description = getTranslationSync(translations, `projects.${id}.description`) || `[projects.${id}.description]`;
+
+// Get link text from global translations
+const linkText = linkUrl?.includes('spotify.com') 
+  ? getTranslationSync(translations, 'listenOnSpotify')
+  : getTranslationSync(translations, 'viewProject');
+
+function getImageAlt(id: string): string {
+  switch (id) {
+    case 'gender305Podcast':
+      return 'Gender 305 Podcast cover image';
+    default:
+      return 'Project image';
+  }
+}
+
+const imageAlt = getImageAlt(id);
 
 // Construct image path once for performance
 const imagePath = `${images}/${imageUrl}`;

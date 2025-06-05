@@ -2,6 +2,8 @@
 import Header from '../components/Header.astro';
 import { getCurrentYear, site, images, js, vendor } from '../data/global';
 import { getLangFromUrl } from '../i18n/index';
+import { loadTranslations, getTranslationSync } from '../utils/i18n';
+import type { Language } from '../utils/i18n';
 import '../styles/global.css';
 
 export interface Props {
@@ -10,7 +12,11 @@ export interface Props {
 }
 
 const { title, description = site.description } = Astro.props;
-const lang = getLangFromUrl(Astro.url);
+const lang = getLangFromUrl(Astro.url) as Language;
+
+// Load translations for global strings
+const translations = await loadTranslations(lang);
+const siteTitle = getTranslationSync(translations, 'siteTitle');
 ---
 
 <!DOCTYPE html>
@@ -26,7 +32,7 @@ const lang = getLangFromUrl(Astro.url);
     <meta property="og:url" content={site.url}>
     <meta property="og:type" content="website">
 
-    <title>{title}</title>
+    <title>{title} | {siteTitle}</title>
     <link rel="icon" href="/favicon.ico" sizes="32x32">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,8 +65,7 @@ const lang = getLangFromUrl(Astro.url);
 </head>
 
 <body class="bg-mustard-50 dark:bg-gray-900 transition-colors duration-300">
-    <!-- Navigation Header Component -->
-    <Header lang={lang} />
+    <!-- Navigation Header Component -->        <Header lang={lang} />
 
     <!-- Main content area -->
     <main class="mx-auto">

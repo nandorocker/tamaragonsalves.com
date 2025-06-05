@@ -5,25 +5,32 @@ import ProjectCard from '../components/ProjectCard.astro';
 import VideoPublicationCard from '../components/VideoPublicationCard.astro';
 import AboutGalleryImage from '../components/AboutGalleryImage.astro';
 import { images, js } from '../data/global';
-import { useTranslations, getStaticPaths } from '../i18n/index';
-import { books } from '../data/books';
-import { projects } from '../data/projects';
-import { videos } from '../data/videos';
+import { loadAllTranslations, getTranslationSync, getStaticPaths } from '../utils/i18n';
+import type { Language } from '../utils/i18n';
+import booksData from '../content/data/books.json';
+import projectsData from '../content/data/projects.json';
+import { videos } from '../content/data/videos';
 import { aboutGalleryImages } from '../data/about-gallery-images';
 
 export { getStaticPaths };
 
 const { lang } = Astro.params;
-const t = useTranslations(lang as 'en' | 'pt');
+const currentLang = lang as Language;
+
+// Load all translations (global + home page) for dynamic content
+const allTranslations = await loadAllTranslations(currentLang, 'home');
+
+// Helper function to get translation with fallback
+const t = (key: string) => getTranslationSync(allTranslations, key);
 ---
 
 <BaseLayout title={t('pageTitle')}>
 	<section id="home"
 	    class="hero bg-gradient-yellow dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 flex items-center w-full h-80vh min-h-[50rem] bg-mustard-50]">
 	    <div class="w-full contain-wide section-margins-medium text-center">
-	        <h3 class="text-indigo-900 dark:text-indigo-300">{t('heroSubtitle')}</h3>
-	        <h1 class="text-indigo-900 dark:text-indigo-300" set:html={t('heroName').replace(' ', '<br> ')}></h1>
-	        <p class=" bigger max-sm:hyphens-auto md:w-4/6 mx-auto">{t('heroDescription')}</p>
+	        <h3 class="text-indigo-900 dark:text-indigo-300">{getTranslationSync(allTranslations, 'heroSection.subtitle')}</h3>
+	        <h1 class="text-indigo-900 dark:text-indigo-300" set:html={getTranslationSync(allTranslations, 'heroSection.name').replace(' ', '<br> ')}></h1>
+	        <p class=" bigger max-sm:hyphens-auto md:w-4/6 mx-auto">{getTranslationSync(allTranslations, 'heroSection.description')}</p>
 	    </div>
 	</section>
 
@@ -73,40 +80,32 @@ const t = useTranslations(lang as 'en' | 'pt');
 	                        class="icon-after icon-external-link icon-space-sm">{t('publicationsOrcidLinkText')}</a></li>
 	            </ul>
 
-	            <h2>{t('publicationsBooksSubheading')}</h2>
-	            <div class="book-grid">
-	                {books.map(book => (
-	                    <BookCard 
-	                        titleKey={book.titleKey}
-	                        author={book.author}
-	                        descriptionKey={book.descriptionKey}
-	                        imageUrl={book.imageUrl}
-	                        imageAltKey={book.imageAltKey}
-	                        titleUrl={book.titleUrl}
-	                        downloadLinks={book.downloadLinks}
-	                        interviewLinks={book.interviewLinks}
-	                        purchaseLinks={book.purchaseLinks}
-	                        purchaseTextKey={book.purchaseTextKey}
-	                    />
-	                ))}
-	            </div>
+	            <h2>{t('publicationsBooksSubheading')}</h2>            <div class="book-grid">
+                {booksData.map(book => (
+                    <BookCard 
+                        id={book.id}
+                        author={book.author}
+                        imageUrl={book.imageUrl}
+                        titleUrl={book.titleUrl}
+                        downloadLinks={book.downloadLinks}
+                        interviewLinks={book.interviewLinks}
+                        purchaseLinks={book.purchaseLinks}
+                        lang={lang as 'en' | 'pt'}
+                    />
+                ))}
+            </div>
 	        </div>
 
 	        <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto">
-	            <h2>{t('publicationsOtherProjectsSubheading')}</h2>
-
-	            {projects.map(project => (
-	                <ProjectCard 
-	                    titleKey={project.titleKey}
-	                    subtitleKey={project.subtitleKey}
-	                    descriptionKey={project.descriptionKey}
-	                    imageUrl={project.imageUrl}
-	                    imageAltKey={project.imageAltKey}
-	                    linkUrl={project.linkUrl}
-	                    linkTextKey={project.linkTextKey}
-	                    linkIcon={project.linkIcon}
-	                />
-	            ))}
+	            <h2>{t('publicationsOtherProjectsSubheading')}</h2>            {projectsData.map(project => (
+                <ProjectCard 
+                    id={project.id}
+                    imageUrl={project.imageUrl}
+                    linkUrl={project.linkUrl}
+                    linkIcon={project.linkIcon}
+                    lang={lang as 'en' | 'pt'}
+                />
+            ))}
 	        </div>
 	</section>
 
@@ -124,12 +123,11 @@ const t = useTranslations(lang as 'en' | 'pt');
 				<div class="video-grid">
 					{videos.map(video => (
 						<VideoPublicationCard 
-							titleKey={video.titleKey}
-							descriptionKey={video.descriptionKey}
+							id={video.id}
 							videoUrl={video.videoUrl}
 							thumbnailUrl={video.thumbnailUrl}
 							date={video.date}
-							linkTextKey={video.linkTextKey}
+							lang={lang as 'en' | 'pt'}
 						/>
 					))}
 				</div>
@@ -145,7 +143,7 @@ const t = useTranslations(lang as 'en' | 'pt');
 					<div class="services-item pb-4">
 						<h3 class="dark:text-pink-300">{t('coursesTitle')}</h3>
 						<ul class="bullet dark:text-gray-300">
-							{t('coursesItems').map((item: string) => (
+							{getTranslationSync(allTranslations, 'coursesItems').map((item: string) => (
 								<li><strong>{item.split(':')[0]}:</strong>{item.split(':')[1]}</li>
 							))}
 						</ul>
@@ -155,7 +153,7 @@ const t = useTranslations(lang as 'en' | 'pt');
 						<h3 class="dark:text-pink-300">{t('consultancyTitle')}</h3>
 						<p class="dark:text-gray-300">{t('consultancyDescription')}</p>
 						<ul class="bullet dark:text-gray-300">
-							{t('consultancyItems').map((item: string) => (
+							{getTranslationSync(allTranslations, 'consultancyItems').map((item: string) => (
 								<li>{item}</li>
 							))}
 						</ul>
@@ -166,7 +164,7 @@ const t = useTranslations(lang as 'en' | 'pt');
 					<div class="services-item pb-4">
 						<h3 class="dark:text-pink-300">{t('lawyeringTitle')}</h3>
 						<ul class="bullet dark:text-gray-300">
-							{t('lawyeringItems').map((item: string) => (
+							{getTranslationSync(allTranslations, 'lawyeringItems').map((item: string) => (
 								<li>{item}</li>
 							))}
 						</ul>
@@ -175,7 +173,7 @@ const t = useTranslations(lang as 'en' | 'pt');
 						<h3 class="dark:text-pink-300">{t('mentorshipTitle')}</h3>
 						<p class="dark:text-gray-300">{t('mentorshipDescription')}</p>
 						<ul class="bullet dark:text-gray-300">
-							{t('mentorshipItems').map((item: string) => (
+							{getTranslationSync(allTranslations, 'mentorshipItems').map((item: string) => (
 								<li>{item}</li>
 							))}
 						</ul>
@@ -183,7 +181,7 @@ const t = useTranslations(lang as 'en' | 'pt');
 					<div class="services-item pb-4">
 						<h3 class="dark:text-pink-300">{t('advocacyTitle')}</h3>
 						<ul class="bullet dark:text-gray-300">
-							{t('advocacyItems').map((item: string) => (
+							{getTranslationSync(allTranslations, 'advocacyItems').map((item: string) => (
 								<li>{item}</li>
 							))}
 						</ul>

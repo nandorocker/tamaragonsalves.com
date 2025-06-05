@@ -1,5 +1,7 @@
 ---
 import { languages, getLangFromUrl } from '../i18n/index';
+import { loadTranslations, getTranslationSync } from '../utils/i18n';
+import type { Language } from '../utils/i18n';
 
 export interface Props {
   lang: 'en' | 'pt';
@@ -7,6 +9,9 @@ export interface Props {
 
 const { lang } = Astro.props;
 const currentLang = lang || 'en';
+
+// Load global translations for UI strings
+const globalTranslations = await loadTranslations(lang as Language);
 
 // Generate URLs for language switching
 const currentPath = Astro.url.pathname;

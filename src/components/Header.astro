@@ -2,6 +2,8 @@
 // Header component for site navigation
 // Converted from 11ty nav.njk include
 import { useTranslations } from '../i18n/index';
+import { loadTranslations, getTranslationSync } from '../utils/i18n';
+import type { Language } from '../utils/i18n';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 
 export interface Props {
@@ -10,6 +12,9 @@ export interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+
+// Load global translations for UI strings
+const globalTranslations = await loadTranslations(lang as Language);
 
 // Generate language-aware URLs
 // For English, use /en/ prefix since that's where the content actually lives

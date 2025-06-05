@@ -1,33 +1,31 @@
 ---
 import { images } from '../data/global';
-import { useTranslations, useVideoTranslations, getLangFromUrl } from '../i18n/index';
+import { loadAllTranslations, getTranslationSync } from '../utils/i18n';
+import type { Language } from '../utils/i18n';
 
 export interface Props {
-  titleKey: string;
-  descriptionKey: string;
+  id: string;
   videoUrl: string;
   thumbnailUrl: string;
   date: string;
-  linkTextKey?: string;
+  lang: Language;
 }
 
 const { 
-  titleKey,
-  descriptionKey,
+  id,
   videoUrl,
   thumbnailUrl,
   date,
-  linkTextKey
+  lang
 } = Astro.props;
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
-const tv = useVideoTranslations(lang);
+// Load all translations (global + home page) for the current language
+const translations = await loadAllTranslations(lang, 'home');
 
-// Resolve translation keys
-const title = tv(titleKey);
-const description = tv(descriptionKey);
-const linkText = linkTextKey ? tv(linkTextKey) : tv('videoPublicationCardLinkText');
+// Get title and description from translations using the video ID
+const title = getTranslationSync(translations, `videos.${id}.title`) || `[videos.${id}.title]`;
+const description = getTranslationSync(translations, `videos.${id}.description`) || `[videos.${id}.description]`;
+const linkText = getTranslationSync(translations, "watchOnSite");
 
 // Format date once at build time for better performance
 const formattedDate = new Date(date).toLocaleDateString('en-US', { 
