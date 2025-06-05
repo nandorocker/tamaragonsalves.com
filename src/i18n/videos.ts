@@ -29,10 +29,6 @@ export const videos = {
       title: "Pesquisa Acadêmica Interdisciplinar Engajada com a Comunidade",
       description: "Apresentação sobre a aplicação de metodologias de pesquisa feminista interdisciplinar para engajar comunidades e abordar questões sistêmicas, destacando aplicações acadêmicas e práticas."
     },
-    violenceResearch: {
-      title: "Lançamento de Pesquisa sobre Violência Contra Meninas e Adolescentes",
-      description: "Lançamento de pesquisa examinando a ligação entre violência sexual e morte de meninas e adolescentes na América Latina e Caribe entre 2010-2019, junto com melhores práticas para abordar violência nesta demografia."
-    },
     parentalAlienation2021: {
       title: "Alienação Parental: Uma Forma de Violência Contra as Mulheres",
       description: "Webinar abordando como o conceito de alienação parental é usado como forma de violência institucional contra mulheres, envolvendo apoio multi-stakeholder e discussões em português e espanhol."
@@ -57,35 +53,31 @@ export const videos = {
     // Individual videos
     broadeningWomensRights: {
       title: "Ampliando direitos das mulheres através da advocacia internacional",
-      description: "Palestra apresentada no CFGS como parte de uma série sobre gênero e governança global, analisando o uso da alienação parental em disputas de custódia como ferramenta de violência baseada em gênero. A discussão conecta pesquisa legal feminista e ativismo transnacional visando desafiar sua legitimidade perante órgãos internacionais de direitos humanos."
+      description: "Palestra apresentada em evento organizado pelo CFGS/UVic, na qual analiso o uso  da alienação parental em disputas de custódia como ferramenta de  violência de gênero na ALC e no Canadá; bem como estratégias feministas  para levar esta temática para a agenda internacional por meio de  advocacy perante o Comitê CEDAW/ONU."
     },
     alienacaoParental2025: {
       title: "Alienação Parental: uma nova forma de violência de gênero contra mulheres e crianças na AL e Caribe",
-      description: "Seminário no Tribunal Federal Brasileiro para lançar o livro 'Alienação Parental: Uma nova forma de violência de gênero contra mulheres e crianças na América Latina e Caribe'. Discuti como a alienação parental e a Convenção de Haia têm sido mal utilizadas para silenciar alegações de abuso e reforçar violência institucional contra mulheres e crianças."
+      description: "Seminário promovido pelo TRF 3 para lançamento da obra 'Alienação Parental: Uma  nova forma de violência de gênero contra mulheres e crianças na América  Latina e Caribe'. Na oportunidade, discuti como a alienação parental e a Convenção de Haia têm sido mal utilizadas para silenciar alegações de  abuso e reforçar violência institucional contra mulheres e crianças."
     },
     cedawRecommendations: {
       title: "Como Usar as Recomendações da CEDAW em Litígio Estratégico Nacional",
-      description: "Painel discutindo o uso estratégico das recomendações da CEDAW para litígio doméstico no Brasil, enfatizando aplicações práticas para avançar direitos das mulheres."
+      description: "Participação em painel discutindo o uso estratégico das recomendações do CEDAW para  litígio doméstico no Brasil, enfatizando aplicações práticas para  avançar direitos das mulheres."
     },
     cedawCommittee: {
-      title: "Representação CLADEM/Brasil na revisão do Brasil perante o Comitê CEDAW",
-      description: "Discurso proferido na Sessão de Abertura com associações brasileiras sem fins lucrativos, abordando várias formas de violência institucional como violência obstétrica, alienação parental em tribunal de família, serviços de aborto inacessíveis para vítimas de violência sexual, casamento infantil e gravidezes forçadas entre adolescentes."
+      title: "Representação CLADEM/Brasil na revisão do Brasil perante o Comitê CEDAW/ONU",
+      description: "Discurso proferido na Sessão de Abertura da revisão do Brasil na CEDAW,  abordando várias formas de violência institucional como violência  obstétrica, alienação parental em tribunais de família, serviços de  aborto inacessíveis para vítimas de violência sexual, casamento infantil e gravidez forçadas entre adolescentes."
     },
     beginningOfLife: {
       title: "Debates sobre o Início da Vida e Regulamentações Legais para Personalidade",
-      description: "Exploração de perspectivas feministas sobre os debates legais e éticos concernentes ao início da vida e personalidade, focando em suas implicações para leis e políticas sociais."
+      description: "Exploração de perspectivas feministas sobre os debates legais e éticos  concernentes ao início da vida e personalidade, focando em suas  implicações jurídicas e políticas sociais."
     },
     interdisciplinaryResearch: {
-      title: "Pesquisa Acadêmica Interdisciplinar Engajada com a Comunidade",
-      description: "Apresentação sobre a aplicação de metodologias de pesquisa feminista interdisciplinar para engajar comunidades e abordar questões sistêmicas, destacando aplicações acadêmicas e práticas."
-    },
-    violenceResearch: {
-      title: "Lançamento de Pesquisa sobre Violência Contra Meninas e Adolescentes",
-      description: "Lançamento de pesquisa examinando a ligação entre violência sexual e morte de meninas e adolescentes na América Latina e Caribe entre 2010-2019, junto com melhores práticas para abordar violência nesta demografia."
+      title: "Pesquisa Acadêmica Interdisciplinar e Atenta a Demandas Sociais",
+      description: "Apresentação da aplicação de metodologias de pesquisa feminista interdisciplinar  para engajar comunidades e abordar questões sistêmicas, destacando  aplicações acadêmicas e práticas."
     },
     parentalAlienation2021: {
       title: "Alienação Parental: Uma Forma de Violência Contra as Mulheres",
-      description: "Webinar abordando como o conceito de alienação parental é usado como forma de violência institucional contra mulheres, envolvendo apoio multi-stakeholder e discussões em português e espanhol."
+      description: "Webinar abordando como o conceito de alienação parental é usado como forma de  violência institucional contra mulheres, envolvendo discussões em  português e espanhol."
     },
     advertisingChildren: {
       title: "Audiência Pública sobre Publicidade para Crianças",
@@ -93,7 +85,7 @@ export const videos = {
     },
     genderHumanRights2012: {
       title: "Gênero e Direitos Humanos",
-      description: "Seminário sobre igualdade de gênero e sua interseção com direitos humanos, discutindo como análise de gênero pode informar políticas e estruturas de desenvolvimento social."
+      description: "Seminário sobre igualdade de gênero e sua interseção com direitos humanos,  discutindo como a perspectiva feminista e de gênero deve informar normas jurídicas, políticas e estruturas de desenvolvimento social."
     },
     genderDiscussions: {
       title: "Impacto das Discussões de Gênero no Conceito de Direitos Humanos",
@@ -106,4 +98,4 @@ export const videos = {
 export type VideoTranslations = typeof videos;
 export type Language = keyof VideoTranslations;
 export type VideoKeys = keyof VideoTranslations['en'];
-export type IndividualVideoKeys = keyof VideoTranslations['en']['broadeningWomensRights'] | keyof VideoTranslations['en']['alienacaoParental2025'] | keyof VideoTranslations['en']['cedawRecommendations'] | keyof VideoTranslations['en']['cedawCommittee'] | keyof VideoTranslations['en']['beginningOfLife'] | keyof VideoTranslations['en']['interdisciplinaryResearch'] | keyof VideoTranslations['en']['violenceResearch'] | keyof VideoTranslations['en']['parentalAlienation2021'] | keyof VideoTranslations['en']['advertisingChildren'] | keyof VideoTranslations['en']['genderHumanRights2012'] | keyof VideoTranslations['en']['genderDiscussions'];
+export type IndividualVideoKeys = keyof VideoTranslations['en']['broadeningWomensRights'] | keyof VideoTranslations['en']['alienacaoParental2025'] | keyof VideoTranslations['en']['cedawRecommendations'] | keyof VideoTranslations['en']['cedawCommittee'] | keyof VideoTranslations['en']['beginningOfLife'] | keyof VideoTranslations['en']['interdisciplinaryResearch'] | keyof VideoTranslations['en']['parentalAlienation2021'] | keyof VideoTranslations['en']['advertisingChildren'] | keyof VideoTranslations['en']['genderHumanRights2012'] | keyof VideoTranslations['en']['genderDiscussions'];

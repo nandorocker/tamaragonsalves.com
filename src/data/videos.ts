@@ -53,13 +53,6 @@ export const videos: Video[] = [
     date: "2024-02-26"
   },
   {
-    titleKey: "violenceResearch.title",
-    descriptionKey: "violenceResearch.description",
-    videoUrl: "#", // No video URL available
-    thumbnailUrl: "videos/2021_violence_research.jpg", // Placeholder - needs actual thumbnail
-    date: "2021-12-06"
-  },
-  {
     titleKey: "parentalAlienation2021.title",
     descriptionKey: "parentalAlienation2021.description",
     videoUrl: "https://www.youtube.com/watch?v=YVh0jiG1iyQ",

@@ -30,7 +30,7 @@ export const books: Book[] = [
     descriptionKey: "alienacaoParental.description",
     imageUrl: "livro_alienacao_parental.png",
     imageAltKey: "alienacaoParental.imageAlt",
-    titleUrl: "https://www.amazon.com/Direitos-Humanos-Mulheres-Tamara-Amoroso/dp/8502187805/ref=sr_1_1?crid=36W7YBK85BINN&dib=eyJ2IjoiMSJ9.KwVNe-F1ZUfmrHYW8LSCw-w_CZPuVGIqMQkmkEH6Nbc51LhbYGokNNxgGei35xefXgO_d0dgL-H7LwuOxd0SsA.zTgcc4F9TJUAS7BOAemKVvgbn-2blSP2TE97WhxRrr0&dib_tag=se&keywords=Tamara+Amoroso+Gon%C3%A7alves&qid=1734551323&sprefix=tamara+amoroso+gon%C3%A7alves%2Caps%2C68&sr=8-1",
+    titleUrl: "https://cladem.org/biblioteca/alienacao-parental--uma-nova-forma-de-violencia-de--genero-contra-mulheres-e-criancas--na-america-latina-e-caribe",
     downloadLinks: [
       {
         textKey: "alienacaoParental.downloadLinks.cladem",

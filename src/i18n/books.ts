@@ -40,13 +40,13 @@ export const books = {
   pt: {
     // General book UI text
     bookCardDownloadText: "Baixar o livro:",
-    bookCardInterviewText: "Ouça minhas entrevistas:",
+    bookCardInterviewText: "Ouça minhas entrevistas (Discussões realizadas em português, tradução automática disponível):",
     bookCardFallbackDownloadText: "Baixar Texto Completo (PDF)",
     
     // Individual books
     alienacaoParental: {
       title: "Alienação Parental: Uma nova forma de violência de gênero contra mulheres e crianças na América Latina e Caribe",
-      description: "Este livro examina como o conceito falso de \"alienação parental\" é usado para minar relatos de abuso de mulheres e remover a custódia de mães protetoras na América Latina e Caribe. Embora apresentado como psicológico, funciona como violência institucional que esconde abuso doméstico e reforça estereótipos de gênero. Baseado em um seminário regional liderado por CLADEM, Equality Now e a Campanha Global para Igualdade no Direito de Família, este volume interdisciplinar analisa tendências legais e estudos de caso de cinco países, expondo esforços coordenados de grupos anti-direitos para reverter avanços feministas no direito de família. Discussões realizadas em português, tradução automática disponível.",
+      description: "Este livro examina como o conceito de \"alienação parental\" é usado para minar relatos de abuso de mulheres e remover a custódia de mães  protetoras na América Latina e Caribe. Embora apresentado como  psicológico, funciona como violência institucional que esconde abuso  doméstico e reforça estereótipos de gênero. Baseado em um seminário  regional liderado por CLADEM, Equality Now e a Campanha Global para  Igualdade no Direito de Família, este volume interdisciplinar analisa  tendências legais e estudos de caso de cinco países, expondo esforços  coordenados de grupos anti-direitos para reverter avanços feministas no  campo do direito de família.",
       imageAlt: "Capa do livro.",
       downloadLinks: {
         cladem: "Leia na Biblioteca CLADEM",
@@ -60,7 +60,7 @@ export const books = {
     },
     direitosHumanos: {
       title: "Direitos humanos das mulheres e a comissão Interamericana de direitos humanos",
-      description: "Meu livro Direitos Humanos das Mulheres e a Comissão Interamericana de Direitos Humanos, (Saraiva, 2013) analisa dados quantitativos e qualitativos relacionados a casos de violações de direitos humanos das mulheres apresentados à Comissão Interamericana de Direitos Humanos, identificando a agenda regional que organizações feministas promoveram através de litígio estratégico sensível ao gênero. Este trabalho combinou análise estatística e análise de casos, em trabalho pioneiro de jurimetria feito no Brasil.",
+      description: "A obra Direitos Humanos das Mulheres e a Comissão Interamericana de  Direitos Humanos (Saraiva, 2013) analisa dados quantitativos e  qualitativos relacionados a casos de violações de direitos humanos das  mulheres apresentados à Comissão Interamericana de Direitos Humanos,  identificando a agenda regional que organizações feministas promoveram  através de litígio estratégico sensível ao gênero. Este trabalho  combinou análise estatística e análise de casos, em trabalho pioneiro de jurimetria feito no Brasil, tendo sido resultado de minha dissertação  de mestrado.",
       imageAlt: "Capa do livro intitulado 'Direitos Humanos das Mulheres e a Comissão Interamericana de Direitos Humanos'",
       purchaseText: "Comprar Este Livro",
       purchaseLinks: {
@@ -70,7 +70,7 @@ export const books = {
     },
     abortoReligiao: {
       title: "Aborto e Religião nos Tribunais Brasileiros",
-      description: "Neste livro financiado pela Fundação MacArthur, Aborto e Religião nos Tribunais Brasileiros (2008), discuto a influência de argumentos religiosos em casos de aborto decididos por tribunais brasileiros—em um país onde o aborto é ilegal e é a 5ª causa de morte materna. Esta pesquisa foi baseada em estudos feministas, análise sociológica da religião católica e dados estatísticos sobre decisões judiciais. Este foi um trabalho pioneiro combinando pesquisa feminista socio-jurídica e jurimetria, quando esta última era raramente usada no Brasil. Disponível apenas em português.",
+      description: "Neste livro financiado pela Fundação MacArthur, Aborto e Religião nos  Tribunais Brasileiros (2008), discuto a influência de argumentos  religiosos em casos de aborto decididos por tribunais brasileiros—em um  país onde o aborto ilegal é a 5ª causa de mortalidade materna. Esta  pesquisa foi baseada em estudos feministas, análise sociológica da  religião católica e dados estatísticos sobre decisões judiciais. Este  foi um trabalho pioneiro combinando pesquisa feminista socio-jurídica e  jurimetria, quando esta última era raramente usada no Brasil. Disponível apenas em português.",
       imageAlt: "Capa do livro intitulado 'Aborto e Religião nos Tribunais Brasileiros'"
     }
   }

@@ -1,6 +1,7 @@
 // Translation dictionary for UI text content
 import { books } from './books';
 import { videos } from './videos';
+import { projects } from './projects';
 
 export const ui = {
   en: {
@@ -115,20 +116,10 @@ export const ui = {
       }
     },
     
-    // Projects data
-    projects: {
-      gender305Podcast: {
-        title: "Gender 305 Podcast",
-        subtitle: "Podcast series on Gender and Human Rights.",
-        description: "At UVIC's Gender Studies Department, I taught Gender and International Human Rights in fall 2022 and 2023, where students created podcast episodes as their final assignments with CFUV's technical support. These episodes, now being published and aired through CFUV, explore diverse topics including abortion rights, LGBTQ2+ and non-binary rights, gender-based discrimination in AI, and violence against Indigenous women in Canada. We invite you to listen and engage in these important conversations.",
-        imageAlt: "Logo of the Gender 305 Podcast",
-        linkText: "Listen and Subscribe (Spotify)"
-      }
-    },
-
-    // Include book and video translations
+    // Include book, video, and project translations
     ...books.en,
-    ...videos.en
+    ...videos.en,
+    ...projects.en
   },
   pt: {
     // Page metadata
@@ -147,20 +138,20 @@ export const ui = {
     heroDescription: "Há vinte anos, dedico minha carreira ao direito e advocacia de direitos humanos, especializando-me em direitos das mulheres e justiça de gênero. Meu trabalho conecta pesquisa acadêmica com impacto prático, demonstrado através de extensas publicações e papéis de liderança em setores governamentais e não-governamentais.",
 
     // About Me section
-    aboutMeHeading: "Sobre Mim",
-    aboutMeDescription: "Minha formação educacional em direito, com foco em direitos humanos, e minha experiência em papéis não-governamentais, governamentais e acadêmicos me permitiram excellir em advocacia e negociação com stakeholders. Como porta-voz de várias organizações, tenho me engajado efetivamente com públicos diversos, desde especialistas em órgãos internacionais de direitos humanos até comunidades de base, acadêmicos e servidores públicos. Já proferi palestras e representei instituições em mais de 90 ocasiões, local, regional e internacionalmente, sobre temas que abrangem direitos das crianças, direitos das mulheres (particularmente violência baseada em gênero e direitos sexuais e reprodutivos) e direitos do consumidor.",
+    aboutMeHeading: "Quem Sou Eu?",
+    aboutMeDescription: "Minha formação educacional em direito, com foco em direitos humano e direitos difusos e coletivos, bem como minha experiência com atividades em  organismos governamentais, não-governamentais (nacionais e  internacionais), e acadêmicos me trouxeram uma perspectiva prática e  aprofundada em relação a diversas questões prementes da nossa sociedade  atual. Como resultado, conduzo incidência política (advocacy) e  negociação com diversos atores sociais com excelência. Como porta-voz de várias organizações, tenho me engajado efetivamente com públicos  diversos, desde especialistas em órgãos internacionais de direitos  humanos até comunidades de base, acadêmicos e servidores públicos. Já  proferi palestras e representei instituições em mais de 92 ocasiões,  local, regional e internacionalmente, sobre temas que abrangem direitos  das crianças, direitos das mulheres (particularmente violência de gênero e direitos sexuais e reprodutivos) e direitos do consumidor.",
 
     // Background section
     backgroundHeading: "Formação Acadêmica e Profissional",
-    backgroundParagraph1: "Possuo graduação em Direito, mestrado em Direitos Humanos, doutorado em Direito e Sociedade, e Certificado de Pós-Graduação em Ensino e Aprendizagem no Ensino Superior. Trago extensa experiência em direitos humanos nos níveis nacional, regional e internacional, com habilidades em análise de políticas, advocacia em questões de direitos humanos e proferimento de palestras sobre tópicos complexos para públicos diversos, desde formuladores de políticas e acadêmicos até organizações de base, garantindo que questões complexas sejam comunicadas efetivamente para gerar resultados impactantes. Tendo vivido e trabalhado em vários países e sendo fluente em 4 idiomas (português, inglês, espanhol e francês), sou altamente sintonizada e respeitosa às diversidades socioculturais.",
-    backgroundParagraph2: "Minha carreira abrange academia, organizações sem fins lucrativos e governo, incluindo atuação no Ministério da Justiça do Brasil. Nos últimos 20 anos, trabalhei em contextos brasileiros, latino-americanos e canadenses como advogada, especialista em gênero e direitos humanos, palestrante, servidora pública e analista de políticas. Minha expertise abrange violência baseada em gênero, direitos sexuais e reprodutivos, direito da saúde, regulamentação de publicidade de alimentos ultraprocessados, direito do consumidor, direitos das crianças e direito internacional dos direitos humanos. Para mais detalhes sobre minha formação acadêmica e profissional, consulte meu CV.",
+    backgroundParagraph1: "Tendo vivido e trabalhado em vários países e sendo fluente em 4 idiomas  (português, inglês, espanhol e francês), possuo uma aguçada  sensibilidade e respeito questões de diversidade sócio-cultural, agindo sempre com empatia, acolhimento, respeito, e livre de preconceitos e julgamentos.",
+    backgroundParagraph2: "Minha carreira abrange experiências na academia, no governo, em organizações  sem fins lucrativos, e em redes ativistas nacionais e internacionais;  incluindo atuação no Ministério da Justiça do Brasil. Nos últimos 20  anos, trabalhei em contextos brasileiros, latino-americanos e canadenses como advogada, especialista em gênero e direitos humanos, palestrante,  servidora pública e analista de políticas. Minha expertise abrange  violência de gênero, direitos sexuais e reprodutivos, direito à saúde,  regulamentação de publicidade de alimentos ultraprocessados, direito do  consumidor, direitos das crianças e direito internacional dos direitos  humanos. Para mais detalhes sobre minha formação acadêmica e  profissional, consulte meu CV.",
     cvLinkText: "Baixar CV Completo (PDF)",
     cvUrl: "/files/Tamara_Amoroso_Gonsalves_CV.pdf",
 
     // Publications section
     publicationsHeading: "Livros e Publicações",
     publicationsSubheading: "Publicações",
-    publicationsDescription: "Dedico-me a produzir pesquisa e bolsa de estudos de alta qualidade, engajada com a comunidade, que aborda questões sociais urgentes. Nos últimos 20 anos, desenvolvi pesquisa interdisciplinar, transsistêmica e socio-jurídica, resultando em 2 livros publicados, 40 capítulos de livros, 11 artigos de periódicos, 10 relatórios de pesquisa e advocacia, e 36 artigos de opinião. Minhas publicações abrangem uma ampla gama de tópicos, incluindo direitos fundamentais das crianças, direitos humanos das mulheres—particularmente violência baseada em gênero e direitos sexuais e reprodutivos—e direitos do consumidor, com foco específico em recalls de produtos, regulamentações de publicidade e regulamentação de alimentos ultraprocessados.",
+    publicationsDescription: "Dedico-me a produzir pesquisa e estudos de impacto, relacionados a demandas  sociais urgentes. Nos últimos 20 anos, desenvolvi pesquisa  interdisciplinar, transsistêmica e socio-jurídica, resultando em 3  livros publicados, 40 capítulos de livros, 11 artigos de periódicos, 10  relatórios de pesquisa e advocacia, e 36 artigos de opinião. Minhas  publicações abrangem ampla gama de tópicos, incluindo direitos  fundamentais das crianças, direitos humanos das mulheres—particularmente violência de gênero e direitos sexuais e reprodutivos—e direitos do  consumidor, com foco específico em *recalls* de produtos, regulamentações de publicidade e regulamentação de alimentos ultraprocessados.",
     publicationsCvLinkText: "Para lista completa de publicações, baixe meu CV",
     publicationsOrcidLinkText: "Meu registro ORCID",
     publicationsOrcidUrl: "https://orcid.org/0000-0002-2500-8477",
@@ -168,55 +159,55 @@ export const ui = {
     publicationsOtherProjectsSubheading: "Outros Projetos",
 
     // Speaking section
-    speakingHeading: "Palestras Públicas",
-    speakingDescription: "Minha formação educacional em direito, com foco em direitos humanos, e minha experiência em papéis não-governamentais, governamentais e acadêmicos me permitiram excellir em advocacia e negociação com stakeholders. Como porta-voz de várias organizações, tenho me engajado efetivamente com públicos diversos, desde especialistas em órgãos internacionais de direitos humanos até comunidades de base, acadêmicos e servidores públicos. Já proferi palestras e representei instituições em mais de 90 ocasiões, local, regional e internacionalmente, sobre temas que abrangem direitos das crianças, direitos das mulheres (particularmente violência baseada em gênero e direitos sexuais e reprodutivos) e direitos do consumidor.",
+    speakingHeading: "Palestras e Intervenções Públicas",
+    speakingDescription: "A partir de minha formação jurídica, com foco em direitos humanos, e  minha experiência em papéis não-governamentais, governamentais e  acadêmicos, venho me especializando em atividades de difusão, debates e  ensino. Com mais de 92 palestras proferidas nos âmbitos nacional,  regional e internacional para diversos públicos, venho me especializando em representação institucional e perante a mídia, elevando debates  sobre temas centrais e urgentes de nossa sociedade. ",
     speakingContactButtonText: "Entre em contato para solicitações de palestras",
 
     // Services section
-    servicesHeading: "O que posso oferecer",
+    servicesHeading: "O que eu ofereço",
     
     // Courses
     coursesTitle: "Cursos",
-    coursesItem1: "Sistemas de Direitos Humanos: abrange sistemas internacionais de direitos humanos (globais e regionais), seu funcionamento, documentos-chave e oportunidades de advocacia.",
-    coursesItem2: "Gênero e Direitos Humanos Internacionais: oferece uma visão geral dos Instrumentos de Direitos Humanos mais relevantes que protegem os direitos das mulheres e indivíduos de gêneros diversos.",
-    coursesItem3: "Violência baseada em gênero: discute como o conceito de violência baseada em gênero evoluiu, cobrindo conceitos-chave, padrões legais e políticas públicas.",
+    coursesItem1: "Sistemas de Direitos Humanos: abrange sistemas internacionais de direitos humanos (globais e regionais), seu  funcionamento, documentos-chave e oportunidades de advocacy.",
+    coursesItem2: "Gênero e Direito Internacional dos Direitos Humanos: oferece uma visão geral dos Instrumentos de Direitos Humanos mais relevantes  que protegem os direitos das mulheres e população LGBTQIA2+",
+    coursesItem3: "Discriminação e violência de gênero: discute como o conceito de violência de gênero evoluiu, cobrindo  conceitos-chave, padrões legais e políticas públicas de combate e  proteção.",
     coursesItem4: "Feminismo transnacional e advocacia internacional: explora o ativismo feminista transnacional e seus avanços e desafios.",
-    coursesItem5: "Teorias Jurídicas Feministas: apresenta e discute as principais correntes feministas e suas implicações socio-jurídicas para o avanço da justiça de gênero.",
+    coursesItem5: "Teorias Jurídicas Feministas: apresenta e discute as principais correntes feministas e suas implicações sócio-jurídicas para o avanço da justiça de gênero.",
     coursesNote: "Os cursos podem variar em duração e profundidade, dependendo de suas necessidades. Também podem ser adaptados para públicos específicos como acadêmicos, governo e público geral.",
 
     // Consultancy
     consultancyTitle: "Consultoria",
-    consultancyDescription: "Meu trabalho de consultoria foca em análise de políticas, advocacia, pesquisa e capacitação em direitos humanos, com ênfase particular em violência baseada em gênero, direitos sexuais e reprodutivos, direito da saúde e direitos das crianças. Aproveitando minha base acadêmica—graduação em Direito, mestrado em Direitos Humanos, doutorado em Direito e Sociedade, e certificado de pós-graduação em ensino—forneço soluções perspicazes e baseadas em evidências, adaptadas a contextos diversos. Fundamentada em um profundo compromisso com o avanço da equidade e justiça, posso:",
-    consultancyItem1: "Desenvolver estratégias para advocacia;",
-    consultancyItem2: "Conduzir workshops de treinamento;",
-    consultancyItem3: "Elaborar análises jurídicas e de políticas abrangentes.",
+    consultancyDescription: "Meu trabalho de consultoria foca em análise de políticas, advocacia,  pesquisa e capacitação em direitos humanos, com ênfase particular em  violência de gênero, direitos sexuais e reprodutivos, direito à saúde,  direitos do consumidor, e direitos das crianças e adolescentes.  Aproveitando minha base acadêmica—graduação em Direito, mestrado em  Direitos Humanos, doutorado em Direito e Sociedade, e certificado de  pós-graduação em ensino superior e em segurança de mercado—forneço  soluções perspicazes e baseadas em evidências, adaptadas a contextos  diversos. Fundamentada em um profundo compromisso com o avanço da  equidade e justiça, posso:",
+    consultancyItem1: "Desenvolver estratégias para advocacy e incidência nacional, regional e internacional;",
+    consultancyItem2: "Conduzir workshops de formação e sensibilização;",
+    consultancyItem3: "Elaborar análises jurídicas e de políticas públicas, com propostas de melhorias.",
 
     // Lawyering
     lawyeringTitle: "Advocacia",
-    lawyeringItem1: "Pareceres jurídicos sobre violência baseada em gênero, controle coercitivo, abuso doméstico, violência entre parceiros íntimos, direitos das crianças, direitos humanos;",
+    lawyeringItem1: "Pareceres jurídicos sobre violência de gênero, controle coercitivo, abuso  doméstico, violência entre parceiros íntimos, direitos das crianças,  direitos humanos, controle de constitucionalidade e controle de  convencionalidade;",
     lawyeringItem2: "Testemunha especialista em violência baseada em gênero, controle coercitivo, abuso doméstico, violência entre parceiros íntimos, direitos das crianças, litígio abusivo, alienação parental;",
     lawyeringItem3: "Serviços jurídicos em casos da Convenção de Haia envolvendo cidadãos brasileiros;",
-    lawyeringItem4: "Direito de família e divórcio em contextos de abuso doméstico;",
+    lawyeringItem4: "Direito de família e divórcio em contextos de abuso doméstico envolvendo cônjuges de diferentes nacionalidades ou não.",
 
     // Mentorship
     mentorshipTitle: "Mentoria",
     mentorshipDescription: "Posso apoiá-lo com o seguinte:",
-    mentorshipItem1: "Candidatura para estudos de pós-graduação;",
+    mentorshipItem1: "Apoio para candidatura em processos de pós-graduação;",
     mentorshipItem2: "Preparação de propostas acadêmicas;",
     mentorshipItem3: "Desenvolvimento de trabalho acadêmico.",
 
     // Advocacy
     advocacyTitle: "Trabalho de Advocacia",
-    advocacyItem1: "Elaboração de relatórios-sombra para órgãos de tratados das Nações Unidas, e MESECVI (Mecanismo de Acompanhamento da Convenção de Belém do Pará - Organização dos Estados Americanos);",
-    advocacyItem2: "Advocacia presencial - para resultados mais bem-sucedidos;",
+    advocacyItem1: "Elaboração de relatórios-sombra para órgãos de tratados das Nações Unidas, e  MESECVI (Mecanismo de Acompanhamento da Convenção de Belém do Pará -  Organização dos Estados Americanos);",
+    advocacyItem2: "Advocacy presencial (favorece melhores resultados);",
     advocacyItem3: "Representação institucional em audiências públicas;",
-    advocacyItem4: "Articulação, preparação e submissão de Amicus Curiae tanto em níveis nacional quanto internacional;",
-    advocacyItem5: "Workshops para organizações sem fins lucrativos e corporações;",
+    advocacyItem4: "Articulação, preparação e submissão de *Amicus Curiae* tanto em níveis nacional quanto internacional;",
+    advocacyItem5: "Workshops para organizações sem fins lucrativos, governo e corporações;",
     advocacyItem6: "Moderação de eventos acadêmicos e institucionais.",
 
     // Contact section
     contactHeading: "Entre em contato",
-    contactDescription: "Vamos conversar! Para consultas ou oportunidades de colaboração, entre em contato via email em [email] ou conecte-se comigo no LinkedIn. Procuro responder dentro de 48 horas.",
+    contactDescription: "Vamos conversar! Para consultas ou oportunidades de colaboração, entre em  contato via email em [email] ou conecte-se comigo no LinkedIn. Respostas em até 48 horas.",
     contactEmailButtonText: "Envie-me um email",
     contactSocialMediaHeading: "Encontre-me nas Redes Sociais",
 
@@ -242,19 +233,9 @@ export const ui = {
       }
     },
     
-    // Projects data
-    projects: {
-      gender305Podcast: {
-        title: "Gender 305 Podcast",
-        subtitle: "Série de podcast sobre Gênero e Direitos Humanos.",
-        description: "No Departamento de Estudos de Gênero da UVIC, ensinei Gênero e Direitos Humanos Internacionais no outono de 2022 e 2023, onde estudantes criaram episódios de podcast como suas tarefas finais com suporte técnico da CFUV. Esses episódios, agora sendo publicados e transmitidos pela CFUV, exploram tópicos diversos incluindo direitos ao aborto, direitos LGBTQ2+ e não-binários, discriminação baseada em gênero na IA, e violência contra mulheres indígenas no Canadá. Convidamos você a ouvir e participar dessas conversas importantes.",
-        imageAlt: "Logo do Gender 305 Podcast",
-        linkText: "Ouvir e Inscrever-se (Spotify)"
-      }
-    },
-
-    // Include book and video translations
+    // Include book, video, and project translations
     ...books.pt,
-    ...videos.pt
+    ...videos.pt,
+    ...projects.pt
   }
 } as const;

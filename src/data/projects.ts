@@ -12,13 +12,13 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    titleKey: "gender305Podcast.title",
-    subtitleKey: "gender305Podcast.subtitle",
-    descriptionKey: "gender305Podcast.description",
+    titleKey: "projects.gender305Podcast.title",
+    subtitleKey: "projects.gender305Podcast.subtitle",
+    descriptionKey: "projects.gender305Podcast.description",
     imageUrl: "podcast_gender_305.jpg",
-    imageAltKey: "gender305Podcast.imageAlt",
+    imageAltKey: "projects.gender305Podcast.imageAlt",
     linkUrl: "https://open.spotify.com/show/0wXLKKJbgFwjnHdevQYnYW?si=400a91e1597a4f40",
-    linkTextKey: "gender305Podcast.linkText",
+    linkTextKey: "projects.gender305Podcast.linkText",
     linkIcon: "icon-external-link"
   }
 ];
