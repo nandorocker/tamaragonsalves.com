@@ -1,6 +1,6 @@
 ---
 import { images } from '../data/global';
-import { useTranslations, getLangFromUrl } from '../i18n/index';
+import { useTranslations, useVideoTranslations, getLangFromUrl } from '../i18n/index';
 
 export interface Props {
   titleKey: string;
@@ -22,11 +22,12 @@ const {
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const tv = useVideoTranslations(lang);
 
 // Resolve translation keys
-const title = t(titleKey);
-const description = t(descriptionKey);
-const linkText = linkTextKey ? t(linkTextKey) : t('videoPublicationCardLinkText');
+const title = tv(titleKey);
+const description = tv(descriptionKey);
+const linkText = linkTextKey ? tv(linkTextKey) : tv('videoPublicationCardLinkText');
 
 // Format date once at build time for better performance
 const formattedDate = new Date(date).toLocaleDateString('en-US', { 

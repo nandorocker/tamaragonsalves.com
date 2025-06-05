@@ -20,6 +20,7 @@ if (!pathWithoutLang || pathWithoutLang === '') {
 }
 
 const languageLinks = Object.entries(languages).map(([langCode, langName]) => {
+  // Always use the language prefix since that's where the content actually lives
   const href = `/${langCode}${pathWithoutLang}`;
   return {
     code: langCode,

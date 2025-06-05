@@ -1,6 +1,6 @@
 ---
 import { images } from '../data/global';
-import { useTranslations, getLangFromUrl } from '../i18n/index';
+import { useTranslations, useBookTranslations, getLangFromUrl } from '../i18n/index';
 
 export interface Props {
   titleKey: string;
@@ -41,12 +41,13 @@ const {
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const tb = useBookTranslations(lang);
 
 // Resolve translation keys
-const title = t(titleKey);
-const description = t(descriptionKey);
-const imageAlt = t(imageAltKey);
-const purchaseText = purchaseTextKey ? t(purchaseTextKey) : undefined;
+const title = tb(titleKey);
+const description = tb(descriptionKey);
+const imageAlt = tb(imageAltKey);
+const purchaseText = purchaseTextKey ? tb(purchaseTextKey) : undefined;
 
 // Construct image path once for performance
 const imagePath = `${images}/${imageUrl}`;
@@ -72,14 +73,14 @@ const imagePath = `${images}/${imageUrl}`;
     
     {downloadLinks.length > 0 && (
       <div>
-        {t('bookCardDownloadText')}
+        {tb('bookCardDownloadText')}
         <ul>
           {downloadLinks.map(link => (
             <li>
               <a href={link.url} target="_blank" 
                  class={`icon-before ${link.icon || 'icon-file-pdf'} icon-space-sm`}
                  rel="noopener noreferrer">
-                {t(link.textKey)}
+                {tb(link.textKey)}
               </a>
             </li>
           ))}
@@ -89,13 +90,13 @@ const imagePath = `${images}/${imageUrl}`;
 
     {interviewLinks.length > 0 && (
       <div>
-        {t('bookCardInterviewText')}
+        {tb('bookCardInterviewText')}
         <ul>
           {interviewLinks.map(link => (
             <li>
               <a href={link.url} target="_blank" 
                  class={`icon-before ${link.icon || 'icon-video'} icon-space-sm`}>
-                {t(link.textKey)}
+                {tb(link.textKey)}
               </a>
             </li>
           ))}
@@ -108,7 +109,7 @@ const imagePath = `${images}/${imageUrl}`;
         {purchaseText && <>{purchaseText}<br></>}
         {purchaseLinks.map((link, index) => (
           <>
-            <a href={link.url} target="_blank" rel="noopener noreferrer">{t(link.textKey)}</a>
+            <a href={link.url} target="_blank" rel="noopener noreferrer">{tb(link.textKey)}</a>
             {index < purchaseLinks.length - 1 ? ' / ' : ''}
           </>
         ))}
@@ -117,7 +118,7 @@ const imagePath = `${images}/${imageUrl}`;
 
     {downloadLinks.length === 0 && interviewLinks.length === 0 && purchaseLinks.length === 0 && titleUrl && (
       <a href={titleUrl} class="icon-before icon-file-pdf icon-space-sm">
-        {t('bookCardFallbackDownloadText')}
+        {tb('bookCardFallbackDownloadText')}
       </a>
     )}
   </div>
