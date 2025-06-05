@@ -45,7 +45,9 @@ const imagePath = `${images}/${thumbnailUrl}`;
     </div>
   </a>
   <time datetime={date} class="video-date">{formattedDate}</time>
-  <h5 class="video-title">{title}</h5>
+  <a href={videoUrl} class="not-italic no-underline" target="_blank" aria-label={`Watch video: ${title}`} rel="noopener noreferrer">
+    <h5 class="video-title">{title}</h5>
+  </a>
   <p class="video-description">{description}</p>
   <a href={videoUrl} target="_blank" 
      class="video-link icon-after icon-external-link icon-space-sm"
