@@ -152,18 +152,12 @@ module.exports = {
     },
   },
   plugins: [
-    require("taos/plugin"),
     require("tailwind-fontawesome")({ pro: true }),
     plugin(function ({ addBase }) {
       addBase({
         html: { fontSize: "18px" },
       });
     }),
-  ],
-  safelist: [
-    "!duration-[0ms]",
-    "!delay-[0ms]",
-    'html.js :where([class*="taos:"]:not(.taos-init))',
   ],
 };
 

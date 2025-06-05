@@ -33,9 +33,6 @@ importers:
       tailwindcss:
         specifier: ^3.4.17
         version: 3.4.17
-      taos:
-        specifier: ^1.0.5
-        version: 1.0.5
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
@@ -2017,9 +2014,6 @@ packages:
     resolution: {integrity: sha512-w33E2aCvSDP0tW9RZuNXadXlkHXqFzSkQew/aIa2i/Sj8fThxwovwlXHSPXTbAHwEIhBFXAedUhP2tueAKP8Og==}
     engines: {node: '>=14.0.0'}
     hasBin: true
-
-  taos@1.0.5:
-    resolution: {integrity: sha512-JSwR+ldec2dSjOnssN/VGjXSR44DbzUVeAXRDVEuMsc7xndx8ePcQ4QMAMUAL5V4KN1wlmhumyQ7aSykDf8uhw==}
 
   tar@7.4.3:
     resolution: {integrity: sha512-5S7Va8hKfV7W5U6g3aYxXmlPoZVAwUMy9AOKyF2fVuZa2UD3qZjg578OrLRt8PcNN1PleVaL/5/yYATNL0ICUw==}
@@ -4821,8 +4815,6 @@ snapshots:
       sucrase: 3.35.0
     transitivePeerDependencies:
       - ts-node
-
-  taos@1.0.5: {}
 
   tar@7.4.3:
     dependencies:
