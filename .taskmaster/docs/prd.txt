@@ -1,0 +1,162 @@
+# Product Requirements Document (PRD)
+## Internationalization Structure Refactoring
+
+**Version:** 1.0  
+**Date:** June 5, 2025  
+**Project:** Tamara Gonsalves Website
+
+---
+
+## 1. Executive Summary
+
+### 1.1 Problem Statement
+The current internationalization (i18n) structure uses individual keys for each list item and paragraph, creating maintenance challenges:
+- **70+ individual item keys** across 5 service sections
+- **Fragmented multi-paragraph content** with separate keys
+- **Difficult content management** when adding/removing items
+- **Translation inconsistencies** between languages
+- **Poor developer experience** with repetitive key patterns
+
+### 1.2 Solution Overview
+Refactor the i18n structure to use:
+- **Array-based lists** for service items
+- **Markdown strings** for multi-paragraph content
+- **Reduced key count** by 70-80%
+- **Improved maintainability** and developer experience
+
+### 1.3 Success Metrics
+- Reduce total i18n keys from ~200 to ~120
+- Eliminate 25+ individual item keys
+- Maintain 100% content parity
+- Zero visual/functional regressions
+
+---
+
+## 2. Technical Requirements
+
+### 2.1 Services Section Array Conversion
+Convert 5 service sections to use arrays:
+- Courses: `coursesItem1-5` → `coursesItems[]`
+- Consultancy: `consultancyItem1-3` → `consultancyItems[]`
+- Lawyering: `lawyeringItem1-4` → `lawyeringItems[]`
+- Mentorship: `mentorshipItem1-3` → `mentorshipItems[]`
+- Advocacy: `advocacyItem1-6` → `advocacyItems[]`
+
+### 2.2 Multi-paragraph Content Conversion
+Convert Background section paragraphs:
+- `backgroundParagraph1` + `backgroundParagraph2` → `backgroundDescription` (markdown)
+
+### 2.3 Content Preservation
+- Maintain exact content parity during conversion
+- Preserve formatting and line breaks
+- Support both English and Portuguese translations
+
+### 2.4 Component Updates
+- Update all components to handle new structure
+- Implement array iteration for service items
+- Add markdown parsing for multi-paragraph content
+
+---
+
+## 3. Implementation Tasks
+
+### 3.1 Data Structure Changes
+- Create backup of current ui.ts file
+- Convert individual item keys to arrays for all service sections
+- Convert multi-paragraph content to markdown strings
+- Update TypeScript interfaces
+
+### 3.2 Component Updates
+- Update Services component rendering logic
+- Update Background component for markdown parsing
+- Search and update any other affected components
+- Maintain existing styling and layout
+
+### 3.3 Testing & Validation
+- Test component functionality with new structure
+- Verify cross-browser compatibility
+- Validate mobile responsiveness
+- Ensure zero visual regressions
+
+---
+
+## 4. Acceptance Criteria
+
+### 4.1 Content Preservation
+- All existing content appears exactly as before
+- No missing or duplicated text
+- Proper formatting and line breaks maintained
+
+### 4.2 Functionality
+- Language switching works correctly
+- All links and buttons function properly
+- Responsive design works on all devices
+
+### 4.3 Performance
+- Page load time unchanged or improved
+- Bundle size unchanged or reduced
+- No console errors or warnings
+
+---
+
+## 5. Files to Modify
+
+### Primary Files:
+- `src/i18n/ui.ts` - Main translation file requiring refactoring
+- Components that consume the i18n data (to be identified)
+
+### Supporting Files:
+- TypeScript interface definitions
+- Any components rendering service lists
+- Background/About section components
+
+---
+
+## 6. Technical Approach
+
+### 6.1 Array Structure Example:
+```typescript
+// Before:
+coursesItem1: "Human Rights Systems: covers...",
+coursesItem2: "Gender and International Human Rights: offers...",
+
+// After:
+coursesItems: [
+  "Human Rights Systems: covers international human rights systems...",
+  "Gender and International Human Rights: offers an overview..."
+]
+```
+
+### 6.2 Markdown Structure Example:
+```typescript
+// Before:
+backgroundParagraph1: "I hold a bachelor's degree...",
+backgroundParagraph2: "My career spans academia...",
+
+// After:
+backgroundDescription: `
+I hold a bachelor's degree in Law, a master's in Human Rights...
+
+My career spans academia, non-profits, and government...
+`
+```
+
+---
+
+## 7. Quality Assurance
+
+- Unit testing for array iteration
+- Integration testing for language switching
+- Visual regression testing
+- Performance benchmarking
+- Cross-browser compatibility testing
+
+---
+
+## 8. Rollback Plan
+
+- Maintain backup of original ui.ts file
+- Git version control for component changes
+- Ability to revert to previous version if issues arise
+
+This refactoring will significantly improve the maintainability of the internationalization system while preserving all existing functionality and content.
