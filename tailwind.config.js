@@ -6,6 +6,10 @@ module.exports = {
   content: [
     "./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}",
   ],
+  safelist: [
+    "col-span-2",
+    "row-span-2",
+  ],
   theme: {
     fontFamily: {
       sans: ["Alegreya Sans"],
