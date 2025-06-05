@@ -51,14 +51,11 @@ const t = useTranslations(lang as 'en' | 'pt');
 	    <div class="contain-medium section-margins-medium sm:grid lg:grid-cols-2 sm:gap-x-8">
 	        <div>
 	            <h1 class="max-lg:text-size-h2 max-lg:mb-10" set:html={t('backgroundHeading').replace(' ', '<wbr> ')}></h1>
-	        </div>
-
-	        <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto">
-	            <p>{t('backgroundParagraph1')}</p>
-	            <p>{t('backgroundParagraph2')}</p>
-	            <a href={t('cvUrl')} id="cv"
-	                class="icon-before icon-file-pdf icon-space-sm">{t('cvLinkText')}</a>
-	        </div>
+	        </div>        <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto">
+            <div style="white-space: pre-line;">{t('backgroundDescription')}</div>
+            <a href={t('cvUrl')} id="cv"
+                class="icon-before icon-file-pdf icon-space-sm">{t('cvLinkText')}</a>
+        </div>
 	    </div>
 	</section>
 
@@ -148,11 +145,9 @@ const t = useTranslations(lang as 'en' | 'pt');
 					<div class="services-item pb-4">
 						<h3 class="dark:text-pink-300">{t('coursesTitle')}</h3>
 						<ul class="bullet dark:text-gray-300">
-							<li><strong>{t('coursesItem1').split(':')[0]}:</strong>{t('coursesItem1').split(':')[1]}</li>
-							<li><strong>{t('coursesItem2').split(':')[0]}:</strong>{t('coursesItem2').split(':')[1]}</li>
-							<li><strong>{t('coursesItem3').split(':')[0]}:</strong>{t('coursesItem3').split(':')[1]}</li>
-							<li><strong>{t('coursesItem4').split(':')[0]}:</strong>{t('coursesItem4').split(':')[1]}</li>
-							<li><strong>{t('coursesItem5').split(':')[0]}:</strong>{t('coursesItem5').split(':')[1]}</li>
+							{t('coursesItems').map((item: string) => (
+								<li><strong>{item.split(':')[0]}:</strong>{item.split(':')[1]}</li>
+							))}
 						</ul>
 						<p class="text-small dark:text-gray-300">{t('coursesNote')}</p>
 					</div>
@@ -160,9 +155,9 @@ const t = useTranslations(lang as 'en' | 'pt');
 						<h3 class="dark:text-pink-300">{t('consultancyTitle')}</h3>
 						<p class="dark:text-gray-300">{t('consultancyDescription')}</p>
 						<ul class="bullet dark:text-gray-300">
-							<li>{t('consultancyItem1')}</li>
-							<li>{t('consultancyItem2')}</li>
-							<li>{t('consultancyItem3')}</li>
+							{t('consultancyItems').map((item: string) => (
+								<li>{item}</li>
+							))}
 						</ul>
 					</div>
 				</div>
@@ -171,30 +166,26 @@ const t = useTranslations(lang as 'en' | 'pt');
 					<div class="services-item pb-4">
 						<h3 class="dark:text-pink-300">{t('lawyeringTitle')}</h3>
 						<ul class="bullet dark:text-gray-300">
-							<li>{t('lawyeringItem1')}</li>
-							<li>{t('lawyeringItem2')}</li>
-							<li>{t('lawyeringItem3')}</li>
-							<li>{t('lawyeringItem4')}</li>
+							{t('lawyeringItems').map((item: string) => (
+								<li>{item}</li>
+							))}
 						</ul>
 					</div>
 					<div class="services-item pb-4">
 						<h3 class="dark:text-pink-300">{t('mentorshipTitle')}</h3>
 						<p class="dark:text-gray-300">{t('mentorshipDescription')}</p>
 						<ul class="bullet dark:text-gray-300">
-							<li>{t('mentorshipItem1')}</li>
-							<li>{t('mentorshipItem2')}</li>
-							<li>{t('mentorshipItem3')}</li>
+							{t('mentorshipItems').map((item: string) => (
+								<li>{item}</li>
+							))}
 						</ul>
 					</div>
 					<div class="services-item pb-4">
 						<h3 class="dark:text-pink-300">{t('advocacyTitle')}</h3>
 						<ul class="bullet dark:text-gray-300">
-							<li>{t('advocacyItem1')}</li>
-							<li>{t('advocacyItem2')}</li>
-							<li>{t('advocacyItem3')}</li>
-							<li>{t('advocacyItem4')}</li>
-							<li>{t('advocacyItem5')}</li>
-							<li>{t('advocacyItem6')}</li>
+							{t('advocacyItems').map((item: string) => (
+								<li>{item}</li>
+							))}
 						</ul>
 					</div>
 				</div>

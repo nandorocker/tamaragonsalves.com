@@ -26,9 +26,8 @@ export const ui = {
 
     // Background section
     backgroundHeading: "Academic & Professional Background",
-    backgroundDescription: `I hold a bachelor's degree in Law, a master's in Human Rights, a PhD in Law and Society, and a Graduate Certificate in Teaching and Learning in Higher Education. I bring extensive experience in human rights at national, regional, and international levels, with skills in policy analysis, advocacy on human rights issues, and delivering lectures on complex topics to diverse audiences, from policymakers and academics to grassroots organizations, ensuring complex issues are communicated effectively to drive impactful outcomes. Having lived and worked in various countries and being fluent in 4 languages (Portuguese, English, Spanish, and French), I am highly attuned to and respectful of socio-cultural diversities.
-
-My career spans academia, non-profits, and government, including serving in Brazil's Ministry of Justice. Over the past 20 years, I have worked in Brazilian, Latin American, and Canadian contexts as a lawyer, gender and human rights expert, lecturer, public servant, and policy analyst. My expertise covers gender-based violence, sexual and reproductive rights, health law, ultra-processed food advertising regulation, consumer law, children's rights, and international human rights law. For further details on my academic and professional background, please refer to my CV.`,
+    backgroundParagraph1: "I hold a bachelor's degree in Law, a master's in Human Rights, a PhD in Law and Society, and a Graduate Certificate in Teaching and Learning in Higher Education. I bring extensive experience in human rights at national, regional, and international levels, with skills in policy analysis, advocacy on human rights issues, and delivering lectures on complex topics to diverse audiences, from policymakers and academics to grassroots organizations, ensuring complex issues are communicated effectively to drive impactful outcomes. Having lived and worked in various countries and being fluent in 4 languages (Portuguese, English, Spanish, and French), I am highly attuned to and respectful of socio-cultural diversities.",
+    backgroundParagraph2: "My career spans academia, non-profits, and government, including serving in Brazil's Ministry of Justice. Over the past 20 years, I have worked in Brazilian, Latin American, and Canadian contexts as a lawyer, gender and human rights expert, lecturer, public servant, and policy analyst. My expertise covers gender-based violence, sexual and reproductive rights, health law, ultra-processed food advertising regulation, consumer law, children's rights, and international human rights law. For further details on my academic and professional background, please refer to my CV.",
     cvLinkText: "Download Complete CV (PDF)",
     cvUrl: "/files/Tamara_Amoroso_Gonsalves_CV.pdf",
 
@@ -52,52 +51,42 @@ My career spans academia, non-profits, and government, including serving in Braz
     
     // Courses
     coursesTitle: "Courses",
-    coursesItems: [
-      "Human Rights Systems: covers international human rights systems (global and regional ones), their functioning, key documents, and advocacy opportunities.",
-      "Gender and International Human Rights: offers an overview of the most relevant Human Rights Instruments that protect women and gender-diverse individual's rights.",
-      "Gender-based violence: discusses how the concept of gender-based violence has evolved, covering key concepts, legal standards, and public policies.",
-      "Transnational feminism and international advocacy: explores feminist transnational activism and its advancements and challenges.",
-      "Feminist Legal Theories: presents and discusses the main feminist threads and their socio-legal implications for advancing gender justice."
-    ],
+    coursesItem1: "Human Rights Systems: covers international human rights systems (global and regional ones), their functioning, key documents, and advocacy opportunities.",
+    coursesItem2: "Gender and International Human Rights: offers an overview of the most relevant Human Rights Instruments that protect women and gender-diverse individual's rights.",
+    coursesItem3: "Gender-based violence: discusses how the concept of gender-based violence has evolved, covering key concepts, legal standards, and public policies.",
+    coursesItem4: "Transnational feminism and international advocacy: explores feminist transnational activism and its advancements and challenges.",
+    coursesItem5: "Feminist Legal Theories: presents and discusses the main feminist threads and their socio-legal implications for advancing gender justice.",
     coursesNote: "Courses can vary in length and depth, depending on your needs. They can also be tailored to specific audiences such as academics, government, and the general public.",
 
     // Consultancy
     consultancyTitle: "Consultancy",
     consultancyDescription: "My consultancy work focuses on policy analysis, advocacy, research, and capacity-building in human rights, with a particular emphasis on gender-based violence, sexual and reproductive rights, health law, and children's rights. Leveraging my academic foundation—a bachelor's in Law, a master's in Human Rights, a PhD in Law and Society, and a graduate certificate in teaching—I provide insightful, evidence-based solutions tailored to diverse contexts. Grounded on a deep commitment to advancing equity and justice, I can:",
-    consultancyItems: [
-      "Develop strategies for advocacy;",
-      "Conduct training workshops;",
-      "Craft comprehensive legal and policy analyses."
-    ],
+    consultancyItem1: "Develop strategies for advocacy;",
+    consultancyItem2: "Conduct training workshops;",
+    consultancyItem3: "Craft comprehensive legal and policy analyses.",
 
     // Lawyering
     lawyeringTitle: "Lawyering",
-    lawyeringItems: [
-      "Legal opinions on gender based violence, coercive control, domestic abuse, intimate partner violence, children's rights, human rights;",
-      "Expert witness on gender based violence, coercive control, domestic abuse, intimate partner violence, children's rights, abusive litigation, parental alienation;",
-      "Legal services on Hague Convention cases involving Brazilian citizens;",
-      "Family law and divorce in contexts of domestic abuse;"
-    ],
+    lawyeringItem1: "Legal opinions on gender based violence, coercive control, domestic abuse, intimate partner violence, children's rights, human rights;",
+    lawyeringItem2: "Expert witness on gender based violence, coercive control, domestic abuse, intimate partner violence, children's rights, abusive litigation, parental alienation;",
+    lawyeringItem3: "Legal services on Hague Convention cases involving Brazilian citizens;",
+    lawyeringItem4: "Family law and divorce in contexts of domestic abuse;",
 
     // Mentorship
     mentorshipTitle: "Mentorship",
     mentorshipDescription: "I can support you with the following:",
-    mentorshipItems: [
-      "Applying for graduate studies;",
-      "Preparing academic proposals;",
-      "Developing academic work."
-    ],
+    mentorshipItem1: "Applying for graduate studies;",
+    mentorshipItem2: "Preparing academic proposals;",
+    mentorshipItem3: "Developing academic work.",
 
     // Advocacy
     advocacyTitle: "Advocacy Work",
-    advocacyItems: [
-      "Elaboration of shadow reports to United Nations treaty bodies, and MESECVI (follow-up Mechanism of the Belém do Pará Convention - Organization of American Estates);",
-      "In-person advocacy - for more successful results;",
-      "Institutional representation in public hearings;",
-      "Articulation, preparation, and submission of Amicus Curiae both at the national and international levels;",
-      "Workshops for non-profit organizations and corporations;",
-      "Moderation of academic and institutional events."
-    ],
+    advocacyItem1: "Elaboration of shadow reports to United Nations treaty bodies, and MESECVI (follow-up Mechanism of the Belém do Pará Convention - Organization of American Estates);",
+    advocacyItem2: "In-person advocacy - for more successful results;",
+    advocacyItem3: "Institutional representation in public hearings;",
+    advocacyItem4: "Articulation, preparation, and submission of Amicus Curiae both at the national and international levels;",
+    advocacyItem5: "Workshops for non-profit organizations and corporations;",
+    advocacyItem6: "Moderation of academic and institutional events.",
 
     // Contact section
     contactHeading: "Contact me",
@@ -154,9 +143,8 @@ My career spans academia, non-profits, and government, including serving in Braz
 
     // Background section
     backgroundHeading: "Formação Acadêmica e Profissional",
-    backgroundDescription: `Tendo vivido e trabalhado em vários países e sendo fluente em 4 idiomas (português, inglês, espanhol e francês), possuo uma aguçada sensibilidade e respeito questões de diversidade sócio-cultural, agindo sempre com empatia, acolhimento, respeito, e livre de preconceitos e julgamentos.
-
-Minha carreira abrange experiências na academia, no governo, em organizações sem fins lucrativos, e em redes ativistas nacionais e internacionais; incluindo atuação no Ministério da Justiça do Brasil. Nos últimos 20 anos, trabalhei em contextos brasileiros, latino-americanos e canadenses como advogada, especialista em gênero e direitos humanos, palestrante, servidora pública e analista de políticas. Minha expertise abrange violência de gênero, direitos sexuais e reprodutivos, direito à saúde, regulamentação de publicidade de alimentos ultraprocessados, direito do consumidor, direitos das crianças e direito internacional dos direitos humanos. Para mais detalhes sobre minha formação acadêmica e profissional, consulte meu CV.`,
+    backgroundParagraph1: "Tendo vivido e trabalhado em vários países e sendo fluente em 4 idiomas  (português, inglês, espanhol e francês), possuo uma aguçada  sensibilidade e respeito questões de diversidade sócio-cultural, agindo sempre com empatia, acolhimento, respeito, e livre de preconceitos e julgamentos.",
+    backgroundParagraph2: "Minha carreira abrange experiências na academia, no governo, em organizações  sem fins lucrativos, e em redes ativistas nacionais e internacionais;  incluindo atuação no Ministério da Justiça do Brasil. Nos últimos 20  anos, trabalhei em contextos brasileiros, latino-americanos e canadenses como advogada, especialista em gênero e direitos humanos, palestrante,  servidora pública e analista de políticas. Minha expertise abrange  violência de gênero, direitos sexuais e reprodutivos, direito à saúde,  regulamentação de publicidade de alimentos ultraprocessados, direito do  consumidor, direitos das crianças e direito internacional dos direitos  humanos. Para mais detalhes sobre minha formação acadêmica e  profissional, consulte meu CV.",
     cvLinkText: "Baixar CV Completo (PDF)",
     cvUrl: "/files/Tamara_Amoroso_Gonsalves_CV.pdf",
 
@@ -180,51 +168,42 @@ Minha carreira abrange experiências na academia, no governo, em organizações 
     
     // Courses
     coursesTitle: "Cursos",
-    coursesItems: [
-      "Sistemas de Direitos Humanos: abrange sistemas internacionais de direitos humanos (globais e regionais), seu funcionamento, documentos-chave e oportunidades de advocacy.",
-      "Gênero e Direito Internacional dos Direitos Humanos: oferece uma visão geral dos Instrumentos de Direitos Humanos mais relevantes que protegem os direitos das mulheres e população LGBTQIA2+",
-      "Discriminação e violência de gênero: discute como o conceito de violência de gênero evoluiu, cobrindo conceitos-chave, padrões legais e políticas públicas de combate e proteção.",
-      "Feminismo transnacional e advocacia internacional: explora o ativismo feminista transnacional e seus avanços e desafios.",
-      "Teorias Jurídicas Feministas: apresenta e discute as principais correntes feministas e suas implicações sócio-jurídicas para o avanço da justiça de gênero."
-    ],
+    coursesItem1: "Sistemas de Direitos Humanos: abrange sistemas internacionais de direitos humanos (globais e regionais), seu  funcionamento, documentos-chave e oportunidades de advocacy.",
+    coursesItem2: "Gênero e Direito Internacional dos Direitos Humanos: oferece uma visão geral dos Instrumentos de Direitos Humanos mais relevantes  que protegem os direitos das mulheres e população LGBTQIA2+",
+    coursesItem3: "Discriminação e violência de gênero: discute como o conceito de violência de gênero evoluiu, cobrindo  conceitos-chave, padrões legais e políticas públicas de combate e  proteção.",
+    coursesItem4: "Feminismo transnacional e advocacia internacional: explora o ativismo feminista transnacional e seus avanços e desafios.",
+    coursesItem5: "Teorias Jurídicas Feministas: apresenta e discute as principais correntes feministas e suas implicações sócio-jurídicas para o avanço da justiça de gênero.",
     coursesNote: "Os cursos podem variar em duração e profundidade, dependendo de suas necessidades. Também podem ser adaptados para públicos específicos como acadêmicos, governo e público geral.",
 
     // Consultancy
     consultancyTitle: "Consultoria",
     consultancyDescription: "Meu trabalho de consultoria foca em análise de políticas, advocacia,  pesquisa e capacitação em direitos humanos, com ênfase particular em  violência de gênero, direitos sexuais e reprodutivos, direito à saúde,  direitos do consumidor, e direitos das crianças e adolescentes.  Aproveitando minha base acadêmica—graduação em Direito, mestrado em  Direitos Humanos, doutorado em Direito e Sociedade, e certificado de  pós-graduação em ensino superior e em segurança de mercado—forneço  soluções perspicazes e baseadas em evidências, adaptadas a contextos  diversos. Fundamentada em um profundo compromisso com o avanço da  equidade e justiça, posso:",
-    consultancyItems: [
-      "Desenvolver estratégias para advocacy e incidência nacional, regional e internacional;",
-      "Conduzir workshops de formação e sensibilização;",
-      "Elaborar análises jurídicas e de políticas públicas, com propostas de melhorias."
-    ],
+    consultancyItem1: "Desenvolver estratégias para advocacy e incidência nacional, regional e internacional;",
+    consultancyItem2: "Conduzir workshops de formação e sensibilização;",
+    consultancyItem3: "Elaborar análises jurídicas e de políticas públicas, com propostas de melhorias.",
 
     // Lawyering
     lawyeringTitle: "Advocacia",
-    lawyeringItems: [
-      "Pareceres jurídicos sobre violência de gênero, controle coercitivo, abuso  doméstico, violência entre parceiros íntimos, direitos das crianças,  direitos humanos, controle de constitucionalidade e controle de  convencionalidade;",
-      "Serviços jurídicos em casos da Convenção de Haia envolvendo cidadãos brasileiros;",
-      "Direito de família e divórcio em contextos de abuso doméstico envolvendo cônjuges de diferentes nacionalidades ou não."
-    ],
+    lawyeringItem1: "Pareceres jurídicos sobre violência de gênero, controle coercitivo, abuso  doméstico, violência entre parceiros íntimos, direitos das crianças,  direitos humanos, controle de constitucionalidade e controle de  convencionalidade;",
+    lawyeringItem2: "Testemunha especialista em violência baseada em gênero, controle coercitivo, abuso doméstico, violência entre parceiros íntimos, direitos das crianças, litígio abusivo, alienação parental;",
+    lawyeringItem3: "Serviços jurídicos em casos da Convenção de Haia envolvendo cidadãos brasileiros;",
+    lawyeringItem4: "Direito de família e divórcio em contextos de abuso doméstico envolvendo cônjuges de diferentes nacionalidades ou não.",
 
     // Mentorship
     mentorshipTitle: "Mentoria",
     mentorshipDescription: "Posso apoiá-lo com o seguinte:",
-    mentorshipItems: [
-      "Apoio para candidatura em processos de pós-graduação;",
-      "Preparação de propostas acadêmicas;",
-      "Desenvolvimento de trabalho acadêmico."
-    ],
+    mentorshipItem1: "Apoio para candidatura em processos de pós-graduação;",
+    mentorshipItem2: "Preparação de propostas acadêmicas;",
+    mentorshipItem3: "Desenvolvimento de trabalho acadêmico.",
 
     // Advocacy
     advocacyTitle: "Trabalho de Advocacia",
-    advocacyItems: [
-      "Elaboração de relatórios-sombra para órgãos de tratados das Nações Unidas, e  MESECVI (Mecanismo de Acompanhamento da Convenção de Belém do Pará -  Organização dos Estados Americanos);",
-      "Advocacy presencial (favorece melhores resultados);",
-      "Representação institucional em audiências públicas;",
-      "Articulação, preparação e submissão de *Amicus Curiae* tanto em níveis nacional quanto internacional;",
-      "Workshops para organizações sem fins lucrativos, governo e corporações;",
-      "Moderação de eventos acadêmicos e institucionais."
-    ],
+    advocacyItem1: "Elaboração de relatórios-sombra para órgãos de tratados das Nações Unidas, e  MESECVI (Mecanismo de Acompanhamento da Convenção de Belém do Pará -  Organização dos Estados Americanos);",
+    advocacyItem2: "Advocacy presencial (favorece melhores resultados);",
+    advocacyItem3: "Representação institucional em audiências públicas;",
+    advocacyItem4: "Articulação, preparação e submissão de *Amicus Curiae* tanto em níveis nacional quanto internacional;",
+    advocacyItem5: "Workshops para organizações sem fins lucrativos, governo e corporações;",
+    advocacyItem6: "Moderação de eventos acadêmicos e institucionais.",
 
     // Contact section
     contactHeading: "Entre em contato",
