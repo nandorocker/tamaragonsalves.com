@@ -52,7 +52,7 @@ const t = useTranslations(lang as 'en' | 'pt');
 	        <div>
 	            <h1 class="max-lg:text-size-h2 max-lg:mb-10" set:html={t('backgroundHeading').replace(' ', '<wbr> ')}></h1>
 	        </div>        <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto">
-            <div style="white-space: pre-line;">{t('backgroundDescription')}</div>
+            <div class="dark:text-gray-300" style="white-space: pre-line;">{t('backgroundDescription')}</div>
             <a href={t('cvUrl')} id="cv"
                 class="icon-before icon-file-pdf icon-space-sm">{t('cvLinkText')}</a>
         </div>
@@ -206,12 +206,12 @@ const t = useTranslations(lang as 'en' | 'pt');
 				<h4 class="max-sm:text-center dark:text-pink-300">{t('contactSocialMediaHeading')}</h4>
 				<ul class="flex flex-row max-sm:justify-center items-start gap-8 max-sm:mt-8">
 					<li><a href="https://www.instagram.com/tamaramoroso" target="_blank" rel="noopener noreferrer"
-							title="Threads"><img src={`${images}/social-instagram.svg`} class="w-12 hover-shift-sm"
+							title="Threads"><img src={`${images}/social-instagram.svg`} class="w-12 hover-shift-sm dark:invert"
 								alt="Instagram"></a>
 					</li>
 					<li><a href="https://www.linkedin.com/in/tamara-amoroso-gonsalves-941527229/" target="_blank"
 							rel="noopener noreferrer" title="LinkedIn"><img src={`${images}/social-linkedin.svg`}
-								class="w-12 hover-shift-sm" alt="LinkedIn"></a>
+								class="w-12 hover-shift-sm dark:invert" alt="LinkedIn"></a>
 					</li>
 				</ul>
 			</div>

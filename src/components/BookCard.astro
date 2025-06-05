@@ -67,13 +67,13 @@ const imagePath = `${images}/${imageUrl}`;
           title
         )}
       </h5>
-      <p class="mb-0"><em>{author}</em></p>
+      <p class="mb-0 dark:text-gray-300"><em>{author}</em></p>
     </div>
     <p class="book-description">{description}</p>
     
     {downloadLinks.length > 0 && (
       <div>
-        {tb('bookCardDownloadText')}
+        <span class="dark:text-gray-300">{tb('bookCardDownloadText')}</span>
         <ul>
           {downloadLinks.map(link => (
             <li>
@@ -90,7 +90,7 @@ const imagePath = `${images}/${imageUrl}`;
 
     {interviewLinks.length > 0 && (
       <div>
-        {tb('bookCardInterviewText')}
+        <span class="dark:text-gray-300">{tb('bookCardInterviewText')}</span>
         <ul>
           {interviewLinks.map(link => (
             <li>
@@ -106,7 +106,7 @@ const imagePath = `${images}/${imageUrl}`;
 
     {purchaseLinks.length > 0 && (
       <div>
-        {purchaseText && <>{purchaseText}<br></>}
+        {purchaseText && <span class="dark:text-gray-300">{purchaseText}<br></span>}
         {purchaseLinks.map((link, index) => (
           <>
             <a href={link.url} target="_blank" rel="noopener noreferrer">{tb(link.textKey)}</a>
