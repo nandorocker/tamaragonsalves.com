@@ -55,11 +55,16 @@ function getImageAlt(id: string): string {
 
 const imageAlt = getImageAlt(id);
 
-// Get localized text for download links
-const downloadText = getTranslationSync(translations, 'downloadPdf');
-const interviewsText = getTranslationSync(translations, 'interviews');
-const purchaseText = getTranslationSync(translations, 'purchase');
-const downloadBtnText = getTranslationSync(translations, 'download');
+// Get book-specific translation data
+const bookData = getTranslationSync(translations, `books.${id}`) || {};
+const downloadLinksText = bookData.downloadLinks || {};
+const interviewLinksText = bookData.interviewLinks || {};
+const purchaseLinksText = bookData.purchaseLinks || {};
+
+// Get generic text fallbacks
+const downloadText = getTranslationSync(translations, 'download') || 'Download';
+const interviewsText = getTranslationSync(translations, 'interviews') || 'Interviews';
+const purchaseText = getTranslationSync(translations, 'purchase') || 'Purchase';
 
 // Construct image path once for performance
 const imagePath = `${images}/${imageUrl}`;
@@ -85,17 +90,26 @@ const imagePath = `${images}/${imageUrl}`;
     
     {downloadLinks.length > 0 && (
       <div>
-        <span class="dark:text-gray-300">{downloadBtnText}:</span>
+        <span class="dark:text-gray-300">{downloadText}:</span>
         <ul>
-          {downloadLinks.map(link => (
-            <li>
-              <a href={link.url} target="_blank" 
-                 class={`icon-before ${link.icon || 'icon-file-pdf'} icon-space-sm`}
-                 rel="noopener noreferrer">
-                {downloadText}
-              </a>
-            </li>
-          ))}
+          {downloadLinks.map((link, index) => {
+            // Map link URLs to translation keys
+            let linkText = downloadText;
+            if (id === 'alienacaoParental') {
+              if (index === 0) linkText = downloadLinksText.cladem || downloadText;
+              if (index === 1) linkText = downloadLinksText.usp || downloadText;
+            }
+            
+            return (
+              <li>
+                <a href={link.url} target="_blank" 
+                   class={`icon-before ${link.icon || 'icon-file-pdf'} icon-space-sm`}
+                   rel="noopener noreferrer">
+                  {linkText}
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </div>
     )}
@@ -104,14 +118,24 @@ const imagePath = `${images}/${imageUrl}`;
       <div>
         <span class="dark:text-gray-300">{interviewsText}:</span>
         <ul>
-          {interviewLinks.map(link => (
-            <li>
-              <a href={link.url} target="_blank" 
-                 class={`icon-before ${link.icon || 'icon-video'} icon-space-sm`}>
-                {interviewsText}
-              </a>
-            </li>
-          ))}
+          {interviewLinks.map((link, index) => {
+            // Map link URLs to translation keys
+            let linkText = interviewsText;
+            if (id === 'alienacaoParental') {
+              if (index === 0) linkText = interviewLinksText.radioUsp || interviewsText;
+              if (index === 1) linkText = interviewLinksText.papoJus || interviewsText;
+              if (index === 2) linkText = interviewLinksText.trf3 || interviewsText;
+            }
+            
+            return (
+              <li>
+                <a href={link.url} target="_blank" 
+                   class={`icon-before ${link.icon || 'icon-video'} icon-space-sm`}>
+                  {linkText}
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </div>
     )}
@@ -119,12 +143,21 @@ const imagePath = `${images}/${imageUrl}`;
     {purchaseLinks.length > 0 && (
       <div>
         <span class="dark:text-gray-300">{purchaseText}:</span>
-        {purchaseLinks.map((link, index) => (
-          <>
-            <a href={link.url} target="_blank" rel="noopener noreferrer">{purchaseText}</a>
-            {index < purchaseLinks.length - 1 ? ' / ' : ''}
-          </>
-        ))}
+        {purchaseLinks.map((link, index) => {
+          // Map link URLs to translation keys
+          let linkText = purchaseText;
+          if (id === 'direitosHumanos') {
+            if (index === 0) linkText = purchaseLinksText.amazon || purchaseText;
+            if (index === 1) linkText = purchaseLinksText.travessa || purchaseText;
+          }
+          
+          return (
+            <>
+              <a href={link.url} target="_blank" rel="noopener noreferrer">{linkText}</a>
+              {index < purchaseLinks.length - 1 ? ' / ' : ''}
+            </>
+          );
+        })}
       </div>
     )}
 

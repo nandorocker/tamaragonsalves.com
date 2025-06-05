@@ -9,7 +9,7 @@ import { loadAllTranslations, getTranslationSync, getStaticPaths } from '../util
 import type { Language } from '../utils/i18n';
 import booksData from '../content/data/books.json';
 import projectsData from '../content/data/projects.json';
-import { videos } from '../content/data/videos';
+import videosData from '../content/data/videos.json';
 import { aboutGalleryImages } from '../data/about-gallery-images';
 
 export { getStaticPaths };
@@ -119,16 +119,15 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 		</div>
 
 		<div class="w-full">
-			<div class="video-grid-container">
-				<div class="video-grid">
-					{videos.map(video => (
-						<VideoPublicationCard 
-							id={video.id}
-							videoUrl={video.videoUrl}
-							thumbnailUrl={video.thumbnailUrl}
-							date={video.date}
-							lang={lang as 'en' | 'pt'}
-						/>
+			<div class="video-grid-container">			<div class="video-grid">
+				{videosData.map(video => (
+					<VideoPublicationCard 
+						id={video.id}
+						videoUrl={video.videoUrl}
+						thumbnailUrl={video.thumbnailUrl}
+						date={video.date}
+						lang={lang as 'en' | 'pt'}
+					/>
 					))}
 				</div>
 			</div>
