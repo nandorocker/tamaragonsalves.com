@@ -5,7 +5,7 @@ import type { Language } from '../utils/i18n';
 interface LinkGroup {
   type: string;
   links: Array<{
-    labels: Record<string, string>;
+    labelKey: string;
     url: string;
   }>;
 }
@@ -28,6 +28,7 @@ const { book, bookTranslations, lang } = Astro.props;
 // Get book information from translations
 const bookData = bookTranslations[book.id] || {};
 const linkGroupTitles = bookTranslations.linkGroupTitles || {};
+const linkLabels = bookTranslations.linkLabels || {};
 
 // Automatic icon mapping based on link type
 const getIconForType = (type: string): string => {
@@ -94,7 +95,7 @@ const imagePath = `${images}/${book.imageUrl}`;
                 class={`icon-before ${getIconForType(group.type)} icon-space-sm`}
                 rel="noopener noreferrer"
               >
-                {link.labels[lang] || link.labels['en'] || link.url}
+                {link.labelKey ? linkLabels[link.labelKey] : link.url}
               </a>
             </li>
           ))}

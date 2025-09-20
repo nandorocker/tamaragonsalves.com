@@ -18,5 +18,16 @@
     "download": "Download",
     "interview": "Interviews",
     "purchase": "Purchase"
+  },
+  "linkLabels": {
+    "readAtCladem": "Read in Portuguese (Biblioteca CLADEM)",
+    "directDownloadUsp": "Direct Download in Portuguese (USP Direito)",
+    "readInSpanish": "Read in Spanish (Biblioteca CLADEM)",
+    "listenInterviewRadioUsp": "Listen To My Interview (Rádio USP)",
+    "listenPodcastPapoJus": "Listen to Podcast \"Papo Jus\" #26, from AJUFESP",
+    "watchTrf3Interview": "Watch TRF3justica interview on Parental Alienation",
+    "amazonUsa": "Amazon (USA)",
+    "travessaBrazil": "Travessa (Brazil)",
+    "downloadFullTextPdf": "Download Full Text (PDF)"
   }
 }

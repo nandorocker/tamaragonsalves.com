@@ -9,7 +9,7 @@ const booksCollection = defineCollection({
     linkGroups: z.array(z.object({
       type: z.string(),
       links: z.array(z.object({
-        labels: z.record(z.string()),
+        labelKey: z.string(),
         url: z.string()
       }))
     }))
