@@ -1,2 +1,10 @@
 onlyBuiltDependencies:
   - esbuild
+
+# Tell pnpm which packages are part of the workspace. Vercel/pnpm expects a non-empty `packages` field.
+# Include the root (.) so single-package repositories are discovered, and common folders that may contain
+# packages in monorepos. Adjust globs as needed for your project layout.
+packages:
+  - '.'
+  - 'packages/**'
+  - 'src/**'
