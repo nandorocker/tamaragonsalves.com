@@ -84,7 +84,8 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 	                        class="icon-after icon-external-link icon-space-sm">{t('publicationsOrcidLinkText')}</a></li>
 	            </ul>
 
-	            <h2>{t('publicationsBooksSubheading')}</h2>            <div class="book-grid">
+	            <h2>{t('publicationsBooksSubheading')}</h2>
+				<div class="book-grid">
                 {booksData.map(book => (
                     <BookCard 
                         book={book}
@@ -92,7 +93,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
                         lang={currentLang}
                     />
                 ))}
-            </div>
+           		</div>
 	        </div>
 
 	        <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto">
