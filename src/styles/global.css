@@ -125,12 +125,31 @@
     @apply sm:text-lg max-md:text-center;
   }
 
-  /* Button */
+  /* Button Base */
   .button {
-    @apply inline-block bg-pink-700 border-2 border-pink-900 transition-all duration-150 ease-linear text-white text-center no-underline font-semibold;
-    @apply hover:text-gray-100 hover:bg-pink-900 hover:translate-x-[2px] hover:translate-y-[2px];
+    @apply inline-block border-2 transition-all duration-150 ease-linear text-center no-underline font-semibold;
+    @apply hover:translate-x-[2px] hover:translate-y-[2px];
+    @apply bg-pink-700 border-pink-900 text-white;
+    @apply hover:text-gray-100 hover:bg-pink-900;
     @apply visited:text-gray-100 visited:hover:text-gray-100;
     @apply dark:bg-pink-600 dark:border-pink-700 dark:hover:bg-pink-700 dark:text-white dark:hover:text-gray-100 dark:visited:text-white;
+  }
+
+  /* Button Secondary */
+  .button.button-secondary {
+    @apply bg-gray-300/60 border-gray-400/60 text-gray-800;
+    @apply hover:bg-gray-400/60 hover:border-gray-500/60 hover:text-gray-900;
+    @apply visited:text-gray-800 visited:hover:text-gray-900;
+    @apply dark:bg-gray-600/60 dark:border-gray-500/60 dark:text-gray-200;
+    @apply dark:hover:bg-gray-500/60 dark:hover:border-gray-400/60 dark:hover:text-white dark:visited:text-gray-200;
+  }
+
+  /* Button Outline */
+  .button.button-outline {
+    @apply bg-transparent border-pink-700 text-pink-700;
+    @apply hover:bg-pink-50 hover:text-pink-900;
+    @apply visited:text-pink-700 visited:hover:text-pink-900;
+    @apply dark:border-pink-400 dark:text-pink-400 dark:hover:bg-pink-950 dark:hover:text-pink-300 dark:visited:text-pink-400;
   }
 
   .button-xs {

@@ -59,10 +59,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 
 	<section id="publications-preview" class="contain-margins-y bg-soap-50 dark:bg-gray-700">
 		<div class="contain-wide section-margins-medium">
-			<h1 class="mb-2"><a href={`/${currentLang}/publications`} class="hover:text-pink-700 dark:hover:text-pink-300 transition-colors">{t('publicationsHeading')}</a></h1>
-			<a href={`/${currentLang}/publications`} class="inline-block mb-6 text-base font-semibold text-pink-700 dark:text-pink-300 hover:text-pink-900 dark:hover:text-pink-100 icon-after icon-arrow-right icon-space-sm">
-				{t('seeAllPublications')}
-			</a>
+			<h1 class="mb-8">{t('publicationsHeading')}</h1>
 			
 			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-lg mx-auto">
 				<p class="mb-6 dark:text-gray-300">
@@ -115,6 +112,10 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 						</svg>
 					</button>
 				</div>
+				
+				<div class="text-center mt-12">
+					<Button href={`/${currentLang}/publications`} variant="secondary" size="lg">{t('seeAllPublications')}</Button>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -156,10 +157,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 
 	<section id="what-i-offer" class="contain-margins-y bg-violet-50 dark:bg-gray-700">
 		<div class="contain-medium section-margins-medium">
-			<h1 class="mb-2 dark:text-pink-300"><a href={`/${currentLang}/services`} class="hover:text-violet-700 dark:hover:text-violet-300 transition-colors">{t('servicesHeading')}</a></h1>
-			<a href={`/${currentLang}/services`} class="inline-block mb-6 text-base font-semibold text-violet-700 dark:text-violet-300 hover:text-violet-900 dark:hover:text-violet-100 icon-after icon-arrow-right icon-space-sm">
-				{t('seeAllServices')}
-			</a>
+			<h1 class="mb-8 dark:text-pink-300">{t('servicesHeading')}</h1>
 			
 			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-lg mx-auto">
 				<p class="mb-8 dark:text-gray-300">
@@ -192,6 +190,10 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 							<p class="dark:text-gray-300">{t('advocacySummary')}</p>
 						</div>
 					</div>
+				</div>
+				
+				<div class="text-center mt-0">
+					<Button href={`/${currentLang}/services`} variant="secondary" size="lg">{t('seeAllServices')}</Button>
 				</div>
 			</div>
 		</div>

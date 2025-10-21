@@ -9,6 +9,12 @@ module.exports = {
   safelist: [
     "col-span-2",
     "row-span-2",
+    "button",
+    "button-secondary",
+    "button-outline",
+    "button-xs",
+    "button-lg",
+    "button-xl",
   ],
   theme: {
     fontFamily: {
