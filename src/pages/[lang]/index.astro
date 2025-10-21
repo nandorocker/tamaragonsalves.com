@@ -1,10 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AboutGalleryImage from '../../components/AboutGalleryImage.astro';
+import BookCarouselCard from '../../components/BookCarouselCard.astro';
 import { images } from '../../data/global';
 import { loadAllTranslations, getTranslationSync, getStaticPaths } from '../../utils/i18n';
 import type { Language } from '../../utils/i18n';
 import galleryData from '../../data/gallery.json';
+import booksData from '../../data/books.json';
 
 export { getStaticPaths };
 
@@ -13,6 +15,10 @@ const currentLang = lang as Language;
 
 // Load all translations (global + home page) for dynamic content
 const allTranslations = await loadAllTranslations(currentLang, 'home');
+
+// Load book translations specifically
+const allContentTranslations = await loadAllTranslations(currentLang, 'books');
+const bookTranslations = allContentTranslations.books || {};
 
 // Helper function to get translation with fallback
 const t = (key: string) => getTranslationSync(allTranslations, key);
@@ -46,6 +52,70 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 	            <p>{t('aboutMeDescription')}</p>
 	        </div>
 	    </div>
+	</section>
+
+	<section id="publications-preview" class="contain-margins-y bg-soap-50 dark:bg-gray-700">
+		<div class="contain-wide section-margins-medium">
+			<div class="flex flex-col lg:flex-row lg:justify-between items-start lg:items-end gap-2 lg:gap-0 mb-6">
+				<h1 class="mb-0 flex-shrink"><a href={`/${currentLang}/publications`} class="hover:text-pink-700 dark:hover:text-pink-300 transition-colors">{t('publicationsHeading')}</a></h1>
+				<a href={`/${currentLang}/publications`} class="text-base font-semibold text-pink-700 dark:text-pink-300 hover:text-pink-900 dark:hover:text-pink-100 icon-after icon-arrow-right icon-space-sm whitespace-nowrap flex-shrink-0">
+					{t('seeAllPublications')}
+				</a>
+			</div>
+			
+			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-lg mx-auto">
+				<p class="mb-6 dark:text-gray-300">
+					Over the past 20 years, I have developed interdisciplinary research, resulting in 2 published books, 40 book chapters, 11 journal articles, 10 research reports, and 36 opinion pieces on children's rights, women's human rights, and consumer rights.
+				</p>
+
+				<ul class="bullet mb-8">
+					<li><a href={`/${currentLang}/background`}>{t('publicationsCvLinkText')}</a></li>
+					<li><a href={t('publicationsOrcidUrl')} target="_blank"
+							class="icon-after icon-external-link icon-space-sm">{t('publicationsOrcidLinkText')}</a></li>
+				</ul>
+
+				<h2 class="mb-6">{t('publicationsBooksSubheading')}</h2>
+				
+				<!-- Book Carousel -->
+				<div class="book-carousel relative">
+					<div class="carousel-container overflow-hidden">
+						<div class="carousel-track flex transition-transform duration-500 ease-in-out">
+							{booksData.map((book) => (
+								<div class="carousel-slide w-full lg:w-1/2 flex-shrink-0 px-4 lg:px-6">
+									<BookCarouselCard 
+										book={book}
+										bookTranslations={bookTranslations}
+										lang={currentLang}
+									/>
+								</div>
+							))}
+						</div>
+					</div>
+
+					<!-- Previous Button -->
+					<button 
+						id="prev-book" 
+						class="carousel-btn absolute left-0 top-16 md:top-20 -translate-x-4 md:-translate-x-12 z-10 p-3 rounded-full bg-pink-700 text-white hover:bg-pink-900 dark:bg-pink-300 dark:text-gray-900 dark:hover:bg-pink-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+						aria-label="Previous books"
+					>
+						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+						</svg>
+					</button>
+					
+					<!-- Next Button -->
+					<button 
+						id="next-book" 
+						class="carousel-btn absolute right-0 top-16 md:top-20 translate-x-4 md:translate-x-12 z-10 p-3 rounded-full bg-pink-700 text-white hover:bg-pink-900 dark:bg-pink-300 dark:text-gray-900 dark:hover:bg-pink-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+						aria-label="Next books"
+					>
+						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+						</svg>
+					</button>
+				</div>
+			</div>
+		</div>
 	</section>
 
 	<section id="contact-me" class="contain-margins-y bg-white dark:bg-gray-800">

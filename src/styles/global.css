@@ -66,6 +66,19 @@
     @apply mb-3 text-base font-semibold;
   }
 
+  /* Heading links should not be italic or underlined */
+  h1 a,
+  h2 a,
+  h3 a,
+  h1 a:visited,
+  h2 a:visited,
+  h3 a:visited,
+  h1 a:hover,
+  h2 a:hover,
+  h3 a:hover {
+    @apply no-underline not-italic text-pink-700 hover:text-pink-500 visited:text-pink-700 dark:text-pink-300 dark:hover:text-pink-100 dark:visited:text-pink-300;
+  }
+
   .text-caption {
     font-size: 0.71em;
   }
