@@ -118,6 +118,51 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 		</div>
 	</section>
 
+	<section id="what-i-offer" class="contain-margins-y bg-violet-50 dark:bg-gray-700">
+		<div class="contain-medium section-margins-medium">
+			<div class="flex flex-col lg:flex-row lg:justify-between items-start lg:items-end gap-2 lg:gap-0 mb-6">
+				<h1 class="mb-0 flex-shrink dark:text-pink-300"><a href={`/${currentLang}/services`} class="hover:text-violet-700 dark:hover:text-violet-300 transition-colors">{t('servicesHeading')}</a></h1>
+				<a href={`/${currentLang}/services`} class="text-base font-semibold text-violet-700 dark:text-violet-300 hover:text-violet-900 dark:hover:text-violet-100 icon-after icon-arrow-right icon-space-sm whitespace-nowrap flex-shrink-0">
+					{t('seeAllServices')}
+				</a>
+			</div>
+			
+			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-lg mx-auto">
+				<p class="mb-8 dark:text-gray-300">
+					{t('servicesIntro')}
+				</p>
+
+				<div class="sm:grid sm:grid-cols-2 gap-x-10 lg:gap-x-16 mb-12">
+					<div>
+						<div class="services-item pb-6">
+							<h3 class="dark:text-pink-300">{t('coursesTitle')}</h3>
+							<p class="dark:text-gray-300">{t('coursesSummary')}</p>
+						</div>
+						<div class="services-item pb-6">
+							<h3 class="dark:text-pink-300">{t('consultancyTitle')}</h3>
+							<p class="dark:text-gray-300">{t('consultancySummary')}</p>
+						</div>
+						<div class="services-item pb-6">
+							<h3 class="dark:text-pink-300">{t('lawyeringTitle')}</h3>
+							<p class="dark:text-gray-300">{t('lawyeringSummary')}</p>
+						</div>
+					</div>
+
+					<div>
+						<div class="services-item pb-6">
+							<h3 class="dark:text-pink-300">{t('mentorshipTitle')}</h3>
+							<p class="dark:text-gray-300">{t('mentorshipSummary')}</p>
+						</div>
+						<div class="services-item pb-6">
+							<h3 class="dark:text-pink-300">{t('advocacyTitle')}</h3>
+							<p class="dark:text-gray-300">{t('advocacySummary')}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<section id="contact-me" class="contain-margins-y bg-white dark:bg-gray-800">
 		<div class="contain-medium section-margins-medium">
 			<h1 class="dark:text-pink-300">{t('contactHeading')}</h1>

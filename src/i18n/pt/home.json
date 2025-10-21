@@ -7,6 +7,7 @@
   
   "publicationsHeading": "Livros e publicações",
   "seeAllPublications": "Ver todas as publicações",
+  "seeAllServices": "Ver todos os serviços",
   "publicationsSubheading": "Publicações",
   "publicationsDescription": "Dedico-me a produzir pesquisa e estudos de impacto, relacionados a demandas sociais urgentes. Nos últimos 20 anos, desenvolvi pesquisa interdisciplinar, transsistêmica e socio-jurídica, resultando em 3 livros publicados, 40 capítulos de livros, 11 artigos de periódicos, 10 relatórios de pesquisa e advocacia, e 36 artigos de opinião. Minhas publicações abrangem ampla gama de tópicos, incluindo direitos fundamentais das crianças, direitos humanos das mulheres—particularmente violência de gênero e direitos sexuais e reprodutivos—e direitos do consumidor, com foco específico em *recalls* de produtos, regulamentações de publicidade e regulamentação de alimentos ultraprocessados.",
   "publicationsCvLinkText": "Para lista completa de publicações, baixe meu CV",
@@ -20,6 +21,10 @@
   "speakingContactButtonText": "Entre em contato para solicitações de palestras",
 
   "servicesHeading": "O que eu ofereço",
+  "servicesIntro": "Com duas décadas de experiência em direito dos direitos humanos, advocacia e academia, ofereço serviços especializados que conectam teoria e prática—desde consultoria estratégica e testemunho especializado até cursos e mentoria que capacitam indivíduos e organizações a promover justiça e equidade.",
+  
+  "coursesTitle": "Cursos",
+  "coursesSummary": "Programas educacionais personalizados abrangendo sistemas internacionais de direitos humanos, justiça de gênero, teoria jurídica feminista e advocacia transnacional—desenvolvidos para acadêmicos, servidores públicos e organizações da sociedade civil.",
   
   "coursesTitle": "Cursos",
   "coursesItems": [
@@ -32,6 +37,7 @@
   "coursesNote": "Os cursos podem variar em duração e profundidade, dependendo de suas necessidades. Também podem ser adaptados para públicos específicos como acadêmicos, governo e público geral.",
 
   "consultancyTitle": "Consultoria",
+  "consultancySummary": "Análise de políticas baseada em evidências, estratégias de advocacia e serviços de capacitação focados em violência de gênero, direitos sexuais e reprodutivos, direito à saúde e direitos das crianças—fundamentados em rigor acadêmico e impacto prático.",
   "consultancyDescription": "Meu trabalho de consultoria foca em análise de políticas, advocacia, pesquisa e capacitação em direitos humanos, com ênfase particular em violência de gênero, direitos sexuais e reprodutivos, direito à saúde, direitos do consumidor, e direitos das crianças e adolescentes. Aproveitando minha base acadêmica—graduação em Direito, mestrado em Direitos Humanos, doutorado em Direito e Sociedade, e certificado de pós-graduação em ensino superior e em segurança de mercado—forneço soluções perspicazes e baseadas em evidências, adaptadas a contextos diversos. Fundamentada em um profundo compromisso com o avanço da equidade e justiça, posso:",
   "consultancyItems": [
     "Desenvolver estratégias para advocacy e incidência nacional, regional e internacional;",
@@ -40,6 +46,7 @@
   ],
 
   "lawyeringTitle": "Advocacia",
+  "lawyeringSummary": "Expertise jurídica em violência de gênero, controle coercitivo, direitos das crianças e direito internacional de família—incluindo serviços de testemunha especializada e representação em casos complexos transfronteiriços.",
   "lawyeringItems": [
     "Pareceres jurídicos sobre violência de gênero, controle coercitivo, abuso doméstico, violência entre parceiros íntimos, direitos das crianças, direitos humanos, controle de constitucionalidade e controle de convencionalidade;",
     "Serviços jurídicos em casos da Convenção de Haia envolvendo cidadãos brasileiros;",
@@ -47,6 +54,7 @@
   ],
 
   "mentorshipTitle": "Mentoria",
+  "mentorshipSummary": "Orientação personalizada para candidaturas em programas de pós-graduação, desenvolvimento de propostas acadêmicas e avanço de pesquisas—apoiando a próxima geração de acadêmicos e profissionais de direitos humanos.",
   "mentorshipDescription": "Posso apoiá-lo com o seguinte:",
   "mentorshipItems": [
     "Apoio para candidatura em processos de pós-graduação;",
@@ -55,6 +63,7 @@
   ],
 
   "advocacyTitle": "Trabalho de Advocacy",
+  "advocacySummary": "Representação estratégica perante órgãos de tratados da ONU e mecanismos regionais de direitos humanos, preparação de relatórios-sombra, submissão de amicus curiae e advocacia institucional em níveis nacional e internacional.",
   "advocacyItems": [
     "Elaboração de relatórios-sombra para órgãos de tratados das Nações Unidas, e MESECVI (Mecanismo de Acompanhamento da Convenção de Belém do Pará - Organização dos Estados Americanos);",
     "Advocacy presencial (favorece melhores resultados);",

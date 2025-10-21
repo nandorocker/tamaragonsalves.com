@@ -7,6 +7,7 @@
   
   "publicationsHeading": "Books and publications",
   "seeAllPublications": "See all publications",
+  "seeAllServices": "See all services",
   "publicationsSubheading": "Publications",
   "publicationsDescription": "I am dedicated to producing high-quality, community-engaged research and scholarship that addresses pressing social issues. Over the past 20 years, I have developed interdisciplinary, transsystemic, and socio-legal research, resulting in 2 published books, 40 book chapters, 11 journal articles, 10 research and advocacy reports, and 36 opinion pieces. My publications span a broad range of topics, including children's fundamental rights, women's human rights—particularly gender-based violence and sexual and reproductive rights—and consumer rights, with a specific focus on product recalls, advertising regulations, and the regulation of ultra-processed foods.",
   "publicationsCvLinkText": "For full list of publications, download my CV",
@@ -20,6 +21,10 @@
   "speakingContactButtonText": "Contact me for public speaking requests",
 
   "servicesHeading": "What I can offer",
+  "servicesIntro": "Drawing from two decades of expertise in human rights law, advocacy, and academia, I offer specialized services that bridge theory and practice—from strategic consultancy and expert testimony to courses and mentorship that empower individuals and organizations to advance justice and equity.",
+  
+  "coursesTitle": "Courses",
+  "coursesSummary": "Tailored educational programs covering international human rights systems, gender justice, feminist legal theory, and transnational advocacy—designed for academics, government officials, and civil society organizations.",
   
   "coursesTitle": "Courses",
   "coursesItems": [
@@ -32,6 +37,7 @@
   "coursesNote": "Courses can vary in length and depth, depending on your needs. They can also be tailored to specific audiences such as academics, government, and the general public.",
 
   "consultancyTitle": "Consultancy",
+  "consultancySummary": "Evidence-based policy analysis, advocacy strategies, and capacity-building services focused on gender-based violence, sexual and reproductive rights, health law, and children's rights—grounded in academic rigor and practical impact.",
   "consultancyDescription": "My consultancy work focuses on policy analysis, advocacy, research, and capacity-building in human rights, with a particular emphasis on gender-based violence, sexual and reproductive rights, health law, and children's rights. Leveraging my academic foundation—a bachelor's in Law, a master's in Human Rights, a PhD in Law and Society, and a graduate certificate in teaching—I provide insightful, evidence-based solutions tailored to diverse contexts. Grounded on a deep commitment to advancing equity and justice, I can:",
   "consultancyItems": [
     "Develop strategies for advocacy;",
@@ -40,6 +46,7 @@
   ],
 
   "lawyeringTitle": "Lawyering",
+  "lawyeringSummary": "Legal expertise in gender-based violence, coercive control, children's rights, and international family law—including expert witness services and representation in complex cross-border cases.",
   "lawyeringItems": [
     "Legal opinions on gender based violence, coercive control, domestic abuse, intimate partner violence, children's rights, human rights;",
     "Expert witness on gender based violence, coercive control, domestic abuse, intimate partner violence, children's rights, abusive litigation, parental alienation;",
@@ -48,6 +55,7 @@
   ],
 
   "mentorshipTitle": "Mentorship",
+  "mentorshipSummary": "Personalized guidance for graduate school applications, academic proposal development, and research advancement—supporting the next generation of human rights scholars and practitioners.",
   "mentorshipDescription": "I can support you with the following:",
   "mentorshipItems": [
     "Applying for graduate studies;",
@@ -56,6 +64,7 @@
   ],
 
   "advocacyTitle": "Advocacy Work",
+  "advocacySummary": "Strategic representation before UN treaty bodies and regional human rights mechanisms, shadow report preparation, amicus curiae submissions, and institutional advocacy at national and international levels.",
   "advocacyItems": [
     "Elaboration of shadow reports to United Nations treaty bodies, and MESECVI (follow-up Mechanism of the Belém do Pará Convention - Organization of American Estates);",
     "In-person advocacy - for more successful results;",
