@@ -5,6 +5,7 @@ interface Props {
 	href?: string;
 	type?: 'button' | 'submit' | 'reset';
 	class?: string;
+	[key: string]: any; // Allow any additional HTML attributes
 }
 
 const { 
@@ -12,7 +13,8 @@ const {
 	size = 'lg', 
 	href, 
 	type = 'button',
-	class: className = '' 
+	class: className = '',
+	...rest
 } = Astro.props;
 
 // Base button styles
@@ -35,7 +37,7 @@ const sizeStyles = {
 const buttonClasses = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim();
 
 const Element = href ? 'a' : 'button';
-const elementProps = href ? { href } : { type };
+const elementProps = href ? { href, ...rest } : { type, ...rest };
 ---
 
 <Element class={buttonClasses} {...elementProps}>
