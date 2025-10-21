@@ -1,0 +1,60 @@
+---
+interface Link {
+  labelKey?: string;
+  url: string;
+  label?: string;
+}
+
+export interface Props {
+  icon: string;
+  label: string;
+  links: Link[];
+  linkLabels?: Record<string, string>;
+}
+
+const { icon, label, links, linkLabels = {} } = Astro.props;
+---
+
+<details class="dropdown-button">
+  <summary class="cursor-pointer text-base font-semibold text-pink-700 dark:text-pink-300 hover:text-pink-900 dark:hover:text-pink-100 flex items-center gap-1">
+    <span class="icon-wrapper flex items-center justify-center w-6">
+      <span class={`icon-before ${icon}`}></span>
+    </span>
+    <span class="dropdown-label">{label}</span>
+    <svg class="w-4 h-4 transition-transform flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+    </svg>
+  </summary>
+  <ul class="mt-2 ml-4 space-y-1">
+    {links.map((link) => (
+      <li>
+        <a 
+          href={link.url} 
+          target="_blank" 
+          class="text-base text-pink-700 dark:text-pink-300 hover:text-pink-900 dark:hover:text-pink-100 underline"
+          rel="noopener noreferrer"
+        >
+          {link.label || (link.labelKey && linkLabels[link.labelKey]) || link.url}
+        </a>
+      </li>
+    ))}
+  </ul>
+</details>
+
+<style>
+  .dropdown-button[open] summary svg {
+    transform: rotate(180deg);
+  }
+
+  .icon-wrapper {
+    flex-shrink: 0;
+  }
+
+  summary {
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+</style>
