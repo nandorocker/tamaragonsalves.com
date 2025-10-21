@@ -1,6 +1,6 @@
-- [ ] Fix top margin from internal pages
-- [ ] Color of top menu should be
+- [x] Fix top margin from internal pages
+- [x] Color of top menu should be
     - Transparent when starting
     - Same color as background when moving down (with lower alpha)
-- [ ] Add transitions everywhere
+- [ ] Add enter transitions everywhere
 - [ ] Add flowers graphic to home
