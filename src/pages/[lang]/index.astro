@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AboutGalleryImage from '../../components/AboutGalleryImage.astro';
+import { images } from '../../data/global';
+import { loadAllTranslations, getTranslationSync, getStaticPaths } from '../../utils/i18n';
+import type { Language } from '../../utils/i18n';
+import galleryData from '../../data/gallery.json';
+
+export { getStaticPaths };
+
+const { lang } = Astro.params;
+const currentLang = lang as Language;
+
+// Load all translations (global + home page) for dynamic content
+const allTranslations = await loadAllTranslations(currentLang, 'home');
+
+// Helper function to get translation with fallback
+const t = (key: string) => getTranslationSync(allTranslations, key);
+---
+
+<BaseLayout title={t('pageTitle')} pageTheme="yellow">
+	<section id="home"
+	    class="hero bg-gradient-yellow dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 flex items-center w-full h-80vh min-h-[50rem] bg-mustard-50]">
+	    <div class="w-full contain-wide section-margins-medium text-center">
+	        <h3 class="text-indigo-900 dark:text-indigo-300">{getTranslationSync(allTranslations, 'heroSection.subtitle')}</h3>
+	        <h1 class="text-indigo-900 dark:text-indigo-300" set:html={getTranslationSync(allTranslations, 'heroSection.name').replace(' ', '<br> ')}></h1>
+	        <p class=" bigger max-sm:hyphens-auto md:w-4/6 mx-auto">{getTranslationSync(allTranslations, 'heroSection.description')}</p>
+	    </div>
+	</section>
+
+	<section id="about-me" class="about-me w-full contain-margins-y bg-white dark:bg-gray-800">
+	    <div
+	        class="contain-narrow md:contain-medium section-margins-narrow md:section-margins-medium grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-[2fr_1fr] gap-8 lg:gap-12 items-start">
+            <div class="w-full mx-auto sm:-mt-40 max-sm:row-start-2 grid md:grid-cols-2 gap-4">
+                {galleryData.map((image) => (
+                    <AboutGalleryImage 
+                        src={image.src}
+                        altKey={image.altKey}
+                        fslightboxGroup={image.fslightboxGroup}
+                        gridClass={image.gridClass}
+                    />
+                ))}
+            </div>
+	        <div class="ml-auto lg:w-5/6 max-sm:row-start-1">
+	            <h2>{t('aboutMeHeading')}</h2>
+	            <p>{t('aboutMeDescription')}</p>
+	        </div>
+	    </div>
+	</section>
+
+	<section id="contact-me" class="contain-margins-y bg-white dark:bg-gray-800">
+		<div class="contain-medium section-margins-medium">
+			<h1 class="dark:text-pink-300">{t('contactHeading')}</h1>
+			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto mb-12">
+				<p class="dark:text-gray-300">{t('contactDescription')}</p>
+
+				<p><a id="email-link" href="#"
+						class="max-sm:block button button-lg md:button-xl mb-8 icon-before icon-comment-smile icon-space-sm">{t('contactEmailButtonText')}</a>
+				</p>
+
+				<h4 class="max-sm:text-center dark:text-pink-300">{t('contactSocialMediaHeading')}</h4>
+				<ul class="flex flex-row max-sm:justify-center items-start gap-8 max-sm:mt-8">
+					<li><a href="https://www.instagram.com/tamaramoroso" target="_blank" rel="noopener noreferrer"
+							title="Threads"><img src={`${images}/social-instagram.svg`} class="w-12 hover-shift-sm dark:invert"
+								alt="Instagram"></a>
+					</li>
+					<li><a href="https://www.linkedin.com/in/tamara-amoroso-gonsalves-941527229/" target="_blank"
+							rel="noopener noreferrer" title="LinkedIn"><img src={`${images}/social-linkedin.svg`}
+								class="w-12 hover-shift-sm dark:invert" alt="LinkedIn"></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

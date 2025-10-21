@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import VideoPublicationCard from '../../components/VideoPublicationCard.astro';
+import { loadAllTranslations, getTranslationSync, getStaticPaths } from '../../utils/i18n';
+import type { Language } from '../../utils/i18n';
+import videosData from '../../data/videos.json';
+
+export { getStaticPaths };
+
+const { lang } = Astro.params;
+const currentLang = lang as Language;
+
+// Load all translations (global + home page) for dynamic content
+const allTranslations = await loadAllTranslations(currentLang, 'home');
+
+// Helper function to get translation with fallback
+const t = (key: string) => getTranslationSync(allTranslations, key);
+---
+
+<BaseLayout title={t('speakingHeading')} pageTheme="white">
+	<section id="speaking" class="contain-margins-y bg-white dark:bg-gray-800 mt-20">
+		<div class="contain-medium section-margins-medium">
+			<h1>{t('speakingHeading')}</h1>
+			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto mb-12">
+				<p>{t('speakingDescription')}</p>
+				<p><a href={`/${currentLang}/contact`} class="button button-lg icon-before icon-comment-smile icon-space-sm">{t('speakingContactButtonText')}</a></p>
+			</div>
+		</div>
+
+		<div class="w-full">
+			<div class="video-grid-container">
+				<div class="video-grid">
+					{videosData.map(video => (
+						<VideoPublicationCard 
+							id={video.id}
+							videoUrl={video.videoUrl}
+							thumbnailUrl={video.thumbnailUrl}
+							date={video.date}
+							lang={lang as 'en' | 'pt'}
+						/>
+					))}
+				</div>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

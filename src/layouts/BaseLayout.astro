@@ -9,9 +9,10 @@ import '../styles/global.css';
 export interface Props {
   title: string;
   description?: string;
+  pageTheme?: 'yellow' | 'white' | 'soap' | 'violet';
 }
 
-const { title, description = site.description } = Astro.props;
+const { title, description = site.description, pageTheme = 'white' } = Astro.props;
 const lang = getLangFromUrl(Astro.url) as Language;
 
 // Load translations for global strings
@@ -65,7 +66,7 @@ const siteTitle = getTranslationSync(translations, 'siteTitle');
 </head>
 
 <body class="bg-mustard-50 dark:bg-gray-900 transition-colors duration-300">
-    <!-- Navigation Header Component -->        <Header lang={lang} />
+    <!-- Navigation Header Component -->        <Header lang={lang} pageTheme={pageTheme} />
 
     <!-- Main content area -->
     <main class="mx-auto">

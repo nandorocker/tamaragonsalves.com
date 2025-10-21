@@ -142,7 +142,7 @@
   }
 
   .top-nav.nav-scrolled {
-    @apply bg-mustard-50 bg-opacity-95 drop-shadow-lg dark:bg-gray-800 dark:bg-opacity-95;
+    @apply drop-shadow-lg;
   }
 
   /* Mobile menu open state (independent of scroll) */

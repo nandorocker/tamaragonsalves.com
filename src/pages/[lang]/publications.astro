@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BookCard from '../../components/BookCard.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { loadAllTranslations, getTranslationSync, getStaticPaths } from '../../utils/i18n';
+import type { Language } from '../../utils/i18n';
+import booksData from '../../data/books.json';
+import projectsData from '../../data/projects.json';
+
+export { getStaticPaths };
+
+const { lang } = Astro.params;
+const currentLang = lang as Language;
+
+// Load all translations (global + home page) for dynamic content
+const allTranslations = await loadAllTranslations(currentLang, 'home');
+
+// Load book translations specifically
+const allContentTranslations = await loadAllTranslations(currentLang, 'books');
+const bookTranslations = allContentTranslations.books || {};
+
+// Helper function to get translation with fallback
+const t = (key: string) => getTranslationSync(allTranslations, key);
+---
+
+<BaseLayout title={t('publicationsHeading')} pageTheme="soap">
+	<section id="publications" class="contain-margins-y bg-soap-50 dark:bg-gray-700 mt-20">
+	    <div class="contain-wide section-margins-medium">
+	        <h1>{t('publicationsHeading')}</h1>
+	        <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto">
+	            <h2>{t('publicationsSubheading')}</h2>
+
+	            <p>{t('publicationsDescription')}</p>
+
+	            <ul class="bullet">
+	                <li><a href={`/${currentLang}/background`}>{t('publicationsCvLinkText')}</a></li>
+	                <li><a href={t('publicationsOrcidUrl')} target="_blank"
+	                        class="icon-after icon-external-link icon-space-sm">{t('publicationsOrcidLinkText')}</a></li>
+	            </ul>
+
+	            <h2>{t('publicationsBooksSubheading')}</h2>
+				<div class="book-grid">
+                {booksData.map(book => (
+                    <BookCard 
+                        book={book}
+                        bookTranslations={bookTranslations}
+                        lang={currentLang}
+                    />
+                ))}
+           		</div>
+	        </div>
+
+	        <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto">
+	            <h2>{t('publicationsOtherProjectsSubheading')}</h2>
+	            {projectsData.map(project => (
+                <ProjectCard 
+                    id={project.id}
+                    imageUrl={project.imageUrl}
+                    linkUrl={project.linkUrl}
+                    linkIcon={project.linkIcon}
+                    lang={lang as 'en' | 'pt'}
+                />
+            ))}
+	        </div>
+	    </div>
+	</section>
+</BaseLayout>

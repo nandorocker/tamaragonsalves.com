@@ -8,9 +8,20 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
 
 export interface Props {
   lang: 'en' | 'pt';
+  pageTheme?: 'yellow' | 'white' | 'soap' | 'violet';
 }
 
-const { lang } = Astro.props;
+const { lang, pageTheme = 'white' } = Astro.props;
+
+// Map page themes to header colors
+const themeColors = {
+  yellow: 'bg-gradient-to-r from-yellow-50 to-mustard-100 dark:from-gray-800 dark:to-gray-900 text-indigo-900 dark:text-indigo-300',
+  white: 'bg-white/90 dark:bg-gray-800/90 text-gray-900 dark:text-gray-100',
+  soap: 'bg-soap-100/90 dark:bg-gray-700/90 text-gray-900 dark:text-gray-100',
+  violet: 'bg-violet-100/90 dark:bg-gray-700/90 text-violet-900 dark:text-pink-300'
+};
+
+const headerColorClass = themeColors[pageTheme];
 const t = useTranslations(lang);
 
 // Load global translations for UI strings
@@ -22,7 +33,7 @@ const globalTranslations = await loadTranslations(lang as Language);
 const langPrefix = lang === 'en' ? '/en' : `/${lang}`;
 ---
 
-<header id="top_nav" class="top-nav fixed w-full top-0 z-10">
+<header id="top_nav" class={`top-nav fixed w-full top-0 z-10 backdrop-blur-sm ${headerColorClass}`}>
     <div class="flex flex-col space-y-3 md:justify-between items-start w-full pt-2.5 md:h-20">
         <div class="flex items-center justify-between lowercase" aria-label="Global">
             <!-- Mobile nav toggle -->
@@ -44,10 +55,11 @@ const langPrefix = lang === 'en' ? '/en' : `/${lang}`;
             class="hidden md:flex flex-col md:flex-row md:flex-1 md:justify-between max-md:space-y-3 w-full px-5 md:px-10 max-md:pb-5">
             <!-- Main navigation links -->
             <div class="flex flex-col md:flex-row md:items-center md:space-x-8 lg:space-x-16 max-md:space-y-3">
+                <a href={`${langPrefix}/`} class="font-bold">Home</a>
                 <a href={`${langPrefix}/#about-me`}>{t('navAbout')}</a>
-                <a href={`${langPrefix}/#publications`}>{t('navPublications')}</a>
-                <a href={`${langPrefix}/#speaking`}>{t('navSpeaking')}</a>
-                <a href={`${langPrefix}/#services`}>{t('navServices')}</a>
+                <a href={`${langPrefix}/publications`}>{t('navPublications')}</a>
+                <a href={`${langPrefix}/speaking`}>{t('navSpeaking')}</a>
+                <a href={`${langPrefix}/services`}>{t('navServices')}</a>
                 <a href={`${langPrefix}/#contact-me`}>{t('navContact')}</a>
             </div>
 
