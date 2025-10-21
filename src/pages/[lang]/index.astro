@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import AboutGalleryImage from '../../components/AboutGalleryImage.astro';
 import BookCarouselCard from '../../components/BookCarouselCard.astro';
 import VideoPublicationCard from '../../components/VideoPublicationCard.astro';
+import Button from '../../components/Button.astro';
 import { images } from '../../data/global';
 import { loadAllTranslations, getTranslationSync, getStaticPaths } from '../../utils/i18n';
 import type { Language } from '../../utils/i18n';
@@ -200,13 +201,10 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 		<div class="contain-medium section-margins-medium">
 			<h1 class="dark:text-pink-300">{t('contactHeading')}</h1>
 			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto mb-12">
-				<p class="dark:text-gray-300">{t('contactDescription')}</p>
+			<p class="dark:text-gray-300">{t('contactDescription')}</p>
 
-				<p><a id="email-link" href="#"
-						class="max-sm:block button button-lg md:button-xl mb-8 icon-before icon-comment-smile icon-space-sm">{t('contactEmailButtonText')}</a>
-				</p>
-
-				<h4 class="max-sm:text-center dark:text-pink-300">{t('contactSocialMediaHeading')}</h4>
+			<p><Button id="email-link" href="#" size="lg" class="max-sm:block md:px-12 md:py-4 md:text-lg md:rounded-xl icon-before icon-comment-smile icon-space-sm">{t('contactEmailButtonText')}</Button>
+			</p>				<h4 class="max-sm:text-center dark:text-pink-300">{t('contactSocialMediaHeading')}</h4>
 				<ul class="flex flex-row max-sm:justify-center items-start gap-8 max-sm:mt-8">
 					<li><a href="https://www.instagram.com/tamaramoroso" target="_blank" rel="noopener noreferrer"
 							title="Threads"><img src={`${images}/social-instagram.svg`} class="w-12 hover-shift-sm dark:invert"

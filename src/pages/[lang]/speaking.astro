@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import VideoPublicationCard from '../../components/VideoPublicationCard.astro';
+import Button from '../../components/Button.astro';
 import { loadAllTranslations, getTranslationSync, getStaticPaths } from '../../utils/i18n';
 import type { Language } from '../../utils/i18n';
 import videosData from '../../data/videos.json';
@@ -21,10 +22,10 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 	<section id="speaking" class="contain-margins-y bg-white dark:bg-gray-800 mt-20">
 		<div class="contain-medium section-margins-medium">
 			<h1>{t('speakingHeading')}</h1>
-			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto mb-12">
-				<p>{t('speakingDescription')}</p>
-				<p><a href={`/${currentLang}/#contact-me`} class="button button-lg icon-before icon-comment-smile icon-space-sm">{t('speakingContactButtonText')}</a></p>
-			</div>
+		<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto mb-12">
+			<p>{t('speakingDescription')}</p>
+			<p><Button href={`/${currentLang}/#contact-me`} size="lg" class="icon-before icon-comment-smile icon-space-sm">{t('speakingContactButtonText')}</Button></p>
+		</div>
 		</div>
 
 		<div class="w-full">
