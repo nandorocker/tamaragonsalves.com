@@ -1,0 +1,43 @@
+---
+interface Props {
+	variant?: 'primary' | 'secondary' | 'outline';
+	size?: 'xs' | 'lg' | 'xl';
+	href?: string;
+	type?: 'button' | 'submit' | 'reset';
+	class?: string;
+}
+
+const { 
+	variant = 'primary', 
+	size = 'lg', 
+	href, 
+	type = 'button',
+	class: className = '' 
+} = Astro.props;
+
+// Base button styles
+const baseStyles = 'inline-block border-2 transition-all duration-150 ease-linear text-center no-underline font-semibold hover:translate-x-[2px] hover:translate-y-[2px]';
+
+// Variant styles
+const variantStyles = {
+	primary: 'bg-pink-700 border-pink-900 text-white hover:text-gray-100 hover:bg-pink-900 visited:text-gray-100 visited:hover:text-gray-100 dark:bg-pink-600 dark:border-pink-700 dark:hover:bg-pink-700 dark:text-white dark:hover:text-gray-100 dark:visited:text-white',
+	secondary: 'bg-pink-300 border-pink-400 text-gray-900 hover:text-gray-800 hover:bg-pink-400 visited:text-gray-900 visited:hover:text-gray-800 dark:bg-pink-800 dark:border-pink-900 dark:hover:bg-pink-900 dark:text-gray-100 dark:hover:text-white dark:visited:text-gray-100',
+	outline: 'bg-transparent border-pink-700 text-pink-700 hover:text-pink-900 hover:bg-pink-50 visited:text-pink-700 visited:hover:text-pink-900 dark:border-pink-400 dark:text-pink-400 dark:hover:text-pink-300 dark:hover:bg-pink-950 dark:visited:text-pink-400'
+};
+
+// Size styles
+const sizeStyles = {
+	xs: 'mb-4 mx-1 px-2 py-1 text-base rounded-sm',
+	lg: 'mb-4 px-6 py-2 text-base rounded-lg',
+	xl: 'mb-4 px-12 py-4 text-lg rounded-xl'
+};
+
+const buttonClasses = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim();
+
+const Element = href ? 'a' : 'button';
+const elementProps = href ? { href } : { type };
+---
+
+<Element class={buttonClasses} {...elementProps}>
+	<slot />
+</Element>
