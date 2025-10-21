@@ -155,7 +155,27 @@
   }
 
   .top-nav.nav-scrolled {
-    @apply drop-shadow-lg;
+    @apply drop-shadow-lg backdrop-blur-sm;
+  }
+
+  /* Yellow theme scrolled state */
+  .top-nav.nav-scrolled[class*="bg-mustard"] {
+    @apply bg-mustard-50/95 dark:bg-gray-800/95;
+  }
+
+  /* White theme scrolled state */
+  .top-nav.nav-scrolled[class*="bg-white"] {
+    @apply bg-white/95 dark:bg-gray-800/95;
+  }
+
+  /* Soap theme scrolled state */
+  .top-nav.nav-scrolled[class*="bg-soap"] {
+    @apply bg-soap-50/95 dark:bg-gray-700/95;
+  }
+
+  /* Violet theme scrolled state */
+  .top-nav.nav-scrolled[class*="bg-violet"] {
+    @apply bg-violet-50/95 dark:bg-gray-700/95;
   }
 
   /* Mobile menu open state (independent of scroll) */

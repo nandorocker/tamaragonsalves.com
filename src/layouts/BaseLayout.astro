@@ -18,6 +18,16 @@ const lang = getLangFromUrl(Astro.url) as Language;
 // Load translations for global strings
 const translations = await loadTranslations(lang);
 const siteTitle = getTranslationSync(translations, 'siteTitle');
+
+// Map page themes to body background colors
+const bodyBgColors = {
+  yellow: 'bg-mustard-50 dark:bg-gray-900',
+  white: 'bg-white dark:bg-gray-900',
+  soap: 'bg-soap-50 dark:bg-gray-900',
+  violet: 'bg-violet-50 dark:bg-gray-900'
+};
+
+const bodyBgClass = bodyBgColors[pageTheme];
 ---
 
 <!DOCTYPE html>
@@ -65,7 +75,7 @@ const siteTitle = getTranslationSync(translations, 'siteTitle');
     </script>
 </head>
 
-<body class="bg-mustard-50 dark:bg-gray-900 transition-colors duration-300">
+<body class={`${bodyBgClass} transition-colors duration-300`}>
     <!-- Navigation Header Component -->        <Header lang={lang} pageTheme={pageTheme} />
 
     <!-- Main content area -->
