@@ -5,9 +5,9 @@
     "description": "For twenty years, I've dedicated my career to human rights law and advocacy, specializing in women's rights and gender justice. My work bridges academic research with practical impact, demonstrated through extensive publications and leadership roles across governmental and non-governmental sectors."
   },
   
-  "publicationsHeading": "Books and publications",
-  "seeAllPublications": "See all publications",
-  "seeAllServices": "See all services",
+  "publicationsHeading": "Books and Publications",
+  "seeAllPublications": "Browse all my books and publications",
+  "seeAllServices": "See more details and full list",
   "publicationsSubheading": "Publications",
   "publicationsDescription": "I am dedicated to producing high-quality, community-engaged research and scholarship that addresses pressing social issues. Over the past 20 years, I have developed interdisciplinary, transsystemic, and socio-legal research, resulting in 2 published books, 40 book chapters, 11 journal articles, 10 research and advocacy reports, and 36 opinion pieces. My publications span a broad range of topics, including children's fundamental rights, women's human rights—particularly gender-based violence and sexual and reproductive rights—and consumer rights, with a specific focus on product recalls, advertising regulations, and the regulation of ultra-processed foods.",
   "publicationsCvLinkText": "For full list of publications, download my CV",
@@ -30,8 +30,6 @@
   
   "coursesTitle": "Courses",
   "coursesSummary": "Tailored educational programs covering international human rights systems, gender justice, feminist legal theory, and transnational advocacy—designed for academics, government officials, and civil society organizations.",
-  
-  "coursesTitle": "Courses",
   "coursesItems": [
     "Human Rights Systems: covers international human rights systems (global and regional ones), their functioning, key documents, and advocacy opportunities.",
     "Gender and International Human Rights: offers an overview of the most relevant Human Rights Instruments that protect women and gender-diverse individual's rights.",
