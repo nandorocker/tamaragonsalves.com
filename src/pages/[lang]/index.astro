@@ -79,24 +79,28 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 				
 				<!-- Book Carousel -->
 				<div class="book-carousel relative">
-					<div class="carousel-container overflow-hidden">
-						<div class="carousel-track flex transition-transform duration-500 ease-in-out">
-							{booksData.map((book) => (
-								<div class="carousel-slide w-full lg:w-1/2 flex-shrink-0 px-4 lg:px-6">
-									<BookCarouselCard 
-										book={book}
-										bookTranslations={bookTranslations}
-										lang={currentLang}
-									/>
-								</div>
-							))}
+					<div class="carousel-outer-container py-4 relative">
+						<div class="carousel-container overflow-hidden relative" style="clip-path: inset(0);">
+							<div class="carousel-track flex transition-transform duration-500 ease-in-out">
+								{booksData.map((book, index) => (
+									<div class="carousel-slide w-full lg:w-1/2 flex-shrink-0">
+										<div class={`${index < booksData.length - 1 ? 'pr-4 lg:pr-6' : ''}`}>
+											<BookCarouselCard 
+												book={book}
+												bookTranslations={bookTranslations}
+												lang={currentLang}
+											/>
+										</div>
+									</div>
+								))}
+							</div>
 						</div>
 					</div>
 
 					<!-- Previous Button -->
 					<button 
 						id="prev-book" 
-						class="carousel-btn absolute left-0 top-16 md:top-20 -translate-x-4 md:-translate-x-12 z-[5] p-3 rounded-full bg-pink-700 text-white hover:bg-pink-900 dark:bg-pink-300 dark:text-gray-900 dark:hover:bg-pink-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+						class="carousel-btn absolute left-0 md:-left-1 lg:-left-2 top-16 md:top-20 -translate-x-4 md:-translate-x-12 z-[5] p-3 rounded-full bg-pink-700 text-white hover:bg-pink-900 dark:bg-pink-300 dark:text-gray-900 dark:hover:bg-pink-100 transition-colors disabled:opacity-20 disabled:cursor-not-allowed shadow-lg"
 						aria-label="Previous books"
 					>
 						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -107,7 +111,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 					<!-- Next Button -->
 					<button 
 						id="next-book" 
-						class="carousel-btn absolute right-0 top-16 md:top-20 translate-x-4 md:translate-x-12 z-[5] p-3 rounded-full bg-pink-700 text-white hover:bg-pink-900 dark:bg-pink-300 dark:text-gray-900 dark:hover:bg-pink-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+						class="carousel-btn absolute right-0 md:-right-1 lg:-right-2 top-16 md:top-20 translate-x-4 md:translate-x-12 z-[5] p-3 rounded-full bg-pink-700 text-white hover:bg-pink-900 dark:bg-pink-300 dark:text-gray-900 dark:hover:bg-pink-100 transition-colors disabled:opacity-20 disabled:cursor-not-allowed shadow-lg"
 						aria-label="Next books"
 					>
 						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
