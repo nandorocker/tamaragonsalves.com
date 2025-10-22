@@ -57,22 +57,32 @@ const bodyBgClass = bodyBgColors[pageTheme];
     
     <!-- Theme and JavaScript setup -->
     <script>document.documentElement.classList.add('js')</script>
-    <script>
+    <script is:inline>
         // Prevent FOUC by setting theme before page loads
         (function () {
-            const savedTheme = localStorage.getItem('theme-preference');
-            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            function applyTheme() {
+                const savedTheme = localStorage.getItem('theme-preference');
+                const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-            let effectiveTheme;
-            if (!savedTheme || savedTheme === 'system') {
-                effectiveTheme = systemPrefersDark ? 'dark' : 'light';
-            } else {
-                effectiveTheme = savedTheme;
+                let effectiveTheme;
+                if (!savedTheme || savedTheme === 'system') {
+                    effectiveTheme = systemPrefersDark ? 'dark' : 'light';
+                } else {
+                    effectiveTheme = savedTheme;
+                }
+
+                if (effectiveTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
             }
 
-            if (effectiveTheme === 'dark') {
-                document.documentElement.classList.add('dark');
-            }
+            // Apply theme on initial load
+            applyTheme();
+
+            // Reapply theme after Astro view transitions
+            document.addEventListener('astro:after-swap', applyTheme);
         })();
     </script>
 </head>

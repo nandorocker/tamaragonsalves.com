@@ -266,9 +266,11 @@
     @apply bg-violet-50/95 dark:bg-gray-700/95;
   }
 
-  /* Mobile menu open state (independent of scroll) */
-  .top-nav.nav-menu-open {
-    @apply bg-indigo-900 drop-shadow-lg dark:bg-gray-900;
+  /* Mobile menu open state (must override all scroll states) */
+  .top-nav.nav-menu-open,
+  .top-nav.nav-scrolled.nav-menu-open,
+  .top-nav.nav-menu-open[class*="bg-"] {
+    @apply bg-indigo-900 drop-shadow-lg dark:bg-gray-900 !important;
   }
 
   .top-nav a,

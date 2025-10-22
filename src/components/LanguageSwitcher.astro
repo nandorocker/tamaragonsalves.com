@@ -63,40 +63,58 @@ const languageLinks = Object.entries(languages).map(([langCode, langName]) => {
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  function initLanguageSwitcher() {
     const languageSwitcher = document.querySelector('.group');
     const trigger = languageSwitcher?.querySelector('#language-switcher-trigger');
     
-    if (languageSwitcher && trigger) {
-      trigger.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isOpen = languageSwitcher.classList.contains('open');
-        
-        // Close all other open language switchers
-        document.querySelectorAll('.group.open').forEach(switcher => {
-          switcher.classList.remove('open');
-          const btn = switcher.querySelector('#language-switcher-trigger');
-          if (btn) btn.setAttribute('aria-expanded', 'false');
-        });
-        
-        if (!isOpen) {
-          languageSwitcher.classList.add('open');
-          trigger.setAttribute('aria-expanded', 'true');
-        }
+    if (!languageSwitcher || !trigger) return;
+    
+    // Clean up any existing listeners by cloning and replacing the elements
+    const newTrigger = trigger.cloneNode(true);
+    trigger.parentNode?.replaceChild(newTrigger, trigger);
+    
+    const clickHandler = (e) => {
+      e.stopPropagation();
+      const isOpen = languageSwitcher.classList.contains('open');
+      
+      // Close all other open language switchers
+      document.querySelectorAll('.group.open').forEach(switcher => {
+        switcher.classList.remove('open');
+        const btn = switcher.querySelector('#language-switcher-trigger');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
       });
       
-      document.addEventListener('click', () => {
+      if (!isOpen) {
+        languageSwitcher.classList.add('open');
+        newTrigger.setAttribute('aria-expanded', 'true');
+      }
+    };
+    
+    const documentClickHandler = () => {
+      languageSwitcher.classList.remove('open');
+      newTrigger.setAttribute('aria-expanded', 'false');
+    };
+    
+    const keydownHandler = (e) => {
+      if (e.key === 'Escape') {
         languageSwitcher.classList.remove('open');
-        trigger.setAttribute('aria-expanded', 'false');
-      });
-      
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          languageSwitcher.classList.remove('open');
-          trigger.setAttribute('aria-expanded', 'false');
-          (trigger as HTMLElement).focus();
-        }
-      });
-    }
-  });
+        newTrigger.setAttribute('aria-expanded', 'false');
+        (newTrigger as HTMLElement).focus();
+      }
+    };
+    
+    newTrigger.addEventListener('click', clickHandler);
+    document.addEventListener('click', documentClickHandler);
+    document.addEventListener('keydown', keydownHandler);
+  }
+  
+  // Initialize on DOMContentLoaded (first page load)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLanguageSwitcher);
+  } else {
+    initLanguageSwitcher();
+  }
+  
+  // Reinitialize on Astro page transitions
+  document.addEventListener('astro:page-load', initLanguageSwitcher);
 </script>
