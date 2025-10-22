@@ -137,11 +137,11 @@
 
   /* Button Secondary */
   .button.button-secondary {
-    @apply bg-gray-300/60 border-gray-400/60 text-gray-800;
-    @apply hover:bg-gray-400/60 hover:border-gray-500/60 hover:text-gray-900;
-    @apply visited:text-gray-800 visited:hover:text-gray-900;
-    @apply dark:bg-gray-600/60 dark:border-gray-500/60 dark:text-gray-200;
-    @apply dark:hover:bg-gray-500/60 dark:hover:border-gray-400/60 dark:hover:text-white dark:visited:text-gray-200;
+    @apply bg-transparent border-pink-700 text-pink-700;
+    @apply hover:bg-pink-50 hover:border-pink-800 hover:text-pink-800;
+    @apply visited:text-pink-700 visited:hover:text-pink-800;
+    @apply dark:bg-transparent dark:border-pink-400 dark:text-pink-400;
+    @apply dark:hover:bg-pink-950 dark:hover:border-pink-300 dark:hover:text-pink-300 dark:visited:text-pink-400;
   }
 
   /* Button Outline */
