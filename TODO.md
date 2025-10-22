@@ -11,5 +11,6 @@
 - [x] Add enter transitions everywhere
 
 BUGS
-- [ ] mobile menu text color white
-- [ ] Tons of css problems
+- [x] Tons of css problems
+- [x] dark mode bg still different than content bg
+- [x] mobile menu text color white
