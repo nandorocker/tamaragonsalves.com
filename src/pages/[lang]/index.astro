@@ -4,6 +4,7 @@ import AboutGalleryImage from '../../components/AboutGalleryImage.astro';
 import BookCarouselCard from '../../components/BookCarouselCard.astro';
 import VideoPublicationCard from '../../components/VideoPublicationCard.astro';
 import Button from '../../components/Button.astro';
+import OrcidIcon from '../../components/OrcidIcon.astro';
 import { images } from '../../data/global';
 import { loadAllTranslations, getTranslationSync, getStaticPaths } from '../../utils/i18n';
 import type { Language } from '../../utils/i18n';
@@ -54,13 +55,14 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 	            <h2>{t('aboutMeHeading')}</h2>
 	            <p>{t('aboutMeDescription')}</p>
 	            
-	            <div class="flex flex-col gap-4 mt-6">
+	            <div class="flex flex-col gap-4 mt-10">
 	                <Button href={`/${currentLang}/background`} variant="secondary" icon="icon-file-pdf" class="mb-0">
 	                    {t('publicationsCvLinkText')}
 	                </Button>
-	                <Button href={t('publicationsOrcidUrl')} variant="secondary" target="_blank" iconSrc="/images/orcid_id.svg">
-	                    {t('publicationsOrcidLinkText')}
-	                </Button>
+                <Button href={t('publicationsOrcidUrl')} variant="secondary" target="_blank">
+                    <OrcidIcon slot="icon-before" class="w-4 h-4 mr-2" size="16" color1="currentColor" color2="#FFFFFF" />
+                    {t('publicationsOrcidLinkText')}
+                </Button>
 	            </div>
 	        </div>
 	    </div>
@@ -84,7 +86,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 							<div class="carousel-track flex transition-transform duration-500 ease-in-out">
 								{booksData.map((book, index) => (
 									<div class="carousel-slide w-full lg:w-1/2 flex-shrink-0">
-										<div class={`${index < booksData.length - 1 ? 'ml-1 mr-4 lg:mr-6' : ''}`}>
+										<div class={`${index < booksData.length - 1 ? 'mr-4 lg:mr-6' : ''}`}>
 											<BookCarouselCard 
 												book={book}
 												bookTranslations={bookTranslations}

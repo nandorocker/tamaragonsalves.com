@@ -39,11 +39,15 @@ const elementProps = href ? { href, ...rest } : { type, ...rest };
 ---
 
 <Element class={buttonClasses} {...elementProps}>
-	{iconSrc && iconPosition === 'before' && (
-		<img src={iconSrc} alt="" class="w-4 h-4 mr-2" />
+	{iconPosition === 'before' && (
+		<slot name="icon-before">
+			{iconSrc && <img src={iconSrc} alt="" class="w-4 h-4 mr-2" />}
+		</slot>
 	)}
 	<slot />
-	{iconSrc && iconPosition === 'after' && (
-		<img src={iconSrc} alt="" class="w-4 h-4 ml-2" />
+	{iconPosition === 'after' && (
+		<slot name="icon-after">
+			{iconSrc && <img src={iconSrc} alt="" class="w-4 h-4 ml-2" />}
+		</slot>
 	)}
 </Element>
