@@ -31,17 +31,17 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 <BaseLayout title={t('pageTitle')} pageTheme="yellow">
 	<section id="home"
 	    class="hero bg-gradient-yellow dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 flex items-center w-full h-80vh min-h-[50rem] bg-mustard-50]">
-	    <div class="w-full contain-wide section-margins-medium text-center">
-	        <h3 class="text-indigo-900 dark:text-indigo-300">{getTranslationSync(allTranslations, 'heroSection.subtitle')}</h3>
-	        <h1 class="text-indigo-900 dark:text-indigo-300" set:html={getTranslationSync(allTranslations, 'heroSection.name').replace(' ', '<br> ')}></h1>
-	        <p class=" bigger max-sm:hyphens-auto md:w-4/6 mx-auto">{getTranslationSync(allTranslations, 'heroSection.description')}</p>
+	    <div class="w-full contain-wide section-margins-medium text-center" data-stagger>
+	        <h3 class="text-indigo-900 dark:text-indigo-300" data-animate>{getTranslationSync(allTranslations, 'heroSection.subtitle')}</h3>
+	        <h1 class="text-indigo-900 dark:text-indigo-300" data-animate set:html={getTranslationSync(allTranslations, 'heroSection.name').replace(' ', '<br> ')}></h1>
+	        <p class=" bigger max-sm:hyphens-auto md:w-4/6 mx-auto" data-animate>{getTranslationSync(allTranslations, 'heroSection.description')}</p>
 	    </div>
 	</section>
 
 	<section id="about-me" class="about-me w-full contain-margins-y bg-white dark:bg-gray-800">
 	    <div
-	        class="contain-narrow md:contain-medium section-margins-narrow md:section-margins-medium grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-[2fr_1fr] gap-8 lg:gap-12 items-start">
-            <div class="w-full mx-auto sm:-mt-40 max-sm:row-start-2 grid md:grid-cols-2 gap-4">
+	        class="contain-narrow md:contain-medium section-margins-narrow md:section-margins-medium grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-[2fr_1fr] gap-8 lg:gap-12 items-start" data-stagger>
+            <div class="w-full mx-auto sm:-mt-40 max-sm:row-start-2 grid md:grid-cols-2 gap-4" data-animate>
                 {galleryData.map((image) => (
                     <AboutGalleryImage 
                         src={image.src}
@@ -51,7 +51,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
                     />
                 ))}
             </div>
-	        <div class="ml-auto lg:w-5/6 max-sm:row-start-1">
+	        <div class="ml-auto lg:w-5/6 max-sm:row-start-1" data-animate>
 	            <h2>{t('aboutMeHeading')}</h2>
 	            <p>{t('aboutMeDescription')}</p>
 	            
@@ -70,17 +70,17 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 
 	<section id="publications-preview" class="contain-margins-y bg-soap-50 dark:bg-gray-700">
 		<div class="contain-wide section-margins-medium">
-			<h1 class="mb-8">{t('publicationsHeading')}</h1>
+			<h1 class="mb-8" data-animate>{t('publicationsHeading')}</h1>
 			
 			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-lg mx-auto">
-				<p class="mb-6 dark:text-gray-300">
+				<p class="mb-6 dark:text-gray-300" data-animate>
 					Over the past 20 years, I have developed interdisciplinary research, resulting in 2 published books, 40 book chapters, 11 journal articles, 10 research reports, and 36 opinion pieces on children's rights, women's human rights, and consumer rights.
 				</p>
 
-				<h2 class="mb-6">{t('publicationsBooksSubheading')}</h2>
+				<h2 class="mb-6" data-animate>{t('publicationsBooksSubheading')}</h2>
 				
 				<!-- Book Carousel -->
-				<div class="book-carousel relative">
+				<div class="book-carousel relative" data-animate>
 					<div class="carousel-outer-container py-4 relative">
 						<div class="carousel-container overflow-hidden relative" style="clip-path: inset(0);">
 							<div class="carousel-track flex transition-transform duration-500 ease-in-out">
@@ -122,7 +122,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 					</button>
 				</div>
 				
-				<div class="text-center mt-12">
+				<div class="text-center mt-12" data-animate>
 					<Button href={`/${currentLang}/publications`} variant="secondary" size="lg">{t('seeAllPublications')}</Button>
 				</div>
 			</div>
@@ -131,14 +131,14 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 
 	<section id="speaking-preview" class="contain-margins-y bg-white dark:bg-gray-800">
 		<div class="contain-medium section-margins-medium">
-			<h1 class="mb-6 dark:text-pink-300"><a href={`/${currentLang}/speaking`} class="hover:text-sky-700 dark:hover:text-sky-300 transition-colors">{t('speakingHeading')}</a></h1>
+			<h1 class="mb-6 dark:text-pink-300" data-animate><a href={`/${currentLang}/speaking`} class="hover:text-sky-700 dark:hover:text-sky-300 transition-colors">{t('speakingHeading')}</a></h1>
 			
 			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-lg mx-auto">
-				<p class="mb-8 dark:text-gray-300">
+				<p class="mb-8 dark:text-gray-300" data-animate>
 					{t('speakingIntroStart')}<a href={`/${currentLang}/#contact-me`} class="font-semibold text-sky-700 dark:text-sky-300 hover:text-sky-900 dark:hover:text-sky-100">{t('speakingCTALink')}</a>{t('speakingIntroEnd')}
 				</p>
 
-				<div class="flex flex-col lg:flex-row lg:justify-between items-start lg:items-end gap-2 lg:gap-0 mb-6">
+				<div class="flex flex-col lg:flex-row lg:justify-between items-start lg:items-end gap-2 lg:gap-0 mb-6" data-animate>
 					<h2 class="mb-0 dark:text-pink-300">{t('speakingTalksSubheading')}</h2>
 					<a href={`/${currentLang}/speaking`} class="text-base font-semibold text-sky-700 dark:text-sky-300 hover:text-sky-900 dark:hover:text-sky-100 icon-after icon-arrow-right icon-space-sm whitespace-nowrap">
 						{t('seeAllTalks')}
@@ -147,7 +147,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 			</div>
 		</div>
 
-		<div class="w-full">
+		<div class="w-full" data-animate>
 			<div class="video-grid-container 2xl:justify-center">
 				<div class="video-grid">
 					{videosData.slice(0, 5).map(video => (
@@ -166,42 +166,42 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 
 	<section id="what-i-offer" class="contain-margins-y bg-violet-50 dark:bg-gray-700">
 		<div class="contain-medium section-margins-medium">
-			<h1 class="mb-8 dark:text-pink-300">{t('servicesHeading')}</h1>
+			<h1 class="mb-8 dark:text-pink-300" data-animate>{t('servicesHeading')}</h1>
 			
 			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-lg mx-auto">
-				<p class="mb-8 dark:text-gray-300">
+				<p class="mb-8 dark:text-gray-300" data-animate>
 					{t('servicesIntro')}
 				</p>
 
-				<div class="sm:grid sm:grid-cols-2 gap-x-10 lg:gap-x-16 mb-12">
+				<div class="sm:grid sm:grid-cols-2 gap-x-10 lg:gap-x-16 mb-12" data-stagger>
 					<div>
-						<div class="services-item pb-6">
+						<div class="services-item pb-6" data-animate>
 							<h3 class="dark:text-pink-300">{t('coursesTitle')}</h3>
 							<p class="dark:text-gray-300">{t('coursesSummary')}</p>
 						</div>
-						<div class="services-item pb-6">
+						<div class="services-item pb-6" data-animate>
 							<h3 class="dark:text-pink-300">{t('consultancyTitle')}</h3>
 							<p class="dark:text-gray-300">{t('consultancySummary')}</p>
 						</div>
-						<div class="services-item pb-6">
+						<div class="services-item pb-6" data-animate>
 							<h3 class="dark:text-pink-300">{t('lawyeringTitle')}</h3>
 							<p class="dark:text-gray-300">{t('lawyeringSummary')}</p>
 						</div>
 					</div>
 
 					<div>
-						<div class="services-item pb-6">
+						<div class="services-item pb-6" data-animate>
 							<h3 class="dark:text-pink-300">{t('mentorshipTitle')}</h3>
 							<p class="dark:text-gray-300">{t('mentorshipSummary')}</p>
 						</div>
-						<div class="services-item pb-6">
+						<div class="services-item pb-6" data-animate>
 							<h3 class="dark:text-pink-300">{t('advocacyTitle')}</h3>
 							<p class="dark:text-gray-300">{t('advocacySummary')}</p>
 						</div>
 					</div>
 				</div>
 				
-				<div class="text-center mt-0">
+				<div class="text-center mt-0" data-animate>
 					<Button href={`/${currentLang}/services`} variant="secondary" size="lg">{t('seeAllServices')}</Button>
 				</div>
 			</div>
@@ -210,13 +210,13 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 
 	<section id="contact-me" class="contain-margins-y bg-white dark:bg-gray-800">
 		<div class="contain-medium section-margins-medium">
-			<h1 class="dark:text-pink-300">{t('contactHeading')}</h1>
-			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto mb-12">
-			<p class="dark:text-gray-300">{t('contactDescription')}</p>
+			<h1 class="dark:text-pink-300" data-animate>{t('contactHeading')}</h1>
+			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto mb-12" data-stagger>
+			<p class="dark:text-gray-300" data-animate>{t('contactDescription')}</p>
 
-			<p><Button id="email-link" href="#" size="lg" class="max-sm:block md:px-12 md:py-4 md:text-lg md:rounded-xl icon-before icon-comment-smile icon-space-sm">{t('contactEmailButtonText')}</Button>
-			</p>				<h4 class="max-sm:text-center dark:text-pink-300">{t('contactSocialMediaHeading')}</h4>
-				<ul class="flex flex-row max-sm:justify-center items-start gap-8 max-sm:mt-8">
+			<p data-animate><Button id="email-link" href="#" size="lg" class="max-sm:block md:px-12 md:py-4 md:text-lg md:rounded-xl icon-before icon-comment-smile icon-space-sm">{t('contactEmailButtonText')}</Button>
+			</p>				<h4 class="max-sm:text-center dark:text-pink-300" data-animate>{t('contactSocialMediaHeading')}</h4>
+				<ul class="flex flex-row max-sm:justify-center items-start gap-8 max-sm:mt-8" data-animate>
 					<li><a href="https://www.instagram.com/tamaramoroso" target="_blank" rel="noopener noreferrer"
 							title="Threads"><img src={`${images}/social-instagram.svg`} class="w-12 hover-shift-sm dark:invert"
 								alt="Instagram"></a>

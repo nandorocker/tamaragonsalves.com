@@ -17,13 +17,13 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 
 <BaseLayout title={t('backgroundHeading')} pageTheme="white">
 	<section id="background" class="bg-white dark:bg-gray-800 contain-margins-y mt-20">
-	    <div class="contain-medium section-margins-medium sm:grid lg:grid-cols-2 sm:gap-x-8">
+	    <div class="contain-medium section-margins-medium sm:grid lg:grid-cols-2 sm:gap-x-8" data-stagger>
 	        <div>
-	            <h1 class="max-lg:text-size-h2 max-lg:mb-10" set:html={t('backgroundHeading').replace(' ', '<wbr> ')}></h1>
+	            <h1 class="max-lg:text-size-h2 max-lg:mb-10" data-animate set:html={t('backgroundHeading').replace(' ', '<wbr> ')}></h1>
 	        </div>
 	        <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto">
-	            <div class="dark:text-gray-300" style="white-space: pre-line;">{t('backgroundDescription')}</div>
-	            <a href={t('cvUrl')} id="cv"
+	            <div class="dark:text-gray-300" data-animate style="white-space: pre-line;">{t('backgroundDescription')}</div>
+	            <a href={t('cvUrl')} id="cv" data-animate
 	                class="icon-before icon-file-pdf icon-space-sm">{t('cvLinkText')}</a>
 	        </div>
 	    </div>

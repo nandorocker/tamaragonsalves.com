@@ -15,6 +15,8 @@ module.exports = {
     "button-xs",
     "button-lg",
     "button-xl",
+    "animate-before",
+    "animate-in",
   ],
   theme: {
     fontFamily: {

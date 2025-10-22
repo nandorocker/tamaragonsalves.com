@@ -21,14 +21,14 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 <BaseLayout title={t('speakingHeading')} pageTheme="white">
 	<section id="speaking" class="contain-margins-y bg-white dark:bg-gray-800 mt-20">
 		<div class="contain-medium section-margins-medium">
-			<h1>{t('speakingHeading')}</h1>
-		<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto mb-12">
-			<p>{t('speakingDescription')}</p>
-			<p><Button href={`/${currentLang}/#contact-me`} size="lg" class="icon-before icon-comment-smile icon-space-sm">{t('speakingContactButtonText')}</Button></p>
+			<h1 data-animate>{t('speakingHeading')}</h1>
+		<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto mb-12" data-stagger>
+			<p data-animate>{t('speakingDescription')}</p>
+			<p data-animate><Button href={`/${currentLang}/#contact-me`} size="lg" class="icon-before icon-comment-smile icon-space-sm">{t('speakingContactButtonText')}</Button></p>
 		</div>
 		</div>
 
-		<div class="w-full">
+		<div class="w-full" data-animate>
 			<div class="video-grid-container">
 				<div class="video-grid">
 					{videosData.map(video => (

@@ -18,10 +18,10 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 <BaseLayout title={t('servicesHeading')} pageTheme="violet">
 	<section id="services" class="services contain-margins-y bg-violet-50 dark:bg-gray-700 mt-20">
 		<div class="contain-medium section-margins-medium">
-			<h1 class="dark:text-pink-300" set:html={t('servicesHeading').replace(' ', ' <br class="sm:hidden"> ')}></h1>
-			<div class="sm:grid sm:grid-cols-2 gap-x-10 lg:gap-x-16 lg:max-w-screen-lg mx-auto mb-12 list-none">
+			<h1 class="dark:text-pink-300" data-animate set:html={t('servicesHeading').replace(' ', ' <br class="sm:hidden"> ')}></h1>
+			<div class="sm:grid sm:grid-cols-2 gap-x-10 lg:gap-x-16 lg:max-w-screen-lg mx-auto mb-12 list-none" data-stagger>
 				<div>
-					<div class="services-item pb-4">
+					<div class="services-item pb-4" data-animate>
 						<h3 class="dark:text-pink-300">{t('coursesTitle')}</h3>
 						<ul class="bullet dark:text-gray-300">
 							{getTranslationSync(allTranslations, 'coursesItems').map((item: string) => (
@@ -30,7 +30,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 						</ul>
 						<p class="text-small dark:text-gray-300">{t('coursesNote')}</p>
 					</div>
-					<div class="services-item pb-4">
+					<div class="services-item pb-4" data-animate>
 						<h3 class="dark:text-pink-300">{t('consultancyTitle')}</h3>
 						<p class="dark:text-gray-300">{t('consultancyDescription')}</p>
 						<ul class="bullet dark:text-gray-300">
@@ -42,7 +42,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 				</div>
 
 				<div>
-					<div class="services-item pb-4">
+					<div class="services-item pb-4" data-animate>
 						<h3 class="dark:text-pink-300">{t('lawyeringTitle')}</h3>
 						<ul class="bullet dark:text-gray-300">
 							{getTranslationSync(allTranslations, 'lawyeringItems').map((item: string) => (
@@ -50,7 +50,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 							))}
 						</ul>
 					</div>
-					<div class="services-item pb-4">
+					<div class="services-item pb-4" data-animate>
 						<h3 class="dark:text-pink-300">{t('mentorshipTitle')}</h3>
 						<p class="dark:text-gray-300">{t('mentorshipDescription')}</p>
 						<ul class="bullet dark:text-gray-300">
@@ -59,7 +59,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 							))}
 						</ul>
 					</div>
-					<div class="services-item pb-4">
+					<div class="services-item pb-4" data-animate>
 						<h3 class="dark:text-pink-300">{t('advocacyTitle')}</h3>
 						<ul class="bullet dark:text-gray-300">
 							{getTranslationSync(allTranslations, 'advocacyItems').map((item: string) => (
