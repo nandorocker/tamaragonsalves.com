@@ -70,10 +70,10 @@ const languageLinks = Object.entries(languages).map(([langCode, langName]) => {
     if (!languageSwitcher || !trigger) return;
     
     // Clean up any existing listeners by cloning and replacing the elements
-    const newTrigger = trigger.cloneNode(true);
+    const newTrigger = trigger.cloneNode(true) as HTMLButtonElement;
     trigger.parentNode?.replaceChild(newTrigger, trigger);
     
-    const clickHandler = (e) => {
+    const clickHandler = (e: Event) => {
       e.stopPropagation();
       const isOpen = languageSwitcher.classList.contains('open');
       
@@ -95,11 +95,11 @@ const languageLinks = Object.entries(languages).map(([langCode, langName]) => {
       newTrigger.setAttribute('aria-expanded', 'false');
     };
     
-    const keydownHandler = (e) => {
+    const keydownHandler = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         languageSwitcher.classList.remove('open');
         newTrigger.setAttribute('aria-expanded', 'false');
-        (newTrigger as HTMLElement).focus();
+        newTrigger.focus();
       }
     };
     
