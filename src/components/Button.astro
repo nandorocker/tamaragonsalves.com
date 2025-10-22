@@ -4,6 +4,9 @@ interface Props {
 	size?: 'xs' | 'lg' | 'xl';
 	href?: string;
 	type?: 'button' | 'submit' | 'reset';
+	icon?: string;
+	iconPosition?: 'before' | 'after';
+	iconSrc?: string; // For custom SVG icons
 	class?: string;
 	[key: string]: any; // Allow any additional HTML attributes
 }
@@ -13,6 +16,9 @@ const {
 	size = 'lg', 
 	href, 
 	type = 'button',
+	icon,
+	iconPosition = 'before',
+	iconSrc,
 	class: className = '',
 	...rest
 } = Astro.props;
@@ -23,12 +29,21 @@ const variantClass = variant === 'primary' ? 'button' : `button button-${variant
 // Map size to CSS class
 const sizeClass = `button-${size}`;
 
-const buttonClasses = `${variantClass} ${sizeClass} ${className}`.trim();
+// Add icon classes if icon is provided
+const iconClasses = icon ? `icon-${iconPosition} ${icon} icon-space-sm` : '';
+
+const buttonClasses = `${variantClass} ${sizeClass} ${iconClasses} ${className}`.trim();
 
 const Element = href ? 'a' : 'button';
 const elementProps = href ? { href, ...rest } : { type, ...rest };
 ---
 
 <Element class={buttonClasses} {...elementProps}>
+	{iconSrc && iconPosition === 'before' && (
+		<img src={iconSrc} alt="" class="w-4 h-4 mr-2" />
+	)}
 	<slot />
+	{iconSrc && iconPosition === 'after' && (
+		<img src={iconSrc} alt="" class="w-4 h-4 ml-2" />
+	)}
 </Element>

@@ -53,6 +53,15 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 	        <div class="ml-auto lg:w-5/6 max-sm:row-start-1">
 	            <h2>{t('aboutMeHeading')}</h2>
 	            <p>{t('aboutMeDescription')}</p>
+	            
+	            <div class="flex flex-col gap-4 mt-6">
+	                <Button href={`/${currentLang}/background`} variant="secondary" icon="icon-file-pdf" class="mb-0">
+	                    {t('publicationsCvLinkText')}
+	                </Button>
+	                <Button href={t('publicationsOrcidUrl')} variant="secondary" target="_blank" iconSrc="/images/orcid_id.svg">
+	                    {t('publicationsOrcidLinkText')}
+	                </Button>
+	            </div>
 	        </div>
 	    </div>
 	</section>
@@ -65,12 +74,6 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 				<p class="mb-6 dark:text-gray-300">
 					Over the past 20 years, I have developed interdisciplinary research, resulting in 2 published books, 40 book chapters, 11 journal articles, 10 research reports, and 36 opinion pieces on children's rights, women's human rights, and consumer rights.
 				</p>
-
-				<ul class="bullet mb-8">
-					<li><a href={`/${currentLang}/background`}>{t('publicationsCvLinkText')}</a></li>
-					<li><a href={t('publicationsOrcidUrl')} target="_blank"
-							class="icon-after icon-external-link icon-space-sm">{t('publicationsOrcidLinkText')}</a></li>
-				</ul>
 
 				<h2 class="mb-6">{t('publicationsBooksSubheading')}</h2>
 				
