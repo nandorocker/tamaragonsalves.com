@@ -84,7 +84,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 							<div class="carousel-track flex transition-transform duration-500 ease-in-out">
 								{booksData.map((book, index) => (
 									<div class="carousel-slide w-full lg:w-1/2 flex-shrink-0">
-										<div class={`${index < booksData.length - 1 ? 'pr-4 lg:pr-6' : ''}`}>
+										<div class={`${index < booksData.length - 1 ? 'ml-1 mr-4 lg:mr-6' : ''}`}>
 											<BookCarouselCard 
 												book={book}
 												bookTranslations={bookTranslations}
