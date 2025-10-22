@@ -523,6 +523,16 @@
     );
   }
 
+  .dark .bg-gradient-yellow {
+    background: rgb(55, 65, 81);
+    background: radial-gradient(
+      circle at center 40%,
+      rgba(17, 24, 39, 1) 0%,
+      rgba(31, 41, 55, 1) 25%,
+      rgba(55, 65, 81, 1) 60%
+    );
+  }
+
   .about-me {
     background: rgb(255, 255, 255);
     background: linear-gradient(

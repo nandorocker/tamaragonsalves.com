@@ -30,7 +30,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 
 <BaseLayout title={t('pageTitle')} pageTheme="yellow">
 	<section id="home"
-	    class="hero bg-gradient-yellow dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 flex items-center w-full h-80vh min-h-[50rem] bg-mustard-50]">
+	    class="hero bg-gradient-yellow flex items-center w-full h-80vh min-h-[50rem]">
 	    <div class="w-full contain-wide section-margins-medium text-center" data-stagger>
 	        <h3 class="text-indigo-900 dark:text-indigo-300" data-animate>{getTranslationSync(allTranslations, 'heroSection.subtitle')}</h3>
 	        <h1 class="text-indigo-900 dark:text-indigo-300" data-animate set:html={getTranslationSync(allTranslations, 'heroSection.name').replace(' ', '<br> ')}></h1>
