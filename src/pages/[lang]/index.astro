@@ -29,6 +29,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 ---
 
 <BaseLayout title={t('pageTitle')} pageTheme="yellow">
+	<!-- Hero Section -->
 	<section id="home"
 	    class="hero bg-gradient-yellow flex items-center w-full h-80vh min-h-[50rem]">
 	    <div class="w-full contain-wide section-margins-medium text-center" data-stagger>
@@ -38,6 +39,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 	    </div>
 	</section>
 
+	<!-- About Me Section -->
 	<section id="about-me" class="about-me w-full contain-margins-y bg-white dark:bg-gray-800">
 	    <div
 	        class="contain-narrow md:contain-medium section-margins-narrow md:section-margins-medium grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-[2fr_1fr] gap-8 lg:gap-12 items-start" data-stagger>
@@ -54,10 +56,22 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 	        <div class="ml-auto lg:w-5/6 max-sm:row-start-1" data-animate>
 	            <h2>{t('aboutMeHeading')}</h2>
 	            <p>{t('aboutMeDescription')}</p>
+	        </div>
+	    </div>
+	</section>
+
+	<!-- Academic & Professional Background Section -->
+	<section id="background" class="bg-white dark:bg-gray-800 pb-16 lg:pb-36">
+	    <div class="contain-medium section-margins-medium sm:grid lg:grid-cols-2 sm:gap-x-8" data-stagger>
+	        <div>
+	            <h1 class="max-lg:text-size-h2 max-lg:mb-10 dark:text-pink-300" data-animate set:html={t('backgroundHeading').replace(' ', '<wbr> ')}></h1>
+	        </div>
+	        <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto">
+	            <div class="dark:text-gray-300" data-animate style="white-space: pre-line;">{t('backgroundDescription')}</div>
 	            
-	            <div class="flex flex-col gap-4 mt-10">
-	                <Button href={`/${currentLang}/background`} variant="secondary" icon="icon-file-pdf" class="mb-0">
-	                    {t('publicationsCvLinkText')}
+	            <div class="flex flex-col gap-4 mt-10 md:w-3/5 md:mx-auto lg:mx-0" data-animate>
+	                <Button href={t('cvUrl')} variant="secondary" icon="icon-file-pdf" class="mb-0">
+	                    {t('cvLinkText')}
 	                </Button>
                 <Button href={t('publicationsOrcidUrl')} variant="secondary" target="_blank">
                     <OrcidIcon slot="icon-before" class="w-4 h-4 mr-2" size="16" color1="currentColor" color2="#FFFFFF" />
@@ -68,6 +82,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 	    </div>
 	</section>
 
+	<!-- Publications Preview Section -->
 	<section id="publications-preview" class="contain-margins-y bg-soap-50 dark:bg-gray-700">
 		<div class="contain-wide section-margins-medium">
 			<h1 class="mb-8" data-animate>{t('publicationsHeading')}</h1>
@@ -129,6 +144,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 		</div>
 	</section>
 
+	<!-- Speaking Preview Section -->
 	<section id="speaking-preview" class="contain-margins-y bg-white dark:bg-gray-800">
 		<div class="contain-medium section-margins-medium">
 			<h1 class="mb-6 dark:text-pink-300" data-animate><a href={`/${currentLang}/speaking`} class="hover:text-sky-700 dark:hover:text-sky-300 transition-colors">{t('speakingHeading')}</a></h1>
@@ -150,7 +166,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 		<div class="w-full" data-animate>
 			<div class="video-grid-container 2xl:justify-center">
 				<div class="video-grid">
-					{videosData.slice(0, 5).map(video => (
+					{videosData.slice(0, 4).map(video => (
 						<VideoPublicationCard 
 							id={video.id}
 							videoUrl={video.videoUrl}
@@ -164,6 +180,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 		</div>
 	</section>
 
+	<!-- Services Section -->
 	<section id="what-i-offer" class="contain-margins-y bg-violet-50 dark:bg-gray-700">
 		<div class="contain-medium section-margins-medium">
 			<h1 class="mb-8 dark:text-pink-300" data-animate>{t('servicesHeading')}</h1>
@@ -208,6 +225,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 		</div>
 	</section>
 
+	<!-- Contact Section -->
 	<section id="contact-me" class="contain-margins-y bg-white dark:bg-gray-800">
 		<div class="contain-medium section-margins-medium">
 			<h1 class="dark:text-pink-300" data-animate>{t('contactHeading')}</h1>
