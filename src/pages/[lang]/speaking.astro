@@ -13,16 +13,6 @@ const currentLang = lang as Language;
 
 const allTranslations = await loadAllTranslations(currentLang, 'home');
 const t = (key: string) => getTranslationSync(allTranslations, key);
-
-const categories = ['advocacy', 'academic'] as const;
-const categoryLabel: Record<string, string> = {
-  advocacy: t('categoryAdvocacy'),
-  academic: t('categoryAcademic'),
-};
-
-const videosByCategory = Object.fromEntries(
-  categories.map(cat => [cat, videosData.filter(v => v.category === cat)])
-);
 ---
 
 <BaseLayout title={t('speakingHeading')} pageTheme="white">
@@ -56,35 +46,27 @@ const videosByCategory = Object.fromEntries(
 			{t('noResults')}
 		</p>
 
-		<!-- Video sections grouped by category -->
-		{categories.map(cat => (
-			<div class="video-category-section" data-category-section={cat}>
-				<div class="contain-medium px-5 md:px-12">
-					<h2 class="video-category-heading">{categoryLabel[cat]}</h2>
-				</div>
-				<div class="contain-medium px-5 md:px-12">
-					<div class="video-grid">
-						{videosByCategory[cat].map(video => (
-							<VideoPublicationCard
-							id={video.id}
-							videoUrl={video.videoUrl}
-							thumbnailUrl={video.thumbnailUrl}
-							date={video.date}
-							lang={lang as 'en' | 'pt'}
-							category={video.category}
-						/>
-						))}
-					</div>
-				</div>
+		<!-- Flat video grid -->
+		<div class="contain-medium px-5 md:px-12">
+			<div class="video-grid">
+				{videosData.map(video => (
+					<VideoPublicationCard
+						id={video.id}
+						videoUrl={video.videoUrl}
+						thumbnailUrl={video.thumbnailUrl}
+						date={video.date}
+						lang={lang as 'en' | 'pt'}
+						category={video.category}
+					/>
+				))}
 			</div>
-		))}
+		</div>
 	</section>
 </BaseLayout>
 
 <script>
 (function () {
   const cards = Array.from(document.querySelectorAll<HTMLElement>('.video-card'));
-  const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-category-section]'));
   const filterBtns = Array.from(document.querySelectorAll<HTMLButtonElement>('.video-filter-btn'));
   const searchInput = document.getElementById('video-search') as HTMLInputElement | null;
   const noResults = document.getElementById('video-no-results');
@@ -104,14 +86,6 @@ const videosByCategory = Object.fromEntries(
       const visible = matchesFilter && matchesSearch;
       card.style.display = visible ? '' : 'none';
       if (visible) visibleCount++;
-    });
-
-    // Show/hide section headings based on visible cards within
-    sections.forEach(section => {
-      const cat = section.dataset.categorySection ?? '';
-      const visibleInSection = section.querySelectorAll<HTMLElement>('.video-card');
-      const anyVisible = Array.from(visibleInSection).some(c => c.style.display !== 'none');
-      section.style.display = anyVisible ? '' : 'none';
     });
 
     if (noResults) noResults.classList.toggle('hidden', visibleCount > 0);
