@@ -9,6 +9,7 @@ export interface Props {
   thumbnailUrl: string;
   date: string;
   lang: Language;
+  category?: string;
 }
 
 const { 
@@ -16,7 +17,8 @@ const {
   videoUrl,
   thumbnailUrl,
   date,
-  lang
+  lang,
+  category = ''
 } = Astro.props;
 
 // Load all translations (global + home page) for the current language
@@ -38,7 +40,7 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
 const imagePath = thumbnailUrl ? `${images}/${thumbnailUrl}` : null;
 ---
 
-<div class="video-card">
+<div class="video-card" data-category={category} data-searchtext={`${title} ${description}`}>
   <a href={videoUrl} target="_blank" aria-label={`Watch video: ${title}`} rel="noopener noreferrer">
     <div class="video-thumbnail-container">
       {imagePath

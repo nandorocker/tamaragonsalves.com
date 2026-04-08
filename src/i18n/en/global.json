@@ -14,6 +14,14 @@
   "loading": "Loading...",
   "error": "Error",
   "backToTop": "Back to top",
+
+  "filterAll": "All",
+  "filterAcademic": "Academic",
+  "filterAdvocacy": "Advocacy",
+  "categoryAcademic": "Academic",
+  "categoryAdvocacy": "Advocacy",
+  "searchPlaceholder": "Search talks…",
+  "noResults": "No talks match your search.",
   
   "pageTitle": "Tamara Amoroso Gonsalves, Human Rights Expert",
   
