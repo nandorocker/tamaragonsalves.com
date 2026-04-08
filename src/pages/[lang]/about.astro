@@ -76,21 +76,22 @@ const aboutGalleryData = galleryData.slice(0, 4).map((image, index) => {
 	</section>
 
 	<!-- Continue the Conversation Section -->
-	<section id="conclusion" class="pb-16 lg:pb-36 mt-8 sm:mt-12">
-	    <div class="contain-medium section-margins-medium" data-stagger>
-			<div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
-				<div class="lg:col-span-2">
-					<h1 class="max-lg:text-size-h2 max-lg:mb-0 dark:text-pink-300" data-animate>{t('aboutConclusionHeading')}</h1>
+	<section id="conclusion" class="pb-16 lg:pb-36 mt-20 sm:mt-32">
+	    <div class="contain-medium px-5">
+			<div class="bg-mustard-100 dark:bg-gray-800 rounded-3xl max-w-4xl mx-auto flex flex-col md:flex-row items-end relative shadow-sm" data-animate>
+				<!-- Left overlapping image -->
+				<div class="w-full md:w-5/12 px-6 md:px-0 md:pl-8 -mt-16 md:-mt-12 md:-mb-6 flex justify-center z-10">
+					<img 
+						src="/images/tamara_paete.jpg" 
+						alt="Tamara Amoroso Gonsalves" 
+						class="w-full max-w-sm h-auto object-cover rounded-2xl shadow-xl saturate-[0.95]"
+					/>
 				</div>
-				<div class="lg:col-span-3">
-					<p class="dark:text-gray-300" data-animate>
-						{t('aboutConclusionPara1')}<a href={t('cvUrl')} target="_blank">{t('aboutConclusionLinkText')}</a>{t('aboutConclusionPara2')}
+				<!-- Right paragraph body -->
+				<div class="w-full md:w-7/12 p-8 md:p-12 lg:p-16 text-left self-center">
+					<p class="text-gray-900 dark:text-gray-200 leading-relaxed max-md:text-center md:text-lg mb-0">
+						{t('aboutConclusionPara1')}<a href={t('cvUrl')} target="_blank" class="font-bold border-b border-gray-900/40 dark:border-white/40 hover:text-pink-600 transition-colors">{t('aboutConclusionLinkText')}</a>{t('aboutConclusionPara2')}
 					</p>
-					<div class="mt-8" data-animate>
-						<Button href={t('cvUrl')} class="button button-lg button-secondary icon-before icon-file-pdf icon-space-sm mb-0">
-							{t('cvLinkText')}
-						</Button>
-					</div>
 				</div>
 			</div>
 	    </div>
