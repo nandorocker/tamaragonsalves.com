@@ -9,9 +9,10 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
 export interface Props {
   lang: 'en' | 'pt';
   pageTheme?: 'yellow' | 'white' | 'soap' | 'violet';
+  isHomePage?: boolean;
 }
 
-const { lang, pageTheme = 'white' } = Astro.props;
+const { lang, pageTheme = 'white', isHomePage = false } = Astro.props;
 
 // Map page themes to header colors
 const themeColors = {
@@ -64,13 +65,13 @@ const siteTitle = getTranslationSync(globalTranslations, 'siteTitle');
 
             <!-- Left: Site name (desktop only) -->
             <a href={`${langPrefix}/`}
-                class="nav-site-name hidden md:block text-left"
+                class={`nav-site-name hidden md:block text-left transition-opacity duration-300${isHomePage ? ' nav-home-link opacity-0' : ''}`}
                 set:html={siteTitle.split(' ').join('<br>')} />
 
             <!-- Center: Main navigation links -->
             <div class="flex flex-col md:flex-row md:items-center md:space-x-4 lg:space-x-10 max-md:space-y-4">
                 <!-- Home link (mobile only) keeping standard mobile menu style -->
-                <a href={`${langPrefix}/`} class="md:hidden pb-2">{siteTitle}</a>
+                <a href={`${langPrefix}/`} class={`md:hidden pb-2 transition-opacity duration-300${isHomePage ? ' nav-home-link opacity-0' : ''}`}>{siteTitle}</a>
 
                 <a href={`${langPrefix}/about`} class="uppercase tracking-wide max-md:text-sm">{t('navAbout')}</a>
                 <a href={`${langPrefix}/publications`} class="uppercase tracking-wide max-md:text-sm">{t('navPublications')}</a>
@@ -104,3 +105,34 @@ const siteTitle = getTranslationSync(globalTranslations, 'siteTitle');
         </nav>
     </div>
 </header>
+
+<script>
+  // Hide/show home nav links based on hero section visibility (home page only)
+  const homeLinks = document.querySelectorAll<HTMLElement>('.nav-home-link');
+  if (homeLinks.length > 0) {
+    const hero = document.getElementById('home');
+    if (hero) {
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) {
+        // No animation — just toggle visibility immediately
+        homeLinks.forEach(el => el.classList.remove('transition-opacity', 'duration-300'));
+      }
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          homeLinks.forEach(el => {
+            if (entry.isIntersecting) {
+              el.classList.add('opacity-0');
+              el.classList.add('pointer-events-none');
+            } else {
+              el.classList.remove('opacity-0');
+              el.classList.remove('pointer-events-none');
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      observer.observe(hero);
+    }
+  }
+</script>

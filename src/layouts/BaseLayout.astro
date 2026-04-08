@@ -11,9 +11,10 @@ export interface Props {
   title: string;
   description?: string;
   pageTheme?: 'yellow' | 'white' | 'soap' | 'violet';
+  isHomePage?: boolean;
 }
 
-const { title, description = site.description, pageTheme = 'white' } = Astro.props;
+const { title, description = site.description, pageTheme = 'white', isHomePage = false } = Astro.props;
 const lang = getLangFromUrl(Astro.url) as Language;
 
 // Load translations for global strings
@@ -88,7 +89,7 @@ const bodyBgClass = bodyBgColors[pageTheme];
 </head>
 
 <body class={`${bodyBgClass} transition-colors duration-300`}>
-    <!-- Navigation Header Component -->        <Header lang={lang} pageTheme={pageTheme} />
+    <!-- Navigation Header Component -->        <Header lang={lang} pageTheme={pageTheme} isHomePage={isHomePage} />
 
     <!-- Main content area -->
     <main class="mx-auto">

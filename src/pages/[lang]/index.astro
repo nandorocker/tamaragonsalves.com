@@ -28,7 +28,7 @@ const bookTranslations = allContentTranslations.books || {};
 const t = (key: string) => getTranslationSync(allTranslations, key);
 ---
 
-<BaseLayout title={t('pageTitle')} pageTheme="yellow">
+<BaseLayout title={t('pageTitle')} pageTheme="yellow" isHomePage={true}>
 	<!-- Hero Section -->
 	<section id="home"
 	    class="hero bg-gradient-yellow flex items-center w-full md:h-80vh min-h-[45rem] sm:min-h-[50rem] pt-32 md:pt-24 2xl:pt-48 pb-20 md:pb-0 overflow-hidden">
