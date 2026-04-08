@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import { getCurrentYear, site, images, js, vendor } from '../data/global';
 import { getLangFromUrl } from '../utils/i18n';
@@ -36,7 +36,7 @@ const bodyBgClass = bodyBgColors[pageTheme];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <ViewTransitions />
+    <ClientRouter />
     
     <!-- Open Graph tags for social media sharing -->
     <meta property="og:title" content={title}>
