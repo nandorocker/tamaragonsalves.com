@@ -25,7 +25,10 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 			</div>
 		</div>
 
-		<!-- Filter + Search -->
+		<!-- Videos heading + Filter + Search -->
+		<div class="contain-medium px-5 md:px-12 mb-8" data-animate>
+			<h2>{t('speakingVideosHeading')}</h2>
+		</div>
 		<div class="contain-medium px-5 md:px-12 mb-10 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between" data-animate>
 			<div class="video-filter-buttons" role="group">
 				<button class="video-filter-btn active" data-filter="all">{t('filterAll')}</button>
