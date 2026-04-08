@@ -35,13 +35,16 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
 });
 
 // Construct image path once
-const imagePath = `${images}/${thumbnailUrl}`;
+const imagePath = thumbnailUrl ? `${images}/${thumbnailUrl}` : null;
 ---
 
 <div class="video-card">
   <a href={videoUrl} target="_blank" aria-label={`Watch video: ${title}`} rel="noopener noreferrer">
     <div class="video-thumbnail-container">
-      <img src={imagePath} alt={`Video thumbnail for ${title}`} loading="lazy">
+      {imagePath
+        ? <img src={imagePath} alt={`Video thumbnail for ${title}`} loading="lazy">
+        : <div class="video-thumbnail-placeholder" aria-hidden="true"></div>
+      }
     </div>
   </a>
   <time datetime={date} class="video-date">{formattedDate}</time>

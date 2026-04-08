@@ -390,6 +390,11 @@
     transition: transform 0.3s ease, filter 0.3s ease; /* Smooth movement and darkening */
   }
 
+  .video-thumbnail-placeholder {
+    @apply w-full bg-gray-200 dark:bg-gray-700;
+    aspect-ratio: 16 / 9;
+  }
+
   .video-thumbnail-container a {
     @apply w-full;
   }
