@@ -2,7 +2,7 @@
   "heroSection": {
     "subtitle": "Human Rights Expert",
     "name": "Tamara Amoroso Gonsalves",
-    "description": "For twenty years, I've dedicated my career to human rights law and advocacy, specializing in women's rights and gender justice. My work bridges academic research with practical impact, demonstrated through extensive publications and leadership roles across governmental and non-governmental sectors."
+    "description": "For twenty years, I've <a href=\"/en/about\" class=\"underline hover:text-pink-600 transition-colors font-semibold\">dedicated my career</a> to human rights law and advocacy, specializing in women's rights and gender justice. My work bridges academic research with practical impact, demonstrated through extensive publications and leadership roles across governmental and non-governmental sectors."
   },
   
   "publicationsHeading": "Books and Publications",

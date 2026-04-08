@@ -187,7 +187,11 @@
 @layer components {
   /* Landing */
   .hero h1 {
-    @apply -mt-2 font-display text-[clamp(3.5rem,_6vw+1.8rem,_7rem)] md:text-[clamp(3.05rem,_6vw+2rem,_6.5rem)] xl:text-[clamp(3.05rem,_9vw+1rem,_8rem)] leading-[.9] mb-8;
+    @apply -mt-2 font-display text-[clamp(4rem,_8vw+1.5rem,_7rem)] md:text-[clamp(4rem,_8vw+1.5rem,_7.5rem)] xl:text-[clamp(4rem,_8vw+1rem,_8rem)] leading-[0.7] mb-8;
+  }
+
+  .hero h5 {
+    @apply font-bold mb-4 md:mb-1 uppercase tracking-widest text-base lg:text-lg;
   }
 
   .hero h2,

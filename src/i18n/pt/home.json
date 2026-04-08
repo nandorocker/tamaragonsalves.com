@@ -2,7 +2,7 @@
   "heroSection": {
     "subtitle": "Especialista em Direitos Humanos",
     "name": "Tamara Amoroso Gonsalves",
-    "description": "Há vinte anos, dedico minha carreira ao direito e advocacia de direitos humanos, especializando-me em direitos das mulheres e justiça de gênero. Meu trabalho conecta pesquisa acadêmica com impacto prático, demonstrado através de extensas publicações e papéis de liderança em setores governamentais e não-governamentais."
+    "description": "Há vinte anos, <a href=\"/pt/about\" class=\"underline hover:text-pink-600 transition-colors font-semibold\">dedico minha carreira</a> ao direito e advocacia de direitos humanos, especializando-me em direitos das mulheres e justiça de gênero. Meu trabalho conecta pesquisa acadêmica com impacto prático, demonstrado através de extensas publicações e papéis de liderança em setores governamentais e não-governamentais."
   },
   
   "publicationsHeading": "Livros e Publicações",

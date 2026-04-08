@@ -31,23 +31,42 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 <BaseLayout title={t('pageTitle')} pageTheme="yellow">
 	<!-- Hero Section -->
 	<section id="home"
-	    class="hero bg-gradient-yellow flex items-center w-full h-80vh min-h-[50rem]">
-	    <div class="w-full contain-wide section-margins-medium text-center" data-stagger>
-	        <h3 class="text-indigo-900 dark:text-indigo-300" data-animate>{getTranslationSync(allTranslations, 'heroSection.subtitle')}</h3>
-	        <h1 class="text-indigo-900 dark:text-indigo-300" data-animate set:html={getTranslationSync(allTranslations, 'heroSection.name').replace(' ', '<br> ')}></h1>
-	        <p class=" bigger max-sm:hyphens-auto md:w-4/6 mx-auto" data-animate>{getTranslationSync(allTranslations, 'heroSection.description')}</p>
-	    </div>
-	</section>
+	    class="hero bg-gradient-yellow flex items-center w-full md:h-80vh min-h-[45rem] sm:min-h-[50rem] pt-32 md:pt-24 2xl:pt-48 pb-20 md:pb-0 overflow-hidden">
+	    <div class="contain-wide section-margins-medium flex flex-col md:flex-row items-center md:items-start 2xl:items-end gap-8 md:gap-16 lg:gap-24" data-stagger>
+			
+			<!-- Left Column: Decorative Photo (1/4 Width) -->
+			<div class="relative w-full md:w-1/4 flex justify-center md:justify-end mb-8 md:mb-0" data-animate>
+				<div class="relative">
+					<!-- Red/Flamingo background box -->
+					<div class="absolute -bottom-4 -left-4 w-[calc(100%+1rem)] h-[calc(100%+1rem)] bg-flamingo-700 rounded-lg"></div>
+					<!-- Navy background box -->
+					<div class="absolute -top-4 -right-4 w-[calc(100%+1rem)] h-[calc(100%+1rem)] bg-indigo-900 rounded-lg"></div>
+					<!-- Photo -->
+					<div class="relative z-10 overflow-hidden rounded-lg max-w-[200px] md:max-w-[260px] lg:max-w-[330px] max-h-[250px] md:max-h-none">
+						<img 
+							src="/images/home_photo.png" 
+							alt="Tamara Amoroso Gonsalves" 
+							class="w-full h-full md:h-auto object-cover md:object-contain"
+						/>
+					</div>
+				</div>
+			</div>
 
-	<!-- About Me Section -->
-	<section id="about-me" class="about-me w-full contain-margins-y bg-white dark:bg-gray-800 pt-0">
-	    <div class="contain-narrow md:contain-medium section-margins-narrow md:section-margins-medium sm:-mt-10" data-stagger>
-	        <div class="md:w-5/6 lg:w-3/4 mx-auto text-center" data-animate>
-	            <h2 class="mb-4">{t('aboutMeHeading')}</h2>
-	            <p class="text-left">{t('aboutMeDescription')}</p>
+			<!-- Right Column: Content (3/4 Width) -->
+	        <div class="w-full md:w-3/4 text-left max-md:text-center md:pb-4" data-stagger>
+	            <h5 class="text-indigo-900 dark:text-indigo-300" data-animate>
+					{getTranslationSync(allTranslations, 'heroSection.subtitle')}
+				</h5>
+	            <h1 class="text-indigo-900 dark:text-indigo-300" data-animate 
+					set:html={getTranslationSync(allTranslations, 'heroSection.name').split(' ').map(w => `<span class="inline md:block">${w}</span>`).join(' ')}>
+				</h1>
+	            <p class="bigger max-sm:hyphens-auto lg:max-w-2xl dark:text-gray-200 mb-0" data-animate 
+					set:html={getTranslationSync(allTranslations, 'heroSection.description')}>
+				</p>
 	        </div>
 	    </div>
 	</section>
+
 
 	<!-- Publications Preview Section -->
 	<section id="publications-preview" class="contain-margins-y bg-soap-50 dark:bg-gray-700">
@@ -127,12 +146,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 						{t('seeAllTalks')}
 					</a>
 				</div>
-			</div>
-		</div>
-
-		<div class="w-full" data-animate>
-			<div class="video-grid-container 2xl:justify-center">
-				<div class="video-grid">
+				<div class="video-grid mt-8" data-animate>
 					{videosData.slice(0, 4).map(video => (
 						<VideoPublicationCard 
 							id={video.id}
@@ -157,32 +171,27 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 					{t('servicesIntro')}
 				</p>
 
-				<div class="sm:grid sm:grid-cols-2 gap-x-10 lg:gap-x-16 mb-12" data-stagger>
-					<div>
-						<div class="services-item pb-6" data-animate>
-							<h3 class="dark:text-pink-300">{t('coursesTitle')}</h3>
-							<p class="dark:text-gray-300">{t('coursesSummary')}</p>
-						</div>
-						<div class="services-item pb-6" data-animate>
-							<h3 class="dark:text-pink-300">{t('consultancyTitle')}</h3>
-							<p class="dark:text-gray-300">{t('consultancySummary')}</p>
-						</div>
-						<div class="services-item pb-6" data-animate>
-							<h3 class="dark:text-pink-300">{t('lawyeringTitle')}</h3>
-							<p class="dark:text-gray-300">{t('lawyeringSummary')}</p>
-						</div>
-					</div>
-
-					<div>
-						<div class="services-item pb-6" data-animate>
-							<h3 class="dark:text-pink-300">{t('mentorshipTitle')}</h3>
-							<p class="dark:text-gray-300">{t('mentorshipSummary')}</p>
-						</div>
-						<div class="services-item pb-6" data-animate>
-							<h3 class="dark:text-pink-300">{t('advocacyTitle')}</h3>
-							<p class="dark:text-gray-300">{t('advocacySummary')}</p>
-						</div>
-					</div>
+				<div class="flex flex-col mb-12" data-stagger>
+                    <div class="flex flex-col md:flex-row md:items-start md:gap-8 border-b border-gray-200 dark:border-gray-600 py-6 first:pt-0" data-animate>
+                        <h3 class="md:w-1/4 mb-2 md:mb-0 dark:text-pink-300">{t('coursesTitle')}</h3>
+                        <p class="md:w-3/4 mb-0 dark:text-gray-300">{t('coursesSummary')}</p>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:items-start md:gap-8 border-b border-gray-200 dark:border-gray-600 py-6" data-animate>
+                        <h3 class="md:w-1/4 mb-2 md:mb-0 dark:text-pink-300">{t('consultancyTitle')}</h3>
+                        <p class="md:w-3/4 mb-0 dark:text-gray-300">{t('consultancySummary')}</p>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:items-start md:gap-8 border-b border-gray-200 dark:border-gray-600 py-6" data-animate>
+                        <h3 class="md:w-1/4 mb-2 md:mb-0 dark:text-pink-300">{t('lawyeringTitle')}</h3>
+                        <p class="md:w-3/4 mb-0 dark:text-gray-300">{t('lawyeringSummary')}</p>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:items-start md:gap-8 border-b border-gray-200 dark:border-gray-600 py-6" data-animate>
+                        <h3 class="md:w-1/4 mb-2 md:mb-0 dark:text-pink-300">{t('mentorshipTitle')}</h3>
+                        <p class="md:w-3/4 mb-0 dark:text-gray-300">{t('mentorshipSummary')}</p>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:items-start md:gap-8 py-6 pb-0" data-animate>
+                        <h3 class="md:w-1/4 mb-2 md:mb-0 dark:text-pink-300">{t('advocacyTitle')}</h3>
+                        <p class="md:w-3/4 mb-0 dark:text-gray-300">{t('advocacySummary')}</p>
+                    </div>
 				</div>
 				
 				<div class="text-center mt-0" data-animate>
