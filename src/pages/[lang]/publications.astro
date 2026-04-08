@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BookCard from '../../components/BookCard.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
+import Button from '../../components/Button.astro';
+import OrcidIcon from '../../components/OrcidIcon.astro';
 import { loadAllTranslations, getTranslationSync, getStaticPaths } from '../../utils/i18n';
 import type { Language } from '../../utils/i18n';
 import booksData from '../../data/books.json';
@@ -30,13 +32,17 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 	        <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto" data-stagger>
 	            <h2 data-animate>{t('publicationsSubheading')}</h2>
 
-	            <p data-animate>{t('publicationsDescription')}</p>
+	            <p class="small" data-animate>{t('publicationsDescription')}</p>
 
-	            <ul class="bullet" data-animate>
-	                <li><a href={`/${currentLang}/background`}>{t('publicationsCvLinkText')}</a></li>
-	                <li><a href={t('publicationsOrcidUrl')} target="_blank"
-	                        class="icon-after icon-external-link icon-space-sm">{t('publicationsOrcidLinkText')}</a></li>
-	            </ul>
+	            <div class="flex flex-col sm:flex-row sm:items-center gap-4 mt-2 mb-8" data-animate>
+                <Button href={t('cvUrl')} variant="secondary" icon="icon-file-pdf" class="mb-0">
+                    {t('cvLinkText')}
+                </Button>
+                <Button href={t('publicationsOrcidUrl')} variant="secondary" target="_blank" class="mb-0">
+                    <OrcidIcon slot="icon-before" class="w-4 h-4 mr-2" size="16" color1="currentColor" color2="#FFFFFF" />
+                    {t('publicationsOrcidLinkText')}
+                </Button>
+            </div>
 
 	            <h2 data-animate>{t('publicationsBooksSubheading')}</h2>
 				<div class="book-grid" data-stagger>

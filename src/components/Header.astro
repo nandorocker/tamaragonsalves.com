@@ -28,47 +28,50 @@ const t = useTranslations(lang);
 const globalTranslations = await loadTranslations(lang as Language);
 
 // Generate language-aware URLs
-// For English, use /en/ prefix since that's where the content actually lives
-// For other languages, use the language prefix
 const langPrefix = lang === 'en' ? '/en' : `/${lang}`;
+const siteTitle = getTranslationSync(globalTranslations, 'siteTitle');
 ---
 
-<header id="top_nav" class={`top-nav fixed w-full top-0 z-10 backdrop-blur-sm ${headerColorClass}`}>
-    <div class="flex flex-col space-y-3 md:justify-between items-start w-full pt-2.5 md:h-20">
-        <div class="flex items-center justify-between lowercase" aria-label="Global">
-            <!-- Mobile nav toggle -->
-            <div class="flex md:hidden">
-                <button id="menu_toggle" type="button"
-                    class="inline-flex items-center justify-center ml-5 mb-2.5 py-2.5 rounded-md">
-                    <span class="sr-only">Open main menu</span>
-                    <svg id="menu_icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                    </svg>
-                </button>
-            </div>
+<header id="top_nav" class={`top-nav fixed w-full top-0 z-10 backdrop-blur-sm border-b border-[#F8DEA0] ${headerColorClass}`}>
+    <div class="flex flex-col md:block w-full">
+
+        <!-- Mobile top bar: hamburger toggle (always visible on mobile) -->
+        <div class="flex items-center justify-between md:hidden px-5 pt-2.5 pb-2">
+            <button id="menu_toggle" type="button"
+                class="inline-flex items-center justify-center py-2 rounded-md">
+                <span class="sr-only">Open main menu</span>
+                <svg id="menu_icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
         </div>
 
-        <!-- Navigation menu -->
+        <!-- Navigation: 3-column grid on desktop, collapsible flex-col on mobile -->
         <nav id="menu"
-            class="hidden md:flex flex-col md:flex-row md:flex-1 md:justify-between max-md:space-y-3 w-full px-5 md:px-6 lg:px-10 max-md:pb-5">
-            <!-- Main navigation links -->
-            <div class="flex flex-col md:flex-row md:items-center md:space-x-8 lg:space-x-16 max-md:space-y-3">
-                <a href={`${langPrefix}/`} class="font-bold">{t('navAbout')}</a>
-                <a href={`${langPrefix}/publications`}>{t('navPublications')}</a>
-                <a href={`${langPrefix}/speaking`}>{t('navSpeaking')}</a>
-                <a href={`${langPrefix}/services`}>{t('navServices')}</a>
-                <a href={`${langPrefix}/#contact-me`}>{t('navContact')}</a>
+            class="hidden flex-col md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:h-20 w-full px-5 md:px-6 lg:px-10 max-md:space-y-3 max-md:pb-5">
+
+            <!-- Left: Site name (desktop only) -->
+            <a href={`${langPrefix}/`}
+                class="nav-site-name hidden md:block text-left"
+                set:html={siteTitle.split(' ').join('<br>')} />
+
+            <!-- Center: Main navigation links -->
+            <div class="flex flex-col md:flex-row md:items-center md:space-x-8 lg:space-x-10 max-md:space-y-3">
+                <a href={`${langPrefix}/`} class="md:text-base md:uppercase md:tracking-wide">{t('navAbout')}</a>
+                <a href={`${langPrefix}/publications`} class="md:text-base md:uppercase md:tracking-wide">{t('navPublications')}</a>
+                <a href={`${langPrefix}/speaking`} class="md:text-base md:uppercase md:tracking-wide">{t('navSpeaking')}</a>
+                <a href={`${langPrefix}/services`} class="md:text-base md:uppercase md:tracking-wide">{t('navServices')}</a>
+                <a href={`${langPrefix}/#contact-me`} class="md:text-base md:uppercase md:tracking-wide">{t('navContact')}</a>
             </div>
 
-            <!-- Controls group (Language Switcher + Dark Mode Toggle) -->
-            <div class="flex items-center space-x-4 max-md:mt-4">
-                <!-- Language Switcher -->
+            <!-- Right: Controls -->
+            <div class="flex items-center space-x-4 max-md:mt-4 md:justify-end">
                 <LanguageSwitcher lang={lang} />
 
-                <!-- Dark mode toggle -->
-                <div class="flex items-center">
+                <!-- Dark mode toggle (mobile only) -->
+                <div class="flex items-center md:hidden">
                     <button id="theme-toggle" type="button"
                         class="inline-flex items-center justify-center rounded-md text-pink-700 hover:text-pink-900 dark:text-pink-300 dark:hover:text-pink-100 transition-colors duration-200"
                         aria-label="Toggle dark mode">

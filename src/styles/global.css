@@ -157,6 +157,11 @@
     @apply text-sm italic;
   }
 
+  p.small,
+  div.small {
+    @apply text-sm md:text-[.85rem];
+  }
+
   ul {
     @apply mb-8 leading-normal;
   }
@@ -275,7 +280,12 @@
 
   .top-nav a,
   .top-nav a:visited {
-    @apply text-lg lg:text-xl font-semibold no-underline not-italic text-pink-700 hover:text-pink-900 dark:text-pink-300 dark:hover:text-pink-100;
+    @apply text-lg font-semibold no-underline not-italic text-pink-700 hover:text-pink-900 dark:text-pink-300 dark:hover:text-pink-100;
+  }
+
+  .top-nav .nav-site-name,
+  .top-nav .nav-site-name:visited {
+    @apply font-display text-xs leading-tight font-normal text-inherit hover:text-inherit dark:text-inherit dark:hover:text-inherit normal-case;
   }
 
   /* On mobile, text should be white when menu is open */
