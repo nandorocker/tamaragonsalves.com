@@ -107,7 +107,7 @@
 
   h1,
   .text-size-h1 {
-    @apply mb-8 sm:mb-10 md:mb-16 font-display text-4xl lg:text-6xl font-bold leading-none;
+    @apply mb-4 sm:mb-6 md:mb-8 font-display text-4xl lg:text-6xl font-bold leading-none;
   }
 
   h2,
