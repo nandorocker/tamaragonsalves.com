@@ -392,7 +392,7 @@
 
   .video-thumbnail-placeholder {
     @apply w-full bg-gray-200 dark:bg-gray-700;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 4 / 3;
   }
 
   .video-thumbnail-container a {
