@@ -466,7 +466,7 @@
 
   /* Category section heading */
   .video-category-heading {
-    @apply text-xl font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-6 mt-2 pb-2 border-b border-gray-200 dark:border-gray-700;
+    @apply text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-6 mt-2 pb-2 border-b border-gray-200 dark:border-gray-700;
   }
 
   /* Filter buttons */
