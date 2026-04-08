@@ -6,9 +6,10 @@ export interface Props {
   altKey: string; // Translation key for alt text
   fslightboxGroup: string;
   gridClass?: string;
+  imgClass?: string;
 }
 
-const { src, altKey, fslightboxGroup, gridClass } = Astro.props;
+const { src, altKey, fslightboxGroup, gridClass, imgClass = "" } = Astro.props;
 
 // Get the current language from the URL
 const lang = getLangFromUrl(Astro.url);
@@ -26,6 +27,6 @@ const alt = t(altKey as any);
   <img 
     src={src} 
     alt={alt} 
-    class="rounded-md drop-shadow-md hover-shift-sm"
+    class={`rounded-md drop-shadow-md hover-shift-sm ${imgClass}`}
   >
 </a>

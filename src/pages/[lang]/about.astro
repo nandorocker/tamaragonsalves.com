@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AboutGalleryImage from '../../components/AboutGalleryImage.astro';
+import Button from '../../components/Button.astro';
+import { loadAllTranslations, getTranslationSync, getStaticPaths } from '../../utils/i18n';
+import type { Language } from '../../utils/i18n';
+import galleryData from '../../data/gallery.json';
+
+export { getStaticPaths };
+
+const { lang } = Astro.params;
+const currentLang = lang as Language;
+
+const allTranslations = await loadAllTranslations(currentLang, 'home');
+const t = (key: string) => getTranslationSync(allTranslations, key);
+
+// Custom gallery layout for the about page to avoid changing the home page
+const aboutGalleryData = galleryData.slice(0, 4).map((image, index) => {
+	// Make the bottom leftmost picture span only one row and crop it to match the adjacent picture
+	if (index === 2) {
+		return { ...image, gridClass: "", imgClass: "w-full h-full object-cover aspect-square" };
+	}
+	if (index === 3) {
+		return { ...image, imgClass: "w-full h-full object-cover aspect-square" };
+	}
+	return image;
+});
+---
+
+<BaseLayout title={t('aboutMeHeading')} pageTheme="yellow">
+	<section id="about" class="pt-8 lg:pt-16 pb-8 lg:pb-12 mt-10 sm:mt-20">
+		<div class="contain-medium section-margins-medium">
+			<h1 data-animate>{t('aboutMeHeading')}</h1>
+			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto mb-16" data-stagger>
+				<p data-animate>{t('aboutPageIntro')}</p>
+			</div>
+		</div>
+
+		<div class="w-full contain-medium section-margins-medium" data-animate>
+			<div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+				<div class="lg:col-span-2 grid grid-cols-2 gap-4">
+					{aboutGalleryData.map((image) => (
+						<AboutGalleryImage 
+							src={image.src}
+							altKey={image.altKey}
+							fslightboxGroup={image.fslightboxGroup}
+							gridClass={image.gridClass}
+							imgClass={(image as any).imgClass}
+						/>
+					))}
+				</div>
+				
+				<div class="lg:col-span-3" data-stagger>
+					<h2 data-animate class="mb-6">{t('aboutAcademicHeading')}</h2>
+					<p data-animate>{t('aboutAcademicPara1')}</p>
+					
+					<p data-animate>{t('aboutAcademicPara2')}</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Advocacy & Reach Section -->
+	<section id="advocacy" class="pb-8 lg:pb-16 mt-8 sm:mt-12">
+	    <div class="contain-medium section-margins-medium" data-stagger>
+			<div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+				<div class="lg:col-span-2">
+					<h1 class="max-lg:text-size-h2 max-lg:mb-0 dark:text-pink-300" data-animate>{t('aboutAdvocacyHeading')}</h1>
+				</div>
+				<div class="lg:col-span-3">
+					<p class="dark:text-gray-300" data-animate>{t('aboutAdvocacyPara1')}</p>
+					<p class="dark:text-gray-300" data-animate>{t('aboutAdvocacyPara2')}</p>
+				</div>
+			</div>
+	    </div>
+	</section>
+
+	<!-- Continue the Conversation Section -->
+	<section id="conclusion" class="pb-16 lg:pb-36 mt-8 sm:mt-12">
+	    <div class="contain-medium section-margins-medium" data-stagger>
+			<div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+				<div class="lg:col-span-2">
+					<h1 class="max-lg:text-size-h2 max-lg:mb-0 dark:text-pink-300" data-animate>{t('aboutConclusionHeading')}</h1>
+				</div>
+				<div class="lg:col-span-3">
+					<p class="dark:text-gray-300" data-animate>
+						{t('aboutConclusionPara1')}<a href={t('cvUrl')} target="_blank">{t('aboutConclusionLinkText')}</a>{t('aboutConclusionPara2')}
+					</p>
+					<div class="mt-8" data-animate>
+						<Button href={t('cvUrl')} class="button button-lg button-secondary icon-before icon-file-pdf icon-space-sm mb-0">
+							{t('cvLinkText')}
+						</Button>
+					</div>
+				</div>
+			</div>
+	    </div>
+	</section>
+</BaseLayout>
+

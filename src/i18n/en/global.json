@@ -64,5 +64,20 @@
     "image5": {
       "alt": "Tamara Gonsalves smiling while signing a book at a table with flowers and books."
     }
-  }
+  },
+
+  "aboutPageIntro": "With over two decades of experience spanning academia, government, interest networks, and the non-profit sector, I have dedicated my career to the advancement of human rights and social justice from a feminist, gender and intersectional perspective. My journey has been shaped by a deep commitment to advocacy that pushes for better public policies to protect women's and children's human rights and a passion for navigating complex legal landscapes to drive meaningful, impactful outcomes, connecting local communities to global accountability mechanisms.",
+  
+  "aboutAcademicHeading": "Academic & Professional Background",
+  "aboutAcademicPara1": "My professional foundation is built upon a rigorous academic path, holding a Bachelor’s degree in law, a Master’s degree in Human Rights, and a PhD in Law and Society, complemented by a Graduate Certificate in Teaching and Learning in Higher Education, together with a post-doctoral work at the Université de Montreal. My research agenda is community-engaged, socio-legal, transsystemic, feminist, and human-rights driven. This multidisciplinary background allows me to approach human rights issues with both a sharp analytical lens and a teacher’s heart, ensuring that even the most intricate legal concepts are accessible and actionable; bringing concrete change for affected communities and individuals.",
+  "aboutAcademicPara2": "Throughout my career, I have had the privilege of serving in diverse roles: from my work within Brazil’s Ministry of Justice to leadership positions in international non-governmental organizations, encompassing non-profit organizations and lawyering work in a recently launched law firm. This means I maintain broad expertise in international human rights law while specializing more concretely in gender-based violence, sexual and reproductive rights, and human rights protections in consumer societies.",
+  
+  "aboutAdvocacyHeading": "Advocacy & Reach",
+  "aboutAdvocacyPara1": "A natural bridge-builder and communicator, I have represented institutions on more than 115 occasions across local, regional, and international stages. Whether addressing experts at international human rights bodies or engaging with grassroots communities, I pride myself on my ability to negotiate with stakeholders and advocate for those whose voices are often marginalized.",
+  "aboutAdvocacyPara2": "Having lived and worked across Brazilian, Latin American, and Canadian contexts, I bring a global perspective to everything I do. I am fluent in four languages (Portuguese, English, Spanish, and French), a skill that has fostered a respect for socio-cultural diversity and allows me to connect authentically with people from all walks of life.",
+  
+  "aboutConclusionHeading": "Continue the Conversation",
+  "aboutConclusionPara1": "I believe that true change happens at the intersection of high-level policy and community-led action. I invite you to ",
+  "aboutConclusionLinkText": "explore my CV",
+  "aboutConclusionPara2": " for a more detailed look at my professional journey and the milestones that have defined my commitment to a more just and equitable world, particularly for women and children."
 }
