@@ -406,11 +406,26 @@
   /* Thumbnail container with overlay effect */
   .video-thumbnail-container {
     @apply relative mb-4 w-full rounded-md overflow-hidden cursor-pointer shadow-lg;
-    transition: transform 0.3s ease, filter 0.3s ease; /* Smooth movement and darkening */
+    aspect-ratio: 16 / 9;
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+
+  .video-thumbnail-container img {
+    @apply w-full h-full object-cover;
+  }
+
+  @media (min-width: 640px) {
+    .video-thumbnail-container {
+      aspect-ratio: unset;
+    }
+
+    .video-thumbnail-container img {
+      @apply h-auto object-fill;
+    }
   }
 
   .video-thumbnail-placeholder {
-    @apply w-full bg-gray-200 dark:bg-gray-700;
+    @apply w-full h-full bg-gray-200 dark:bg-gray-700;
     aspect-ratio: 4 / 3;
   }
 
