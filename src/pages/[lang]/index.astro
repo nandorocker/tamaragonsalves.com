@@ -58,7 +58,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 					{getTranslationSync(allTranslations, 'heroSection.subtitle')}
 				</h5>
 	            <h1 class="text-indigo-900 dark:text-indigo-300" data-animate 
-					set:html={getTranslationSync(allTranslations, 'heroSection.name').split(' ').map(w => `<span class="inline md:block">${w}</span>`).join(' ')}>
+					set:html={getTranslationSync(allTranslations, 'heroSection.name').split(' ').map((w: string) => `<span class="inline md:block">${w}</span>`).join(' ')}>
 				</h1>
 	            <p class="bigger max-sm:hyphens-auto lg:max-w-2xl dark:text-gray-200 mb-0" data-animate 
 					set:html={getTranslationSync(allTranslations, 'heroSection.description')}>
