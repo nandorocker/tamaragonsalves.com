@@ -42,7 +42,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 					<!-- Navy background box -->
 					<div class="absolute -top-4 -right-4 w-[calc(100%+1rem)] h-[calc(100%+1rem)] bg-indigo-900 rounded-lg"></div>
 					<!-- Photo -->
-					<div class="relative z-10 overflow-hidden rounded-lg max-w-[200px] md:max-w-[260px] lg:max-w-[330px] max-h-[250px] md:max-h-none">
+					<div class="relative z-10 overflow-hidden max-w-[200px] md:max-w-[260px] lg:max-w-[330px] max-h-[250px] md:max-h-none">
 						<img 
 							src="/images/home_photo.png" 
 							alt="Tamara Amoroso Gonsalves" 
@@ -74,9 +74,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 			<h1 class="mb-8" data-animate>{t('publicationsHeading')}</h1>
 			
 			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-lg mx-auto">
-				<p class="mb-6 dark:text-gray-300" data-animate>
-					Over the past 20 years, I have developed interdisciplinary research, resulting in 2 published books, 40 book chapters, 11 journal articles, 10 research reports, and 36 opinion pieces on children's rights, women's human rights, and consumer rights.
-				</p>
+				<p class="mb-6 dark:text-gray-300" data-animate set:html={t('publicationsDescription')}>
 
 				<h2 class="mb-6" data-animate>{t('publicationsBooksSubheading')}</h2>
 				
