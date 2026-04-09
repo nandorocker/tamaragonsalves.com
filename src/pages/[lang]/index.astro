@@ -31,22 +31,22 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 <BaseLayout title={t('pageTitle')} pageTheme="yellow" isHomePage={true}>
 	<!-- Hero Section -->
 	<section id="home"
-	    class="hero bg-gradient-yellow flex items-center lg:items-start w-full md:h-80vh min-h-[45rem] sm:min-h-[50rem] pt-32 md:pt-24 2xl:pt-48 pb-20 md:pb-0 overflow-hidden">
-	    <div class="contain-wide section-margins-medium flex flex-col md:flex-row items-center 2xl:items-end gap-12 md:gap-16 lg:gap-24 mt-8 lg:mt-16 max-w-lg lg:max-w-4xl mx-auto" data-stagger>
+	    class="hero bg-gradient-yellow flex items-center w-full md:h-80vh min-h-[45rem] sm:min-h-[50rem] pt-32 md:pt-24 2xl:pt-48 pb-20 md:pb-0 overflow-hidden">
+	    <div class="contain-wide section-margins-medium flex flex-col md:flex-row items-center gap-12 md:gap-16 lg:gap-24 max-w-lg md:max-w-none lg:max-w-4xl mx-auto" data-stagger>
 			
-			<!-- Left Column: Decorative Photo (1/4 Width) -->
+			<!-- Left Column: Decorative Photo -->
 			<div class="relative w-full md:w-1/4 flex justify-center" data-animate>
 				<div class="relative">
 					<!-- Red/Flamingo background box -->
-					<div class="absolute -bottom-8 -left-8 w-[calc(100%+2rem)] h-[calc(100%+2rem)] bg-flamingo-700 rounded-lg"></div>
+					<div class="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 lg:-bottom-8 lg:-left-8 w-[calc(100%+1rem)] h-[calc(100%+1rem)] md:w-[calc(100%+1.5rem)] md:h-[calc(100%+1.5rem)] lg:w-[calc(100%+2rem)] lg:h-[calc(100%+2rem)] bg-flamingo-700 rounded-lg"></div>
 					<!-- Navy background box -->
-					<div class="absolute -top-8 -right-8 w-[calc(100%+2rem)] h-[calc(100%+2rem)] bg-indigo-900 rounded-lg"></div>
+					<div class="absolute -top-4 -right-4 md:-top-6 md:-right-6 lg:-top-8 lg:-right-8 w-[calc(100%+1rem)] h-[calc(100%+1rem)] md:w-[calc(100%+1.5rem)] md:h-[calc(100%+1.5rem)] lg:w-[calc(100%+2rem)] lg:h-[calc(100%+2rem)] bg-indigo-900 rounded-lg"></div>
 					<!-- Photo -->
-					<div class="relative z-10 overflow-hidden max-w-[200px] md:max-w-[260px] lg:max-w-[330px] max-h-[250px] md:max-h-none">
+					<div class="relative z-10 overflow-hidden w-[160px] md:w-[200px] lg:w-[260px]">
 						<img 
 							src="/images/home_photo.png" 
 							alt="Tamara Amoroso Gonsalves" 
-							class="w-full h-full md:h-auto object-cover md:object-contain"
+							class="w-full h-auto object-contain"
 						/>
 					</div>
 				</div>
