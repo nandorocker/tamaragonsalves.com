@@ -30,10 +30,23 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 			<h2 class="text-size-h3">{t('speakingVideosHeading')}</h2>
 		</div>
 		<div class="contain-medium px-5 md:px-12 mb-10 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between" data-animate>
-			<div class="video-filter-buttons" role="group">
-				<button class="video-filter-btn active" data-filter="all">{t('filterAll')}</button>
-				<button class="video-filter-btn" data-filter="advocacy">{t('filterAdvocacy')}</button>
-				<button class="video-filter-btn" data-filter="academic">{t('filterAcademic')}</button>
+			<div class="flex flex-wrap gap-1 sm:gap-8 items-center">
+				<div class="flex items-center gap-1 sm:gap-2">
+					<span class="hidden sm:inline text-sm font-semibold text-gray-500 dark:text-gray-400">{t('filterTopic')}:</span>
+					<div class="video-filter-buttons" role="group">
+						<button class="video-filter-btn active" data-filter="all">{t('filterAll')}</button>
+						<button class="video-filter-btn" data-filter="advocacy">{t('filterAdvocacy')}</button>
+						<button class="video-filter-btn" data-filter="academic">{t('filterAcademic')}</button>
+					</div>
+				</div>
+				<div class="flex items-center gap-1 sm:gap-2">
+					<span class="hidden sm:inline text-sm font-semibold text-gray-500 dark:text-gray-400">{t('filterLanguage')}:</span>
+					<div class="video-filter-buttons" role="group" aria-label={t('filterLanguage')}>
+						<button class="video-lang-btn active" data-lang="all">{t('filterAll')}</button>
+						<button class="video-lang-btn" data-lang="EN">EN</button>
+						<button class="video-lang-btn" data-lang="PT">PT</button>
+					</div>
+				</div>
 			</div>
 			<input
 				type="search"
@@ -53,14 +66,15 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 		<div class="contain-medium px-5 md:px-12">
 			<div class="video-grid">
 				{videosData.map(video => (
-					<VideoPublicationCard
-						id={video.id}
-						videoUrl={video.videoUrl}
-						thumbnailUrl={video.thumbnailUrl}
-						date={video.date}
-						lang={lang as 'en' | 'pt'}
-						category={video.category}
-					/>
+				<VideoPublicationCard
+					id={video.id}
+					videoUrl={video.videoUrl}
+					thumbnailUrl={video.thumbnailUrl}
+					date={video.date}
+					lang={lang as 'en' | 'pt'}
+					category={video.category}
+					language={video.language}
+				/>
 				))}
 			</div>
 		</div>
@@ -68,13 +82,15 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 </BaseLayout>
 
 <script>
-(function () {
+function initFilters() {
   const cards = Array.from(document.querySelectorAll<HTMLElement>('.video-card'));
-  const filterBtns = Array.from(document.querySelectorAll<HTMLButtonElement>('.video-filter-btn'));
+  const filterBtns = Array.from(document.querySelectorAll<HTMLButtonElement>('.video-filter-btn[data-filter]'));
+  const langBtns = Array.from(document.querySelectorAll<HTMLButtonElement>('.video-lang-btn[data-lang]'));
   const searchInput = document.getElementById('video-search') as HTMLInputElement | null;
   const noResults = document.getElementById('video-no-results');
 
   let activeFilter = 'all';
+  let activeLang = 'all';
   let searchQuery = '';
 
   function applyFilters() {
@@ -83,10 +99,12 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 
     cards.forEach(card => {
       const category = card.dataset.category ?? '';
+      const lang = card.dataset.language ?? '';
       const searchText = (card.dataset.searchtext ?? '').toLowerCase();
       const matchesFilter = activeFilter === 'all' || category === activeFilter;
+      const matchesLang = activeLang === 'all' || lang === activeLang;
       const matchesSearch = !q || searchText.includes(q);
-      const visible = matchesFilter && matchesSearch;
+      const visible = matchesFilter && matchesLang && matchesSearch;
       card.style.display = visible ? '' : 'none';
       if (visible) visibleCount++;
     });
@@ -102,9 +120,20 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
     });
   });
 
+  langBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeLang = btn.dataset.lang ?? 'all';
+      langBtns.forEach(b => b.classList.toggle('active', b === btn));
+      applyFilters();
+    });
+  });
+
   searchInput?.addEventListener('input', () => {
     searchQuery = searchInput.value;
     applyFilters();
   });
-})();
+}
+
+initFilters();
+document.addEventListener('astro:page-load', initFilters);
 </script>

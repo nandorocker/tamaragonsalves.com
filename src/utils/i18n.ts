@@ -11,6 +11,8 @@ import enVideos from '../i18n/en/videos.json';
 import ptVideos from '../i18n/pt/videos.json';
 import enProjects from '../i18n/en/projects.json';
 import ptProjects from '../i18n/pt/projects.json';
+import enArticles from '../i18n/en/articles.json';
+import ptArticles from '../i18n/pt/articles.json';
 
 export type Language = 'en' | 'pt';
 
@@ -33,12 +35,14 @@ const contentTranslations = {
   en: {
     books: enBooks,
     videos: enVideos,
-    projects: enProjects
+    projects: enProjects,
+    articles: enArticles
   },
   pt: {
     books: ptBooks,
     videos: ptVideos,
-    projects: ptProjects
+    projects: ptProjects,
+    articles: ptArticles
   }
 };
 

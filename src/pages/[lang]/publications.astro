@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BookCard from '../../components/BookCard.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
 import Button from '../../components/Button.astro';
 import OrcidIcon from '../../components/OrcidIcon.astro';
@@ -8,6 +9,7 @@ import { loadAllTranslations, getTranslationSync, getStaticPaths } from '../../u
 import type { Language } from '../../utils/i18n';
 import booksData from '../../data/books.json';
 import projectsData from '../../data/projects.json';
+import articlesData from '../../data/articles.json';
 
 export { getStaticPaths };
 
@@ -21,6 +23,10 @@ const allTranslations = await loadAllTranslations(currentLang, 'home');
 const allContentTranslations = await loadAllTranslations(currentLang, 'books');
 const bookTranslations = allContentTranslations.books || {};
 
+// Load article translations
+const allArticleTranslations = await loadAllTranslations(currentLang, 'articles');
+const articleTranslations = allArticleTranslations.articles || {};
+
 // Helper function to get translation with fallback
 const t = (key: string) => getTranslationSync(allTranslations, key);
 ---
@@ -30,8 +36,6 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 	    <div class="contain-wide section-margins-medium">
 	        <h1 data-animate>{t('publicationsHeading')}</h1>
 	        <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto" data-stagger>
-	            <h2 data-animate>{t('publicationsSubheading')}</h2>
-
 	            <p class="small" data-animate>{t('publicationsDescription')}</p>
 
 	            <div class="flex flex-col sm:flex-row sm:items-center gap-4 mt-2 mb-8" data-animate>
@@ -58,8 +62,36 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
            		</div>
 	        </div>
 
-	        <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto" data-stagger>
-	            <h2 data-animate>{t('publicationsOtherProjectsSubheading')}</h2>
+			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto mt-16">
+				<h2 data-animate>{t('publicationsArticlesSubheading')}</h2>
+
+				<div class="flex gap-2 mt-6 mb-8" data-animate role="group">
+					<button class="article-filter-btn active" data-filter="all">{articleTranslations.filterAll}</button>
+					{(() => {
+						const themes = [...new Set(articlesData.map(a => a.theme))];
+						const themeLabels = articleTranslations.themeLabels || {};
+						return themes.map(theme => (
+							<button class="article-filter-btn" data-filter={theme}>{themeLabels[theme] || theme}</button>
+						));
+					})()}
+				</div>
+
+				<div id="article-list">
+					{articlesData.map(article => (
+						<div data-theme={article.theme}>
+							<ArticleCard
+								article={article}
+								articleTranslations={articleTranslations}
+								lang={currentLang}
+								publicationLabel={t('publicationLabel')}
+							/>
+						</div>
+					))}
+				</div>
+			</div>
+
+	        <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto mt-16 mb-16" data-stagger>
+	                <h2 data-animate>{t('publicationsOtherProjectsSubheading')}</h2>
 	            {projectsData.map(project => (
                 <div data-animate>
                     <ProjectCard 
@@ -75,3 +107,45 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 	    </div>
 	</section>
 </BaseLayout>
+
+<style>
+  .article-filter-btn {
+    @apply flex-1 sm:flex-none px-4 py-1.5 rounded-full text-sm font-semibold
+           text-gray-600 dark:text-gray-300 bg-transparent
+           hover:text-[#4a2083] dark:hover:text-violet-200
+           sm:border sm:border-gray-300 sm:dark:border-gray-600
+           sm:hover:border-[#4a2083] sm:dark:hover:border-violet-200
+           transition-colors duration-150 cursor-pointer;
+  }
+
+  .article-filter-btn.active {
+    @apply text-white sm:border dark:text-gray-800;
+    background-color: #4a2083;
+    border-color: #4a2083;
+  }
+</style>
+
+<script>
+function initArticleFilters() {
+  var items = Array.from(document.querySelectorAll('#article-list > [data-theme]'));
+  var filterBtns = Array.from(document.querySelectorAll('.article-filter-btn'));
+
+  var activeFilter = 'all';
+
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      activeFilter = btn.getAttribute('data-filter') || 'all';
+      filterBtns.forEach(function (b) { b.classList.toggle('active', b === btn); });
+
+      items.forEach(function (item) {
+        var theme = item.getAttribute('data-theme') || '';
+        var visible = activeFilter === 'all' || theme === activeFilter;
+        item.style.display = visible ? '' : 'none';
+      });
+    });
+  });
+}
+
+initArticleFilters();
+document.addEventListener('astro:page-load', initArticleFilters);
+</script>

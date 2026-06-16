@@ -1,0 +1,85 @@
+<h1>Copilot Instructions — tamaragonsalves.com</h1>
+<h2>Commands</h2>
+<pre><code class="language-bash">bun install        # Install dependencies
+bun run build      # Build for production (primary way to verify changes)
+bun run preview    # Preview production build
+bun run clean      # Remove dist/
+</code></pre>
+<p><strong>Never use <code>npm</code> or <code>pnpm</code>.</strong> Always use <code>bun</code>.</p>
+<p>Avoid running the dev server to test. Use <code>bun run build</code> instead. If you're having trouble reading terminal output, stop after a few attempts and ask the user to check.</p>
+<p>Don't use &quot;Simple Browser&quot;.</p>
+<hr>
+<h2>Architecture</h2>
+<p><strong>Astro 6</strong> static site with Vercel adapter, Tailwind CSS, and bilingual (EN/PT) i18n routing.</p>
+<pre><code>src/
+  pages/
+    index.astro          # Redirects to /en/
+    [lang]/              # All real pages live here (en + pt)
+      index.astro
+      publications.astro
+      services.astro
+      speaking.astro
+      background.astro
+  layouts/
+    BaseLayout.astro     # Root layout: head, header, footer, scripts, dark mode
+  components/            # Reusable Astro components
+  data/                  # Language-agnostic static data (gallery, books, videos, projects)
+  i18n/
+    en/                  # English UI strings (JSON)
+    pt/                  # Portuguese UI strings (JSON)
+  utils/
+    i18n.ts              # Translation helpers
+  styles/
+    global.css           # Tailwind base + custom utility classes
+public/
+  js/                    # Vanilla JS scripts loaded inline by BaseLayout
+  images/
+  vendor/                # fontawesome, fslightbox
+</code></pre>
+<h3>Routing &amp; i18n</h3>
+<ul>
+<li>Default locale is <code>en</code> with <strong>no URL prefix</strong> (<code>/</code> → <code>/en/</code> redirect, but <code>/about</code> renders English)</li>
+<li>Portuguese pages are at <code>/pt/...</code></li>
+<li>All <code>[lang]</code> pages export <code>getStaticPaths</code> from <code>src/utils/i18n.ts</code></li>
+</ul>
+<h3>Translation Pattern</h3>
+<p>Pages load translations with <code>loadAllTranslations(lang, 'pageName')</code>, then use <code>getTranslationSync(translations, 'dot.notation.key')</code>:</p>
+<pre><code class="language-ts">const allTranslations = await loadAllTranslations(currentLang, 'home');
+const t = (key: string) =&gt; getTranslationSync(allTranslations, key);
+// Then in template: {t('heroSection.subtitle')}
+</code></pre>
+<ul>
+<li><strong>UI strings</strong> → <code>src/i18n/[lang]/[page].json</code></li>
+<li><strong>Structured content</strong> (books, gallery, videos, projects) → <code>src/data/*.json</code> + <code>src/i18n/[lang]/*.json</code> for translated fields</li>
+</ul>
+<h3>BaseLayout</h3>
+<p>Accepts <code>title</code>, <code>description?</code>, and <code>pageTheme?: 'yellow' | 'white' | 'soap' | 'violet'</code>.<br>
+Loads all JS scripts from <code>public/js/</code> via <code>is:inline</code>. Dark mode is class-based (<code>dark</code>), persisted in <code>localStorage</code>, applied before first paint to avoid FOUC. Uses Astro <code>&lt;ClientRouter /&gt;</code> for view transitions.</p>
+<hr>
+<h2>Key Conventions</h2>
+<h3>Scroll Animations</h3>
+<p>Add <code>data-animate</code> to elements that should fade in + slide up. Wrap staggered groups in <code>data-stagger</code>:</p>
+<pre><code class="language-html">&lt;div data-stagger&gt;
+  &lt;h2 data-animate&gt;First&lt;/h2&gt;
+  &lt;p data-animate&gt;Second (100ms later)&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<p>Do <strong>not</strong> animate: navigation, footer, above-the-fold critical content.<br>
+See <code>ANIMATION_GUIDE.md</code> for full details.</p>
+<h3>Tailwind Custom Tokens</h3>
+<p><strong>Colors:</strong> <code>soap</code>, <code>mustard</code>, <code>bubblegum</code>, <code>flamingo</code> (each with 50–900 shades)<br>
+<strong>Fonts:</strong> <code>font-sans</code> → Alegreya Sans, <code>font-display</code> → Sansita<br>
+<strong>Font size base:</strong> <code>18px</code> (set on <code>html</code>)<br>
+<strong>Viewport heights:</strong> <code>h-10vh</code> through <code>h-100vh</code> available as utilities<br>
+<strong>Max-width fractions:</strong> <code>max-w-1/12</code> through <code>max-w-11/12</code></p>
+<h3>CSS Utility Classes (global.css)</h3>
+<p>Custom component classes defined in <code>@layer components</code> include <code>contain-wide</code>, <code>contain-medium</code>, <code>contain-narrow</code>, <code>section-margins-*</code>, <code>bg-gradient-yellow</code>, <code>button</code>, <code>button-secondary</code>, <code>button-outline</code>, <code>button-xs</code>, <code>button-lg</code>, <code>button-xl</code>. Prefer these over raw Tailwind for layout containers.</p>
+<h3>Data Flow</h3>
+<p>Content data in <code>src/data/</code> is language-agnostic (keys, IDs, image paths). Translated labels/titles live in <code>src/i18n/[lang]/</code>. Pages merge both via <code>loadAllTranslations</code>.</p>
+<h3>Adding a New Page</h3>
+<ol>
+<li>Create <code>src/pages/[lang]/newpage.astro</code></li>
+<li>Export <code>getStaticPaths</code> from <code>src/utils/i18n.ts</code></li>
+<li>Add translation JSON to both <code>src/i18n/en/</code> and <code>src/i18n/pt/</code></li>
+<li>Use <code>loadAllTranslations(currentLang, 'newpage')</code> and <code>getTranslationSync</code></li>
+</ol>

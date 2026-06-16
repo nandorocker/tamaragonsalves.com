@@ -12,12 +12,6 @@
     "gridClass": "col-span-2"
   },
   {
-    "src": "/images/foto_03.jpg",
-    "altKey": "aboutGallery.image3.alt",
-    "fslightboxGroup": "about-pics",
-    "gridClass": "row-span-2"
-  },
-  {
     "src": "/images/foto_04.jpg",
     "altKey": "aboutGallery.image4.alt",
     "fslightboxGroup": "about-pics"

@@ -1,5 +1,5 @@
 {
-  "siteTitle": "Tamara Amoroso Gonçalves",
+  "siteTitle": "Tamara Amoroso Gonsalves",
   "contactUs": "Contact Us",
   "watchOnSite": "Watch on site",
   "downloadPdf": "Download PDF",
@@ -18,6 +18,8 @@
   "filterAll": "All",
   "filterAcademic": "Academic",
   "filterAdvocacy": "Advocacy",
+  "filterLanguage": "Language",
+  "filterTopic": "Topic",
   "categoryAcademic": "Academic",
   "categoryAdvocacy": "Advocacy",
   "searchPlaceholder": "Search talks…",

@@ -1,6 +1,8 @@
 ---
 import { images } from '../data/global';
 import type { Language } from '../utils/i18n';
+import { useTranslations } from '../utils/i18n';
+import DropdownButton from './DropdownButton.astro';
 
 interface LinkGroup {
   type: string;
@@ -25,43 +27,27 @@ export interface Props {
 
 const { book, bookTranslations, lang } = Astro.props;
 
-// Get book information from translations
 const bookData = bookTranslations[book.id] || {};
 const linkGroupTitles = bookTranslations.linkGroupTitles || {};
 const linkLabels = bookTranslations.linkLabels || {};
 
-// Automatic icon mapping based on link type
-const getIconForType = (type: string): string => {
-  const iconMap: Record<string, string> = {
-    'download': 'icon-file-pdf',
-    'interview': 'icon-video',
-    'purchase': 'icon-shopping-cart',
-    'external': 'icon-external-link',
-    'video': 'icon-play',
-    'audio': 'icon-headphones',
-    'article': 'icon-document'
-  };
-  return iconMap[type] || 'icon-external-link';
-};
+const t = useTranslations(lang);
 
-// Find the first download or purchase link to use as title URL
+const downloadLinks = book.linkGroups.find(g => g.type === 'download')?.links || [];
+const purchaseLinks = book.linkGroups.find(g => g.type === 'purchase')?.links || [];
+const interviewLinks = book.linkGroups.find(g => g.type === 'interview')?.links || [];
+
+const readDownloadLinks = [...downloadLinks, ...purchaseLinks];
+
 const getTitleUrl = (): string | null => {
-  // Look for download links first, then purchase links
-  const priorityTypes = ['download', 'purchase'];
-  
-  for (const type of priorityTypes) {
-    const group = book.linkGroups.find(g => g.type === type);
-    if (group && group.links.length > 0) {
-      return group.links[0].url;
-    }
+  if (readDownloadLinks.length > 0) {
+    return readDownloadLinks[0].url;
   }
-  
   return null;
 };
 
 const titleUrl = getTitleUrl();
 
-// Construct image path once for performance
 const imagePath = `${images}/${book.imageUrl}`;
 ---
 
@@ -79,34 +65,196 @@ const imagePath = `${images}/${book.imageUrl}`;
           bookData.title
         )}
       </h5>
-      <p class="mb-0 dark:text-gray-300"><em>{book.author}</em></p>
+      <p class="mb-3 dark:text-gray-300"><em>{book.author}</em></p>
     </div>
-    <p class="book-description">{bookData.description}</p>
-    
-    {book.linkGroups.map((group) => (
-      <div>
-        <span class="dark:text-gray-300">{linkGroupTitles[group.type] || group.type}:</span>
-        <ul>
-          {group.links.map((link) => (
-            <li>
-              <a 
-                href={link.url} 
-                target="_blank" 
-                class={`icon-before ${getIconForType(group.type)} icon-space-sm`}
-                rel="noopener noreferrer"
-              >
-                {link.labelKey ? linkLabels[link.labelKey] : link.url}
-              </a>
-            </li>
-          ))}
-        </ul>
+    <div class="book-description-wrapper dark:text-gray-300" data-full-text={bookData.description}>
+      <div class="caption-container" data-caption>
+        <span data-preview-text>{bookData.description}</span>
+        <span style="display:none" data-full-part>{bookData.description}</span>
+        <button
+          class="more-btn inline text-sm font-medium text-pink-600 dark:text-pink-400 hover:underline"
+          data-more-btn type="button"
+          style="display:none"
+        >
+          <span class="read-more-arrow" aria-hidden="true">▾</span>
+          <span>{bookTranslations.readMore}</span>
+        </button>
       </div>
-    ))}
+      <button
+        class="show-less-btn text-sm font-medium text-pink-600 dark:text-pink-400 hover:underline mt-1"
+        data-show-less-btn type="button"
+        style="display:none"
+      >
+        <span class="read-more-arrow" aria-hidden="true">▾</span>
+        <span>{bookTranslations.showLess}</span>
+      </button>
+    </div>
 
-    {book.linkGroups.length === 0 && titleUrl && (
-      <a href={titleUrl} class="icon-before icon-file-pdf icon-space-sm">
-        {linkGroupTitles.download || 'Download'}
-      </a>
-    )}
+    <div class="flex flex-wrap gap-3 mt-3">
+      {readDownloadLinks.length > 0 && (
+        <DropdownButton
+          icon="icon-file-pdf"
+          label={t('readDownload')}
+          links={readDownloadLinks}
+          linkLabels={linkLabels}
+        />
+      )}
+
+      {interviewLinks.length > 0 && (
+        <DropdownButton
+          icon="icon-video"
+          label={t('interviews')}
+          links={interviewLinks}
+          linkLabels={linkLabels}
+        />
+      )}
+    </div>
   </div>
 </article>
+
+<style>
+  .read-more-arrow {
+    display: inline-block;
+    transition: transform 0.35s ease;
+  }
+
+  .show-less-btn .read-more-arrow {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script>
+function initBookDescriptions() {
+  var MORE = '... more';
+
+  function createMeasurer() {
+    var el = document.createElement('div');
+    el.style.position = 'absolute';
+    el.style.visibility = 'hidden';
+    el.style.left = '-9999px';
+    el.style.top = '0';
+    el.style.overflow = 'hidden';
+    el.style.whiteSpace = 'pre-wrap';
+    el.style.wordBreak = 'break-word';
+    document.body.appendChild(el);
+    return el;
+  }
+
+  function getLineHeightPx(el) {
+    var lh = getComputedStyle(el).lineHeight;
+    var parsed = parseFloat(lh);
+    if (!isNaN(parsed) && parsed > 0) return parsed;
+    return parseFloat(getComputedStyle(el).fontSize) * 1.35;
+  }
+
+  function computePreview(text, measurer, width, fontStyles) {
+    measurer.style.width = width + 'px';
+    for (var k in fontStyles) {
+      if (fontStyles.hasOwnProperty(k)) measurer.style[k] = fontStyles[k];
+    }
+
+    var lh = getLineHeightPx(measurer);
+    var maxH = lh * 4;
+
+    var nlIdx = text.search(/\r?\n/);
+    if (nlIdx !== -1) {
+      var firstPara = text.slice(0, nlIdx).trimEnd();
+      if (firstPara.length > 0) {
+        measurer.textContent = firstPara;
+        if (measurer.scrollHeight <= maxH) {
+          return { preview: firstPara, needsMore: true };
+        }
+      }
+    }
+
+    measurer.textContent = text;
+    if (measurer.scrollHeight <= maxH) {
+      return { preview: text, needsMore: false };
+    }
+
+    var low = 0;
+    var high = text.length;
+    var best = '';
+
+    while (low <= high) {
+      var mid = Math.floor((low + high) / 2);
+      var candidate = text.slice(0, mid).trimEnd() + ' ' + MORE;
+      measurer.textContent = candidate;
+      if (measurer.scrollHeight <= maxH) {
+        best = text.slice(0, mid).trimEnd();
+        low = mid + 1;
+      } else {
+        high = mid - 1;
+      }
+    }
+
+    if (best.length < 10) {
+      return { preview: text, needsMore: false };
+    }
+
+    best = best.trimEnd();
+    var lastSpace = best.lastIndexOf(' ');
+    if (lastSpace > 0 && best.length - lastSpace <= 20) {
+      best = best.slice(0, lastSpace);
+    }
+
+    return { preview: best, needsMore: true };
+  }
+
+  var measurer = createMeasurer();
+  var wrappers = document.querySelectorAll('.book-description-wrapper');
+
+  wrappers.forEach(function (wrapper) {
+    if (wrapper.hasAttribute('data-book-description-initialized')) return;
+    wrapper.setAttribute('data-book-description-initialized', 'true');
+
+    var fullText = wrapper.getAttribute('data-full-text') || '';
+    var caption = wrapper.querySelector('[data-caption]');
+    var previewText = wrapper.querySelector('[data-preview-text]');
+    var fullPart = wrapper.querySelector('[data-full-part]');
+    var moreBtn = wrapper.querySelector('[data-more-btn]');
+    var showLessBtn = wrapper.querySelector('[data-show-less-btn]');
+
+    if (!caption || !previewText || !fullPart || !moreBtn || !showLessBtn) return;
+
+    var width = caption.offsetWidth;
+    if (!width) width = 600;
+
+    var fontStyles = {};
+    var s = getComputedStyle(caption);
+    var props = ['fontSize', 'fontFamily', 'lineHeight', 'fontWeight', 'letterSpacing', 'wordSpacing'];
+    props.forEach(function (prop) { fontStyles[prop] = s[prop]; });
+
+    var result = computePreview(fullText, measurer, width, fontStyles);
+
+    if (result.needsMore) {
+      previewText.textContent = result.preview + '\u2026';
+      moreBtn.style.display = '';
+
+      moreBtn.addEventListener('click', function () {
+        previewText.style.display = 'none';
+        fullPart.style.display = '';
+        moreBtn.style.display = 'none';
+        showLessBtn.style.display = '';
+      });
+
+      showLessBtn.addEventListener('click', function () {
+        previewText.style.display = '';
+        fullPart.style.display = 'none';
+        moreBtn.style.display = '';
+        showLessBtn.style.display = 'none';
+      });
+    }
+  });
+
+  measurer.remove();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initBookDescriptions);
+} else {
+  initBookDescriptions();
+}
+
+document.addEventListener('astro:page-load', initBookDescriptions);
+</script>

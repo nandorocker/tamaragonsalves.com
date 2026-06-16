@@ -14,16 +14,9 @@ const currentLang = lang as Language;
 const allTranslations = await loadAllTranslations(currentLang, 'home');
 const t = (key: string) => getTranslationSync(allTranslations, key);
 
-// Custom gallery layout for the about page to avoid changing the home page
-const aboutGalleryData = galleryData.slice(0, 4).map((image, index) => {
-	// Make the bottom leftmost picture span only one row and crop it to match the adjacent picture
-	if (index === 2) {
-		return { ...image, gridClass: "", imgClass: "w-full h-full object-cover aspect-square" };
-	}
-	if (index === 3) {
-		return { ...image, imgClass: "w-full h-full object-cover aspect-square" };
-	}
-	return image;
+// Custom gallery layout for the about page
+const aboutGalleryData = galleryData.slice(0, 4).map((image) => {
+	return { ...image, imgClass: "w-full h-full object-cover aspect-square" };
 });
 ---
 

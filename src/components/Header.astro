@@ -41,6 +41,15 @@ const globalTranslations = await loadTranslations(lang as Language);
 // Generate language-aware URLs
 const langPrefix = lang === 'en' ? '/en' : `/${lang}`;
 const siteTitle = getTranslationSync(globalTranslations, 'siteTitle');
+
+// Determine active nav link
+const currentPath = Astro.url.pathname.replace(/\/+$/, '') || `${langPrefix}`;
+const navLinks = [
+  { href: `${langPrefix}/about`, key: 'navAbout' },
+  { href: `${langPrefix}/publications`, key: 'navPublications' },
+  { href: `${langPrefix}/speaking`, key: 'navSpeaking' },
+  { href: `${langPrefix}/services`, key: 'navServices' },
+];
 ---
 
 <header id="top_nav" class={`top-nav fixed w-full top-0 z-10 backdrop-blur-sm border-b ${borderColorClass} ${headerColorClass}`}>
@@ -73,11 +82,22 @@ const siteTitle = getTranslationSync(globalTranslations, 'siteTitle');
                 <!-- Home link (mobile only) keeping standard mobile menu style -->
                 <a href={`${langPrefix}/`} class={`md:hidden pb-2 transition-opacity duration-300${isHomePage ? ' nav-home-link opacity-0' : ''}`}>{siteTitle}</a>
 
-                <a href={`${langPrefix}/about`} class="uppercase tracking-wide max-md:text-sm">{t('navAbout')}</a>
-                <a href={`${langPrefix}/publications`} class="uppercase tracking-wide max-md:text-sm">{t('navPublications')}</a>
-                <a href={`${langPrefix}/speaking`} class="uppercase tracking-wide max-md:text-sm">{t('navSpeaking')}</a>
-                <a href={`${langPrefix}/services`} class="uppercase tracking-wide max-md:text-sm">{t('navServices')}</a>
-                <a href={`${langPrefix}/#contact-me`} class="uppercase tracking-wide max-md:text-sm">{t('navContact')}</a>
+                {navLinks.map(link => {
+                  const isActive = currentPath === link.href.replace(/\/+$/, '');
+                  return (
+                    <a
+                      href={link.href}
+                      class:list={[
+                        'uppercase tracking-wide max-md:text-sm',
+                        { 'current': isActive }
+                      ]}
+                    >{t(link.key)}</a>
+                  );
+                })}
+                <a
+                  href={`${langPrefix}/#contact-me`}
+                  class="uppercase tracking-wide max-md:text-sm"
+                >{t('navContact')}</a>
             </div>
 
             <!-- Right: Controls -->
@@ -107,6 +127,21 @@ const siteTitle = getTranslationSync(globalTranslations, 'siteTitle');
 </header>
 
 <script>
+  // Prevent re-loading when clicking the current page link
+  function preventCurrentPageNav() {
+    const menu = document.getElementById('menu');
+    if (!menu) return;
+    menu.addEventListener('click', (e) => {
+      const link = (e.target as HTMLElement).closest('a');
+      if (link?.classList.contains('current')) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    });
+  }
+  preventCurrentPageNav();
+  document.addEventListener('astro:page-load', preventCurrentPageNav);
+
   // Hide/show home nav links based on hero section visibility (home page only)
   const homeLinks = document.querySelectorAll<HTMLElement>('.nav-home-link');
   if (homeLinks.length > 0) {

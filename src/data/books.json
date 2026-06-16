@@ -1,6 +1,6 @@
 [
   {
-    "id": "alienacaoParental",
+    "id": "0",
     "author": "Tamara Amoroso Gonsalves",
     "imageUrl": "livro_alienacao_parental.png",
     "linkGroups": [
@@ -8,16 +8,16 @@
         "type": "download",
         "links": [
           {
-            "labelKey": "downloadInEnglish",
-            "url": "https://cladem.org/biblioteca/%E2%80%9Cparental-alienation-a-new-form-of-gender-based-violence-against-women-and-children-in-latin-america-and-the-caribbean%E2%80%9D"
-          },
-          {
             "labelKey": "readAtCladem",
             "url": "https://cladem.org/biblioteca/alienacao-parental--uma-nova-forma-de-violencia-de--genero-contra-mulheres-e-criancas--na-america-latina-e-caribe"
           },
           {
             "labelKey": "directDownloadUsp",
             "url": "https://www.direitorp.usp.br/wp-content/uploads/2025/03/Cladem-Digital-20022025.pdf?gathStatIcon=true"
+          },
+          {
+            "labelKey": "downloadInEnglish",
+            "url": "https://cladem.org/biblioteca/%E2%80%9Cparental-alienation-a-new-form-of-gender-based-violence-against-women-and-children-in-latin-america-and-the-caribbean%E2%80%9D"
           },
           {
             "labelKey": "readInSpanish",
@@ -45,7 +45,7 @@
     ]
   },
   {
-    "id": "direitosHumanos",
+    "id": "1",
     "author": "Tamara Amoroso Gonsalves",
     "imageUrl": "livro_direitos_humanos_mulheres.jpg",
     "linkGroups": [
@@ -65,7 +65,7 @@
     ]
   },
   {
-    "id": "abortoReligiao",
+    "id": "2",
     "author": "Tamara Amoroso Gonsalves (coord.), Thais de Souza Lapa",
     "imageUrl": "livro_aborto_e_religiao.png",
     "linkGroups": [

@@ -1,5 +1,5 @@
 {
-  "siteTitle": "Tamara Amoroso Gonçalves",
+  "siteTitle": "Tamara Amoroso Gonsalves",
   "contactUs": "Entre em Contato",
   "watchOnSite": "Assistir no site",
   "downloadPdf": "Baixar PDF",
@@ -15,15 +15,17 @@
   "error": "Erro",
   "backToTop": "Voltar ao topo",
 
-  "filterAll": "Todas",
+  "filterAll": "Todos",
   "filterAcademic": "Acadêmico",
   "filterAdvocacy": "Advocacy",
+  "filterLanguage": "Idioma",
+  "filterTopic": "Tópico",
   "categoryAcademic": "Acadêmico",
   "categoryAdvocacy": "Advocacy",
   "searchPlaceholder": "Buscar palestras…",
   "noResults": "Nenhuma palestra encontrada.",
   
-  "pageTitle": "Tamara Amoroso Gonçalves, Especialista em Direitos Humanos",
+  "pageTitle": "Tamara Amoroso Gonsalves, Especialista em Direitos Humanos",
   
   "navAbout": "Sobre",
   "navPublications": "Publicações", 

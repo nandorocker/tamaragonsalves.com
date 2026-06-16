@@ -14,7 +14,10 @@
   "publicationsOrcidLinkText": "My ORCID registry",
   "publicationsOrcidUrl": "https://orcid.org/0000-0002-2500-8477",
   "publicationsBooksSubheading": "Books",
+  "publicationsArticlesSubheading": "Book Chapters, Articles and Other Publications",
   "publicationsOtherProjectsSubheading": "Other Projects",
+
+  "publicationLabel": "Publication:",
 
   "speakingHeading": "Public Speaking",
   "speakingIntroStart": "With over 90 presentations delivered nationally and internationally, I bring expertise in human rights advocacy to diverse audiences—from UN bodies to grassroots communities. My engaging speaking style makes complex issues accessible while driving meaningful dialogue on children's rights, gender justice, and social equity. ",

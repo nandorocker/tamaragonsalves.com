@@ -10,6 +10,7 @@ export interface Props {
   date: string;
   lang: Language;
   category?: string;
+  language?: string;
 }
 
 const { 
@@ -18,7 +19,8 @@ const {
   thumbnailUrl,
   date,
   lang,
-  category = ''
+  category = '',
+  language = ''
 } = Astro.props;
 
 // Load all translations (global + home page) for the current language
@@ -40,7 +42,7 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
 const imagePath = thumbnailUrl ? `${images}/${thumbnailUrl}` : null;
 ---
 
-<div class="video-card" data-category={category} data-searchtext={`${title} ${description}`}>
+<div class="video-card" data-category={category} data-language={language} data-searchtext={`${title} ${description}`}>
   <a href={videoUrl} target="_blank" aria-label={`Watch video: ${title}`} rel="noopener noreferrer">
     <div class="video-thumbnail-container">
       {imagePath
@@ -49,10 +51,14 @@ const imagePath = thumbnailUrl ? `${images}/${thumbnailUrl}` : null;
       }
     </div>
   </a>
-  <time datetime={date} class="video-date">{formattedDate}</time>
+  <div class="flex gap-2 items-center">
+    <time datetime={date} class="video-date">{formattedDate}</time>
+    {language && <span class="video-lang">{language}</span>}
+  </div>
   <a href={videoUrl} class="not-italic no-underline" target="_blank" aria-label={`Watch video: ${title}`} rel="noopener noreferrer">
     <h5 class="video-title">{title}</h5>
   </a>
+  {description && <p class="video-description">{description}</p>}
   <a href={videoUrl} target="_blank" 
      class="video-link icon-after icon-external-link icon-space-sm"
      rel="noopener noreferrer">

@@ -1,0 +1,73 @@
+<h1>Tamara Gonsalves Website - Agent Instructions</h1>
+<h2>Commands</h2>
+<pre><code class="language-bash">bun install          # Install dependencies (NOT npm/pnpm)
+bun run dev         # Start dev server
+bun run build       # Build for production
+bun run preview     # Preview production build
+bun run astro ...   # Run Astro CLI commands
+</code></pre>
+<h2>Important Conventions</h2>
+<ul>
+<li><strong>Package manager</strong>: Use <code>bun</code>, never <code>npm</code> or <code>pnpm</code></li>
+<li><strong>Testing</strong>: Build first, avoid running dev server during testing</li>
+</ul>
+<h2>Architecture</h2>
+<ul>
+<li><strong>Framework</strong>: Astro 6 with Tailwind CSS</li>
+<li><strong>i18n</strong>: English (<code>src/i18n/en/</code>) and Portuguese (<code>src/i18n/pt/</code>) with locale routing</li>
+<li><strong>Data</strong>: Static JSON files in <code>src/data/</code> and <code>src/i18n/[lang]/</code></li>
+<li><strong>Deployment</strong>: Vercel adapter (see <code>astro.config.mjs</code>)</li>
+<li><strong>Font Awesome</strong>: Pro version enabled via <code>tailwind-fontawesome</code> plugin</li>
+</ul>
+<h2>Scroll Animations</h2>
+<p>This site uses a custom scroll-based entrance animation system (see <code>ANIMATION_GUIDE.md</code>):</p>
+<ul>
+<li>Add <code>data-animate</code> to elements that should fade in + slide up on scroll</li>
+<li>Wrap staggered elements in a container with <code>data-stagger</code></li>
+<li>Automatically respects <code>prefers-reduced-motion</code></li>
+</ul>
+<h2>Tailwind Customizations</h2>
+<ul>
+<li><strong>Colors</strong>: <code>soap</code>, <code>mustard</code>, <code>bubblegum</code>, <code>flamingo</code> (with shades)</li>
+<li><strong>Fonts</strong>: <code>sans</code> (Alegreya Sans), <code>display</code> (Sansita)</li>
+<li><strong>Custom sizes</strong>: <code>10vh</code>-<code>100vh</code> for height/minHeight/maxHeight, <code>1/12</code>-<code>11/12</code> fractions</li>
+</ul>
+<h2>Key Files</h2>
+<ul>
+<li><code>astro.config.mjs</code> - Astro config with Vercel adapter and i18n routing</li>
+<li><code>tailwind.config.js</code> - Custom theme colors, fonts, sizes</li>
+<li><code>src/layouts/BaseLayout.astro</code> - Main layout</li>
+<li><code>src/pages/[lang]/</code> - Localized pages (en, pt subdirectories)</li>
+<li><code>src/components/</code> - Reusable Astro components</li>
+</ul>
+<h2>Missing Setup</h2>
+<ul>
+<li>No tests exist (<code>tests/</code> directory is empty)</li>
+<li><code>.env.example</code> contains API keys for a task-master config (not used by this site)</li>
+</ul>
+<h2>Decorative Photo Pattern</h2>
+<p>The home page hero photo uses two offset background boxes to create a layered visual effect:</p>
+<pre><code class="language-astro">&lt;div class=&quot;relative&quot;&gt;
+  &lt;!-- Bottom-left origin box (flamingo/red) --&gt;
+  &lt;div class=&quot;absolute -bottom-8 -left-8 w-[calc(100%+2rem)] h-[calc(100%+2rem)] bg-flamingo-700 rounded-lg&quot;&gt;&lt;/div&gt;
+  &lt;!-- Top-right origin box (navy/indigo) --&gt;
+  &lt;div class=&quot;absolute -top-8 -right-8 w-[calc(100%+2rem)] h-[calc(100%+2rem)] bg-indigo-900 rounded-lg&quot;&gt;&lt;/div&gt;
+  &lt;!-- Photo container --&gt;
+  &lt;div class=&quot;relative z-10 overflow-hidden ...&quot;&gt;
+    &lt;img ... /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>The flamingo box anchors to the <strong>bottom-left</strong> corner of the photo</li>
+<li>The indigo box anchors to the <strong>top-right</strong> corner of the photo</li>
+<li>Each box extends beyond the image by the offset amount (currently 2rem/8 units)</li>
+<li>The &quot;exposed&quot; area is the part outside the photo boundaries</li>
+</ul>
+<p><strong>To adjust exposed area:</strong></p>
+<ul>
+<li>Change <code>-bottom-8</code> and <code>-left-8</code> (and their <code>calc()</code> values) together to grow/shrink the flamingo box</li>
+<li>Change <code>-top-8</code> and <code>-right-8</code> (and their <code>calc()</code> values) together to grow/shrink the indigo box</li>
+<li>Keep values symmetrical: if you use <code>-bottom-4</code>, use <code>-left-4</code> and <code>calc(100%+1rem)</code></li>
+</ul>

@@ -1,53 +1,57 @@
 {
-  "cidhHearingMigrantWomen": {
+  "0": {
+    "title": "Violence and Aftercare in Brazil",
+    "description": "Part of Roks' \"Violence and Custody\" conference, this talk examines domestic violence, post-separation care, and the legal challenges facing women and children in Brazil."
+  },
+  "1": {
     "title": "Challenges migrant women face reporting domestic abuse and human rights implications in cases where the 1980 Hague Convention on International Abduction of Children is activated",
     "description": "Presented on behalf of CLADEM, GAMBE, Organização El Paso and SHERA Research Group at the thematic hearing on the human rights of survivors of gender-based violence, 195th Session of the Inter-American Commission on Human Rights, Guatemala City."
   },
-  "parentalAlienationHague2025": {
+  "2": {
     "title": "Connections between parental alienation arguments and the implementation of the Hague Convention as institutional gender-based violence",
     "description": "Delivered as part of the course 'The 1980 Hague Convention, Domestic Violence, and the Protection of Women in Brazil and Abroad', held in collaboration between the Escola Paulista da Magistratura (EPM) and the Escola de Magistrados do Tribunal Regional Federal da 3ª Região (EMAG)."
   },
-  "hagueConventionDomesticViolence": {
+  "3": {
     "title": "Women victims of domestic violence in a migratory context – risks of applying the Convention without a gender perspective and without alignment with human rights standards",
     "description": "Round-table discussion held at the event 'The Hague Convention and Domestic Violence – Human Rights Challenges from an Intersectional Perspective', at the OAB/SP headquarters, São Paulo."
   },
-  "broadeningWomensRights": {
+  "4": {
     "title": "Broadening women's rights through international advocacy",
     "description": "Talk presented at CFGS as part of a series on gender and global governance, analyzing the use of parental alienation in custody disputes as a tool of gender-based violence. The discussion connects feminist legal research and transnational activism aimed at challenging its legitimacy before international human rights bodies."
   },
-  "alienacaoParental2025": {
+  "5": {
     "title": "Parental Alienation: A New Form of Gender-Based Violence Against Women and Children in Latin America and the Caribbean",
     "description": "Seminar at the Brazilian Federal Court to launch the book 'Parental Alienation: A New Form of Gender-Based Violence Against Women and Children in Latin America and the Caribbean'. I discussed how parental alienation and the Hague Convention have been misused to silence allegations of abuse and reinforce institutional violence against women and children."
   },
-  "cedawRecommendations": {
+  "6": {
     "title": "How to Use CEDAW Recommendations in National Strategic Litigation",
     "description": "Panel discussing the strategic use of CEDAW recommendations for domestic litigation in Brazil, emphasizing practical applications to advance women's rights."
   },
-  "cedawCommittee": {
+  "7": {
     "title": "CLADEM/Brazil Representation at Brazil's Review before the CEDAW Committee",
     "description": "Speech delivered at the Opening Session with Brazilian non-profit organizations, addressing various forms of institutional violence such as obstetric violence, parental alienation in family court, inaccessible abortion services for sexual violence victims, child marriage, and forced pregnancies among adolescents."
   },
-  "beginningOfLife": {
+  "8": {
     "title": "Debates on the Beginning of Life and Legal Regulations on Personhood",
     "description": "Exploration of feminist perspectives on the legal and ethical debates concerning the beginning of life and personhood, focusing on their implications for laws and social policies."
   },
-  "interdisciplinaryResearch": {
+  "9": {
     "title": "Community-Engaged Interdisciplinary Academic Research",
     "description": "Presentation on the application of interdisciplinary feminist research methodologies to engage communities and address systemic issues, highlighting academic and practical applications."
   },
-  "parentalAlienation2021": {
+  "10": {
     "title": "Parental Alienation: A Form of Violence Against Women",
     "description": "Webinar addressing how the concept of parental alienation is used as a form of institutional violence against women, involving multi-stakeholder support and discussions in Portuguese and Spanish."
   },
-  "advertisingChildren": {
+  "11": {
     "title": "Public Hearing on Advertising Directed at Children",
     "description": "Public hearing at the Brazilian National Congress addressing the impact of advertising directed at children, highlighting its manipulative and abusive practices, and advocating for regulatory measures."
   },
-  "genderHumanRights2012": {
+  "12": {
     "title": "Gender and Human Rights",
     "description": "Seminar on gender equality and its intersection with human rights, discussing how gender analysis can inform social development policies and frameworks."
   },
-  "genderDiscussions": {
+  "13": {
     "title": "The Impact of Gender Discussions on the Concept of Human Rights",
     "description": "Presentation analyzing how gender discussions have influenced the conceptualization of human rights, focusing on historical and contemporary developments in the field."
   }
