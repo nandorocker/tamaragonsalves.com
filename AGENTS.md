@@ -15,6 +15,70 @@ bun run astro ...   # Run Astro CLI commands
 - **Package manager**: Use `bun`, never `npm` or `pnpm`
 - **Testing**: Build first, avoid running dev server during testing
 
+## Astro i18n and Vercel Routing
+
+This site intentionally uses prefixed locale routes for both languages:
+
+- English: `/en/`, `/en/about`, `/en/publications`, `/en/speaking`, `/en/services`
+- Portuguese: `/pt/`, `/pt/about`, `/pt/publications`, `/pt/speaking`, `/pt/services`
+- Root `/` renders the English home page directly
+
+Required Astro i18n config:
+
+```js
+i18n: {
+  defaultLocale: 'en',
+  locales: ['en', 'pt'],
+  routing: {
+    prefixDefaultLocale: true,
+    redirectToDefaultLocale: false
+  }
+}
+```
+
+Do not add a Vercel redirect from `/en/:path*` to `/:path*`. Vercel will redirect real generated English pages to ungenerated paths and cause 404s.
+
+Do not use client-side redirects or meta refresh in `src/pages/index.astro`; static Astro builds expose those as a visible "Redirecting..." page.
+
+`src/pages/index.astro` should render the English home page directly:
+
+```astro
+---
+import HomePage from './[lang]/index.astro';
+---
+
+<HomePage lang="en" />
+```
+
+When changing routing, verify with:
+
+```bash
+bun test
+bun run build
+```
+
+Then confirm Vercel output contains:
+
+```bash
+.vercel/output/static/index.html
+.vercel/output/static/en/about/index.html
+.vercel/output/static/en/publications/index.html
+.vercel/output/static/en/speaking/index.html
+.vercel/output/static/en/services/index.html
+.vercel/output/static/pt/about/index.html
+.vercel/output/static/pt/publications/index.html
+.vercel/output/static/pt/speaking/index.html
+.vercel/output/static/pt/services/index.html
+```
+
+Also scan for accidental redirect artifacts:
+
+```bash
+rg -n 'Redirecting|http-equiv|window\.location|"source": "/en/:path' .vercel/output dist vercel.json
+```
+
+Expected: no matches.
+
 ## Architecture
 
 - **Framework**: Astro 6 with Tailwind CSS
@@ -47,7 +111,7 @@ This site uses a custom scroll-based entrance animation system (see `ANIMATION_G
 
 ## Missing Setup
 
-- No tests exist (`tests/` directory is empty)
+- Minimal routing regression coverage exists in `tests/routing.test.ts`; no broader test suite exists yet
 - `.env.example` contains API keys for a task-master config (not used by this site)
 
 ## Decorative Photo Pattern
