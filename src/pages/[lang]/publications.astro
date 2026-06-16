@@ -14,7 +14,7 @@ import articlesData from '../../data/articles.json';
 export { getStaticPaths };
 
 const { lang } = Astro.params;
-const currentLang = lang as Language;
+const currentLang = (Astro.props.lang ?? lang ?? 'en') as Language;
 
 // Load all translations (global + home page) for dynamic content
 const allTranslations = await loadAllTranslations(currentLang, 'home');
@@ -99,7 +99,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
                         imageUrl={project.imageUrl}
                         linkUrl={project.linkUrl}
                         linkIcon={project.linkIcon}
-                        lang={lang as 'en' | 'pt'}
+                        lang={currentLang}
                     />
                 </div>
             ))}

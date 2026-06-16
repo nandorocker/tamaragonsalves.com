@@ -9,7 +9,8 @@ import videosData from '../../data/videos.json';
 export { getStaticPaths };
 
 const { lang } = Astro.params;
-const currentLang = lang as Language;
+const currentLang = (Astro.props.lang ?? lang ?? 'en') as Language;
+const langPrefix = currentLang === 'en' ? '/en' : `/${currentLang}`;
 
 const allTranslations = await loadAllTranslations(currentLang, 'home');
 const t = (key: string) => getTranslationSync(allTranslations, key);
@@ -21,7 +22,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 			<h1 data-animate>{t('speakingHeading')}</h1>
 			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto mb-12" data-stagger>
 				<p class="small" data-animate>{t('speakingDescription')}</p>
-				<p data-animate><Button href={`/${currentLang}/#contact-me`} size="lg" class="icon-before icon-comment-smile icon-space-sm">{t('speakingContactButtonText')}</Button></p>
+				<p data-animate><Button href={`${langPrefix}/#contact-me`} size="lg" class="icon-before icon-comment-smile icon-space-sm">{t('speakingContactButtonText')}</Button></p>
 			</div>
 		</div>
 
@@ -71,7 +72,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 					videoUrl={video.videoUrl}
 					thumbnailUrl={video.thumbnailUrl}
 					date={video.date}
-					lang={lang as 'en' | 'pt'}
+					lang={currentLang}
 					category={video.category}
 					language={video.language}
 				/>

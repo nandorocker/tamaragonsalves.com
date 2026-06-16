@@ -1,10 +1,5 @@
 ---
-// Redirect to the default language page
+import HomePage from './[lang]/index.astro';
 ---
 
-<script>
-  // Redirect to the default language page
-  window.location.href = '/en/';
-</script>
-
-<meta http-equiv="refresh" content="0; url=/en/">
+<HomePage lang="en" />

@@ -15,7 +15,8 @@ import videosData from '../../data/videos.json';
 export { getStaticPaths };
 
 const { lang } = Astro.params;
-const currentLang = lang as Language;
+const currentLang = (Astro.props.lang ?? lang ?? 'en') as Language;
+const langPrefix = currentLang === 'en' ? '/en' : `/${currentLang}`;
 
 // Load all translations (global + home page) for dynamic content
 const allTranslations = await loadAllTranslations(currentLang, 'home');
@@ -122,7 +123,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 				</div>
 				
 				<div class="text-center mt-12" data-animate>
-					<Button href={`/${currentLang}/publications`} variant="secondary" size="lg">{t('seeAllPublications')}</Button>
+					<Button href={`${langPrefix}/publications`} variant="secondary" size="lg">{t('seeAllPublications')}</Button>
 				</div>
 			</div>
 		</div>
@@ -131,16 +132,16 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 	<!-- Speaking Preview Section -->
 	<section id="speaking-preview" class="contain-margins-y bg-white dark:bg-gray-800">
 		<div class="contain-medium section-margins-medium">
-			<h1 class="mb-6 dark:text-pink-300" data-animate><a href={`/${currentLang}/speaking`} class="hover:text-sky-700 dark:hover:text-sky-300 transition-colors">{t('speakingHeading')}</a></h1>
+			<h1 class="mb-6 dark:text-pink-300" data-animate><a href={`${langPrefix}/speaking`} class="hover:text-sky-700 dark:hover:text-sky-300 transition-colors">{t('speakingHeading')}</a></h1>
 			
 			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-lg mx-auto">
 				<p class="mb-8 dark:text-gray-300" data-animate>
-					{t('speakingIntroStart')}<a href={`/${currentLang}/#contact-me`} class="font-semibold text-sky-700 dark:text-sky-300 hover:text-sky-900 dark:hover:text-sky-100">{t('speakingCTALink')}</a>{t('speakingIntroEnd')}
+					{t('speakingIntroStart')}<a href={`${langPrefix}/#contact-me`} class="font-semibold text-sky-700 dark:text-sky-300 hover:text-sky-900 dark:hover:text-sky-100">{t('speakingCTALink')}</a>{t('speakingIntroEnd')}
 				</p>
 
 				<div class="flex flex-col lg:flex-row lg:justify-between items-start lg:items-end gap-2 lg:gap-0 mb-6" data-animate>
 					<h2 class="mb-0 dark:text-pink-300">{t('speakingTalksSubheading')}</h2>
-					<a href={`/${currentLang}/speaking`} class="text-base font-semibold text-sky-700 dark:text-sky-300 hover:text-sky-900 dark:hover:text-sky-100 icon-after icon-arrow-right icon-space-sm whitespace-nowrap">
+					<a href={`${langPrefix}/speaking`} class="text-base font-semibold text-sky-700 dark:text-sky-300 hover:text-sky-900 dark:hover:text-sky-100 icon-after icon-arrow-right icon-space-sm whitespace-nowrap">
 						{t('seeAllTalks')}
 					</a>
 				</div>
@@ -193,7 +194,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 				</div>
 				
 				<div class="text-center mt-0" data-animate>
-					<Button href={`/${currentLang}/services`} variant="secondary" size="lg">{t('seeAllServices')}</Button>
+					<Button href={`${langPrefix}/services`} variant="secondary" size="lg">{t('seeAllServices')}</Button>
 				</div>
 			</div>
 		</div>

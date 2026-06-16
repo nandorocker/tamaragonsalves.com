@@ -1,9 +1,1 @@
-{
-  "redirects": [
-    {
-      "source": "/en/:path*",
-      "destination": "/:path*",
-      "statusCode": 307
-    }
-  ]
-}
+{}

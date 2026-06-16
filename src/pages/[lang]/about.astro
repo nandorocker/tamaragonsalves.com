@@ -9,7 +9,7 @@ import galleryData from '../../data/gallery.json';
 export { getStaticPaths };
 
 const { lang } = Astro.params;
-const currentLang = lang as Language;
+const currentLang = (Astro.props.lang ?? lang ?? 'en') as Language;
 
 const allTranslations = await loadAllTranslations(currentLang, 'home');
 const t = (key: string) => getTranslationSync(allTranslations, key);
@@ -90,4 +90,3 @@ const aboutGalleryData = galleryData.slice(0, 4).map((image) => {
 	    </div>
 	</section>
 </BaseLayout>
-
