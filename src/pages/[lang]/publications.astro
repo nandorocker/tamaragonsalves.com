@@ -62,7 +62,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
            		</div>
 	        </div>
 
-			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto mt-16">
+			<div class="contain-medium px-5 md:px-12 mt-16">
 				<h2 data-animate>{t('publicationsArticlesSubheading')}</h2>
 
 				<div class="flex gap-2 mt-6 mb-8" data-animate role="group">
@@ -76,7 +76,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 					})()}
 				</div>
 
-				<div id="article-list">
+				<div id="article-list" class="article-grid">
 					{articlesData.map(article => (
 						<div data-theme={article.theme}>
 							<ArticleCard
