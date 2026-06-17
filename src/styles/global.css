@@ -428,7 +428,7 @@
 
   /* Articles grid */
   .article-grid {
-    @apply grid gap-6 mb-8;
+    @apply grid gap-6 mb-8 items-stretch;
     grid-template-columns: repeat(1, 1fr);
   }
 

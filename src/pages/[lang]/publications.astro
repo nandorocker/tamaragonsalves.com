@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BookCard from '../../components/BookCard.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
+import ArticleModal from '../../components/ArticleModal.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
 import Button from '../../components/Button.astro';
 import OrcidIcon from '../../components/OrcidIcon.astro';
@@ -88,6 +89,13 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 						</div>
 					))}
 				</div>
+
+				<ArticleModal
+					articles={articlesData}
+					articleTranslations={articleTranslations}
+					lang={currentLang}
+					publicationLabel={t('publicationLabel')}
+				/>
 			</div>
 
 	        <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto mt-16 mb-16" data-stagger>
