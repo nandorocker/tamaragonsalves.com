@@ -1,5 +1,6 @@
 ---
-import { images } from '../data/global';
+import { Image, getImage } from 'astro:assets';
+import imageMap from '../assets/imageMap';
 import type { Language } from '../utils/i18n';
 import { useTranslations } from '../utils/i18n';
 import DropdownButton from './DropdownButton.astro';
@@ -48,12 +49,31 @@ const getTitleUrl = (): string | null => {
 
 const titleUrl = getTitleUrl();
 
-const imagePath = `${images}/${book.imageUrl}`;
+const img = imageMap[book.imageUrl];
+if (!img) throw new Error(`Missing image for book: ${book.imageUrl}`);
+
+const lightboxWidth = Math.min(1200, img.width || 1200);
+const lightboxImg = await getImage({
+  src: img,
+  format: 'webp',
+  width: lightboxWidth,
+  quality: 85,
+});
 ---
 
 <article class="book-item">
-  <a data-fslightbox="books" href={imagePath} class="book-cover-link hover-shift-sm">
-    <img src={imagePath} alt={bookData.imageAlt || 'Book cover'} srcset="" class="book-image">
+  <a data-fslightbox="books" href={lightboxImg.src} class="book-cover-link hover-shift-sm">
+    <Image
+      src={img}
+      alt={bookData.imageAlt || 'Book cover'}
+      inferSize
+      widths={[160, 320, 480]}
+      sizes="(min-width: 768px) 160px, 128px"
+      format="webp"
+      quality={82}
+      loading="lazy"
+      class="book-image"
+    />
   </a>
 
   <div class="book-info">

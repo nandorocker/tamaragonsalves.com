@@ -1,5 +1,6 @@
 ---
-import { images } from '../data/global';
+import { Image } from 'astro:assets';
+import imageMap from '../assets/imageMap';
 import { loadAllTranslations, getTranslationSync } from '../utils/i18n';
 import type { Language } from '../utils/i18n';
 
@@ -38,15 +39,25 @@ const formattedDate = new Date(date).toLocaleDateString('en-US', {
   day: 'numeric' 
 });
 
-// Construct image path once
-const imagePath = thumbnailUrl ? `${images}/${thumbnailUrl}` : null;
+// Look up image from manifest
+const img = thumbnailUrl ? imageMap[thumbnailUrl] : null;
+if (thumbnailUrl && !img) throw new Error(`Missing image for video: ${thumbnailUrl}`);
 ---
 
 <div class="video-card" data-category={category} data-language={language} data-searchtext={`${title} ${description}`}>
   <a href={videoUrl} target="_blank" aria-label={`Watch video: ${title}`} rel="noopener noreferrer">
     <div class="video-thumbnail-container">
-      {imagePath
-        ? <img src={imagePath} alt={`Video thumbnail for ${title}`} loading="lazy">
+      {img
+        ? <Image
+            src={img}
+            alt={`Video thumbnail for ${title}`}
+            inferSize
+            widths={[240, 480, 720]}
+            sizes="(min-width: 768px) 320px, 100vw"
+            format="webp"
+            quality={82}
+            loading="lazy"
+          />
         : <div class="video-thumbnail-placeholder" aria-hidden="true"></div>
       }
     </div>

@@ -1,10 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AboutGalleryImage from '../../components/AboutGalleryImage.astro';
 import BookCarouselCard from '../../components/BookCarouselCard.astro';
 import VideoPublicationCard from '../../components/VideoPublicationCard.astro';
 import Button from '../../components/Button.astro';
 import OrcidIcon from '../../components/OrcidIcon.astro';
+import { Image } from 'astro:assets';
+import imageMap from '../../assets/imageMap';
 import { images } from '../../data/global';
 import { loadAllTranslations, getTranslationSync, getStaticPaths } from '../../utils/i18n';
 import type { Language } from '../../utils/i18n';
@@ -27,6 +28,9 @@ const bookTranslations = allContentTranslations.books || {};
 
 // Helper function to get translation with fallback
 const t = (key: string) => getTranslationSync(allTranslations, key);
+
+const homePhoto = imageMap['home_photo.png'];
+if (!homePhoto) throw new Error('Missing image: home_photo.png');
 ---
 
 <BaseLayout title={t('pageTitle')} pageTheme="yellow" isHomePage={true}>
@@ -44,9 +48,14 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 					<div class="absolute -top-4 -right-4 md:-top-6 md:-right-6 lg:-top-8 lg:-right-8 w-[calc(100%+1rem)] h-[calc(100%+1rem)] md:w-[calc(100%+1.5rem)] md:h-[calc(100%+1.5rem)] lg:w-[calc(100%+2rem)] lg:h-[calc(100%+2rem)] bg-indigo-900 rounded-lg"></div>
 					<!-- Photo -->
 					<div class="relative z-10 overflow-hidden w-[160px] md:w-[200px] lg:w-[260px]">
-						<img 
-							src="/images/home_photo.png" 
-							alt="Tamara Amoroso Gonsalves" 
+						<Image
+							src={homePhoto}
+							alt="Tamara Amoroso Gonsalves"
+							inferSize
+							widths={[160, 260, 520]}
+							sizes="(min-width: 768px) 260px, 160px"
+							format="webp"
+							quality={82}
 							class="w-full h-auto object-contain"
 						/>
 					</div>

@@ -6,7 +6,7 @@
   "description": "Tamara Gonsalves Website - Astro Site",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && find .vercel/output/static/_astro dist/_astro -type f \\( -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' \\) -delete 2>/dev/null; true",
     "preview": "astro preview",
     "astro": "astro",
     "start": "astro dev",

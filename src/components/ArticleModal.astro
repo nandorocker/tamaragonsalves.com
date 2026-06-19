@@ -1,7 +1,8 @@
 ---
+import { getImage } from 'astro:assets';
+import imageMap from '../assets/imageMap';
 import type { Language } from '../utils/i18n';
 import { useTranslations } from '../utils/i18n';
-import { images } from '../data/global';
 
 interface Props {
   articles: Record<string, any>[];
@@ -15,8 +16,22 @@ type ArticleData = Record<string, { title?: string; summary?: string; publicatio
 const t = useTranslations(lang as Language);
 const linkLabels = articleTranslations.linkLabels || {};
 
-const articlesWithMeta = articles.map((article, index) => {
+const articlesWithMeta = await Promise.all(articles.map(async (article, index) => {
   const articleData = (articleTranslations as ArticleData)[article.id] || {};
+
+  let thumbnailUrl: string | null = null;
+  if (article.image) {
+    const img = imageMap[article.image];
+    if (!img) throw new Error(`Missing image for article: ${article.image}`);
+    const optimized = await getImage({
+      src: img,
+      format: 'webp',
+      width: 192,
+      quality: 82,
+    });
+    thumbnailUrl = optimized.src;
+  }
+
   return {
     id: article.id,
     index,
@@ -24,12 +39,12 @@ const articlesWithMeta = articles.map((article, index) => {
     author: article.author || '',
     summary: articleData.summary || '',
     publicationInfo: articleData.publicationInfo || article.publicationInfo || '',
-    thumbnailUrl: article.image ? `${images}/${article.image}` : null,
+    thumbnailUrl,
     hasLinks: article.links && article.links.length > 0,
     links: article.links || [],
     file: article.file || null,
   };
-});
+}));
 ---
 
 <div id="article-modal-root" class="article-modal-root" data-article-modal-root>

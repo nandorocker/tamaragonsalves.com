@@ -1,5 +1,6 @@
 ---
-import { images } from '../data/global';
+import { Image, getImage } from 'astro:assets';
+import imageMap from '../assets/imageMap';
 import { loadAllTranslations, getTranslationSync } from '../utils/i18n';
 import type { Language } from '../utils/i18n';
 
@@ -39,12 +40,31 @@ function getImageAlt(id: string): string {
 }
 
 const imageAlt = getImageAlt(id);
-const imagePath = `${images}/${imageUrl}`;
+const img = imageMap[imageUrl];
+if (!img) throw new Error(`Missing image for project: ${imageUrl}`);
+
+const lightboxWidth = Math.min(1200, img.width || 1200);
+const lightboxImg = await getImage({
+  src: img,
+  format: 'webp',
+  width: lightboxWidth,
+  quality: 85,
+});
 ---
 
-<article class="bg-white dark:bg-gray-800 rounded-lg shadow-sm px-5 py-5 hover-shift-sm h-full flex flex-row gap-4 items-start">
-  <a data-fslightbox="books" href={imagePath} class="flex-shrink-0">
-    <img src={imagePath} alt={imageAlt} class="w-16 h-16 rounded-md object-cover shadow-sm" loading="lazy">
+<article class="book-item hover-shift-sm">
+  <a data-fslightbox="books" href={lightboxImg.src} class="flex-shrink-0">
+    <Image
+      src={img}
+      alt={imageAlt}
+      inferSize
+      widths={[64, 128]}
+      sizes="64px"
+      format="webp"
+      quality={82}
+      loading="lazy"
+      class="w-16 h-16 rounded-md object-cover shadow-sm"
+    />
   </a>
   <div class="flex-1 min-w-0 flex flex-col">
     <h5 class="mb-1 text-size-h6">{title}</h5>

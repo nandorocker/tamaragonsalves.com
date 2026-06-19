@@ -1,23 +1,23 @@
 [
   {
-    "src": "/images/foto_01.jpg",
+    "src": "foto_01.jpg",
     "altKey": "aboutGallery.image1.alt",
     "fslightboxGroup": "about-pics",
     "gridClass": "col-span-2"
   },
   {
-    "src": "/images/foto_02.jpg",
+    "src": "foto_02.jpg",
     "altKey": "aboutGallery.image2.alt",
     "fslightboxGroup": "about-pics",
     "gridClass": "col-span-2"
   },
   {
-    "src": "/images/foto_04.jpg",
+    "src": "foto_04.jpg",
     "altKey": "aboutGallery.image4.alt",
     "fslightboxGroup": "about-pics"
   },
   {
-    "src": "/images/foto_05.jpg",
+    "src": "foto_05.jpg",
     "altKey": "aboutGallery.image5.alt",
     "fslightboxGroup": "about-pics"
   }

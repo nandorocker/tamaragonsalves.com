@@ -1,5 +1,6 @@
 ---
-import { images } from '../data/global';
+import { Image, getImage } from 'astro:assets';
+import imageMap from '../assets/imageMap';
 import { loadAllTranslations, getTranslationSync } from '../utils/i18n';
 import type { Language } from '../utils/i18n';
 
@@ -44,12 +45,31 @@ function getImageAlt(id: string): string {
 const imageAlt = getImageAlt(id);
 
 // Construct image path once for performance
-const imagePath = `${images}/${imageUrl}`;
+const img = imageMap[imageUrl];
+if (!img) throw new Error(`Missing image for project: ${imageUrl}`);
+
+const lightboxWidth = Math.min(1200, img.width || 1200);
+const lightboxImg = await getImage({
+  src: img,
+  format: 'webp',
+  width: lightboxWidth,
+  quality: 85,
+});
 ---
 
 <article class="book-item hover-shift-sm">
-  <a data-fslightbox="books" href={imagePath}>
-    <img src={imagePath} alt={imageAlt} class="book-image" loading="lazy">
+  <a data-fslightbox="books" href={lightboxImg.src}>
+    <Image
+      src={img}
+      alt={imageAlt}
+      inferSize
+      widths={[240, 480]}
+      sizes="240px"
+      format="webp"
+      quality={82}
+      loading="lazy"
+      class="book-image"
+    />
   </a>
 
   <div class="book-info">
