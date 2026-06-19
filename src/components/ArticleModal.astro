@@ -26,8 +26,8 @@ const articlesWithMeta = await Promise.all(articles.map(async (article, index) =
     const optimized = await getImage({
       src: img,
       format: 'webp',
-      width: 192,
-      quality: 82,
+      width: 256,
+      quality: 90,
     });
     thumbnailUrl = optimized.src;
   }
