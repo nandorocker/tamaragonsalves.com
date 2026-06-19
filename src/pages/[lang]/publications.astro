@@ -132,6 +132,24 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 	<DevPanel />
 </BaseLayout>
 
+<script>
+function autoTriggerDownload() {
+  const params = new URLSearchParams(window.location.search);
+  const articleId = params.get('download');
+  if (!articleId) return;
+
+  const cleanUrl = window.location.pathname + window.location.hash;
+  window.history.replaceState({}, document.title, cleanUrl);
+
+  setTimeout(() => {
+    window.requestDownload?.(articleId);
+  }, 300);
+}
+
+autoTriggerDownload();
+document.addEventListener('astro:page-load', autoTriggerDownload);
+</script>
+
 <style>
   .article-filter-btn {
     @apply flex-1 sm:flex-none px-4 py-1.5 rounded-full text-sm font-semibold

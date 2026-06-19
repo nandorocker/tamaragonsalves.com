@@ -23,16 +23,16 @@ function makeRequest(articleId: string, lang: string, cookie: string | null): Re
 }
 
 describe("GET /api/download", () => {
-  test("serves the PDF with Content-Disposition: attachment when gate cookie is valid", async () => {
+  test("redirects to the static PDF when gate cookie is valid", async () => {
     const cookie = await buildDownloadCookie("reader@example.com", process.env.DOWNLOAD_COOKIE_SECRET!);
     const response = await GET({
       request: makeRequest("8", "en", cookie),
     } as any);
 
-    expect(response.status).toBe(200);
-    expect(response.headers.get("Content-Type")).toBe("application/pdf");
-    expect(response.headers.get("Content-Disposition")).toContain("attachment;");
-    expect(response.headers.get("Content-Disposition")).toMatch(/filename=".*\.pdf"/);
+    expect(response.status).toBe(302);
+    const location = response.headers.get("Location");
+    expect(location).toBeTruthy();
+    expect(location).toContain("/files/publications/");
   });
 
   test("redirects to localized publications page on missing cookie", async () => {

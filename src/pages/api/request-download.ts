@@ -143,7 +143,7 @@ export const POST: APIRoute = async ({ request }) => {
       subscriberId: subscriber.id,
       tokenHash: tokenStorageHash(token),
       articleId,
-      redirectPath: `/api/download?articleId=${encodeURIComponent(articleId)}`,
+      redirectPath: `/${preferredLang}/publications?download=${encodeURIComponent(articleId)}`,
       expiresAt,
     });
 

@@ -1,14 +1,16 @@
 ---
+import { Image } from 'astro:assets';
+import imageMap from '../assets/imageMap';
 import type { Language } from '../utils/i18n';
 import { useTranslations } from '../utils/i18n';
-import { images } from '../data/global';
 
 const { article, articleTranslations, lang, publicationLabel } = Astro.props;
 type ArticleData = Record<string, { title?: string; summary?: string; publicationInfo?: string; }>;
 const articleData = (articleTranslations as ArticleData)[article.id] || {};
 const t = useTranslations(lang as Language);
 const title = articleData.title || article.id;
-const thumbnailUrl = article.image ? `${images}/${article.image}` : null;
+const img = article.image ? imageMap[article.image] : null;
+if (article.image && !img) throw new Error(`Missing image for article: ${article.image}`);
 const modalId = `modal-${article.id}`;
 const linkLabels = articleTranslations.linkLabels || {};
 const hasLinks = article.links && article.links.length > 0;
@@ -21,8 +23,18 @@ const hasFile = !!article.file;
   data-open-modal={modalId}
 >
   <div class="flex gap-3 sm:gap-4 items-start xl:block">
-    {thumbnailUrl ? (
-      <img src={thumbnailUrl} alt="" class="w-16 sm:w-20 h-16 sm:h-20 rounded-md object-cover flex-shrink-0 xl:w-full xl:h-40 xl:mb-4" loading="lazy">
+    {img ? (
+      <Image
+        src={img}
+        alt=""
+        inferSize
+        widths={[80, 160]}
+        sizes="80px"
+        format="webp"
+        quality={82}
+        loading="lazy"
+        class="w-16 sm:w-20 h-16 sm:h-20 rounded-md object-cover flex-shrink-0 xl:w-full xl:h-40 xl:mb-4"
+      />
     ) : (
       <div class="w-16 sm:w-20 h-16 sm:h-20 rounded-md flex-shrink-0 bg-gray-100 dark:bg-gray-700 flex items-center justify-center xl:w-full xl:h-40 xl:mb-4" aria-hidden="true">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" class="w-6 h-6 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -84,16 +96,30 @@ const hasFile = !!article.file;
 <script>
 window.requestDownload = async function(articleId) {
   try {
-    const response = await fetch('/api/download-status', { cache: 'no-store' });
-    const data = await response.json().catch(() => ({ ok: false }));
-    if (response.ok && data?.ok === true) {
+    const statusResponse = await fetch('/api/download-status', { cache: 'no-store' });
+    const statusData = await statusResponse.json().catch(() => ({ ok: false }));
+    if (statusResponse.ok && statusData?.ok === true) {
       const lang = document.documentElement.lang || 'en';
-      const link = document.createElement('a');
-      link.href = `/api/download?articleId=${encodeURIComponent(articleId)}&lang=${encodeURIComponent(lang)}`;
-      link.rel = 'noopener';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      const downloadUrl = `/api/download?articleId=${encodeURIComponent(articleId)}&lang=${encodeURIComponent(lang)}`;
+
+      try {
+        const response = await fetch(downloadUrl);
+        if (response.ok) {
+          const blob = await response.blob();
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          const filename = response.headers.get('Content-Disposition')?.match(/filename="?([^"]+)"?/)?.[1] || 'download.pdf';
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          setTimeout(() => URL.revokeObjectURL(url), 1000);
+          return;
+        }
+      } catch {}
+
+      window.location.href = downloadUrl;
       return;
     }
   } catch {}

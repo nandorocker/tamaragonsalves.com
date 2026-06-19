@@ -252,12 +252,20 @@ function initDownloadModal() {
         successVerifiedEl?.classList.remove('hidden');
         disclaimerEl?.classList.add('hidden');
 
-        const trigger = document.createElement('a');
-        trigger.href = downloadUrl;
-        trigger.rel = 'noopener';
-        document.body.appendChild(trigger);
-        trigger.click();
-        document.body.removeChild(trigger);
+        try {
+          const fileResponse = await fetch(downloadUrl);
+          if (fileResponse.ok) {
+            const blob = await fileResponse.blob();
+            const url = URL.createObjectURL(blob);
+            const trigger = document.createElement('a');
+            trigger.href = url;
+            trigger.download = 'download.pdf';
+            document.body.appendChild(trigger);
+            trigger.click();
+            document.body.removeChild(trigger);
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+          }
+        } catch {}
       } else if (data.success) {
         formContainer?.classList.add('hidden');
         successEl?.classList.remove('hidden');
