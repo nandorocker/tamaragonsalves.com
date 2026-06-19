@@ -2,6 +2,7 @@
   "name": "tamaragonsalves.com",
   "type": "module",
   "version": "1.0.0",
+  "packageManager": "bun@1.3.4",
   "description": "Tamara Gonsalves Website - Astro Site",
   "scripts": {
     "dev": "astro dev",
