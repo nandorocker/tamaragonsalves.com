@@ -10,10 +10,13 @@ const t = useTranslations(lang as Language);
 const title = articleData.title || article.id;
 const thumbnailUrl = article.image ? `${images}/${article.image}` : null;
 const modalId = `modal-${article.id}`;
+const linkLabels = articleTranslations.linkLabels || {};
+const hasLinks = article.links && article.links.length > 0;
+const hasFile = !!article.file;
 ---
 
 <article
-  class="bg-white dark:bg-gray-800 rounded-lg shadow-sm px-5 pt-5 pb-5 transition-shadow hover:shadow-md article-card h-full flex flex-col cursor-pointer"
+  class="bg-white dark:bg-gray-800 rounded-lg shadow-sm px-5 pt-5 pb-5 hover-shift-sm article-card h-full flex flex-col cursor-pointer"
   data-article
   data-open-modal={modalId}
 >
@@ -32,7 +35,7 @@ const modalId = `modal-${article.id}`;
       </div>
     )}
     <div class="flex-1 min-w-0">
-      <h4 class="text-size-h5 mb-1">{title}</h4>
+      <h4 class="text-size-h6 mb-1">{title}</h4>
       <p class="mb-1 text-gray-600 dark:text-gray-400">
         <em>{article.author}</em>
       </p>
@@ -43,9 +46,73 @@ const modalId = `modal-${article.id}`;
     </div>
   </div>
 
-  <div class="mt-auto pt-4">
-    <span class="text-sm font-medium text-pink-600 dark:text-pink-400 hover:underline">
-      {articleTranslations.readAbstract || 'read the abstract'} →
-    </span>
+  <div class={`mt-auto pt-4 flex ${hasLinks ? 'flex-col gap-2' : 'flex-wrap gap-3'}`}>
+    {hasLinks && article.links.map(link => {
+      const label = linkLabels[link.labelKey] || link.label || link.url;
+      return (
+        <a
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-base font-semibold text-pink-700 dark:text-pink-300 hover:text-pink-900 dark:hover:text-pink-100 flex items-center gap-1"
+          onclick="event.stopPropagation()"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+          </svg>
+          {label}
+        </a>
+      );
+    })}
+    {hasFile && !hasLinks && (
+      <button
+        type="button"
+        class="download-excerpt-btn text-base font-semibold text-pink-700 dark:text-pink-300 hover:text-pink-900 dark:hover:text-pink-100 flex items-center gap-1"
+        data-download-article={article.id}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+          <path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z" />
+          <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z" />
+        </svg>
+        {t('downloadExcerpt')}
+      </button>
+    )}
   </div>
 </article>
+
+<script>
+window.requestDownload = async function(articleId) {
+  try {
+    const response = await fetch('/api/download-status', { cache: 'no-store' });
+    const data = await response.json().catch(() => ({ ok: false }));
+    if (response.ok && data?.ok === true) {
+      const lang = document.documentElement.lang || 'en';
+      const link = document.createElement('a');
+      link.href = `/api/download?articleId=${encodeURIComponent(articleId)}&lang=${encodeURIComponent(lang)}`;
+      link.rel = 'noopener';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      return;
+    }
+  } catch {}
+
+  window.openDownloadModal?.(articleId);
+};
+
+function initDownloadButtons() {
+  document.querySelectorAll('[data-download-article]').forEach(btn => {
+    if (btn.dataset.downloadInitialized === 'true') return;
+    btn.dataset.downloadInitialized = 'true';
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const articleId = btn.getAttribute('data-download-article');
+      window.requestDownload?.(articleId);
+    });
+  });
+}
+
+initDownloadButtons();
+document.addEventListener('astro:page-load', initDownloadButtons);
+</script>

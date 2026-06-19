@@ -27,6 +27,7 @@ const articlesWithMeta = articles.map((article, index) => {
     thumbnailUrl: article.image ? `${images}/${article.image}` : null,
     hasLinks: article.links && article.links.length > 0,
     links: article.links || [],
+    file: article.file || null,
   };
 });
 ---
@@ -64,19 +65,33 @@ const articlesWithMeta = articles.map((article, index) => {
   </dialog>
 </div>
 
-<script define:vars={{ articlesWithMeta, publicationLabel, linkLabels, readDownload: t('readDownload') }}>
+<script define:vars={{ articlesWithMeta, publicationLabel, linkLabels, readDownload: t('readDownload'), downloadExcerpt: t('downloadExcerpt') }}>
 window.__articleData = articlesWithMeta;
 window.__publicationLabel = publicationLabel;
 window.__linkLabels = linkLabels;
 window.__readDownload = readDownload;
+window.__downloadExcerpt = downloadExcerpt;
 </script>
 
 <script>
+function showOverlay() {
+  document.getElementById('modal-overlay')?.classList.add('visible');
+}
+function hideOverlay() {
+  document.getElementById('modal-overlay')?.classList.remove('visible');
+}
+
 function renderArticleContent(article) {
   const label = window.__publicationLabel;
-  const links = article.hasLinks ? article.links.map(link => {
+  const linksHtml = article.hasLinks ? article.links.map(link => {
     const linkLabel = window.__linkLabels[link.labelKey] || link.label || link.url;
-    return `<li><a href="${link.url}" target="_blank" class="text-base text-pink-700 dark:text-pink-300 hover:text-pink-900 dark:hover:text-pink-100 underline" rel="noopener noreferrer">${linkLabel}</a></li>`;
+    return `<a href="${link.url}" target="_blank" class="text-base font-semibold text-pink-700 dark:text-pink-300 hover:text-pink-900 dark:hover:text-pink-100 flex items-center gap-1" rel="noopener noreferrer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+      </svg>
+      ${linkLabel}
+    </a>`;
   }).join('') : '';
 
   return `
@@ -98,22 +113,24 @@ function renderArticleContent(article) {
         <p class="text-gray-700 dark:text-gray-300">${article.summary}</p>
       </div>
     ` : ''}
+    ${article.file && !article.hasLinks ? `
+      <div class="mt-4 ml-[calc(5rem+1rem)] sm:ml-[calc(6rem+1rem)]">
+        <button
+          type="button"
+          class="button button-lg inline-flex items-center gap-2"
+          onclick="window.transitionToDownload?.('${article.id}')"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+            <path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z" />
+            <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z" />
+          </svg>
+          ${window.__downloadExcerpt}
+        </button>
+      </div>
+    ` : ''}
     ${article.hasLinks ? `
-      <div class="mt-4">
-        <details class="dropdown-button">
-          <summary class="cursor-pointer text-base font-semibold text-pink-700 dark:text-pink-300 hover:text-pink-900 dark:hover:text-pink-100 flex items-center gap-1">
-            <span class="icon-wrapper flex items-center justify-center w-6">
-              <span class="icon-before icon-external-link"></span>
-            </span>
-            <span class="dropdown-label">${window.__readDownload}</span>
-            <svg class="w-4 h-4 transition-transform flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
-          </summary>
-          <ul class="mt-2 ml-4 space-y-1">
-            ${links}
-          </ul>
-        </details>
+      <div class="mt-4 ml-[calc(5rem+1rem)] sm:ml-[calc(6rem+1rem)] flex flex-col gap-2">
+        ${linksHtml}
       </div>
     ` : ''}
   `;
@@ -140,6 +157,7 @@ function openModal(index) {
   updateNavButtons();
   
   dialog.showModal();
+  showOverlay();
   document.body.style.overflow = 'hidden';
   
   body.classList.remove('slide-out-left', 'slide-out-right', 'fade-out');
@@ -151,7 +169,7 @@ function openModal(index) {
   }, 200);
 }
 
-function closeModal() {
+function closeModal(opts) {
   if (isAnimating) return;
   isAnimating = true;
   
@@ -164,10 +182,38 @@ function closeModal() {
   
   setTimeout(() => {
     dialog.close();
-    document.body.style.overflow = '';
     body.classList.remove('fade-out');
     isOpen = false;
     isAnimating = false;
+    if (!opts?.keepOverlay) {
+      hideOverlay();
+      document.body.style.overflow = '';
+    }
+  }, 200);
+}
+
+function transitionToDownload(articleId) {
+  if (isAnimating) return;
+  isAnimating = true;
+
+  const dialog = document.getElementById('article-modal');
+  const body = document.querySelector('[data-modal-body]');
+
+  if (!dialog || !body) return;
+
+  body.classList.add('fade-out');
+
+  setTimeout(() => {
+    dialog.close();
+    body.classList.remove('fade-out');
+    isOpen = false;
+    isAnimating = false;
+
+    if (window.requestDownload) {
+      window.requestDownload(articleId);
+    } else {
+      window.openDownloadModal?.(articleId);
+    }
   }, 200);
 }
 
@@ -253,9 +299,16 @@ function setupOpenModalButtons() {
   });
 }
 
+window.openDownloadModal = window.openDownloadModal || function(){};
+window.closeDownloadModal = window.closeDownloadModal || function(){};
+window.transitionToDownload = transitionToDownload;
+
 document.addEventListener('keydown', (e) => {
   if (!isOpen) return;
-  
+
+  const downloadDialog = document.getElementById('download-modal');
+  if (downloadDialog?.open) return;
+
   if (e.key === 'Escape') {
     closeModal();
   } else if (e.key === 'ArrowLeft') {
@@ -296,8 +349,7 @@ document.addEventListener('astro:page-load', () => {
   }
 
   .article-modal::backdrop {
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(4px);
+    background: transparent;
   }
 
   .modal-content {

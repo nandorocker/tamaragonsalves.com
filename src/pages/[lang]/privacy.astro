@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { loadAllTranslations, getTranslationSync, getStaticPaths } from '../../utils/i18n';
+import type { Language } from '../../utils/i18n';
+
+export { getStaticPaths };
+
+const { lang } = Astro.params;
+const currentLang = (Astro.props.lang ?? lang ?? 'en') as Language;
+const allTranslations = await loadAllTranslations(currentLang, 'home');
+const t = (key: string) => getTranslationSync(allTranslations, key);
+---
+
+<BaseLayout title={t('privacyHeading')} pageTheme="white">
+    <section id="privacy" class="bg-white dark:bg-gray-800 contain-margins-y mt-10 sm:mt-20">
+        <div class="contain-medium section-margins-medium">
+            <h1 data-animate>{t('privacyHeading')}</h1>
+            <div class="dark:text-gray-300 mt-8 space-y-4" data-animate set:html={t('privacyContent')} />
+        </div>
+    </section>
+</BaseLayout>

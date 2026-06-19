@@ -3,6 +3,7 @@
     "id": "0",
     "theme": "destaque",
     "author": "Tamara Amoroso Gonsalves (coord.)",
+    "file": null,
     "publicationInfo": "Relatório de pesquisa, 2025",
     "image": "icon_research.png",
     "links": [
@@ -20,6 +21,7 @@
     "id": "1",
     "theme": "generoDireitosHumanos",
     "author": "Tamara Amoroso Gonsalves",
+    "file": "gonsalves-2019-echoes-brazil-remembering-forget.pdf",
     "publicationInfo": "Capítulo 4 do livro <em>Narratives of Memory, Migration, and Xenophobia in the European Union and Canada</em>, 2019.",
     "image": "icon_memorial.png",
     "links": []
@@ -28,6 +30,7 @@
     "id": "2",
     "theme": "generoDireitosHumanos",
     "author": "Tamara Amoroso Gonsalves",
+    "file": "gonsalves-2013-protecao-liberdade-sexual-feminina-dignidade-humana.pdf",
     "publicationInfo": "Livro <em>Manual dos Direitos da Mulher</em>, coord. Carolina Valença Ferraz et al., Editora Saraiva, 2013.",
     "image": "icon_sexualrights.png",
     "links": []
@@ -36,6 +39,7 @@
     "id": "3",
     "theme": "generoDireitosHumanos",
     "author": "Tamara Amoroso Gonsalves",
+    "file": "gonsalves-2012-educacao-nao-sexista-antidiscriminatoria-igualdade.pdf",
     "publicationInfo": "Livro <em>Cidadania Plural e Diversidade</em>, coord. Carolina Valença Ferraz, Glauber Salomão Leite e Paulla Christianne da Costa Newton, Editora Verbatim, 2012.",
     "image": "icon_justice.png",
     "links": []
@@ -44,6 +48,7 @@
     "id": "4",
     "theme": "generoDireitosHumanos",
     "author": "Tamara Amoroso Gonsalves, Gabriela Cunha Ferraz",
+    "file": "gonsalves-ferraz-2011-direitos-humanos-mulheres-pauta-feminicidios-juarez.pdf",
     "publicationInfo": "Revista da AJURIS, v. 38, n. 122, Junho de 2011.",
     "image": "icon_violence.png",
     "links": []
@@ -52,6 +57,7 @@
     "id": "5",
     "theme": "generoDireitosHumanos",
     "author": "Tamara Amoroso Gonsalves, Thaís de Souza Lapa",
+    "file": "gonsalves-lapa-2011-direitos-humanos-mulheres-retrocessos-sexuais-reprodutivos.pdf",
     "publicationInfo": "Relatório <em>Direitos Humanos no Brasil 2011</em>.",
     "image": "icon_sexualrights.png",
     "links": []
@@ -60,6 +66,7 @@
     "id": "6",
     "theme": "generoDireitosHumanos",
     "author": "Tamara Amoroso Gonsalves, Gabriela Cunha Ferraz",
+    "file": "gonsalves-ferraz-2013-homoafetividade-direito-internacional-publico.pdf",
     "publicationInfo": "Livro <em>Direito e Desenvolvimento Humano Sustentável</em>, 2013.",
     "image": "icon_justice.png",
     "links": []
@@ -68,6 +75,7 @@
     "id": "7",
     "theme": "generoDireitosHumanos",
     "author": "Tamara Amoroso Gonsalves, Flávia Piovesan",
+    "file": "gonsalves-piovesan-2011-genero-stf.pdf",
     "publicationInfo": "Livro <em>Direitos Fundamentais no STF: Balanço e Crítica</em>, 2011.",
     "image": "icon_justice.png",
     "links": []
@@ -76,6 +84,7 @@
     "id": "8",
     "theme": "generoDireitosHumanos",
     "author": "Tamara Amoroso Gonsalves, Thaís de Souza Lapa",
+    "file": "gonsalves-lapa-2010-instrumentos-juridicos-aborto-tribunais-brasileiros.pdf",
     "publicationInfo": "Livro <em>Direitos Reprodutivos e o Sistema Judiciário Brasileiro</em>, org. Margareth Arilha, Thaís de Souza Lapa e Tatiane Crenn Pisaneschi, Comissão de Cidadania e Reprodução (CCR), 2010.",
     "image": "icon_justice.png",
     "links": []
@@ -84,6 +93,7 @@
     "id": "9",
     "theme": "generoDireitosHumanos",
     "author": "Tamara Amoroso Gonsalves",
+    "file": "gonsalves-2010-trafico-mulheres-exploracao-sexual-comercial.pdf",
     "publicationInfo": "Livro <em>Mulher, Sociedade e Direitos Humanos</em>, org. Patrícia Tuma Martins Bertolin e Ana Claudia Pompeu Torezan Andreucci, Editora Rideel, 2010.",
     "image": "icon_violence.png",
     "links": []
@@ -92,6 +102,7 @@
     "id": "10",
     "theme": "generoDireitosHumanos",
     "author": "Tamara Amoroso Gonsalves, Thaís de Souza Lapa",
+    "file": "gonsalves-lapa-2010-aborto-religiao-tribunais-brasileiros.pdf",
     "publicationInfo": "Livro <em>Direito à Reprodução e à Sexualidade: Uma Questão de Ética e Justiça</em>, org. Samantha Buglione e Miriam Ventura, Lumen Juris Editora, 2010.",
     "image": "icon_justice.png",
     "links": []
@@ -100,6 +111,7 @@
     "id": "11",
     "theme": "generoDireitosHumanos",
     "author": "Tamara Amoroso Gonsalves, Thaís de Souza Lapa",
+    "file": "gonsalves-lapa-2010-contracepcao-emergencia-judiciario-brasileiro.pdf",
     "publicationInfo": "Livro <em>Direitos Humanos: Uma Reflexão Plural e Emancipatória</em>, 2010.",
     "image": "icon_sexualrights.png",
     "links": []
@@ -108,6 +120,7 @@
     "id": "12",
     "theme": "generoDireitosHumanos",
     "author": "Tamara Amoroso Gonsalves",
+    "file": "gonsalves-2013-trafico-meninas-mulheres-exploracao-sexual-comercial.pdf",
     "publicationInfo": "Livro <em>Tráfico de Pessoas: Uma Abordagem para os Direitos Humanos</em>, 2013.",
     "image": "icon_violence.png",
     "links": []
@@ -116,6 +129,7 @@
     "id": "13",
     "theme": "generoDireitosHumanos",
     "author": "Tamara Amoroso Gonsalves, Helena Pires",
+    "file": "gonsalves-pires-2007-trafico-exploracao-sexual-mulheres-meninas-brasil.pdf",
     "publicationInfo": "Livro <em>Direitos Humanos: Fundamento, Proteção e Implementação - Perspectivas e Desafios Contemporâneos</em>, Volume II, 2007.",
     "image": "icon_violence.png",
     "links": []
@@ -124,6 +138,7 @@
     "id": "14",
     "theme": "criancasConsumidor",
     "author": "Tamara Amoroso Gonsalves",
+    "file": "gonsalves-2014-regulamentacao-publicidade-dirigida-criancas.pdf",
     "publicationInfo": "Revista Luso-Brasileira de Direito do Consumo, Vol. IV, n. 14, 2014.",
     "image": "icon_children.png",
     "links": []
@@ -132,6 +147,7 @@
     "id": "15",
     "theme": "criancasConsumidor",
     "author": "Tamara Amoroso Gonsalves",
+    "file": "gonsalves-2011-impactos-publicidade-alimentos-dirigida-criancas.pdf",
     "publicationInfo": "Revista Luso-Brasileira de Direito do Consumo, Vol. I, n. 4, 2011.",
     "image": "icon_children.png",
     "links": []
@@ -140,6 +156,7 @@
     "id": "16",
     "theme": "criancasConsumidor",
     "author": "Tamara Amoroso Gonsalves",
+    "file": "gonsalves-2012-criancas-adolescentes-deficiencia-protecao-integral.pdf",
     "publicationInfo": "Manual dos Direitos da Pessoa com Deficiência, 2012.",
     "image": "icon_children.png",
     "links": []
@@ -148,6 +165,7 @@
     "id": "17",
     "theme": "criancasConsumidor",
     "author": "Tamara Amoroso Gonsalves",
+    "file": "gonsalves-2009-protecao-vulnerabilidade-infantil-comunicacao-mercadorica.pdf",
     "publicationInfo": "Livro Cuidado e Vulnerabilidade, coord. Tânia da Silva Pereira e Guilherme de Oliveira, Editora Atlas, 2009.",
     "image": "icon_children.png",
     "links": []
@@ -156,6 +174,7 @@
     "id": "18",
     "theme": "criancasConsumidor",
     "author": "Tamara Amoroso Gonsalves, Luiza Ferreira Lima",
+    "file": "gonsalves-lima-2013-direito-alimentacao-infantil-publicidade-alimentos.pdf",
     "publicationInfo": "Livro Psicobiologia do Comportamento Alimentar, org. Sebastião de Sousa Almeida et al., Editora Rubio, 2013.",
     "image": "icon_children.png",
     "links": []
@@ -164,6 +183,7 @@
     "id": "19",
     "theme": "criancasConsumidor",
     "author": "Tamara Amoroso Gonsalves, Isabella Henriques",
+    "file": "gonsalves-henriques-2013-publicidade-dirigida-criancas-caso-brasileiro.pdf",
     "publicationInfo": "Livro Publicidade de Alimentos e Crianças: Regulação no Brasil e no Mundo, coord. Isabella Henriques e Veet Vivarta, Editora Saraiva, 2013.",
     "image": "icon_children.png",
     "links": []
@@ -172,6 +192,7 @@
     "id": "20",
     "theme": "criancasConsumidor",
     "author": "Tamara Amoroso Gonsalves, Thaisa Melo",
+    "file": "gonsalves-melo-2015-recall-brasil-desafios-perspectivas.pdf",
     "publicationInfo": "Revista dos Tribunais, vol. 960, ano 104, Outubro de 2015.",
     "image": "icon_children.png",
     "links": []

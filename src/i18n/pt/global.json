@@ -81,5 +81,29 @@
   "aboutConclusionHeading": "Leituras Adicionais",
   "aboutConclusionPara1": "Acredito que a verdadeira mudança acontece na interseção entre políticas de alto nível e a ação liderada pela comunidade. Convido você a ",
   "aboutConclusionLinkText": "explorar meu CV",
-  "aboutConclusionPara2": " para um olhar mais detalhado sobre minha trajetória profissional e os marcos que definiram meu compromisso com um mundo mais justo e equitativo, particularmente para mulheres e crianças."
+  "aboutConclusionPara2": " para um olhar mais detalhado sobre minha trajetória profissional e os marcos que definiram meu compromisso com um mundo mais justo e equitativo, particularmente para mulheres e crianças.",
+
+  "downloadExcerpt": "Baixar trecho",
+  "downloadModalHeading": "Baixar esta publicação",
+  "downloadModalSubheading": "Insira seu email para receber o link de download.",
+  "downloadModalEmailLabel": "Email",
+  "downloadModalEmailPlaceholder": "seu@email.com",
+  "downloadModalPrivacyPrefix": "Li e aceito a",
+  "downloadModalPrivacyLink": "Política de Privacidade",
+  "downloadModalAnd": "e",
+  "downloadModalTermsLink": "Termos e Condições",
+  "downloadModalUpdatesLabel": "Quero receber atualizações de Tamara Amoroso Gonsalves",
+  "downloadModalSubmit": "Registrar para baixar",
+  "downloadModalSuccess": "Verifique seu email para confirmar seu endereço.",
+  "downloadModalVerifiedHeading": "Obrigada, tudo certo!",
+  "downloadModalVerifiedBody": "Seu download deve começar em instantes. Se não começar, {link}.",
+  "downloadModalVerifiedLink": "clique aqui",
+  "downloadModalError": "Algo deu errado. Tente novamente.",
+  "downloadModalDisclaimer": "Todo o conteúdo disponibilizado nesta página — incluindo livros, capítulos, artigos, relatórios de pesquisa e artigos de opinião — é protegido por direitos de autor e está disponível para leitura e download exclusivamente para fins pessoais, educacionais e de pesquisa não comercial. Qualquer citação, reprodução ou uso deste material, total ou parcial, deve creditar adequadamente a autoria e a fonte original (incluindo título, veículo de publicação e ano). Reprodução, distribuição ou uso comercial sem a devida atribuição e sem autorização prévia da autora não são permitidos.",
+
+  "privacyHeading": "Política de Privacidade",
+  "privacyContent": "<p>Tamara Amoroso Gonsalves respeita sua privacidade. Esta página descreve quais dados coletamos quando você solicita um download e como os utilizamos.</p><p><strong>O que coletamos:</strong> Seu endereço de email e sua preferência em relação a atualizações.</p><p><strong>Por que coletamos:</strong> Para enviar o link de download que você solicitou e (somente se você optar) para compartilhar ocasionalmente novas publicações e atualizações.</p><p><strong>Por quanto tempo mantemos:</strong> Mantemos seu email até que você solicite sua remoção.</p><p><strong>Seus direitos:</strong> Você pode solicitar acesso, correção ou exclusão de seus dados a qualquer momento, enviando um email para <a href=\"mailto:info@tamaragonsalves.com\">info@tamaragonsalves.com</a>.</p><p><strong>Terceiros:</strong> Não vendemos, alugamos ou compartilhamos seus dados com terceiros. Utilizamos o Resend para entregar o email de download; a política de privacidade do Resend se aplica a essa transação.</p><p><strong>Contato:</strong> <a href=\"mailto:info@tamaragonsalves.com\">info@tamaragonsalves.com</a></p>",
+
+  "termsHeading": "Termos e Condições",
+  "termsContent": "<p>Ao baixar qualquer publicação deste site, você concorda com o seguinte:</p><p><strong>1. Uso permitido:</strong> O conteúdo é fornecido exclusivamente para fins pessoais, educacionais e de pesquisa não comercial.</p><p><strong>2. Atribuição:</strong> Qualquer citação, reprodução ou uso deste material, total ou parcial, deve creditar adequadamente a autoria e a fonte original (título, veículo de publicação, ano).</p><p><strong>3. Uso proibido:</strong> Reprodução, distribuição ou uso comercial sem a devida atribuição e sem autorização prévia da autora não são permitidos.</p><p><strong>4. Direitos autorais:</strong> Todo o conteúdo é protegido por direitos autorais e permanece propriedade intelectual de Tamara Amoroso Gonsalves e/ou dos editores originais.</p><p><strong>5. Isenção de responsabilidade:</strong> O conteúdo é fornecido \"como está\", sem qualquer tipo de garantia.</p><p><strong>6. Alterações:</strong> Estes termos podem ser atualizados a qualquer momento. O uso continuado constitui aceitação.</p>"
 }

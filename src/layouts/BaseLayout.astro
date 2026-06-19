@@ -98,7 +98,12 @@ const bodyBgClass = bodyBgColors[pageTheme];
 
     <!-- Footer -->
     <footer class="bg-gray-800 dark:bg-gray-950 text-gray-500 dark:text-gray-400 text-center pt-16 pb-10">
-        &copy; {getCurrentYear()}, Tamara Amoroso Gonsalves, All Rights Reserved.
+        <div class="mb-4">
+            <a href={`/${lang}/privacy`} class="hover:text-white transition-colors">{getTranslationSync(translations, 'privacyHeading')}</a>
+            <span class="mx-2">·</span>
+            <a href={`/${lang}/terms`} class="hover:text-white transition-colors">{getTranslationSync(translations, 'termsHeading')}</a>
+        </div>
+        <div>&copy; {getCurrentYear()}, Tamara Amoroso Gonsalves, All Rights Reserved.</div>
     </footer>
 
     <!-- Scripts -->

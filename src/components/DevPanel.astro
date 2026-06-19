@@ -1,0 +1,113 @@
+---
+const isDev = import.meta.env.DEV;
+---
+
+{isDev && (
+  <div
+    id="dev-panel"
+    class="fixed bottom-4 right-4 z-[100] font-mono text-xs"
+    data-dev-panel
+  >
+    <div class="relative w-10 h-10" data-dev-panel-anchor>
+      <button
+        type="button"
+        class="absolute bottom-0 right-0 w-10 h-10 rounded-md bg-gray-900 text-yellow-300 shadow-lg flex items-center justify-center font-bold border border-gray-700 hover:bg-gray-800"
+        aria-label="Open dev tools"
+        aria-expanded="false"
+        data-dev-panel-toggle
+      >
+        🛠
+      </button>
+
+      <div
+        class="hidden absolute bottom-12 right-0 w-64 rounded-lg bg-gray-900/95 text-white shadow-lg p-3 flex flex-col gap-2"
+        data-dev-panel-card
+      >
+        <div class="flex items-center justify-between gap-3">
+          <span class="font-bold tracking-wide uppercase text-yellow-300">Dev tools</span>
+          <button
+            type="button"
+            class="text-gray-300 hover:text-white"
+            aria-label="Close dev tools"
+            data-dev-panel-close
+          >
+            ×
+          </button>
+        </div>
+        <button
+          type="button"
+          class="rounded bg-pink-600 hover:bg-pink-500 px-3 py-1.5 text-left disabled:opacity-50"
+          data-dev-clear-download-gate
+        >
+          Clear download gate
+        </button>
+        <p class="text-gray-300 leading-snug">
+          Clears the local tg_download_gate cookie so the registration modal reappears.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function initDevPanel() {
+      const panel = document.querySelector('[data-dev-panel]');
+      if (!panel) return;
+      if ((panel as HTMLElement).dataset.devPanelInitialized === 'true') return;
+      (panel as HTMLElement).dataset.devPanelInitialized = 'true';
+
+      const toggleBtn = panel.querySelector('[data-dev-panel-toggle]') as HTMLButtonElement | null;
+      const closeBtn = panel.querySelector('[data-dev-panel-close]') as HTMLButtonElement | null;
+      const card = panel.querySelector('[data-dev-panel-card]') as HTMLElement | null;
+
+      function setOpen(open: boolean) {
+        if (!toggleBtn || !card) return;
+        if (open) {
+          card.classList.remove('hidden');
+          toggleBtn.setAttribute('aria-expanded', 'true');
+        } else {
+          card.classList.add('hidden');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      }
+
+      toggleBtn?.addEventListener('click', () => {
+        const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
+        setOpen(!isOpen);
+      });
+
+      closeBtn?.addEventListener('click', () => setOpen(false));
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && toggleBtn?.getAttribute('aria-expanded') === 'true') {
+          setOpen(false);
+        }
+      });
+
+      const clearBtn = panel.querySelector('[data-dev-clear-download-gate]') as HTMLButtonElement | null;
+      clearBtn?.addEventListener('click', async () => {
+        if (!clearBtn) return;
+        clearBtn.disabled = true;
+        const original = clearBtn.textContent;
+        clearBtn.textContent = 'Clearing…';
+        try {
+          const response = await fetch('/api/dev/clear-download-gate', { cache: 'no-store' });
+          if (response.ok) {
+            clearBtn.textContent = 'Cleared. Reloading…';
+            setTimeout(() => window.location.reload(), 250);
+          } else {
+            clearBtn.textContent = 'Failed';
+            setTimeout(() => { clearBtn.textContent = original; clearBtn.disabled = false; }, 1500);
+          }
+        } catch {
+          clearBtn.textContent = 'Failed';
+          setTimeout(() => { clearBtn.textContent = original; clearBtn.disabled = false; }, 1500);
+        }
+      });
+
+      setOpen(false);
+    }
+
+    initDevPanel();
+    document.addEventListener('astro:page-load', initDevPanel);
+  </script>
+)}

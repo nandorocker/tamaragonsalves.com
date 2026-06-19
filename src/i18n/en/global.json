@@ -81,5 +81,29 @@
   "aboutConclusionHeading": "Further Reading",
   "aboutConclusionPara1": "I believe that true change happens at the intersection of high-level policy and community-led action. I invite you to ",
   "aboutConclusionLinkText": "explore my CV",
-  "aboutConclusionPara2": " for a more detailed look at my professional journey and the milestones that have defined my commitment to a more just and equitable world, particularly for women and children."
+  "aboutConclusionPara2": " for a more detailed look at my professional journey and the milestones that have defined my commitment to a more just and equitable world, particularly for women and children.",
+
+  "downloadExcerpt": "Download excerpt",
+  "downloadModalHeading": "Download this publication",
+  "downloadModalSubheading": "Enter your email to receive the download link.",
+  "downloadModalEmailLabel": "Email",
+  "downloadModalEmailPlaceholder": "your@email.com",
+  "downloadModalPrivacyPrefix": "I have read and accept the",
+  "downloadModalPrivacyLink": "Privacy Policy",
+  "downloadModalAnd": "and",
+  "downloadModalTermsLink": "Terms and Conditions",
+  "downloadModalUpdatesLabel": "I want to receive updates from Tamara Amoroso Gonsalves",
+  "downloadModalSubmit": "Register to download",
+  "downloadModalSuccess": "Check your email to confirm your address.",
+  "downloadModalVerifiedHeading": "Thanks, you're all set!",
+  "downloadModalVerifiedBody": "Your download should start in a moment. If it doesn't, {link}.",
+  "downloadModalVerifiedLink": "click here",
+  "downloadModalError": "Something went wrong. Please try again.",
+  "downloadModalDisclaimer": "All content made available on this page — including books, book chapters, articles, research reports, and opinion pieces — is protected by copyright and is provided for reading and download for personal, educational, and non-commercial research purposes only. Any citation, reproduction, or use of this material, in whole or in part, must properly credit the authorship and original source (including title, publication venue, and year). Reproduction, distribution, or commercial use without proper attribution and without the author's prior consent is not permitted.",
+
+  "privacyHeading": "Privacy Policy",
+  "privacyContent": "<p>Tamara Amoroso Gonsalves respects your privacy. This page describes what data we collect when you request a download and how we use it.</p><p><strong>What we collect:</strong> Your email address and your preference regarding updates.</p><p><strong>Why we collect it:</strong> To send you the download link you requested, and (only if you opt in) to occasionally share new publications and updates.</p><p><strong>How long we keep it:</strong> We retain your email until you ask us to remove it.</p><p><strong>Your rights:</strong> You can request access to, correction of, or deletion of your data at any time by emailing <a href=\"mailto:info@tamaragonsalves.com\">info@tamaragonsalves.com</a>.</p><p><strong>Third parties:</strong> We do not sell, rent, or share your data with third parties. We use Resend to deliver the download email; their privacy policy applies to that transaction.</p><p><strong>Contact:</strong> <a href=\"mailto:info@tamaragonsalves.com\">info@tamaragonsalves.com</a></p>",
+
+  "termsHeading": "Terms and Conditions",
+  "termsContent": "<p>By downloading any publication from this site, you agree to the following:</p><p><strong>1. Permitted use:</strong> The content is provided for personal, educational, and non-commercial research purposes only.</p><p><strong>2. Attribution:</strong> Any citation, reproduction, or use of this material, in whole or in part, must properly credit the authorship and original source (title, publication venue, year).</p><p><strong>3. Prohibited use:</strong> Reproduction, distribution, or commercial use without proper attribution and without the author's prior consent is not permitted.</p><p><strong>4. Copyright:</strong> All content is protected by copyright and remains the intellectual property of Tamara Amoroso Gonsalves and/or the original publishers.</p><p><strong>5. No warranty:</strong> The content is provided \"as is\" without warranty of any kind.</p><p><strong>6. Changes:</strong> These terms may be updated at any time. Continued use constitutes acceptance.</p>"
 }

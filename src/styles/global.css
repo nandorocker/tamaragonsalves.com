@@ -378,17 +378,48 @@
   /* Books List */
   /* Container for the book grid */
   .book-grid {
-    @apply w-full mb-16;
+    @apply grid gap-10 mb-16 items-start;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    .book-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   /* Container for a book item */
   .book-item {
-    @apply mb-16 flex flex-col sm:grid sm:grid-cols-[1fr_2fr] sm:gap-8;
+    @apply flex flex-col;
+  }
+
+  @media (min-width: 768px) {
+    .book-item {
+      @apply grid grid-cols-[1fr_2fr] gap-8;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .book-item {
+      display: flex;
+      grid-template-columns: unset;
+      gap: 0;
+    }
   }
 
   /* Book Cover */
+  .book-cover-link {
+    @apply flex items-end justify-center mb-6;
+  }
+
+  @media (min-width: 1024px) {
+    .book-cover-link {
+      @apply h-72;
+    }
+  }
+
   .book-image {
-    @apply max-sm:mx-auto max-sm:max-w-40 md:w-full mb-6 shadow-lg rounded-md;
+    @apply max-h-72 w-auto max-w-56 shadow-lg rounded-md object-contain;
   }
 
   /* Title and author container */
@@ -441,6 +472,18 @@
   @media (min-width: 1280px) {
     .article-grid {
       grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Projects grid */
+  .project-grid {
+    @apply grid gap-6 mb-16 items-stretch;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @media (min-width: 768px) {
+    .project-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
@@ -722,4 +765,26 @@
   .mobile-menu-open #language-switcher-trigger:hover {
     @apply text-purple-100 border-purple-100;
   }
+}
+
+/* Shared modal overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-out;
+}
+
+.modal-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.2s ease-out;
+}
+
+.modal-overlay:not(.visible) {
+  transition: none;
 }

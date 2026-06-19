@@ -3,9 +3,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import BookCard from '../../components/BookCard.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import ArticleModal from '../../components/ArticleModal.astro';
-import ProjectCard from '../../components/ProjectCard.astro';
+import DownloadModal from '../../components/DownloadModal.astro';
+import ProjectCardHorizontal from '../../components/ProjectCardHorizontal.astro';
 import Button from '../../components/Button.astro';
 import OrcidIcon from '../../components/OrcidIcon.astro';
+import DevPanel from '../../components/DevPanel.astro';
 import { loadAllTranslations, getTranslationSync, getStaticPaths } from '../../utils/i18n';
 import type { Language } from '../../utils/i18n';
 import booksData from '../../data/books.json';
@@ -49,19 +51,23 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
                 </Button>
             </div>
 
-	            <h2 data-animate>{t('publicationsBooksSubheading')}</h2>
-				<div class="book-grid" data-stagger>
-                {booksData.map(book => (
-                    <div data-animate>
-                        <BookCard 
-                            book={book}
-                            bookTranslations={bookTranslations}
-                            lang={currentLang}
-                        />
-                    </div>
-                ))}
-           		</div>
+	            </div>
 	        </div>
+
+			<div class="contain-medium px-5 md:px-12 mt-16">
+				<h2 data-animate>{t('publicationsBooksSubheading')}</h2>
+				<div class="book-grid mt-6" data-stagger>
+					{booksData.map(book => (
+						<div data-animate>
+							<BookCard
+								book={book}
+								bookTranslations={bookTranslations}
+								lang={currentLang}
+							/>
+						</div>
+					))}
+				</div>
+			</div>
 
 			<div class="contain-medium px-5 md:px-12 mt-16">
 				<h2 data-animate>{t('publicationsArticlesSubheading')}</h2>
@@ -90,30 +96,40 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 					))}
 				</div>
 
-				<ArticleModal
-					articles={articlesData}
-					articleTranslations={articleTranslations}
-					lang={currentLang}
-					publicationLabel={t('publicationLabel')}
-				/>
+			<ArticleModal
+				articles={articlesData}
+				articleTranslations={articleTranslations}
+				lang={currentLang}
+				publicationLabel={t('publicationLabel')}
+			/>
+
+			<DownloadModal
+				articles={articlesData}
+				lang={currentLang}
+			/>
+
+			<div id="modal-overlay" class="modal-overlay" aria-hidden="true"></div>
 			</div>
 
-	        <div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto mt-16 mb-16" data-stagger>
-	                <h2 data-animate>{t('publicationsOtherProjectsSubheading')}</h2>
-	            {projectsData.map(project => (
-                <div data-animate>
-                    <ProjectCard 
-                        id={project.id}
-                        imageUrl={project.imageUrl}
-                        linkUrl={project.linkUrl}
-                        linkIcon={project.linkIcon}
-                        lang={currentLang}
-                    />
-                </div>
-            ))}
-	        </div>
+			<div class="contain-medium px-5 md:px-12 mt-16">
+				<h2 data-animate>{t('publicationsOtherProjectsSubheading')}</h2>
+				<div class="project-grid mt-6" data-stagger>
+					{projectsData.map(project => (
+						<div data-animate>
+							<ProjectCardHorizontal
+								id={project.id}
+								imageUrl={project.imageUrl}
+								linkUrl={project.linkUrl}
+								linkIcon={project.linkIcon}
+								lang={currentLang}
+							/>
+						</div>
+					))}
+				</div>
+			</div>
 	    </div>
 	</section>
+	<DevPanel />
 </BaseLayout>
 
 <style>

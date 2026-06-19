@@ -1,0 +1,354 @@
+---
+import type { Language } from '../utils/i18n';
+import { useTranslations } from '../utils/i18n';
+
+interface Props {
+  articles: Record<string, any>[];
+  lang: string;
+}
+
+const { articles, lang } = Astro.props;
+const t = useTranslations(lang as Language);
+
+const langPrefix = `/${lang}`;
+
+const articlesWithFile = articles
+  .filter(a => a.file)
+  .map(a => ({
+    id: a.id,
+    file: a.file,
+    author: a.author || '',
+  }));
+---
+
+<div id="download-modal-root" class="download-modal-root" data-download-modal-root>
+  <dialog
+    id="download-modal"
+    class="download-modal"
+    data-download-modal
+    aria-modal="true"
+    role="dialog"
+  >
+    <div class="modal-content">
+      <button class="modal-close" data-download-modal-close aria-label="Close dialog">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div class="modal-body">
+        <div id="download-form-container">
+          <h3 class="text-size-h5 mb-2 pr-10">{t('downloadModalHeading')}</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-6">{t('downloadModalSubheading')}</p>
+
+          <form id="download-form" class="space-y-4">
+            <input type="hidden" id="download-article-id" value="" />
+
+            <div>
+              <label for="download-email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                {t('downloadModalEmailLabel')}
+              </label>
+              <input
+                type="email"
+                id="download-email"
+                name="email"
+                required
+                placeholder={t('downloadModalEmailPlaceholder')}
+                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#4a2083] focus:border-[#4a2083] dark:bg-gray-700 dark:text-white"
+              />
+            </div>
+
+            <div class="space-y-2">
+              <label class="flex items-start gap-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  id="download-privacy"
+                  name="acceptPrivacy"
+                  required
+                  class="mt-1 h-4 w-4 rounded border-gray-300 text-[#4a2083] focus:ring-[#4a2083]"
+                />
+                <span class="text-sm text-gray-600 dark:text-gray-400">
+                  {t('downloadModalPrivacyPrefix')}
+                  <a href={`${langPrefix}/privacy`} target="_blank" class="text-pink-700 dark:text-pink-300 hover:underline">{t('downloadModalPrivacyLink')}</a>
+                  {t('downloadModalAnd')}
+                  <a href={`${langPrefix}/terms`} target="_blank" class="text-pink-700 dark:text-pink-300 hover:underline">{t('downloadModalTermsLink')}</a>
+                </span>
+              </label>
+
+              <label class="flex items-start gap-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  id="download-updates"
+                  name="acceptUpdates"
+                  class="mt-1 h-4 w-4 rounded border-gray-300 text-[#4a2083] focus:ring-[#4a2083]"
+                />
+                <span class="text-sm text-gray-600 dark:text-gray-400">{t('downloadModalUpdatesLabel')}</span>
+              </label>
+            </div>
+
+            <button
+              type="submit"
+              id="download-submit"
+              class="button button-lg w-full justify-center"
+            >
+              {t('downloadModalSubmit')}
+            </button>
+
+            <div id="download-error" class="hidden text-sm text-red-600 dark:text-red-400 mt-2"></div>
+          </form>
+        </div>
+
+        <div id="download-success" class="hidden text-center py-8">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-green-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <p class="text-lg font-semibold text-gray-900 dark:text-white">{t('downloadModalSuccess')}</p>
+        </div>
+
+        <div id="download-success-verified" class="hidden text-center py-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-green-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <p class="text-lg font-semibold text-gray-900 dark:text-white mb-2">{t('downloadModalVerifiedHeading')}</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            {(() => {
+              const body = t('downloadModalVerifiedBody');
+              const linkText = t('downloadModalVerifiedLink');
+              const placeholder = `{${'link'}}`;
+              const idx = body.indexOf(placeholder);
+              if (idx === -1) return body;
+              const before = body.slice(0, idx);
+              const after = body.slice(idx + placeholder.length);
+              return (
+                <>
+                  {before}
+                  <a href="#" id="download-verified-link" class="text-pink-700 dark:text-pink-300 hover:underline">{linkText}</a>
+                  {after}
+                </>
+              );
+            })()}
+          </p>
+        </div>
+
+        <p id="download-disclaimer" class="text-xs text-gray-500 dark:text-gray-400 mt-6 leading-relaxed">{t('downloadModalDisclaimer')}</p>
+      </div>
+    </div>
+  </dialog>
+</div>
+
+<script define:vars={{ articlesWithFile, downloadLang: lang, downloadSubmitText: t('downloadModalSubmit') }}>
+window.__downloadArticles = articlesWithFile;
+window.__downloadLang = downloadLang;
+window.__downloadSubmitText = downloadSubmitText;
+</script>
+
+<script>
+function initDownloadModal() {
+  const dialog = document.getElementById('download-modal');
+  const closeBtn = dialog?.querySelector('[data-download-modal-close]');
+  const modalContent = dialog?.querySelector('.modal-content');
+  const form = document.getElementById('download-form') as HTMLFormElement;
+  const errorEl = document.getElementById('download-error');
+  const successEl = document.getElementById('download-success');
+  const successVerifiedEl = document.getElementById('download-success-verified');
+  const verifiedLinkEl = document.getElementById('download-verified-link') as HTMLAnchorElement | null;
+  const formContainer = document.getElementById('download-form-container');
+  const submitBtn = document.getElementById('download-submit') as HTMLButtonElement;
+  const articleIdInput = document.getElementById('download-article-id') as HTMLInputElement;
+  const disclaimerEl = document.getElementById('download-disclaimer');
+
+  if (!dialog) return;
+  if (dialog.dataset.initialized === 'true') return;
+  dialog.dataset.initialized = 'true';
+
+  function showOverlay() {
+    document.getElementById('modal-overlay')?.classList.add('visible');
+  }
+  function hideOverlay() {
+    document.getElementById('modal-overlay')?.classList.remove('visible');
+  }
+
+  function openDownloadModal(articleId) {
+    const article = window.__downloadArticles?.find(a => a.id === articleId);
+    if (!article) return;
+
+    articleIdInput.value = articleId;
+    form?.reset();
+    errorEl?.classList.add('hidden');
+    successEl?.classList.add('hidden');
+    successVerifiedEl?.classList.add('hidden');
+    formContainer?.classList.remove('hidden');
+    disclaimerEl?.classList.remove('hidden');
+
+    dialog.showModal();
+    showOverlay();
+    document.body.style.overflow = 'hidden';
+
+    modalContent?.classList.remove('fade-out');
+    modalContent?.classList.add('fade-in');
+    setTimeout(() => modalContent?.classList.remove('fade-in'), 200);
+  }
+
+  function closeDownloadModal() {
+    if (!dialog.open) return;
+
+    modalContent?.classList.remove('fade-in');
+    modalContent?.classList.add('fade-out');
+    setTimeout(() => {
+      hideOverlay();
+      document.body.style.overflow = '';
+      dialog.close();
+      modalContent?.classList.remove('fade-out');
+    }, 200);
+  }
+
+  window.openDownloadModal = openDownloadModal;
+  window.closeDownloadModal = closeDownloadModal;
+
+  closeBtn?.addEventListener('click', closeDownloadModal);
+
+  dialog.addEventListener('click', (e) => {
+    if (e.target === dialog) closeDownloadModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && dialog.open) {
+      e.stopImmediatePropagation();
+      closeDownloadModal();
+    }
+  });
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = (document.getElementById('download-email') as HTMLInputElement)?.value;
+    const acceptPrivacy = (document.getElementById('download-privacy') as HTMLInputElement)?.checked;
+    const acceptUpdates = (document.getElementById('download-updates') as HTMLInputElement)?.checked;
+    const articleId = articleIdInput?.value;
+
+    if (!email || !acceptPrivacy) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = '...';
+    errorEl?.classList.add('hidden');
+
+    try {
+      const response = await fetch('/api/request-download', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, articleId, acceptPrivacy, acceptUpdates, lang: window.__downloadLang || 'en' }),
+      });
+
+      const data = await response.json();
+
+      if (data.redirectUrl) {
+        const lang = window.__downloadLang || 'en';
+        const downloadUrl = `${data.redirectUrl}${data.redirectUrl.includes('lang=') ? '' : `&lang=${encodeURIComponent(lang)}`}`;
+
+        if (verifiedLinkEl) verifiedLinkEl.href = downloadUrl;
+
+        formContainer?.classList.add('hidden');
+        errorEl?.classList.add('hidden');
+        successVerifiedEl?.classList.remove('hidden');
+        disclaimerEl?.classList.add('hidden');
+
+        const trigger = document.createElement('a');
+        trigger.href = downloadUrl;
+        trigger.rel = 'noopener';
+        document.body.appendChild(trigger);
+        trigger.click();
+        document.body.removeChild(trigger);
+      } else if (data.success) {
+        formContainer?.classList.add('hidden');
+        successEl?.classList.remove('hidden');
+        disclaimerEl?.classList.add('hidden');
+        setTimeout(() => closeDownloadModal(), 3000);
+      } else {
+        errorEl.textContent = data.error || 'Something went wrong. Please try again.';
+        errorEl.classList.remove('hidden');
+      }
+    } catch {
+      errorEl.textContent = 'Something went wrong. Please try again.';
+      errorEl.classList.remove('hidden');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = window.__downloadSubmitText || 'Register to download';
+    }
+  });
+}
+
+initDownloadModal();
+document.addEventListener('astro:page-load', initDownloadModal);
+</script>
+
+<style>
+  .download-modal-root {
+    display: contents;
+  }
+
+  .download-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    max-width: 100vw;
+    max-height: 100vh;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    background: transparent;
+    border: none;
+    overflow: auto;
+  }
+
+  .download-modal::backdrop {
+    background: transparent;
+  }
+
+  .modal-content {
+    position: relative;
+    max-width: 28rem;
+    margin: 4rem auto;
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  :global(.dark) .modal-content {
+    background: #1f2937;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+    padding: 0.5rem;
+    background: white;
+    border-radius: 9999px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.15s;
+  }
+
+  :global(.dark) .modal-close {
+    background: #374151;
+    color: white;
+  }
+
+  .modal-close:hover {
+    background: #f3f4f6;
+  }
+
+  :global(.dark) .modal-close:hover {
+    background: #4b5563;
+  }
+
+  .modal-body {
+    padding: 1.5rem;
+  }
+
+  .modal-close:focus-visible {
+    outline: 2px solid #4a2083;
+    outline-offset: 2px;
+  }
+</style>
