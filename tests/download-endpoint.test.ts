@@ -3,13 +3,11 @@ import { GET } from "../src/pages/api/download";
 import { buildDownloadCookie } from "../src/lib/download-gate";
 
 const originalSecret = process.env.DOWNLOAD_COOKIE_SECRET;
-const originalDev = (import.meta as any).env?.DEV;
-const originalMode = (import.meta as any).env?.MODE;
+const originalNodeEnv = process.env.NODE_ENV;
 
 beforeAll(() => {
   process.env.DOWNLOAD_COOKIE_SECRET = "test-secret-with-enough-entropy";
-  (import.meta as any).env.DEV = true;
-  (import.meta as any).env.MODE = "development";
+  process.env.NODE_ENV = "development";
 });
 
 afterAll(() => {
@@ -18,15 +16,10 @@ afterAll(() => {
   } else {
     process.env.DOWNLOAD_COOKIE_SECRET = originalSecret;
   }
-  if (originalDev === undefined) {
-    delete (import.meta as any).env.DEV;
+  if (originalNodeEnv === undefined) {
+    delete process.env.NODE_ENV;
   } else {
-    (import.meta as any).env.DEV = originalDev;
-  }
-  if (originalMode === undefined) {
-    delete (import.meta as any).env.MODE;
-  } else {
-    (import.meta as any).env.MODE = originalMode;
+    process.env.NODE_ENV = originalNodeEnv;
   }
 });
 

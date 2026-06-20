@@ -27,7 +27,7 @@ export const GET: APIRoute = async ({ request }) => {
   const requestUrl = new URL(request.url);
   const articleId = requestUrl.searchParams.get("articleId");
   const lang = normalizeLang(requestUrl.searchParams.get("lang"));
-  const cookieSecret = (import.meta as any).env?.DOWNLOAD_COOKIE_SECRET || process.env?.DOWNLOAD_COOKIE_SECRET;
+  const cookieSecret = process.env.DOWNLOAD_COOKIE_SECRET;
   const cookie = getCookie(request, cookieName);
 
   if (!articleId || !cookieSecret || !cookie) return redirect(`/${lang}/publications?download=gate`);
@@ -38,29 +38,25 @@ export const GET: APIRoute = async ({ request }) => {
   const article = articlesData.find((item) => item.id === articleId);
   if (!article?.file) return redirect(`/${lang}/publications?download=missing`);
 
-  const blobToken = (import.meta as any).env?.BLOB_READ_WRITE_TOKEN || process.env?.BLOB_READ_WRITE_TOKEN;
-  const isDev = (import.meta as any).env?.DEV || (import.meta as any).env?.MODE === "development";
+  const isDev = process.env.NODE_ENV === "development";
 
-  if (blobToken) {
-    try {
-      const result = await get(`publications/${article.file}`, {
-        access: "public",
-        token: blobToken,
+  try {
+    const result = await get(`publications/${article.file}`, {
+      access: "public",
+    });
+
+    if (result && result.statusCode === 200) {
+      return new Response(result.stream, {
+        status: 200,
+        headers: {
+          "Content-Type": result.blob.contentType || "application/pdf",
+          "Content-Disposition": `attachment; filename="${article.file}"`,
+        },
       });
-
-      if (result && result.statusCode === 200) {
-        return new Response(result.stream, {
-          status: 200,
-          headers: {
-            "Content-Type": result.blob.contentType || "application/pdf",
-            "Content-Disposition": `attachment; filename="${article.file}"`,
-          },
-        });
-      }
-    } catch (err) {
-      console.error("Blob fetch failed:", err);
-      if (!isDev) return redirect(`/${lang}/publications?download=error`);
     }
+  } catch (err) {
+    console.error("Blob fetch failed:", err);
+    if (!isDev) return redirect(`/${lang}/publications?download=error`);
   }
 
   if (isDev) return redirect(`/files/publications/${article.file}`);
