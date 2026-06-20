@@ -24,3 +24,7 @@ test("Vercel does not redirect valid /en routes away from generated pages", () =
   expect(languageSwitcher).toContain("const href = `/${langCode}${pathWithoutLang}`");
   expect(vercelConfig).not.toContain('"source": "/en/:path*"');
 });
+
+test("Contact page exists for both languages", () => {
+  expect(existsSync("src/pages/[lang]/contact.astro")).toBe(true);
+});

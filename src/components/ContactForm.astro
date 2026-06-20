@@ -1,0 +1,330 @@
+---
+import { useTranslations } from '../utils/i18n';
+import type { Language } from '../utils/i18n';
+
+export interface Props {
+  lang: Language;
+  compact?: boolean;
+}
+
+const { lang, compact = false } = Astro.props;
+const t = useTranslations(lang);
+
+const inquiryOptions = [
+  { value: 'Speaking', label: t('contactFormInquirySpeaking') },
+  { value: 'Consulting or training', label: t('contactFormInquiryConsulting') },
+  { value: 'Media/interview', label: t('contactFormInquiryMedia') },
+  { value: 'Legal or policy collaboration', label: t('contactFormInquiryLegal') },
+  { value: 'Academic/research', label: t('contactFormInquiryAcademic') },
+  { value: 'Other', label: t('contactFormInquiryOther') },
+];
+
+const inputClass = compact
+  ? 'w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500 dark:focus:ring-pink-400'
+  : 'w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-3 text-base text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500 dark:focus:ring-pink-400';
+
+const labelClass = 'block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1';
+---
+
+<div id="contact-form-container">
+  <form id="contact-form" class:list={[compact ? 'space-y-4' : 'space-y-5']} novalidate>
+    <div class:list={[compact ? 'grid grid-cols-1 sm:grid-cols-2 gap-4' : 'grid grid-cols-1 sm:grid-cols-2 gap-5']}>
+      <div>
+        <label for="contact-name" class={labelClass}>{t('contactFormNameLabel')} <span class="text-pink-700 dark:text-pink-300">*</span></label>
+        <input id="contact-name" name="name" type="text" required autocomplete="name" placeholder={t('contactFormNamePlaceholder')} class={inputClass} />
+        <p class="contact-field-error hidden mt-1 mb-0 text-sm text-red-600 dark:text-red-400">{t('contactFormErrorRequired')}</p>
+      </div>
+      <div>
+        <label for="contact-email" class={labelClass}>{t('contactFormEmailLabel')} <span class="text-pink-700 dark:text-pink-300">*</span></label>
+        <input id="contact-email" name="email" type="email" required autocomplete="email" placeholder={t('contactFormEmailPlaceholder')} class={inputClass} />
+        <p class="contact-field-error hidden mt-1 mb-0 text-sm text-red-600 dark:text-red-400">{t('contactFormErrorEmail')}</p>
+      </div>
+    </div>
+
+    <div>
+      <label for="contact-inquiry" class={labelClass}>{t('contactFormInquiryLabel')} <span class="text-pink-700 dark:text-pink-300">*</span></label>
+      <div class="relative">
+        <select id="contact-inquiry" name="inquiryType" required class:list={[inputClass, 'appearance-none pr-10']}>
+          <option value="">{t('contactFormInquiryPlaceholder')}</option>
+          {inquiryOptions.map(opt => (
+            <option value={opt.value}>{opt.label}</option>
+          ))}
+        </select>
+        <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-gray-500" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6l4 4 4-4" />
+        </svg>
+      </div>
+      <p class="contact-field-error hidden mt-1 mb-0 text-sm text-red-600 dark:text-red-400">{t('contactFormErrorRequired')}</p>
+    </div>
+
+    <div id="contact-message-wrapper" class="contact-reveal">
+      <div class="px-0.5">
+      <label for="contact-message" class={labelClass}>{t('contactFormMessageLabel')} <span class="text-pink-700 dark:text-pink-300">*</span></label>
+      <textarea id="contact-message" name="message" required rows={compact ? 4 : 5} placeholder={t('contactFormMessagePlaceholder')} class:list={[inputClass, 'resize-none']}></textarea>
+      <p class="contact-field-error hidden mt-1 mb-0 text-sm text-red-600 dark:text-red-400">{t('contactFormErrorRequired')}</p>
+      </div>
+    </div>
+
+    <div class="hidden" aria-hidden="true">
+      <label for="contact-company">Company</label>
+      <input id="contact-company" name="company" type="text" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <button type="submit" disabled class:list={[
+      'w-full rounded-lg bg-pink-700 text-white font-semibold transition-colors disabled:opacity-40 disabled:cursor-not-allowed enabled:hover:bg-pink-900 dark:bg-pink-300 dark:text-gray-900 dark:disabled:opacity-40 dark:enabled:hover:bg-pink-100',
+      compact ? 'py-2.5 text-sm' : 'py-3 text-base'
+    ]}>
+      {t('contactFormSubmit')}
+    </button>
+
+    <p class="text-sm text-gray-500 dark:text-gray-400 text-center">
+      {t('contactFormConsentPrefix')}
+      {' '}<a href={`/${lang}/privacy`} class="text-pink-700 dark:text-pink-300 hover:underline">{t('contactFormPrivacyLink')}</a>{' '}
+      {t('contactFormConsentMiddle')}
+      {' '}<a href={`/${lang}/terms`} class="text-pink-700 dark:text-pink-300 hover:underline">{t('contactFormTermsLink')}</a>.
+    </p>
+
+    <p id="contact-form-error" class="hidden text-sm text-red-600 dark:text-red-400" role="alert"></p>
+  </form>
+
+  <div id="contact-form-success" class="hidden flex flex-col items-center justify-center text-center" style="min-height: 320px;">
+    <svg class="w-16 h-16 text-green-500 mb-6" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="3" />
+      <path d="M20 33l8 8 16-16" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">{t('contactFormSuccessHeading')}</h3>
+    <p class="text-gray-600 dark:text-gray-300 mb-8">{t('contactFormSuccessBody')}</p>
+    <button id="contact-form-reset" type="button" class="text-sm text-gray-500 dark:text-gray-400 hover:text-pink-700 dark:hover:text-pink-300 hover:underline">
+      &larr; {t('contactFormReturnLink')}
+    </button>
+  </div>
+</div>
+
+<script>
+  function initContactForm() {
+    const container = document.getElementById('contact-form-container');
+    if (!container) return;
+    if ((container as any)._initialized) return;
+    (container as any)._initialized = true;
+
+    const form = document.getElementById('contact-form') as HTMLFormElement | null;
+    const successPanel = document.getElementById('contact-form-success');
+    const resetBtn = document.getElementById('contact-form-reset');
+    const errorEl = document.getElementById('contact-form-error');
+    const submitBtn = form?.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+    const messageWrapper = document.getElementById('contact-message-wrapper');
+    const nameInput = document.getElementById('contact-name') as HTMLInputElement | null;
+    const emailInput = document.getElementById('contact-email') as HTMLInputElement | null;
+    const inquirySelect = document.getElementById('contact-inquiry') as HTMLSelectElement | null;
+
+    if (!form || !successPanel || !resetBtn || !errorEl || !submitBtn || !messageWrapper || !nameInput || !emailInput || !inquirySelect) return;
+
+    form.reset();
+
+    const originalText = submitBtn.textContent;
+    let messageRevealed = false;
+
+    const errorInputClass = 'border-red-500 dark:border-red-400 ring-2 ring-red-500/20 dark:ring-red-400/20';
+
+    function markFieldInvalid(input: HTMLElement) {
+      input.classList.add(...errorInputClass.split(' '));
+    }
+
+    function markFieldValid(input: HTMLElement) {
+      input.classList.remove(...errorInputClass.split(' '));
+    }
+
+    function showFieldError(input: HTMLElement, message: string) {
+      const fieldContainer = input.closest('div');
+      const errEl = fieldContainer?.querySelector('.contact-field-error');
+      if (errEl) {
+        errEl.textContent = message;
+        errEl.classList.remove('hidden');
+      }
+      markFieldInvalid(input);
+    }
+
+    function hideFieldError(input: HTMLElement) {
+      const fieldContainer = input.closest('div');
+      const errEl = fieldContainer?.querySelector('.contact-field-error');
+      if (errEl) {
+        errEl.classList.add('hidden');
+      }
+      markFieldValid(input);
+    }
+
+    function validateOnBlur(input: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement) {
+      input.dataset.touched = 'true';
+      const err = validateField(input);
+      if (err) {
+        showFieldError(input, err);
+      } else {
+        hideFieldError(input);
+      }
+      checkInitialFields();
+    }
+
+    nameInput.addEventListener('blur', () => validateOnBlur(nameInput));
+    emailInput.addEventListener('blur', () => validateOnBlur(emailInput));
+    inquirySelect.addEventListener('blur', () => validateOnBlur(inquirySelect));
+    inquirySelect.addEventListener('change', () => validateOnBlur(inquirySelect));
+
+    emailInput.addEventListener('input', () => {
+      const err = validateField(emailInput);
+      if (err) {
+        if (emailInput.dataset.touched) showFieldError(emailInput, err);
+      } else {
+        hideFieldError(emailInput);
+      }
+      checkInitialFields();
+    });
+
+    nameInput.addEventListener('input', () => {
+      if (nameInput.value.trim().length > 0) {
+        hideFieldError(nameInput);
+      }
+      checkInitialFields();
+    });
+
+    function updateSubmitState() {
+      const messageInput = document.getElementById('contact-message') as HTMLTextAreaElement | null;
+      if (!messageInput) return;
+      const messageOk = messageInput.value.trim().length > 0;
+      submitBtn.disabled = !(messageRevealed && messageOk);
+    }
+
+    function checkInitialFields() {
+      const nameOk = nameInput.value.trim().length > 0;
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim());
+      const inquiryOk = inquirySelect.value !== '';
+
+      if (nameOk && emailOk && inquiryOk && !messageRevealed) {
+        messageRevealed = true;
+        messageWrapper.classList.add('revealed');
+        messageWrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      updateSubmitState();
+    }
+
+    [nameInput, emailInput, inquirySelect].forEach(el => {
+      el.addEventListener('change', checkInitialFields);
+      el.addEventListener('input', checkInitialFields);
+    });
+
+    const messageInput = document.getElementById('contact-message') as HTMLTextAreaElement | null;
+    if (messageInput) {
+      messageInput.addEventListener('input', () => {
+        updateSubmitState();
+        if (messageInput.value.trim().length > 0) {
+          hideFieldError(messageInput);
+        }
+      });
+      messageInput.addEventListener('blur', () => validateOnBlur(messageInput));
+    }
+
+    function showErrors(messages: string[]) {
+      errorEl.textContent = messages[0] || '';
+      errorEl.classList.toggle('hidden', messages.length === 0);
+    }
+
+    function clearFieldErrors() {
+      form.querySelectorAll('.contact-field-error').forEach(el => el.classList.add('hidden'));
+      form.querySelectorAll('input, select, textarea').forEach(el => {
+        markFieldValid(el as HTMLElement);
+        delete (el as HTMLElement).dataset.touched;
+      });
+    }
+
+    function validateField(input: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement): string | null {
+      if (input.required && !input.value.trim()) {
+        return input.dataset.errorRequired || 'This field is required.';
+      }
+      if (input.type === 'email' && input.value.trim()) {
+        const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRe.test(input.value.trim())) {
+          return input.dataset.errorEmail || 'Please enter a valid email address.';
+        }
+      }
+      return null;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      clearFieldErrors();
+      showErrors([]);
+
+      checkInitialFields();
+
+      let hasError = false;
+      const requiredInputs = form.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>('[required]');
+      requiredInputs.forEach(input => {
+        if (!input.closest('#contact-message-wrapper')?.classList.contains('revealed')) return;
+        const err = validateField(input);
+        if (err) {
+          hasError = true;
+          const fieldContainer = input.closest('div');
+          const errEl = fieldContainer?.querySelector('.contact-field-error');
+          if (errEl) {
+            errEl.textContent = err;
+            errEl.classList.remove('hidden');
+          }
+        }
+      });
+
+      if (hasError) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = container.dataset.submittingText || 'Sending…';
+
+      const formData = new FormData(form);
+      const payload: Record<string, string> = {};
+      formData.forEach((value, key) => {
+        if (key !== 'company') {
+          payload[key] = typeof value === 'string' ? value.trim() : '';
+        }
+      });
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          showErrors([data.error || 'Something went wrong. Please try again.']);
+          return;
+        }
+
+        form.classList.add('hidden');
+        successPanel.classList.remove('hidden');
+      } catch {
+        showErrors(['Something went wrong. Please try again.']);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
+    });
+
+    resetBtn.addEventListener('click', () => {
+      form.reset();
+      successPanel.classList.add('hidden');
+      form.classList.remove('hidden');
+      messageWrapper.classList.remove('revealed');
+      messageRevealed = false;
+      submitBtn.disabled = true;
+      clearFieldErrors();
+      showErrors([]);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initContactForm);
+  } else {
+    initContactForm();
+  }
+  document.addEventListener('astro:page-load', initContactForm);
+</script>

@@ -4,6 +4,7 @@ import BookCarouselCard from '../../components/BookCarouselCard.astro';
 import VideoPublicationCard from '../../components/VideoPublicationCard.astro';
 import Button from '../../components/Button.astro';
 import OrcidIcon from '../../components/OrcidIcon.astro';
+import ContactForm from '../../components/ContactForm.astro';
 import { Image } from 'astro:assets';
 import imageMap from '../../assets/imageMap';
 import { images } from '../../data/global';
@@ -145,7 +146,7 @@ if (!homePhoto) throw new Error('Missing image: home_photo.png');
 			
 			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-lg mx-auto">
 				<p class="mb-8 dark:text-gray-300" data-animate>
-					{t('speakingIntroStart')}<a href={`${langPrefix}/#contact-me`} class="font-semibold text-sky-700 dark:text-sky-300 hover:text-sky-900 dark:hover:text-sky-100">{t('speakingCTALink')}</a>{t('speakingIntroEnd')}
+					{t('speakingIntroStart')}<a href={`${langPrefix}/contact`} class="font-semibold text-sky-700 dark:text-sky-300 hover:text-sky-900 dark:hover:text-sky-100">{t('speakingCTALink')}</a>{t('speakingIntroEnd')}
 				</p>
 
 				<div class="flex flex-col lg:flex-row lg:justify-between items-start lg:items-end gap-2 lg:gap-0 mb-6" data-animate>
@@ -213,14 +214,18 @@ if (!homePhoto) throw new Error('Missing image: home_photo.png');
 	<section id="contact-me" class="contain-margins-y bg-white dark:bg-gray-800">
 		<div class="contain-medium section-margins-medium">
 			<h1 class="dark:text-pink-300" data-animate>{t('contactHeading')}</h1>
-			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto mb-12" data-stagger>
-			<p class="dark:text-gray-300" data-animate>{t('contactDescription')}</p>
+			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto mb-12">
+			<p class="dark:text-gray-300 mb-8" data-animate>{t('contactDescription')}</p>
 
-			<p data-animate><Button id="email-link" href="#" size="lg" class="max-sm:block md:px-12 md:py-4 md:text-lg md:rounded-xl icon-before icon-comment-smile icon-space-sm">{t('contactEmailButtonText')}</Button>
-			</p>				<h4 class="max-sm:text-center dark:text-pink-300" data-animate>{t('contactSocialMediaHeading')}</h4>
-				<ul class="flex flex-row max-sm:justify-center items-start gap-8 max-sm:mt-8" data-animate>
+			<div data-animate>
+				<ContactForm lang={currentLang} compact />
+			</div>
+
+			<div class="mt-8" data-animate>
+				<h4 class="max-sm:text-center dark:text-pink-300 mb-4">{t('contactSocialMediaHeading')}</h4>
+				<ul class="flex flex-row max-sm:justify-center items-start gap-8" data-animate>
 					<li><a href="https://www.instagram.com/tamaramoroso" target="_blank" rel="noopener noreferrer"
-							title="Threads"><img src={`${images}/social-instagram.svg`} class="w-12 hover-shift-sm dark:invert"
+							title="Instagram"><img src={`${images}/social-instagram.svg`} class="w-12 hover-shift-sm dark:invert"
 								alt="Instagram"></a>
 					</li>
 					<li><a href="https://www.linkedin.com/in/tamara-amoroso-gonsalves-941527229/" target="_blank"
@@ -228,6 +233,7 @@ if (!homePhoto) throw new Error('Missing image: home_photo.png');
 								class="w-12 hover-shift-sm dark:invert" alt="LinkedIn"></a>
 					</li>
 				</ul>
+			</div>
 			</div>
 		</div>
 	</section>

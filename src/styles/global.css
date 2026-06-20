@@ -60,6 +60,22 @@
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   }
 
+  /* Contact form progressive reveal */
+  .contact-reveal {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transform: scaleY(0.9);
+    transform-origin: top center;
+    transition: opacity 0.4s ease-out, max-height 0.5s ease-out, transform 0.4s ease-out;
+  }
+
+  .contact-reveal.revealed {
+    opacity: 1;
+    max-height: 400px;
+    transform: scaleY(1);
+  }
+
   /* Respect reduced motion preferences */
   @media (prefers-reduced-motion: reduce) {
     .animate-before,
@@ -67,6 +83,13 @@
       opacity: 1 !important;
       transform: none !important;
       transition: none !important;
+    }
+
+    .contact-reveal {
+      opacity: 1;
+      max-height: 400px;
+      transform: none;
+      transition: none;
     }
   }
 }

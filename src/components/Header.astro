@@ -49,6 +49,7 @@ const navLinks = [
   { href: `${langPrefix}/publications`, key: 'navPublications' },
   { href: `${langPrefix}/speaking`, key: 'navSpeaking' },
   { href: `${langPrefix}/services`, key: 'navServices' },
+  { href: `${langPrefix}/contact`, key: 'navContact' },
 ];
 ---
 
@@ -94,10 +95,7 @@ const navLinks = [
                     >{t(link.key)}</a>
                   );
                 })}
-                <a
-                  href={`${langPrefix}/#contact-me`}
-                  class="uppercase tracking-wide max-md:text-sm"
-                >{t('navContact')}</a>
+
             </div>
 
             <!-- Right: Controls -->

@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Page Plan</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #fffaf0;
+      --text: #202124;
+      --muted: #5f6368;
+      --card: #ffffff;
+      --border: #eadfc7;
+      --accent: #be185d;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111827;
+        --text: #f3f4f6;
+        --muted: #c7cbd1;
+        --card: #1f2937;
+        --border: #374151;
+        --accent: #f9a8d4;
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    main {
+      width: min(760px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0 64px;
+    }
+
+    header,
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      margin-bottom: 18px;
+    }
+
+    h1,
+    h2 {
+      line-height: 1.15;
+      margin: 0 0 12px;
+    }
+
+    h1 { font-size: clamp(2rem, 6vw, 3.25rem); }
+    h2 { font-size: clamp(1.25rem, 3vw, 1.6rem); }
+
+    p { margin: 0 0 12px; }
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      margin: 8px 0 0;
+      padding-left: 1.2rem;
+    }
+
+    li { margin: 4px 0; }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      margin-bottom: 8px;
+    }
+
+    .muted { color: var(--muted); }
+
+    .quote {
+      border-left: 4px solid var(--accent);
+      padding-left: 14px;
+      color: var(--muted);
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">Plain-English Plan</p>
+      <h1>Contact Page And Form</h1>
+      <p class="muted">A short version of the contact form design for Tamara's website.</p>
+    </header>
+
+    <section>
+      <h2>What We Are Building</h2>
+      <p>We will add a contact form so visitors can send Tamara a message from the website.</p>
+      <p>The form will appear in two places: a full contact page and a smaller version on the homepage.</p>
+    </section>
+
+    <section>
+      <h2>Where It Will Live</h2>
+      <ul>
+        <li>A full page at <strong>/en/contact</strong> and <strong>/pt/contact</strong>.</li>
+        <li>A compact form in the homepage contact section.</li>
+      </ul>
+      <p>The menu's Contact link will go to the new contact page.</p>
+    </section>
+
+    <section>
+      <h2>What The Form Asks For</h2>
+      <p>The form will ask for name, email, inquiry type, and message.</p>
+      <p>Visitors can also add organization, phone, and preferred language if they want.</p>
+      <p>Inquiry types will include speaking, consulting or training, media interviews, legal or policy collaboration, academic or research work, and other messages.</p>
+    </section>
+
+    <section>
+      <h2>What Visitors See</h2>
+      <p>The intro will stay short and welcoming. It will say that visitors can use the form for invitations, interviews, collaborations, training, consulting, and related inquiries.</p>
+      <p>The page will also keep Instagram, LinkedIn, and direct email as contact options.</p>
+      <p>The email address will still be added by JavaScript so it does not sit in the HTML.</p>
+    </section>
+
+    <section>
+      <h2>Privacy Text</h2>
+      <p>There will be no privacy checkbox.</p>
+      <p>Instead, the form will show this text near the send button:</p>
+      <p class="quote">By sending this message, you confirm that you have read and accept the Privacy Policy and Terms and Conditions.</p>
+      <p>The Privacy Policy and Terms links will use the visitor's current language.</p>
+    </section>
+
+    <section>
+      <h2>After Someone Sends A Message</h2>
+      <p>The form will disappear and show this confirmation:</p>
+      <p class="quote">Thank you for reaching out. Your message has been sent to Tamara, and she will review it soon.</p>
+      <p>A small text link will let them return to the form if they need to send another message.</p>
+    </section>
+
+    <section>
+      <h2>What Happens Behind The Scenes</h2>
+      <p>The website will send the message through Resend to <strong>info@tamaragonsalves.com</strong>.</p>
+      <p>Tamara can reply directly because the visitor's email will be used as the reply-to address.</p>
+      <p>The site will not save contact messages in a database. It will only email them.</p>
+    </section>
+
+    <section>
+      <h2>Spam Protection</h2>
+      <p>The form will include a hidden field that real visitors will not fill out. Bots often fill hidden fields, so the server can reject those messages.</p>
+      <p>The server will also reject messages that are too long.</p>
+    </section>
+
+    <section>
+      <h2>How We Will Check It</h2>
+      <p>Tests will cover missing fields, bad email addresses, spam-field rejection, and the email sent through Resend.</p>
+      <p>Before calling the work done, we will run <strong>bun test</strong> and <strong>bun run build</strong>.</p>
+    </section>
+  </main>
+</body>
+</html>
