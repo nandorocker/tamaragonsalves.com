@@ -1,8 +1,10 @@
-import { describe, expect, test } from "bun:test";
+import { afterAll, describe, expect, test } from "bun:test";
 import {
   buildDownloadCookie,
   buildDownloadEmail,
   buildPreferencesUpdatedEmail,
+  buildVerifyDownloadUrl,
+  getEnvSiteUrl,
   signDownloadToken,
   verifyDownloadGateCookie,
   verifyDownloadCookie,
@@ -133,5 +135,66 @@ describe("download emails", () => {
     expect(email.html).toContain("Email updates");
     expect(email.html).not.toContain("from <strong>English</strong> to <strong>English</strong>");
     expect(email.html).not.toContain(">Language<");
+  });
+});
+
+describe("confirmation URL construction", () => {
+  const originalEnv = process.env.SITE_URL;
+
+  afterAll(() => {
+    if (originalEnv === undefined) {
+      delete process.env.SITE_URL;
+    } else {
+      process.env.SITE_URL = originalEnv;
+    }
+  });
+
+  test("falls back to request origin when SITE_URL is not set", () => {
+    delete process.env.SITE_URL;
+    const url = buildVerifyDownloadUrl("tok_123", "https://localhost/api/request-download");
+
+    expect(url).toBe("https://localhost/api/verify-download?token=tok_123");
+  });
+
+  test("strips trailing slashes from SITE_URL", () => {
+    process.env.SITE_URL = "https://tamaragonsalves.com///";
+
+    const url = buildVerifyDownloadUrl("tok_abc", "http://localhost:4321/request");
+
+    expect(url).toBe("https://tamaragonsalves.com/api/verify-download?token=tok_abc");
+  });
+
+  test("ignores blank SITE_URL values", () => {
+    process.env.SITE_URL = "   ";
+
+    const url = buildVerifyDownloadUrl("tok_blank", "http://127.0.0.1:4321/request");
+
+    expect(url).toBe("http://127.0.0.1:4321/api/verify-download?token=tok_blank");
+  });
+
+  test("URL-encodes special token characters", () => {
+    process.env.SITE_URL = "https://example.com";
+
+    const url = buildVerifyDownloadUrl("a b/c=d", "http://localhost/request");
+
+    expect(url).toBe("https://example.com/api/verify-download?token=a%20b%2Fc%3Dd");
+  });
+
+  test("reads SITE_URL from import.meta.env style values when available", async () => {
+    delete process.env.SITE_URL;
+    const importMetaEnv = (import.meta as any).env;
+    const previous = importMetaEnv.SITE_URL;
+
+    importMetaEnv.SITE_URL = "https://import-meta.example.com";
+    try {
+      const url = buildVerifyDownloadUrl("tok_meta", "http://localhost/request");
+      expect(url).toBe("https://import-meta.example.com/api/verify-download?token=tok_meta");
+    } finally {
+      if (previous === undefined) {
+        delete importMetaEnv.SITE_URL;
+      } else {
+        importMetaEnv.SITE_URL = previous;
+      }
+    }
   });
 });

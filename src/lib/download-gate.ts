@@ -221,4 +221,18 @@ export function buildPreferencesUpdatedEmail(lang: DownloadLanguage, changes: Pr
   };
 }
 
+export function getEnvSiteUrl(): string | undefined {
+  const raw =
+    (typeof process !== "undefined" && process.env?.SITE_URL) ||
+    (typeof import.meta !== "undefined" && (import.meta as any).env?.SITE_URL);
+  if (typeof raw !== "string") return undefined;
+  const trimmed = raw.trim();
+  return trimmed ? trimmed.replace(/\/+$/, "") : undefined;
+}
+
+export function buildVerifyDownloadUrl(token: string, requestUrl: URL | string): string {
+  const origin = getEnvSiteUrl() || new URL(requestUrl).origin;
+  return new URL(`/api/verify-download?token=${encodeURIComponent(token)}`, `${origin}/`).toString();
+}
+
 export const downloadCookieMaxAgeSeconds = COOKIE_MAX_AGE_SECONDS;
