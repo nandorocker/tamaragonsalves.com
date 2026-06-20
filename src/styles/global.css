@@ -95,6 +95,11 @@
       transform: none !important;
       transition: none !important;
     }
+
+    .hero-frame-shape,
+    .hero-frame-photo {
+      transition: none !important;
+    }
   }
 
   /* Hero frame: drop-in from section edges */
@@ -136,11 +141,11 @@
   /* Desktop: vertical drop from top/bottom edges — fully off-screen */
   @media (min-width: 768px) {
     .hero-frame-before .hero-frame-shape--flamingo {
-      transform: translateY(-1000px);
+      transform: translateY(-1200px);
       opacity: 0;
     }
     .hero-frame-before .hero-frame-shape--navy {
-      transform: translateY(1000px);
+      transform: translateY(1200px);
       opacity: 0;
     }
   }
