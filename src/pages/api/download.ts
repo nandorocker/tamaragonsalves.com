@@ -1,4 +1,5 @@
 import type { APIRoute } from "astro";
+import { get } from "@vercel/blob";
 import articlesData from "../../data/articles.json";
 import { verifyDownloadGateCookie } from "../../lib/download-gate";
 
@@ -36,6 +37,29 @@ export const GET: APIRoute = async ({ request }) => {
 
   const article = articlesData.find((item) => item.id === articleId);
   if (!article?.file) return redirect(`/${lang}/publications?download=missing`);
+
+  const blobToken = (import.meta as any).env?.BLOB_READ_WRITE_TOKEN || process.env?.BLOB_READ_WRITE_TOKEN;
+
+  if (blobToken) {
+    try {
+      const result = await get(`publications/${article.file}`, {
+        access: "private",
+        token: blobToken,
+      });
+
+      if (result && result.statusCode === 200) {
+        return new Response(result.stream, {
+          status: 200,
+          headers: {
+            "Content-Type": result.blob.contentType || "application/pdf",
+            "Content-Disposition": `attachment; filename="${article.file}"`,
+          },
+        });
+      }
+    } catch (err) {
+      console.error("Blob fetch failed, falling back to local file:", err);
+    }
+  }
 
   return redirect(`/files/publications/${article.file}`);
 };
