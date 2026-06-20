@@ -74,7 +74,7 @@ const articlesWithMeta = await Promise.all(articles.map(async (article, index) =
         </svg>
       </button>
 
-      <div class="modal-body" data-modal-body>
+      <div class="modal-body" data-modal-body tabindex="-1">
       </div>
     </div>
   </dialog>
@@ -110,8 +110,8 @@ function renderArticleContent(article) {
   }).join('') : '';
 
   return `
-    <div class="flex gap-4 items-start mb-4">
-      ${article.thumbnailUrl ? `<img src="${article.thumbnailUrl}" alt="" class="w-20 h-20 sm:w-24 sm:h-24 rounded-md object-cover flex-shrink-0" loading="lazy">` : ''}
+    <div class="flex flex-col md:flex-row gap-4 items-start mb-4">
+      ${article.thumbnailUrl ? `<img src="${article.thumbnailUrl}" alt="" class="w-full h-[176px] md:w-24 md:h-24 rounded-md object-cover flex-shrink-0" loading="lazy">` : ''}
       <div class="flex-1 min-w-0">
         <h3 class="text-size-h5 mb-1">${article.title}</h3>
         <p class="mb-1 text-gray-600 dark:text-gray-400">
@@ -124,12 +124,12 @@ function renderArticleContent(article) {
       </div>
     </div>
     ${article.summary ? `
-      <div class="mb-6 ml-[calc(5rem+1rem)] sm:ml-[calc(6rem+1rem)]">
+      <div class="mb-6 md:ml-[calc(6rem+1rem)]">
         <p class="text-gray-700 dark:text-gray-300">${article.summary}</p>
       </div>
     ` : ''}
     ${article.file && !article.hasLinks ? `
-      <div class="mt-4 ml-[calc(5rem+1rem)] sm:ml-[calc(6rem+1rem)]">
+      <div class="mt-4 md:ml-[calc(6rem+1rem)]">
         <button
           type="button"
           class="button button-lg inline-flex items-center gap-2"
@@ -144,7 +144,7 @@ function renderArticleContent(article) {
       </div>
     ` : ''}
     ${article.hasLinks ? `
-      <div class="mt-4 ml-[calc(5rem+1rem)] sm:ml-[calc(6rem+1rem)] flex flex-col gap-2">
+      <div class="mt-4 md:ml-[calc(6rem+1rem)] flex flex-col gap-2">
         ${linksHtml}
       </div>
     ` : ''}
@@ -172,6 +172,7 @@ function openModal(index) {
   updateNavButtons();
   
   dialog.showModal();
+  body.focus({ preventScroll: true });
   showOverlay();
   document.body.style.overflow = 'hidden';
   
@@ -353,14 +354,22 @@ document.addEventListener('astro:page-load', () => {
     position: fixed;
     inset: 0;
     z-index: 50;
+    box-sizing: border-box;
     max-width: 100vw;
     max-height: 100vh;
     width: 100%;
     height: 100%;
+    margin: 0;
     padding: 1rem;
     background: transparent;
     border: none;
-    overflow: auto;
+    overflow: hidden;
+  }
+
+  .article-modal[open] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .article-modal::backdrop {
@@ -369,8 +378,12 @@ document.addEventListener('astro:page-load', () => {
 
   .modal-content {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     max-width: 36rem;
-    margin: 2rem auto;
+    max-height: calc(100dvh - 2rem);
+    margin: 0 auto;
     background: white;
     border-radius: 0.75rem;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
@@ -382,8 +395,8 @@ document.addEventListener('astro:page-load', () => {
 
   .modal-close {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: -0.875rem;
+    right: -0.875rem;
     z-index: 10;
     padding: 0.5rem;
     background: white;
@@ -453,9 +466,34 @@ document.addEventListener('astro:page-load', () => {
     }
   }
 
+  @media (min-width: 641px) and (max-width: 1023px) {
+    .modal-content {
+      max-width: calc(100vw - 5rem);
+    }
+
+    .modal-nav-prev {
+      left: -1.5rem;
+    }
+
+    .modal-nav-next {
+      right: -1.5rem;
+    }
+  }
+
   .modal-body {
+    min-height: 0;
     padding: 1.5rem;
-    overflow: hidden;
+    overflow-y: auto;
+  }
+
+  @media (max-width: 640px) {
+    .modal-body {
+      padding-bottom: 4.5rem;
+    }
+  }
+
+  .modal-body:focus {
+    outline: none;
   }
 
   .modal-nav:focus-visible {
