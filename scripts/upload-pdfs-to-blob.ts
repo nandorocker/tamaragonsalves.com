@@ -42,9 +42,10 @@ async function main() {
     const data = readFileSync(filePath);
 
     const blob = await put(blobPath, data, {
-      access: "private",
+      access: "public",
       contentType: "application/pdf",
       addRandomSuffix: false,
+      allowOverwrite: true,
       token,
     });
 

@@ -43,7 +43,7 @@ export const GET: APIRoute = async ({ request }) => {
   if (blobToken) {
     try {
       const result = await get(`publications/${article.file}`, {
-        access: "private",
+        access: "public",
         token: blobToken,
       });
 
