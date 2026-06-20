@@ -254,7 +254,8 @@ function initDownloadModal() {
 
         try {
           const fileResponse = await fetch(downloadUrl);
-          if (fileResponse.ok) {
+          const contentType = fileResponse.headers.get('content-type') || '';
+          if (fileResponse.ok && contentType.includes('application/pdf')) {
             const blob = await fileResponse.blob();
             const url = URL.createObjectURL(blob);
             const trigger = document.createElement('a');

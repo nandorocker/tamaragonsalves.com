@@ -40,6 +40,10 @@ export const GET: APIRoute = async ({ request }) => {
 
   const isDev = process.env.NODE_ENV === "development";
 
+  if (isDev && !process.env.BLOB_READ_WRITE_TOKEN) {
+    return redirect(`/files/publications/${article.file}`);
+  }
+
   try {
     const result = await get(`publications/${article.file}`, {
       access: "public",
