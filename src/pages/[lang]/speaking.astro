@@ -21,7 +21,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 		<div class="contain-medium section-margins-medium">
 			<h1 data-animate>{t('speakingHeading')}</h1>
 			<div class="sm:max-w-[560px] md:max-w-screen-sm lg:max-w-screen-md mx-auto mb-12" data-stagger>
-				<p class="small" data-animate>{t('speakingDescription')}</p>
+					<p data-animate>{t('speakingDescription')}</p>
 				<p data-animate><Button href={`${langPrefix}/contact`} size="lg" class="icon-before icon-comment-smile icon-space-sm">{t('speakingContactButtonText')}</Button></p>
 			</div>
 		</div>
