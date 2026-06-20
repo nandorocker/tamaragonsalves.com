@@ -60,7 +60,7 @@ const navLinks = [
         <div class="flex items-center justify-between md:hidden px-5 pt-2.5 pb-2">
             <button id="menu_toggle" type="button"
                 class="inline-flex items-center justify-center py-2 rounded-md">
-                <span class="sr-only">Open main menu</span>
+                <span class="sr-only">{t('navOpenMenu')}</span>
                 <svg id="menu_icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -106,7 +106,7 @@ const navLinks = [
                 <div class="flex items-center md:hidden">
                     <button id="theme-toggle" type="button"
                         class="inline-flex items-center justify-center rounded-md text-pink-700 hover:text-pink-900 dark:text-pink-300 dark:hover:text-pink-100 transition-colors duration-200"
-                        aria-label="Toggle dark mode">
+                        aria-label={t('themeToggleLabel')}>
                         <!-- Sun icon - visible in dark mode -->
                         <svg id="sun-icon" class="h-5 w-5 hidden" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd"

@@ -34,12 +34,8 @@ const linkText = linkUrl?.includes('spotify.com')
   : getTranslationSync(translations, 'viewProject');
 
 function getImageAlt(id: string): string {
-  switch (id) {
-    case 'gender305Podcast':
-      return 'Gender 305 Podcast cover image';
-    default:
-      return 'Project image';
-  }
+  const altKey = id === 'gender305Podcast' ? 'projectImageAltGender305' : 'projectImageAlt';
+  return getTranslationSync(translations, altKey) || 'Project image';
 }
 
 const imageAlt = getImageAlt(id);

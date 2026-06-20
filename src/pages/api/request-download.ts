@@ -75,20 +75,43 @@ export const POST: APIRoute = async ({ request }) => {
     const acceptsUpdates = Boolean(body.acceptUpdates);
     const preferredLang = normalizeLang(body.lang);
 
-    if (!email) return json({ error: "Email is required." }, 400);
+    const messages = {
+      pt: {
+        emailRequired: "O email é obrigatório.",
+        emailInvalid: "Insira um endereço de email válido.",
+        privacyRequired: "Você deve aceitar a política de privacidade e os termos.",
+        articleRequired: "O ID do artigo é obrigatório.",
+        articleNotFound: "Artigo não encontrado ou arquivo não disponível.",
+        config: "O serviço de download não está configurado.",
+        generic: "Algo deu errado. Tente novamente.",
+      },
+      en: {
+        emailRequired: "Email is required.",
+        emailInvalid: "Please enter a valid email address.",
+        privacyRequired: "You must accept the privacy policy and terms.",
+        articleRequired: "Article ID is required.",
+        articleNotFound: "Article not found or no file available.",
+        config: "Download service is not configured.",
+        generic: "Something went wrong. Please try again.",
+      },
+    };
+
+    const msg = messages[preferredLang];
+
+    if (!email) return json({ error: msg.emailRequired }, 400);
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) return json({ error: "Please enter a valid email address." }, 400);
-    if (!acceptPrivacy) return json({ error: "You must accept the privacy policy and terms." }, 400);
-    if (!articleId) return json({ error: "Article ID is required." }, 400);
+    if (!emailRegex.test(email)) return json({ error: msg.emailInvalid }, 400);
+    if (!acceptPrivacy) return json({ error: msg.privacyRequired }, 400);
+    if (!articleId) return json({ error: msg.articleRequired }, 400);
 
     const article = articlesData.find((a) => a.id === articleId);
-    if (!article?.file) return json({ error: "Article not found or no file available." }, 404);
+    if (!article?.file) return json({ error: msg.articleNotFound }, 404);
 
     const env = getRequiredEnv();
     if (!env) {
       console.error("RESEND_API_KEY or DOWNLOAD_COOKIE_SECRET is not set");
-      return json({ error: "Download service is not configured." }, 500);
+      return json({ error: msg.config }, 500);
     }
 
     await ensureDownloadSchema();
@@ -160,6 +183,6 @@ export const POST: APIRoute = async ({ request }) => {
     return json({ success: true, confirmationRequired: true });
   } catch (err) {
     console.error("Request error:", err);
-    return json({ error: "Something went wrong. Please try again." }, 500);
+    return json({ error: messages[normalizeLang(body.lang) || 'en'].generic }, 500);
   }
 };

@@ -26,7 +26,7 @@ const inputClass = compact
 const labelClass = 'block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1';
 ---
 
-<div id="contact-form-container">
+<div id="contact-form-container" data-lang={lang} data-error-required={t('contactFormErrorRequired')} data-error-email={t('contactFormErrorEmail')} data-submitting-text={t('contactFormSubmitting')} data-error-generic={t('contactFormErrorGeneric')}>
   <form id="contact-form" class:list={[compact ? 'space-y-4' : 'space-y-5']} novalidate>
     <div class:list={[compact ? 'grid grid-cols-1 sm:grid-cols-2 gap-4' : 'grid grid-cols-1 sm:grid-cols-2 gap-5']}>
       <div>
@@ -238,12 +238,12 @@ const labelClass = 'block text-sm font-medium text-gray-700 dark:text-gray-300 m
 
     function validateField(input: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement): string | null {
       if (input.required && !input.value.trim()) {
-        return input.dataset.errorRequired || 'This field is required.';
+        return input.dataset.errorRequired || container.dataset.errorRequired || 'This field is required.';
       }
       if (input.type === 'email' && input.value.trim()) {
         const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRe.test(input.value.trim())) {
-          return input.dataset.errorEmail || 'Please enter a valid email address.';
+          return input.dataset.errorEmail || container.dataset.errorEmail || 'Please enter a valid email address.';
         }
       }
       return null;
@@ -284,6 +284,7 @@ const labelClass = 'block text-sm font-medium text-gray-700 dark:text-gray-300 m
           payload[key] = typeof value === 'string' ? value.trim() : '';
         }
       });
+      payload.lang = container.dataset.lang || 'en';
 
       try {
         const res = await fetch('/api/contact', {
@@ -295,14 +296,14 @@ const labelClass = 'block text-sm font-medium text-gray-700 dark:text-gray-300 m
         const data = await res.json();
 
         if (!res.ok) {
-          showErrors([data.error || 'Something went wrong. Please try again.']);
+          showErrors([data.error || container.dataset.errorGeneric || 'Something went wrong. Please try again.']);
           return;
         }
 
         form.classList.add('hidden');
         successPanel.classList.remove('hidden');
       } catch {
-        showErrors(['Something went wrong. Please try again.']);
+        showErrors([container.dataset.errorGeneric || 'Something went wrong. Please try again.']);
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = originalText;

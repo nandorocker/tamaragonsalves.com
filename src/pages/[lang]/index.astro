@@ -113,7 +113,7 @@ if (!homePhoto) throw new Error('Missing image: home_photo.png');
 					<button 
 						id="prev-book" 
 						class="carousel-btn absolute left-0 md:-left-1 lg:-left-2 top-16 md:top-20 -translate-x-4 md:-translate-x-12 z-[5] p-3 rounded-full bg-pink-700 text-white hover:bg-pink-900 dark:bg-pink-300 dark:text-gray-900 dark:hover:bg-pink-100 transition-colors disabled:opacity-20 disabled:cursor-not-allowed shadow-lg"
-						aria-label="Previous books"
+						aria-label={t('previousBooksLabel')}
 					>
 						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -124,7 +124,7 @@ if (!homePhoto) throw new Error('Missing image: home_photo.png');
 					<button 
 						id="next-book" 
 						class="carousel-btn absolute right-0 md:-right-1 lg:-right-2 top-16 md:top-20 translate-x-4 md:translate-x-12 z-[5] p-3 rounded-full bg-pink-700 text-white hover:bg-pink-900 dark:bg-pink-300 dark:text-gray-900 dark:hover:bg-pink-100 transition-colors disabled:opacity-20 disabled:cursor-not-allowed shadow-lg"
-						aria-label="Next books"
+						aria-label={t('nextBooksLabel')}
 					>
 						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />

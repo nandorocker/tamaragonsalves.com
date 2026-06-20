@@ -32,7 +32,9 @@ const title = getTranslationSync(translations, `videos.${id}.title`) || `[videos
 const description = getTranslationSync(translations, `videos.${id}.description`) || `[videos.${id}.description]`;
 const linkText = getTranslationSync(translations, "watchOnSite");
 
-// Format date once at build time for better performance
+// Get localized aria/alt strings
+const watchVideoLabel = getTranslationSync(translations, 'watchVideoAria').replace('{title}', title);
+const videoThumbnailAltText = getTranslationSync(translations, 'videoThumbnailAlt').replace('{title}', title);
 const formattedDate = new Date(date).toLocaleDateString('en-US', { 
   year: 'numeric', 
   month: 'long', 
@@ -45,12 +47,12 @@ if (thumbnailUrl && !img) throw new Error(`Missing image for video: ${thumbnailU
 ---
 
 <div class="video-card" data-category={category} data-language={language} data-searchtext={`${title} ${description}`}>
-  <a href={videoUrl} target="_blank" aria-label={`Watch video: ${title}`} rel="noopener noreferrer">
+  <a href={videoUrl} target="_blank" aria-label={watchVideoLabel} rel="noopener noreferrer">
     <div class="video-thumbnail-container">
       {img
         ? <Image
             src={img}
-            alt={`Video thumbnail for ${title}`}
+            alt={videoThumbnailAltText}
             inferSize
             widths={[240, 480, 720]}
             sizes="(min-width: 768px) 320px, 100vw"
@@ -66,7 +68,7 @@ if (thumbnailUrl && !img) throw new Error(`Missing image for video: ${thumbnailU
     <time datetime={date} class="video-date">{formattedDate}</time>
     {language && <span class="video-lang">{language}</span>}
   </div>
-  <a href={videoUrl} class="not-italic no-underline" target="_blank" aria-label={`Watch video: ${title}`} rel="noopener noreferrer">
+  <a href={videoUrl} class="not-italic no-underline" target="_blank" aria-label={watchVideoLabel} rel="noopener noreferrer">
     <h5 class="video-title">{title}</h5>
   </a>
   {description && <p class="video-description">{description}</p>}

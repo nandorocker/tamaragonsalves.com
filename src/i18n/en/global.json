@@ -33,6 +33,19 @@
   "navServices": "Services",
   "navContact": "Contact",
 
+  "navOpenMenu": "Open main menu",
+  "themeToggleLabel": "Toggle dark mode",
+  "languageSwitcherLabel": "Select language",
+  "previousBooksLabel": "Previous books",
+  "nextBooksLabel": "Next books",
+  "closeDialogLabel": "Close dialog",
+  "previousArticleLabel": "Previous article",
+  "nextArticleLabel": "Next article",
+  "watchVideoAria": "Watch video: {title}",
+  "videoThumbnailAlt": "Video thumbnail for {title}",
+  "projectImageAlt": "Project image",
+  "projectImageAltGender305": "Gender 305 Podcast cover image",
+
   "aboutMeHeading": "About Me",
   "aboutMeDescription": "My educational background in law, with a focus on human rights, and my experience in non-governmental, governmental, and academic roles have enabled me to excel in advocacy and stakeholder negotiation. As a spokesperson for various organizations, I have effectively engaged with diverse audiences, ranging from experts in international human rights bodies to grassroots communities, academics, and public servants. I have delivered talks and represented institutions on more than 90 occasions, both locally, regionally, and internationally, on topics spanning children's rights, women's rights (particularly gender-based violence and sexual and reproductive rights), and consumer rights.",
 

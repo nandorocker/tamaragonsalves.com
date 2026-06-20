@@ -50,20 +50,44 @@ export const POST: APIRoute = async ({ request }) => {
     const inquiryType = normalizeString(body.inquiryType);
     const message = normalizeString(body.message);
     const honeypot = normalizeString(body.company);
+    const lang = normalizeString(body.lang) === 'pt' ? 'pt' : 'en';
 
-    if (honeypot) return json({ error: "Spam detected." }, 400);
+    const messages = {
+      pt: {
+        spam: 'Spam detectado.',
+        required: 'Todos os campos obrigatórios devem ser preenchidos.',
+        email: 'Insira um endereço de email válido.',
+        inquiry: 'Selecione um tipo de consulta válido.',
+        length: 'Um ou mais campos excedem o tamanho permitido.',
+        config: 'O serviço de contato não está configurado.',
+        generic: 'Algo deu errado. Tente novamente.',
+      },
+      en: {
+        spam: 'Spam detected.',
+        required: 'All required fields must be filled.',
+        email: 'Please enter a valid email address.',
+        inquiry: 'Please select a valid inquiry type.',
+        length: 'One or more fields exceed the allowed length.',
+        config: 'Contact service is not configured.',
+        generic: 'Something went wrong. Please try again.',
+      },
+    };
+
+    const msg = messages[lang];
+
+    if (honeypot) return json({ error: msg.spam }, 400);
 
     if (!name || !email || !inquiryType || !message) {
-      return json({ error: "All required fields must be filled." }, 400);
+      return json({ error: msg.required }, 400);
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return json({ error: "Please enter a valid email address." }, 400);
+      return json({ error: msg.email }, 400);
     }
 
     if (!isValidInquiryType(inquiryType)) {
-      return json({ error: "Please select a valid inquiry type." }, 400);
+      return json({ error: msg.inquiry }, 400);
     }
 
     if (
@@ -71,7 +95,7 @@ export const POST: APIRoute = async ({ request }) => {
       !maxLength(email, 320) ||
       !maxLength(message, 5000)
     ) {
-      return json({ error: "One or more fields exceed the allowed length." }, 400);
+      return json({ error: msg.length }, 400);
     }
 
     const resendApiKey =
@@ -79,7 +103,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     if (!resendApiKey) {
       console.error("RESEND_API_KEY is not set");
-      return json({ error: "Contact service is not configured." }, 500);
+      return json({ error: msg.config }, 500);
     }
 
     const resend = new Resend(resendApiKey);
@@ -116,6 +140,6 @@ export const POST: APIRoute = async ({ request }) => {
     return json({ success: true });
   } catch (err) {
     console.error("Contact form error:", err);
-    return json({ error: "Something went wrong. Please try again." }, 500);
+    return json({ error: msg.generic }, 500);
   }
 };

@@ -56,19 +56,19 @@ const articlesWithMeta = await Promise.all(articles.map(async (article, index) =
     role="dialog"
   >
     <div class="modal-content">
-      <button class="modal-close" data-modal-close aria-label="Close dialog">
+      <button class="modal-close" data-modal-close aria-label={t('closeDialogLabel')}>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
 
-      <button class="modal-nav modal-nav-prev" data-modal-prev aria-label="Previous article">
+      <button class="modal-nav modal-nav-prev" data-modal-prev aria-label={t('previousArticleLabel')}>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
         </svg>
       </button>
 
-      <button class="modal-nav modal-nav-next" data-modal-next aria-label="Next article">
+      <button class="modal-nav modal-nav-next" data-modal-next aria-label={t('nextArticleLabel')}>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
@@ -176,12 +176,12 @@ function openModal(index) {
   showOverlay();
   document.body.style.overflow = 'hidden';
   
-  body.classList.remove('slide-out-left', 'slide-out-right', 'fade-out');
-  body.classList.add('fade-in');
+  body.classList.remove('modal-slide-out-left', 'modal-slide-out-right', 'modal-fade-out');
+  body.classList.add('modal-fade-in');
   
   setTimeout(() => {
     isAnimating = false;
-    body.classList.remove('fade-in');
+    body.classList.remove('modal-fade-in');
   }, 200);
 }
 
@@ -194,11 +194,11 @@ function closeModal(opts) {
   
   if (!dialog || !body) return;
   
-  body.classList.add('fade-out');
+  body.classList.add('modal-fade-out');
   
   setTimeout(() => {
     dialog.close();
-    body.classList.remove('fade-out');
+    body.classList.remove('modal-fade-out');
     isOpen = false;
     isAnimating = false;
     if (!opts?.keepOverlay) {
@@ -217,11 +217,11 @@ function transitionToDownload(articleId) {
 
   if (!dialog || !body) return;
 
-  body.classList.add('fade-out');
+  body.classList.add('modal-fade-out');
 
   setTimeout(() => {
     dialog.close();
-    body.classList.remove('fade-out');
+    body.classList.remove('modal-fade-out');
     isOpen = false;
     isAnimating = false;
 
@@ -246,8 +246,8 @@ function navigateModal(direction) {
   
   isAnimating = true;
   
-  const slideOutClass = direction === 1 ? 'slide-out-left' : 'slide-out-right';
-  const slideInClass = direction === 1 ? 'slide-in-right' : 'slide-in-left';
+  const slideOutClass = direction === 1 ? 'modal-slide-out-left' : 'modal-slide-out-right';
+  const slideInClass = direction === 1 ? 'modal-slide-in-right' : 'modal-slide-in-left';
   
   body.classList.add(slideOutClass);
   
@@ -506,40 +506,4 @@ document.addEventListener('astro:page-load', () => {
     outline-offset: 2px;
   }
 
-  @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  @keyframes fade-out {
-    from { opacity: 1; }
-    to { opacity: 0; }
-  }
-
-  @keyframes slide-in-left {
-    from { transform: translateX(30px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-  }
-
-  @keyframes slide-in-right {
-    from { transform: translateX(-30px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-  }
-
-  @keyframes slide-out-left {
-    from { transform: translateX(0); opacity: 1; }
-    to { transform: translateX(-30px); opacity: 0; }
-  }
-
-  @keyframes slide-out-right {
-    from { transform: translateX(0); opacity: 1; }
-    to { transform: translateX(30px); opacity: 0; }
-  }
-
-  :global(.fade-in) { animation: fade-in 0.2s ease-out; }
-  :global(.fade-out) { animation: fade-out 0.2s ease-out; }
-  :global(.slide-in-left) { animation: slide-in-left 0.2s ease-out; }
-  :global(.slide-in-right) { animation: slide-in-right 0.2s ease-out; }
-  :global(.slide-out-left) { animation: slide-out-left 0.2s ease-out; }
-  :global(.slide-out-right) { animation: slide-out-right 0.2s ease-out; }
 </style>

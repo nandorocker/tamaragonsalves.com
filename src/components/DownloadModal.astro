@@ -30,7 +30,7 @@ const articlesWithFile = articles
     role="dialog"
   >
     <div class="modal-content">
-      <button class="modal-close" data-download-modal-close aria-label="Close dialog">
+      <button class="modal-close" data-download-modal-close aria-label={t('closeDialogLabel')}>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
@@ -136,10 +136,11 @@ const articlesWithFile = articles
   </dialog>
 </div>
 
-<script define:vars={{ articlesWithFile, downloadLang: lang, downloadSubmitText: t('downloadModalSubmit') }}>
+<script define:vars={{ articlesWithFile, downloadLang: lang, downloadSubmitText: t('downloadModalSubmit'), downloadErrorText: t('downloadModalError') }}>
 window.__downloadArticles = articlesWithFile;
 window.__downloadLang = downloadLang;
 window.__downloadSubmitText = downloadSubmitText;
+window.__downloadErrorText = downloadErrorText;
 </script>
 
 <script>
@@ -190,21 +191,21 @@ function initDownloadModal() {
     showOverlay();
     document.body.style.overflow = 'hidden';
 
-    modalContent?.classList.remove('fade-out');
-    modalContent?.classList.add('fade-in');
-    setTimeout(() => modalContent?.classList.remove('fade-in'), 200);
+    modalContent?.classList.remove('modal-fade-out');
+    modalContent?.classList.add('modal-fade-in');
+    setTimeout(() => modalContent?.classList.remove('modal-fade-in'), 200);
   }
 
   function closeDownloadModal() {
     if (!dialog.open) return;
 
-    modalContent?.classList.remove('fade-in');
-    modalContent?.classList.add('fade-out');
+    modalContent?.classList.remove('modal-fade-in');
+    modalContent?.classList.add('modal-fade-out');
     setTimeout(() => {
       hideOverlay();
       document.body.style.overflow = '';
       dialog.close();
-      modalContent?.classList.remove('fade-out');
+      modalContent?.classList.remove('modal-fade-out');
     }, 200);
   }
 
@@ -279,11 +280,11 @@ function initDownloadModal() {
         disclaimerEl?.classList.add('hidden');
         setTimeout(() => closeDownloadModal(), 3000);
       } else {
-        errorEl.textContent = data.error || 'Something went wrong. Please try again.';
+        errorEl.textContent = data.error || window.__downloadErrorText || 'Something went wrong. Please try again.';
         errorEl.classList.remove('hidden');
       }
     } catch {
-      errorEl.textContent = 'Something went wrong. Please try again.';
+      errorEl.textContent = window.__downloadErrorText || 'Something went wrong. Please try again.';
       errorEl.classList.remove('hidden');
     } finally {
       submitBtn.disabled = false;

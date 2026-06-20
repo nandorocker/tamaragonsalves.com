@@ -83,7 +83,7 @@ const t = (key: string) => getTranslationSync(allTranslations, key);
 					})()}
 				</div>
 
-				<div id="article-list" class="article-grid">
+				<div id="article-list" class="article-grid" data-animate>
 					{articlesData.map(article => (
 						<div data-theme={article.theme}>
 							<ArticleCard
