@@ -7,6 +7,7 @@ import {
   buildDownloadCookie,
   buildDownloadEmail,
   buildPreferencesUpdatedEmail,
+  buildVerifyDownloadUrl,
   downloadCookieMaxAgeSeconds,
   signDownloadToken,
   tokenStorageHash,
@@ -147,7 +148,7 @@ export const POST: APIRoute = async ({ request }) => {
       expiresAt,
     });
 
-    const confirmUrl = new URL(`/api/verify-download?token=${encodeURIComponent(token)}`, request.url).toString();
+    const confirmUrl = buildVerifyDownloadUrl(token, request.url);
     const confirmationEmail = buildDownloadEmail({
       lang: preferredLang,
       articleTitle: getArticleTitle(articleId, preferredLang),
