@@ -39,6 +39,7 @@ export const GET: APIRoute = async ({ request }) => {
   if (!article?.file) return redirect(`/${lang}/publications?download=missing`);
 
   const blobToken = (import.meta as any).env?.BLOB_READ_WRITE_TOKEN || process.env?.BLOB_READ_WRITE_TOKEN;
+  const isDev = (import.meta as any).env?.DEV || (import.meta as any).env?.MODE === "development";
 
   if (blobToken) {
     try {
@@ -57,9 +58,11 @@ export const GET: APIRoute = async ({ request }) => {
         });
       }
     } catch (err) {
-      console.error("Blob fetch failed, falling back to local file:", err);
+      console.error("Blob fetch failed:", err);
+      if (!isDev) return redirect(`/${lang}/publications?download=error`);
     }
   }
 
-  return redirect(`/files/publications/${article.file}`);
+  if (isDev) return redirect(`/files/publications/${article.file}`);
+  return redirect(`/${lang}/publications?download=missing`);
 };
