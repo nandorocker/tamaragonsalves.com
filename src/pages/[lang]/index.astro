@@ -38,17 +38,17 @@ if (!homePhoto) throw new Error('Missing image: home_photo.png');
 	<!-- Hero Section -->
 	<section id="home"
 	    class="hero bg-gradient-yellow flex items-center w-full md:h-80vh min-h-[45rem] sm:min-h-[50rem] pt-32 md:pt-24 2xl:pt-48 pb-20 md:pb-0 overflow-hidden">
-	    <div class="contain-wide section-margins-medium flex flex-col md:flex-row items-center gap-12 md:gap-16 lg:gap-24 max-w-lg md:max-w-none lg:max-w-4xl mx-auto" data-stagger>
+	    <div class="contain-wide section-margins-medium flex flex-col md:flex-row items-center gap-12 md:gap-16 lg:gap-24 max-w-lg md:max-w-none lg:max-w-4xl mx-auto">
 			
 			<!-- Left Column: Decorative Photo -->
-			<div class="relative w-full md:w-1/4 flex justify-center" data-animate>
+			<div class="relative w-full md:w-1/4 flex justify-center hero-frame hero-frame-before">
 				<div class="relative">
 					<!-- Red/Flamingo background box -->
-					<div class="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 lg:-bottom-8 lg:-left-8 w-[calc(100%+1rem)] h-[calc(100%+1rem)] md:w-[calc(100%+1.5rem)] md:h-[calc(100%+1.5rem)] lg:w-[calc(100%+2rem)] lg:h-[calc(100%+2rem)] bg-flamingo-700 rounded-lg"></div>
+					<div class="hero-frame-shape hero-frame-shape--flamingo absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 lg:-bottom-8 lg:-left-8 w-[calc(100%+1rem)] h-[calc(100%+1rem)] md:w-[calc(100%+1.5rem)] md:h-[calc(100%+1.5rem)] lg:w-[calc(100%+2rem)] lg:h-[calc(100%+2rem)] bg-flamingo-700 rounded-lg"></div>
 					<!-- Navy background box -->
-					<div class="absolute -top-4 -right-4 md:-top-6 md:-right-6 lg:-top-8 lg:-right-8 w-[calc(100%+1rem)] h-[calc(100%+1rem)] md:w-[calc(100%+1.5rem)] md:h-[calc(100%+1.5rem)] lg:w-[calc(100%+2rem)] lg:h-[calc(100%+2rem)] bg-indigo-900 rounded-lg"></div>
+					<div class="hero-frame-shape hero-frame-shape--navy absolute -top-4 -right-4 md:-top-6 md:-right-6 lg:-top-8 lg:-right-8 w-[calc(100%+1rem)] h-[calc(100%+1rem)] md:w-[calc(100%+1.5rem)] md:h-[calc(100%+1.5rem)] lg:w-[calc(100%+2rem)] lg:h-[calc(100%+2rem)] bg-indigo-900 rounded-lg"></div>
 					<!-- Photo -->
-					<div class="relative z-10 overflow-hidden w-[160px] md:w-[200px] lg:w-[260px]">
+					<div class="hero-frame-photo relative z-10 overflow-hidden w-[160px] md:w-[200px] lg:w-[260px]">
 						<Image
 							src={homePhoto}
 							alt="Tamara Amoroso Gonsalves"
@@ -237,4 +237,32 @@ if (!homePhoto) throw new Error('Missing image: home_photo.png');
 			</div>
 		</div>
 	</section>
+
+	<script is:inline>
+		(function () {
+			const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+			function playHeroFrame() {
+				const frame = document.querySelector('.hero-frame');
+				if (!frame) return;
+
+				if (prefersReduced) {
+					frame.classList.remove('hero-frame-before');
+					frame.classList.add('hero-frame-in');
+					return;
+				}
+
+				frame.classList.add('hero-frame-before');
+				frame.classList.remove('hero-frame-in');
+				void frame.offsetWidth;
+				requestAnimationFrame(() => {
+					frame.classList.remove('hero-frame-before');
+					frame.classList.add('hero-frame-in');
+				});
+			}
+
+			requestAnimationFrame(() => requestAnimationFrame(playHeroFrame));
+			document.addEventListener('astro:page-load', playHeroFrame);
+		})();
+	</script>
 </BaseLayout>
