@@ -109,6 +109,87 @@ This site uses a custom scroll-based entrance animation system (see `ANIMATION_G
 - `src/pages/[lang]/` - Localized pages (en, pt subdirectories)
 - `src/components/` - Reusable Astro components
 
+## Publication PDFs
+
+Publication downloads are served through `/api/download`, which checks the download gate cookie and streams PDFs from Vercel Blob. The static files in `public/files/publications/` are local source copies only; Vercel may deploy Git LFS pointer files there, so do not rely on `/files/publications/...` in production.
+
+Blob paths are derived from `src/data/articles.json`:
+
+```text
+publications/<article.file>
+```
+
+The upload script reads every article with a string `file` value and uploads the matching local PDF:
+
+```bash
+BLOB_READ_WRITE_TOKEN=... bun run scripts/upload-pdfs-to-blob.ts
+```
+
+Use the token from the Vercel project `tamaragonsalves` env var `BLOB_READ_WRITE_TOKEN`. If you need a local copy of the token, run:
+
+```bash
+vercel link --yes --project tamaragonsalves
+vercel env pull .env.vercel
+```
+
+Delete `.env.vercel` after use. Do not commit it.
+
+### Add a PDF
+
+1. Add the PDF to `public/files/publications/` using a stable, lowercase, hyphenated filename ending in `.pdf`.
+2. Add or update the article entry in `src/data/articles.json` with that exact filename in `file`.
+3. Add or update localized copy in `src/i18n/en/articles.json` and `src/i18n/pt/articles.json` when the title, summary, or labels need to change.
+4. Upload to Blob:
+
+```bash
+set -a; source .env.vercel; set +a
+bun run scripts/upload-pdfs-to-blob.ts
+```
+
+5. Verify the Blob object returns a real PDF:
+
+```bash
+curl -I "https://<blob-host>/publications/<filename>.pdf"
+```
+
+Expected: `content-type: application/pdf` and a real `content-length`, not `133` bytes.
+
+6. Run verification:
+
+```bash
+bun test
+bun run build
+```
+
+7. Commit the metadata changes and the local PDF source copy if it changed. Git LFS tracks `public/files/publications/*.pdf`; that is acceptable because production downloads come from Blob.
+
+### Update a PDF
+
+1. Replace the local file in `public/files/publications/` with the same filename when the article should keep the same URL and filename.
+2. Run the upload script. It uses `allowOverwrite: true`, so it replaces the Blob object at the same path.
+3. If the filename changes, update `src/data/articles.json`, upload the new file, then delete the old Blob path.
+4. Run `bun test` and `bun run build`.
+
+### Remove a PDF
+
+1. In `src/data/articles.json`, set `file` to `null` or remove the article entry, depending on whether the publication should remain listed.
+2. Remove related localized article text if the article no longer appears.
+3. Delete the Blob object:
+
+```bash
+set -a; source .env.vercel; set +a
+vercel blob del "publications/<filename>.pdf" --rw-token "$BLOB_READ_WRITE_TOKEN"
+```
+
+4. Remove the local PDF from `public/files/publications/` if no article uses it.
+5. Run `bun test` and `bun run build`.
+
+### Troubleshooting
+
+- A downloaded file named like `publications_download=missing.html` means the client received an HTML error page instead of a PDF. Check `/api/download` logs and `BLOB_READ_WRITE_TOKEN` on the `tamaragonsalves` Vercel project.
+- A 133-byte "PDF" is a Git LFS pointer. Upload the real local PDF to Vercel Blob and redeploy if `/api/download` was missing Blob env vars at build time.
+- Do not create or link resources under the old `tamaragonsalves.com` Vercel project. The live site uses `tamaragonsalves`.
+
 ## Missing Setup
 
 - Minimal routing regression coverage exists in `tests/routing.test.ts`; no broader test suite exists yet
