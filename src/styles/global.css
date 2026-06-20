@@ -409,17 +409,11 @@
 
   /* Book Cover */
   .book-cover-link {
-    @apply flex items-end justify-center mb-6;
-  }
-
-  @media (min-width: 1024px) {
-    .book-cover-link {
-      @apply h-72;
-    }
+    @apply flex items-start justify-center mb-6;
   }
 
   .book-image {
-    @apply max-h-72 w-auto max-w-56 shadow-lg rounded-md object-contain;
+    @apply max-h-72 w-auto max-w-56 lg:max-h-80 lg:max-w-64 shadow-lg rounded-md object-contain;
   }
 
   /* Title and author container */
