@@ -143,6 +143,12 @@ window.__downloadSubmitText = downloadSubmitText;
 </script>
 
 <script>
+function getDownloadFilename(response) {
+  const disposition = response.headers.get('content-disposition') || '';
+  const match = disposition.match(/filename="?([^";]+)"?/i);
+  return match ? decodeURIComponent(match[1]) : 'download.pdf';
+}
+
 function initDownloadModal() {
   const dialog = document.getElementById('download-modal');
   const closeBtn = dialog?.querySelector('[data-download-modal-close]');
@@ -260,7 +266,7 @@ function initDownloadModal() {
             const url = URL.createObjectURL(blob);
             const trigger = document.createElement('a');
             trigger.href = url;
-            trigger.download = 'download.pdf';
+            trigger.download = getDownloadFilename(fileResponse);
             document.body.appendChild(trigger);
             trigger.click();
             document.body.removeChild(trigger);

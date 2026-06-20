@@ -94,6 +94,12 @@ const hasFile = !!article.file;
 </article>
 
 <script>
+function getDownloadFilename(response) {
+  const disposition = response.headers.get('content-disposition') || '';
+  const match = disposition.match(/filename="?([^";]+)"?/i);
+  return match ? decodeURIComponent(match[1]) : 'download.pdf';
+}
+
 window.requestDownload = async function(articleId) {
   try {
     const statusResponse = await fetch('/api/download-status', { cache: 'no-store' });
@@ -110,8 +116,7 @@ window.requestDownload = async function(articleId) {
           const url = URL.createObjectURL(blob);
           const link = document.createElement('a');
           link.href = url;
-          const filename = decodeURIComponent(response.url.split('/').pop() || 'download.pdf');
-          link.download = filename;
+          link.download = getDownloadFilename(response);
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);

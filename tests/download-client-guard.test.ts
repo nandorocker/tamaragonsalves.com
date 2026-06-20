@@ -11,8 +11,18 @@ describe("download client guards", () => {
     expect(articleCard).toContain("includes('application/pdf')");
   });
 
+  test("article card uses Content-Disposition filename", () => {
+    expect(articleCard).toContain("getDownloadFilename(response)");
+    expect(articleCard).not.toContain("response.url.split('/').pop()");
+  });
+
   test("modal direct download only auto-downloads PDF responses", () => {
     expect(downloadModal).toContain("fileResponse.headers.get('content-type')");
     expect(downloadModal).toContain("includes('application/pdf')");
+  });
+
+  test("modal direct download uses Content-Disposition filename", () => {
+    expect(downloadModal).toContain("getDownloadFilename(fileResponse)");
+    expect(downloadModal).not.toContain("trigger.download = 'download.pdf'");
   });
 });
